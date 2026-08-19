@@ -1,0 +1,141 @@
+[
+  {
+    "id": "conflict-checkout-ext",
+    "title": "Checkout UI extension / customizer conflict",
+    "patterns": [
+      "checkout customization",
+      "checkout editor",
+      "ui extension",
+      "thank you page extra",
+      "additional scripts"
+    ],
+    "likely": "A checkout app (upsell, trust badges, delivery date, tips) is injecting a block that fails validation or hides Pay.",
+    "severity": "critical",
+    "test_sequence": [
+      "Settings → Checkout → Customize.",
+      "Unpublish the most recently added checkout app block.",
+      "Open a fresh incognito checkout.",
+      "If Pay returns, leave that block off or update the app."
+    ],
+    "apps_often": ["upsell", "rebuy", "zipify", "checkout blocks", "ordergroove"]
+  },
+  {
+    "id": "conflict-shipping-app",
+    "title": "Shipping app returned zero rates",
+    "patterns": [
+      "carrier-calculated",
+      "account disconnected",
+      "easyship",
+      "shipstation",
+      "zapiet",
+      "packlink",
+      "addition"
+    ],
+    "likely": "The shipping app is the only rate in the zone and returned nothing (weight, origin, or token).",
+    "severity": "critical",
+    "test_sequence": [
+      "Add a native flat rate in the same zone.",
+      "Retest checkout. If rates appear, the app is the culprit.",
+      "Reconnect the carrier account or fix product weights.",
+      "Keep the flat rate as a fallback."
+    ],
+    "apps_often": ["easyship", "zapiet", "shipstation", "packlink", "addition"]
+  },
+  {
+    "id": "conflict-theme-embed",
+    "title": "Theme app embed / leftover section",
+    "patterns": [
+      "app embed",
+      "theme app extension",
+      "cannot preview this section",
+      "liquid syntax error",
+      "failed to save theme"
+    ],
+    "likely": "An embed writes into header/cart and breaks compile, or a leftover block remains after a theme switch.",
+    "severity": "warning",
+    "test_sequence": [
+      "Duplicate the theme.",
+      "Customize → App embeds → disable all → preview.",
+      "Re-enable one at a time until the error returns.",
+      "Update or remove that app."
+    ],
+    "apps_often": ["reviews", "popup", "currency converter", "wishlist", "chat"]
+  },
+  {
+    "id": "conflict-fraud-app",
+    "title": "Fraud / risk app auto-cancelling",
+    "patterns": [
+      "fraud",
+      "high risk",
+      "automatically cancelled",
+      "nofraud",
+      "signifyd",
+      "fraud filter"
+    ],
+    "likely": "A fraud app or native filter is cancelling or blocking capture on legitimate cards.",
+    "severity": "warning",
+    "test_sequence": [
+      "Open a declined/cancelled order timeline and look for the app name.",
+      "Set the app to review instead of cancel.",
+      "Retry a known-good card.",
+      "Loosen native Fraud protect if it is stacked with a third-party app."
+    ],
+    "apps_often": ["nofraud", "signifyd", "fraud filter", "clearsale"]
+  },
+  {
+    "id": "conflict-currency-app",
+    "title": "Currency converter vs Markets",
+    "patterns": [
+      "currency converter",
+      "multi-currency",
+      "best currency",
+      "unable to process in this currency"
+    ],
+    "likely": "A legacy converter is fighting Shopify Markets / Payments multi-currency.",
+    "severity": "warning",
+    "test_sequence": [
+      "Disable the currency app embed.",
+      "Preview Markets native currency.",
+      "If checkout charges correctly, uninstall the converter."
+    ],
+    "apps_often": ["best currency converter", "auto currency switcher"]
+  },
+  {
+    "id": "conflict-subscription-app",
+    "title": "Subscription app vs gateway",
+    "patterns": [
+      "selling plan",
+      "subscription",
+      "recurring",
+      "recharge",
+      "skio",
+      "appstle"
+    ],
+    "likely": "The gateway or Shop Pay does not support the selling plan, or the app is outdated for checkout extensibility.",
+    "severity": "warning",
+    "test_sequence": [
+      "Place a one-time (non-subscription) test. If that works, the app/gateway pairing is the issue.",
+      "Update the subscription app.",
+      "Confirm the gateway supports recurring on your plan."
+    ],
+    "apps_often": ["recharge", "skio", "appstle", "bold subscriptions"]
+  },
+  {
+    "id": "conflict-outdated-app",
+    "title": "App marked outdated / unsupported",
+    "patterns": [
+      "outdated app",
+      "update this app",
+      "doesn't support checkout extensibility",
+      "unsupported app"
+    ],
+    "likely": "Shopify flagged the app after a platform change. It may still be installed and breaking save or checkout.",
+    "severity": "warning",
+    "test_sequence": [
+      "Settings → Apps → filter by outdated / needs attention.",
+      "Update if an update exists.",
+      "If not, disable then uninstall and retest the failing page."
+    ],
+    "apps_often": []
+  }
+]

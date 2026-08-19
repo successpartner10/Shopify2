@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 560" role="img" aria-label="Shopify insufficient inventory toast">
+  <rect width="960" height="560" fill="#f1f1f1"/>
+  <rect width="220" height="560" fill="#1a1a1a"/>
+  <text x="28" y="40" fill="#95bf47" font-family="Arial, sans-serif" font-size="18" font-weight="700">S  mystore</text>
+  <g fill="#d2d5d9" font-family="Arial, sans-serif" font-size="14">
+    <text x="28" y="118" fill="#ffffff" font-weight="700">Orders</text>
+  </g>
+  <rect x="220" width="740" height="56" fill="#ffffff"/>
+  <text x="244" y="36" fill="#202223" font-family="Arial, sans-serif" font-size="18" font-weight="700">Orders / Fulfill items</text>
+  <rect x="244" y="80" width="692" height="360" rx="10" fill="#ffffff"/>
+  <text x="268" y="124" fill="#202223" font-family="Arial, sans-serif" font-size="20" font-weight="700">Can't fulfill</text>
+  <text x="268" y="168" fill="#bf0711" font-family="Arial, sans-serif" font-size="15">Insufficient inventory at this location</text>
+  <text x="268" y="210" fill="#6d7175" font-family="Arial, sans-serif" font-size="14">Available  0     On hand  4     Committed  4</text>
+  <text x="268" y="242" fill="#6d7175" font-family="Arial, sans-serif" font-size="14">Warehouse  Toronto</text>
+  <rect x="700" y="380" width="96" height="34" rx="6" fill="#8e1f0b"/>
+  <text x="720" y="402" fill="#ffffff" font-family="Arial, sans-serif" font-size="13" font-weight="700">Fulfill</text>
+  <rect x="390" y="480" width="340" height="48" rx="10" fill="#8e1f0b"/>
+  <text x="448" y="510" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="700">Not enough inventory</text>
+</svg>

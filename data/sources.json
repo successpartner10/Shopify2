@@ -1,0 +1,126 @@
+{
+  "version": "2026-08-19",
+  "evaluated": [
+    {
+      "id": "screenshot",
+      "name": "This screen (Storescope)",
+      "strengths": [
+        "Sees the exact banner, toast, and button the merchant is looking at.",
+        "Can draw an arrow on the control to click next.",
+        "Works from a tab share or an OS screenshot — no store credentials."
+      ],
+      "weaknesses": [
+        "OCR can miss tiny validation text or low-contrast toasts.",
+        "Cannot click Shopify for you or see pages that are not on screen."
+      ],
+      "use_when": "A red/yellow banner, toast, or validation state is visible right now."
+    },
+    {
+      "id": "forums",
+      "name": "Shopify Community & Reddit",
+      "strengths": [
+        "Real merchant wording: “payouts on hold”, “test mode still on”, “no shipping methods”.",
+        "Often includes the exact banner screenshot and what finally cleared it.",
+        "Good for rare Risk/Trust holds that docs under-describe."
+      ],
+      "weaknesses": [
+        "Staff replies cannot see your account and default to “contact support”.",
+        "Advice goes stale after admin IA changes.",
+        "Threads mix owner-only steps with staff-permission dead ends."
+      ],
+      "use_when": "The banner is vague (“standard review”) and you need the usual next email/team."
+    },
+    {
+      "id": "docs",
+      "name": "Official Shopify Help",
+      "strengths": [
+        "Canonical click paths (Settings → Payments → Manage).",
+        "Correct distinction: PayPal is not a primary card provider.",
+        "Safe default when the banner names a documented feature."
+      ],
+      "weaknesses": [
+        "Does not diagnose *this* screen.",
+        "Account-hold pages stay high-level on purpose."
+      ],
+      "use_when": "You already know the feature name and need the official steps."
+    },
+    {
+      "id": "sidekick",
+      "name": "Shopify Sidekick",
+      "strengths": [
+        "Lives in admin and can read store data (orders, products, some settings).",
+        "Can draft changes with an approve-before-save gate.",
+        "Fast for “how is my store doing” and form-filling."
+      ],
+      "weaknesses": [
+        "Trained for prose and docs — merchants report hallucinations on exact codes, recent features, and theme/app placement.",
+        "Cannot see a screenshot of a toast that already dismissed.",
+        "Does not confirm whether an app embed is actually live on the published theme.",
+        "Owner-only Risk tickets still bounce to email."
+      ],
+      "use_when": "You want Shopify to act on store data after Storescope names the exact screen."
+    },
+    {
+      "id": "perplexity",
+      "name": "Perplexity",
+      "strengths": [
+        "Cites current help pages and forum threads.",
+        "Useful to check whether a banner text is a known 2026 issue."
+      ],
+      "weaknesses": [
+        "No access to your admin or this capture.",
+        "Citations can still be wrong or mixed across plans/countries."
+      ],
+      "use_when": "You want a sourced second opinion after the local playbook match."
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "strengths": [
+        "Good at turning a pasted banner into a checklist.",
+        "Strong when you paste the OCR text Storescope already extracted."
+      ],
+      "weaknesses": [
+        "No live admin, no arrow, often outdated menu names.",
+        "Will invent Settings paths that do not exist on your plan."
+      ],
+      "use_when": "You need a longer written plan *after* the screen is identified."
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "strengths": [
+        "Strong at reading a screenshot you upload.",
+        "Useful multimodal backup if OCR in-browser is weak."
+      ],
+      "weaknesses": [
+        "Uploading an admin screenshot leaves your browser — customer names, payouts, keys.",
+        "Still generic on Risk holds and country-specific Payments."
+      ],
+      "use_when": "You have already paused/redacted the capture and need a visual second pass."
+    },
+    {
+      "id": "grok",
+      "name": "Grok",
+      "strengths": [
+        "Picks up very recent social complaints (X) about outages or holds."
+      ],
+      "weaknesses": [
+        "Noisy, not store-specific, weak on official click paths."
+      ],
+      "use_when": "You suspect a platform-wide outage, then verify on status.shopify.com."
+    },
+    {
+      "id": "kimi",
+      "name": "Kimi",
+      "strengths": [
+        "Long-context reading of pasted help docs or a long thread."
+      ],
+      "weaknesses": [
+        "Same blind spot as every generic model: it cannot see this admin tab."
+      ],
+      "use_when": "You drop a long official doc or forum thread next to the OCR text."
+    }
+  ],
+  "recommendation": "Identify the banner locally first. Hand Sidekick a pre-filled prompt only after the playbook names the cause. Use forums/Perplexity for rare holds. Do not upload raw admin screenshots to a cloud model unless you have paused and redacted."
+}

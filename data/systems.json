@@ -1,0 +1,98 @@
+{
+  "payments": {
+    "id": "payments",
+    "title": "Shopify Payments & payouts",
+    "summary": "Shopify Payments (or a third-party gateway) authorizes cards at checkout, then later transfers settled funds to your bank. A hold, test-mode flag, or missing provider blocks money — not always checkout.",
+    "why_this_ui": "Banners on Home and Settings → Payments are written by Risk / Payments, not by your theme. Staff accounts often cannot see the same hold details as the store owner.",
+    "docs": [
+      { "label": "Troubleshoot payment gateways", "url": "https://help.shopify.com/en/manual/payments/troubleshooting" },
+      { "label": "Shopify Payments account holds", "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts/account-holds" },
+      { "label": "Test mode", "url": "https://help.shopify.com/en/manual/checkout-settings/test-orders/payments-test-mode" }
+    ]
+  },
+  "shipping": {
+    "id": "shipping",
+    "title": "Shipping profiles, zones & rates",
+    "summary": "Checkout asks every matching shipping profile for a rate. If the country is missing, a carrier API returns nothing, or the product has no weight, the customer sees “no shipping methods”.",
+    "why_this_ui": "The empty-rate banner is a checkout result, not a payments error. Draft-order tests with the customer’s city and postal code are the fastest way to reproduce it.",
+    "docs": [
+      { "label": "Troubleshoot shipping rates", "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-rates/troubleshooting" },
+      { "label": "Shipping profiles", "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-profiles" }
+    ]
+  },
+  "themes": {
+    "id": "themes",
+    "title": "Online Store themes & Liquid",
+    "summary": "Themes render your storefront. A Liquid syntax error, missing snippet, or broken app embed can take down a section — or the whole preview — without touching orders.",
+    "why_this_ui": "“Theme has errors” is a compile-time check. Duplicate the theme before editing. App embeds often look like theme bugs.",
+    "docs": [
+      { "label": "Theme errors", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" },
+      { "label": "Liquid error types", "url": "https://shopify.dev/docs/api/liquid" }
+    ]
+  },
+  "apps": {
+    "id": "apps",
+    "title": "Apps, embeds & checkout extensions",
+    "summary": "Apps inject scripts, theme embeds, and checkout UI extensions. After a theme switch or app update they can override buttons, hide rates, or break save.",
+    "why_this_ui": "Shopify rarely names the offending app in the banner. The cleanest test is: unpublished theme preview → disable embeds one by one → retest.",
+    "docs": [
+      { "label": "App embeds", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/apps" },
+      { "label": "Checkout extensibility", "url": "https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility" }
+    ]
+  },
+  "inventory": {
+    "id": "inventory",
+    "title": "Inventory, locations & overselling",
+    "summary": "Available stock is on-hand minus committed, per location. Oversell, missing location, or “continue selling when out of stock” off will block checkout or fulfillment.",
+    "why_this_ui": "Red “insufficient inventory” toasts fire when a fulfill or cart change asks a location that has no available units.",
+    "docs": [
+      { "label": "Inventory tracking", "url": "https://help.shopify.com/en/manual/products/inventory" }
+    ]
+  },
+  "permissions": {
+    "id": "permissions",
+    "title": "Staff permissions & store owner",
+    "summary": "Many Payments, billing, and legal banners are owner-only. A staff user can see a red banner and still lack the button that clears it.",
+    "why_this_ui": "“You don’t have permission” toasts are not store bugs. Retry as the store owner or grant the Finance / Settings permission.",
+    "docs": [
+      { "label": "Staff permissions", "url": "https://help.shopify.com/en/manual/your-account/staff-accounts/staff-permissions" }
+    ]
+  },
+  "domains": {
+    "id": "domains",
+    "title": "Domains, DNS & SSL",
+    "summary": "Shopify looks for a specific A/CNAME pair. Extra AAAA or old records stall verification and SSL.",
+    "why_this_ui": "Domain banners live under Online Store → Domains. Checkout on a custom domain fails until Connected + primary + SSL issued.",
+    "docs": [
+      { "label": "Connect a domain", "url": "https://help.shopify.com/en/manual/domains/add-a-domain" }
+    ]
+  },
+  "checkout": {
+    "id": "checkout",
+    "title": "Checkout, Shop Pay & 3-D Secure",
+    "summary": "Checkout combines rates, taxes, markets, and the payment provider. 3-D Secure, Shop Pay, and wallets add an extra bank challenge that can fail independently of your gateway.",
+    "why_this_ui": "Order timeline lists the exact decline code. Admin toasts after Capture/Refund are provider responses, not theme errors.",
+    "docs": [
+      { "label": "Checkout settings", "url": "https://help.shopify.com/en/manual/checkout-settings" },
+      { "label": "3-D Secure", "url": "https://help.shopify.com/en/manual/payments/shopify-payments/accelerated-checkouts/additional-payment-methods" }
+    ]
+  },
+  "billing": {
+    "id": "billing",
+    "title": "Shopify billing & subscriptions",
+    "summary": "Your Shopify invoice (plan + apps) is separate from customer payouts. A failed Shopify bill can lock features or show a store-wide banner.",
+    "why_this_ui": "Past-due banners sit at the top of every admin page. Fix them under Settings → Billing, not Payments.",
+    "docs": [
+      { "label": "Shopify bills", "url": "https://help.shopify.com/en/manual/your-account/manage-billing" }
+    ]
+  },
+  "general": {
+    "id": "general",
+    "title": "Admin, notifications & markets",
+    "summary": "Anything that is not payments, shipping, or the theme — taxes, pixels, gift cards, markets, email auth — still writes banners in the same Polaris chrome.",
+    "why_this_ui": "Read the banner first. The page title is often broader than the actual blocker.",
+    "docs": [
+      { "label": "Shopify Help Center", "url": "https://help.shopify.com/en" }
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "id": "flow-payout-hold",
+    "title": "Clear a payout hold",
+    "entry_ids": ["error-payout-hold-banner", "payments-payout-hold-001", "payments-identity-verification-006"],
+    "steps": [
+      {
+        "id": "read-banner",
+        "label": "Read the hold banner",
+        "detail": "Home or Settings → Payments. Note whether it says verify, bank, chargeback, or review.",
+        "done_if": ["complete account setup", "view documents", "view payouts", "needs attention"],
+        "stuck": [
+          { "id": "payments-identity-verification-006", "label": "It asks for documents / identity" },
+          { "id": "payments-bank-mismatch-004", "label": "Bank needs attention" },
+          { "id": "payments-chargeback-005", "label": "Disputes or negative balance" }
+        ]
+      },
+      {
+        "id": "owner-email",
+        "label": "Owner email + spam",
+        "detail": "Only the store owner gets Risk/Payments mail (legal-mailer.shopify.com).",
+        "done_if": ["verify", "documents", "identity"]
+      },
+      {
+        "id": "cta",
+        "label": "Use the banner button",
+        "detail": "Complete account setup or View documents. Staff will get a permission toast.",
+        "done_if": ["submit", "upload", "verification"],
+        "stuck": [{ "id": "error-permission-toast", "label": "Permission toast appeared" }]
+      },
+      {
+        "id": "wait-or-escalate",
+        "label": "Reply on the same ticket",
+        "detail": "If it is a silent standard review, do not open a new chat. Reply on the email with the ticket number.",
+        "done_if": ["hold has been removed", "next payout", "paid"]
+      }
+    ]
+  },
+  {
+    "id": "flow-no-provider",
+    "title": "Turn checkout payments on",
+    "entry_ids": ["error-unable-accept-payments", "payments-provider-not-connected-002"],
+    "steps": [
+      {
+        "id": "open-payments",
+        "label": "Open Settings → Payments",
+        "detail": "Confirm the red “unable to accept payments” banner is on this page.",
+        "done_if": ["shopify payments", "third-party", "complete account setup"]
+      },
+      {
+        "id": "activate",
+        "label": "Activate a primary card provider",
+        "detail": "Shopify Payments if offered; otherwise a live third-party card gateway. PayPal alone will not clear the banner.",
+        "done_if": ["active"]
+      },
+      {
+        "id": "not-test",
+        "label": "Confirm test mode is off",
+        "detail": "Manage → uncheck Test mode → Save.",
+        "done_if": ["test mode"],
+        "stuck": [{ "id": "error-test-mode-banner", "label": "Test mode still on" }]
+      },
+      {
+        "id": "live-check",
+        "label": "Incognito checkout",
+        "detail": "A card method must appear. Then a $1 real charge + refund.",
+        "done_if": ["pay now", "credit card"]
+      }
+    ]
+  },
+  {
+    "id": "flow-test-mode",
+    "title": "Leave test mode",
+    "entry_ids": ["error-test-mode-banner", "payments-test-mode-003"],
+    "steps": [
+      {
+        "id": "manage",
+        "label": "Payments → Manage",
+        "detail": "The homepage banner toggle is not enough.",
+        "done_if": ["test mode"]
+      },
+      {
+        "id": "uncheck",
+        "label": "Uncheck Test mode and Save",
+        "detail": "Third-party: also replace sandbox keys.",
+        "done_if": ["save"]
+      },
+      {
+        "id": "fresh-link",
+        "label": "Send a new checkout",
+        "detail": "Abandoned checkouts created in test mode can keep failing.",
+        "done_if": ["paid", "thank you"]
+      }
+    ]
+  },
+  {
+    "id": "flow-no-shipping",
+    "title": "Restore shipping rates",
+    "entry_ids": ["error-no-shipping-rates", "shipping-no-methods-001"],
+    "steps": [
+      {
+        "id": "reproduce",
+        "label": "Draft order with their address",
+        "detail": "City, country, postal. Do not test with your warehouse address only.",
+        "done_if": ["no shipping", "draft"]
+      },
+      {
+        "id": "zone",
+        "label": "Country in exactly one zone",
+        "detail": "Settings → Shipping and delivery → Manage rates.",
+        "done_if": ["zones", "add rate"]
+      },
+      {
+        "id": "fallback",
+        "label": "Add a fallback flat rate",
+        "detail": "Stops a carrier API outage from zeroing checkout.",
+        "done_if": ["flat", "standard"]
+      },
+      {
+        "id": "weight-origin",
+        "label": "Weight + shipping origin",
+        "detail": "Physical products need a weight. Inventory location must be a shipping origin.",
+        "done_if": ["kg", "lb", "weight"],
+        "stuck": [
+          { "id": "error-carrier-disconnected", "label": "Carrier account disconnected" },
+          { "id": "error-app-conflict-banner", "label": "A shipping app looks involved" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "flow-theme-errors",
+    "title": "Fix theme compile errors",
+    "entry_ids": ["error-theme-has-errors", "general-theme-errors-002"],
+    "steps": [
+      {
+        "id": "duplicate",
+        "label": "Duplicate the live theme",
+        "detail": "Never edit production first.",
+        "done_if": ["duplicate", "copy"]
+      },
+      {
+        "id": "open-file",
+        "label": "Open the file in the red line",
+        "detail": "Usually sections/header.liquid or a section the editor cannot preview.",
+        "done_if": ["liquid", "header.liquid"]
+      },
+      {
+        "id": "revert-or-fix",
+        "label": "Revert that file or close the tag",
+        "detail": "Version dropdown → last good save.",
+        "done_if": ["saved"]
+      },
+      {
+        "id": "embeds",
+        "label": "If it started after an app, disable the embed",
+        "detail": "Theme editor → App embeds.",
+        "done_if": ["app embeds"],
+        "stuck": [{ "id": "flow-app-conflict", "label": "Need the full app-conflict path" }]
+      }
+    ]
+  },
+  {
+    "id": "flow-app-conflict",
+    "title": "Isolate an app / theme conflict",
+    "entry_ids": ["error-app-conflict-banner", "general-app-conflict-006"],
+    "steps": [
+      {
+        "id": "timeline",
+        "label": "When did it start?",
+        "detail": "New app, theme publish, or Shopify deploy.",
+        "done_if": ["apps"]
+      },
+      {
+        "id": "embeds-off",
+        "label": "Disable the newest app embed",
+        "detail": "Customize → App embeds. Preview after each one.",
+        "done_if": ["app embeds"]
+      },
+      {
+        "id": "dawn",
+        "label": "Preview a clean theme",
+        "detail": "If Dawn/preview is clean, it is theme or embed — not Payments.",
+        "done_if": ["preview"]
+      },
+      {
+        "id": "update-or-remove",
+        "label": "Update or uninstall the culprit",
+        "detail": "Settings → Apps. Prefer update; uninstall only if preview stays broken.",
+        "done_if": ["uninstalled", "updated"]
+      }
+    ]
+  }
+]
