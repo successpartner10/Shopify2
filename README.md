@@ -5,7 +5,7 @@ Privacy-first **Shopify admin live scanner**. Share the admin tab (or drop a scr
 - **GitHub Pages:** https://successpartner10.github.io/Shopify2/?v=2.6.0
 - **Cloudflare Worker:** https://shopify2.panchgani2025.workers.dev/?v=2.6.0
 - **Cloudflare Pages:** https://storescope-cwl.pages.dev/?v=2.6.0
-- **Repo:** https://github.com/successpartner10/Shopify2
+- **Shopify app (how to list it):** [SHOPIFY_APP.md](./SHOPIFY_APP.md)
 - **Full guide:** [STORESCOPE.md](./STORESCOPE.md)
 - **Offline zip:** see the latest GitHub Release (`storescope-offline.zip`)
 
