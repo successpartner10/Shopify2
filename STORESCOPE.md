@@ -4,8 +4,9 @@ Privacy-first Shopify admin live scanner.
 
 | | |
 |---|---|
-| **Live site (this build)** | https://successpartner10.github.io/Shopify2/ |
-| **Legacy Cloudflare URL** | https://storescope-cwl.pages.dev/ (old 1.x until reconnect — see [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.6.0 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.6.0 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.6.0 |
 | **Source** | https://github.com/successpartner10/Shopify2 |
 | **Offline package** | [GitHub Release zip](https://github.com/successpartner10/Shopify2/releases/download/v2.1.0/storescope-offline.zip) |
 | **License** | MIT |
@@ -29,10 +30,12 @@ It does **not** log into Shopify, click for you, or lift a Risk/Payments hold.
 
 ## 2. Live URLs
 
-- App: https://successpartner10.github.io/Shopify2/
+- GitHub Pages: https://successpartner10.github.io/Shopify2/?v=2.6.0
+- Worker: https://shopify2.panchgani2025.workers.dev/?v=2.6.0
+- Pages: https://storescope-cwl.pages.dev/?v=2.6.0
 - Repo: https://github.com/successpartner10/Shopify2
-- Shared playbook example: `https://successpartner10.github.io/Shopify2/?fix=error-payout-hold-banner`
-- Search: `https://successpartner10.github.io/Shopify2/?q=payouts%20on%20hold`
+- Shared playbook: `https://successpartner10.github.io/Shopify2/?v=2.6.0&fix=error-payout-hold-banner`
+- Search: `https://successpartner10.github.io/Shopify2/?v=2.6.0&q=payouts%20on%20hold`
 
 ---
 
@@ -103,7 +106,7 @@ Narrates the current tip. Shortcuts: `S` scan, `N`/`B` step, `Space` done, `R` r
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/ as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=2.6.0 as a **top-level tab**.
 2. Open Shopify admin in another tab.
 3. **Start scanning** → pick the Shopify tab.
 4. **What's wrong?**

@@ -3,7 +3,7 @@
   "name": "Storescope — Shopify Live Scanner",
   "short_name": "Storescope",
   "description": "Point Storescope at your Shopify admin. Get instant, step-by-step fixes with arrows on the exact control to click next.",
-  "start_url": "./index.html",
+  "start_url": "./index.html?v=2.6.0",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

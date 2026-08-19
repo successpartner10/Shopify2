@@ -1,6 +1,11 @@
 # Put this build on Cloudflare (`storescope-cwl.pages.dev`)
 
-GitHub Pages is already live: https://successpartner10.github.io/Shopify2/
+GitHub Pages is already live: https://successpartner10.github.io/Shopify2/?v=2.6.0
+
+Same build, versioned:
+
+- https://shopify2.panchgani2025.workers.dev/?v=2.6.0
+- https://storescope-cwl.pages.dev/?v=2.6.0 (needs Git reconnect — see below)
 
 The red **Workers Builds: shopify2** check is Cloudflare treating the repo as a **Worker**. The site is static HTML. Use **Pages**, not Workers.
 
@@ -16,7 +21,7 @@ The red **Workers Builds: shopify2** check is Cloudflare treating the repo as a 
    - Build output directory: `/`
 6. Save. Trigger **Retry deployment** / **Deploy**.
 
-When it finishes, https://storescope-cwl.pages.dev/ should show the mint **v2.1** pill.
+When it finishes, https://storescope-cwl.pages.dev/?v=2.6.0 should show **v2.6.0** under the logo.
 
 ## Stop the failing Worker check
 
