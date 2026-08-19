@@ -1,0 +1,11 @@
+.git
+.github
+.arena
+.cache
+__pycache__
+*.pyc
+storescope-offline.zip
+.env
+*.pem
+DEPLOY.md
+LICENSE

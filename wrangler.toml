@@ -1,3 +1,10 @@
-name = "storescope-cwl"
+name = "shopify2"
 compatibility_date = "2026-08-19"
+# Static site: serves this folder. Used by Cloudflare Workers Builds
+# (the check named "Workers Builds: shopify2") and by Pages if connected.
 pages_build_output_dir = "."
+
+[assets]
+directory = "."
+html_handling = "auto-trailing-slash"
+not_found_handling = "404-page"

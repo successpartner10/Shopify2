@@ -1,6 +1,21 @@
 # Update storescope-cwl.pages.dev + private-repo notes
 
-## GitHub Actions: the red “failed” run
+## The red X you see on the latest commit
+
+There are **two** checks on GitHub:
+
+| Check | Status | What it is |
+|---|---|---|
+| **deploy** (GitHub Actions) | Green — this is the live github.io site | https://successpartner10.github.io/Shopify2/ |
+| **Workers Builds: shopify2** (Cloudflare) | Was failing | Cloudflare auto-created a **Worker** named `shopify2` and tried to compile this folder as a Worker script |
+
+The Worker check failed because Storescope is a **static site**, not a Worker. `wrangler.toml` is now set to **static assets** so that Cloudflare check should go green and publish a `*.workers.dev` URL.
+
+It still does **not** update https://storescope-cwl.pages.dev/ unless you attach this repo to the **Pages** project `storescope-cwl` (not a Worker).
+
+---
+
+## GitHub Actions: the old first-run failure
 
 The first `Deploy GitHub Pages` run failed with:
 
