@@ -4,7 +4,7 @@ import { canCapture, startTabCapture, stopStream, isEmbedded, captureBlockReason
 import { ocrAvailable, recognize, frameToCanvas } from "./ocr.js";
 import { SAMPLES } from "./samples.js";
 import {
-  APP_URL, APP_TITLE, APP_BLURB, fixUrl, playbookMarkdown, playbookText,
+  APP_URL, APP_TITLE, APP_BLURB, APP_VERSION, fixUrl, playbookMarkdown, playbookText,
   copyText, nativeShare, canNativeShare, parseInbound, socialLinks, downloadText
 } from "./share.js";
 import { detectColorBands, pickArrowFromVision, annotateVision, toneMeta } from "./banners.js";
@@ -1366,6 +1366,7 @@ async function boot() {
     state.entries = entries;
     state.fuse = buildIndex(allEntries());
     state.ready = true;
+    if ($("verPill")) $("verPill").textContent = `v${APP_VERSION}`;
     if ($("dictPill")) $("dictPill").textContent = "Ready";
     if (errors.length) console.warn("Some playbooks failed to load", errors);
     applyInbound();

@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.5.2";
+const VERSION = "storescope-v2.6.0";
 const PRECACHE = [
   "./",
   "./index.html",

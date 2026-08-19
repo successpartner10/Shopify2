@@ -1,3 +1,5 @@
+import { APP_VERSION } from "./version.js";
+
 function publicBase() {
   if (typeof location !== "undefined" && /^https?:/.test(location.protocol)) {
     const path = location.pathname.replace(/index\.html$/i, "");
@@ -7,14 +9,15 @@ function publicBase() {
   return "https://successpartner10.github.io/Shopify2/";
 }
 
-export const APP_URL = publicBase();
+export { APP_VERSION };
+export const APP_URL = `${publicBase()}?v=${APP_VERSION}`;
 export const APP_TITLE = "Storescope — Shopify Live Scanner";
 export const APP_BLURB =
   "Point Storescope at your Shopify admin. Instant playbooks for payouts, shipping, themes, and checkout errors.";
 
 export function fixUrl(id) {
   if (!id || String(id).startsWith("fallback")) return APP_URL;
-  return `${APP_URL}?fix=${encodeURIComponent(id)}`;
+  return `${APP_URL}&fix=${encodeURIComponent(id)}`;
 }
 
 export function playbookMarkdown(entry) {
