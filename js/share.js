@@ -80,7 +80,9 @@ export function parseInbound() {
   return {
     fix: params.get("fix") || "",
     q: params.get("q") || params.get("text") || params.get("title") || "",
-    sharedUrl: params.get("url") || ""
+    sharedUrl: params.get("url") || "",
+    action: params.get("action") || "",
+    shared: params.get("shared") === "1"
   };
 }
 

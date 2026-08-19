@@ -3,12 +3,12 @@
   "name": "Storescope — Shopify Live Scanner",
   "short_name": "Storescope",
   "description": "Point Storescope at your Shopify admin. Get instant, step-by-step fixes with arrows on the exact control to click next.",
-  "start_url": "./index.html?v=2.6.0",
+  "start_url": "./index.html?v=2.7.0",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#07090c",
-  "theme_color": "#07090c",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f5f5f7",
   "lang": "en",
   "dir": "ltr",
   "categories": ["business", "productivity", "utilities"],
@@ -18,10 +18,47 @@
     { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "share_target": {
-    "action": "./index.html",
-    "method": "GET",
-    "enctype": "application/x-www-form-urlencoded",
-    "params": { "title": "title", "text": "text", "url": "url" }
+    "action": "./share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        { "name": "image", "accept": ["image/png", "image/jpeg", "image/webp", "image/*"] }
+      ]
+    }
+  },
+  "shortcuts": [
+    {
+      "name": "Upload screenshot",
+      "short_name": "Upload",
+      "description": "Pick a Shopify screenshot from Photos",
+      "url": "./index.html?v=2.7.0&action=upload",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Payouts on hold",
+      "short_name": "Payouts",
+      "url": "./index.html?v=2.7.0&q=payouts%20on%20hold",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "No shipping rates",
+      "short_name": "Shipping",
+      "url": "./index.html?v=2.7.0&q=no%20shipping%20rates",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Shopify Collective",
+      "short_name": "Collective",
+      "url": "./index.html?v=2.7.0&q=shopify%20collective",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
   },
   "handle_links": "preferred",
   "prefer_related_applications": false

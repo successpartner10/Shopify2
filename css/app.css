@@ -243,6 +243,17 @@ h1 em { font-style: normal; color: var(--mint); }
 
 .ask-box { display: flex; gap: 8px; flex: 1; min-width: 200px; }
 .home-ask { margin-top: 18px; max-width: 560px; }
+.clip-chip {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-top: 16px; padding: 12px 14px;
+  background: var(--surface); border: var(--hair) solid var(--line);
+  border-radius: 16px; box-shadow: var(--shadow);
+}
+.clip-chip span {
+  flex: 1 1 160px; color: var(--ink); font-size: 1.05rem; font-weight: 600;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.clip-chip .solid, .clip-chip .ghost { min-height: 44px; padding: 10px 14px; }
 .result-card { margin-top: 20px; max-width: 560px; }
 .polaroid {
   margin: 0 0 16px;

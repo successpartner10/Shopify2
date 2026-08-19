@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.6.0";
+const VERSION = "storescope-v2.7.0";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -22,6 +22,8 @@ const PRECACHE = [
   "./js/cloud.js",
   "./js/routes.js",
   "./js/polaroids.js",
+  "./js/version.js",
+  "./js/pwa.js",
   "./js/vendor/fuse.min.js",
   "./js/vendor/tesseract/tesseract.min.js",
   "./js/vendor/tesseract/worker.min.js",
@@ -69,16 +71,22 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k)))
+      Promise.all(keys.filter((k) => k !== VERSION && k !== "ss-share").map((k) => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
   const req = event.request;
-  if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
+
+  if (req.method === "POST" && /\/share\/?$/.test(url.pathname)) {
+    event.respondWith(handleSharePost(req));
+    return;
+  }
+
+  if (req.method !== "GET") return;
 
   const isHtml = req.mode === "navigate" || (req.headers.get("accept") || "").includes("text/html");
   if (isHtml) {
@@ -110,3 +118,23 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
+async function handleSharePost(request) {
+  try {
+    const form = await request.formData();
+    const file = form.get("image") || form.get("file") || form.get("media");
+    const text = [form.get("text"), form.get("title"), form.get("url")].filter(Boolean).join(" ").trim();
+    const cache = await caches.open("ss-share");
+    if (file && typeof file === "object" && file.size) {
+      const headers = new Headers({
+        "Content-Type": file.type || "image/png",
+        "X-Name": file.name || "shared.png"
+      });
+      await cache.put("pending-file", new Response(file, { headers }));
+    }
+    if (text) await cache.put("pending-text", new Response(text));
+  } catch {
+    /* still bounce home */
+  }
+  return Response.redirect(new URL("./index.html?v=2.7.0&shared=1", request.url), 303);
+}

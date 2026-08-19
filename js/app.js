@@ -19,6 +19,10 @@ import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.j
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
 import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
 import { polaroidFor } from "./polaroids.js";
+import {
+  takeSharedInbound, readUsefulClipboard, markClipAsked,
+  holdWake, releaseWake, persistResume, loadResume, clearResume, listenLaunchQueue
+} from "./pwa.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
@@ -292,6 +296,7 @@ function highlightStep() {
     [...host.children].forEach((li, i) => li.classList.toggle("current", i === state.stepIndex));
   });
   try { drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); } catch { /* optional */ }
+  if (state.current) persistResume({ id: state.current.id, step: state.stepIndex, query: state.lastText });
   maybeSpeak();
 }
 
@@ -424,6 +429,7 @@ function renderResult(entry, meta) {
   if ($("homeExpl")) $("homeExpl").textContent = expl;
   paintStepList("homeSteps", entry, 0);
   paintPolaroid(entry);
+  persistResume({ id: entry.id, step: 0, query: meta.query || state.lastText });
   try { renderWhy(); } catch { /* keep steps */ }
   try { renderFlow(); } catch { /* keep steps */ }
   try { renderConflicts(meta.query || state.lastText); } catch { /* optional */ }
@@ -489,6 +495,7 @@ async function runScan({ textOverride, reason } = {}) {
   if (!state.ready) return toast("Just a moment — still starting up.");
   $("scanBtn").disabled = true;
   $("scanBtn").textContent = "Reading…";
+  await holdWake();
   try {
     let text = textOverride || "";
     let canvas = null;
@@ -552,6 +559,7 @@ async function runScan({ textOverride, reason } = {}) {
   } finally {
     $("scanBtn").disabled = false;
     $("scanBtn").textContent = "Find the problem";
+    releaseWake();
   }
 }
 
@@ -733,6 +741,10 @@ async function refreshHistory() {
 
 function applyInbound() {
   const inbound = parseInbound();
+  if (inbound.action === "upload") {
+    $("fileInput")?.click();
+    return;
+  }
   if (inbound.fix) {
     const entry = allEntries().find((e) => e.id === inbound.fix);
     if (entry) {
@@ -748,10 +760,10 @@ function applyInbound() {
   const q = [inbound.q, inbound.sharedUrl].filter(Boolean).join(" ").trim();
   if (q) {
     markOnboarded();
-    showScanner();
-    $("askInput").value = inbound.q || "";
+    if ($("homeAskInput")) $("homeAskInput").value = inbound.q || q;
     applyQuery(q);
-    toast("Opened from a shared search.");
+    $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    toast("Opened from a shortcut.");
   }
 }
 
@@ -1188,6 +1200,7 @@ function wireUi() {
       const rec = await bumpRank(state.current.id, true);
       if (rec) state.ranks[state.current.id] = rec;
     } catch { /* local only */ }
+    clearResume();
     toast("Saved. We’ll show this one first next time.");
     logRec("worked", { id: state.current.id });
     if (state.current.local) await bumpCommunity(state.current.id, true);
@@ -1247,6 +1260,21 @@ function wireUi() {
   on("demoBtn", "click", () => {
     const first = SAMPLES[0];
     if (first) loadSample(first);
+  });
+  on("clipUse", "click", () => {
+    const q = $("clipChip")?.dataset.query || "";
+    if ($("clipChip")) $("clipChip").hidden = true;
+    markClipAsked();
+    if (!q) return;
+    if ($("homeAskInput")) $("homeAskInput").value = q;
+    markOnboarded();
+    state.lastText = q;
+    applyQuery(q);
+    $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  on("clipSkip", "click", () => {
+    if ($("clipChip")) $("clipChip").hidden = true;
+    markClipAsked();
   });
   on("homeAsk", "submit", (e) => {
     e.preventDefault();
@@ -1370,14 +1398,76 @@ async function boot() {
     if ($("dictPill")) $("dictPill").textContent = "Ready";
     if (errors.length) console.warn("Some playbooks failed to load", errors);
     applyInbound();
+    await consumeSharedLaunch();
+    maybeShowClip();
+    restoreIfNeeded();
   } catch (err) {
     toast("Could not start. Refresh the page.");
     console.error(err);
   }
 
+  listenLaunchQueue((file) => { if (file) onFile(file); }, (href) => {
+    try {
+      const u = new URL(href, location.href);
+      const q = u.searchParams.get("q");
+      if (q) applyQuery(q);
+    } catch { /* ignore */ }
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      if (state.current) persistResume({ id: state.current.id, step: state.stepIndex, query: state.lastText });
+      return;
+    }
+    holdWake();
+    maybeShowClip();
+  });
+
   if ("serviceWorker" in navigator) {
     try { await navigator.serviceWorker.register("./sw.js"); } catch { /* optional */ }
   }
+}
+
+async function consumeSharedLaunch() {
+  const inbound = parseInbound();
+  const shared = await takeSharedInbound();
+  if (shared.file) {
+    toast("Got the shared screenshot.");
+    await onFile(shared.file);
+    return;
+  }
+  if (shared.text) {
+    markOnboarded();
+    if ($("homeAskInput")) $("homeAskInput").value = shared.text;
+    applyQuery(shared.text);
+    return;
+  }
+  if (inbound.shared && !shared.file && !shared.text) {
+    toast("Share arrived with no picture. Upload a screenshot instead.");
+  }
+}
+
+async function maybeShowClip() {
+  const chip = $("clipChip");
+  if (!chip || !chip.hidden) return;
+  const t = await readUsefulClipboard();
+  if (!t) return;
+  chip.hidden = false;
+  chip.dataset.query = t;
+  if ($("clipPreview")) $("clipPreview").textContent = t.length > 72 ? `${t.slice(0, 72)}…` : t;
+}
+
+function restoreIfNeeded() {
+  if (state.current) return;
+  const rec = loadResume();
+  if (!rec?.id) return;
+  const entry = allEntries().find((e) => e.id === rec.id);
+  if (!entry) return;
+  renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
+  state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
+  if (state.progress) state.progress.index = state.stepIndex;
+  highlightStep();
+  toast("Picked up where you left off.");
 }
 
 boot();
