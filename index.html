@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Storescope — Shopify Live Scanner</title>
   <meta name="description" content="Point Storescope at your Shopify admin. Instant playbooks and arrows for payouts, shipping, themes, and checkout errors." />
-  <meta name="theme-color" content="#07090c" />
+  <meta name="theme-color" content="#f5f5f7" id="themeColor" />
+  <meta name="color-scheme" content="light dark" />
   <link rel="canonical" href="https://successpartner10.github.io/Shopify2/" />
   <link rel="manifest" href="./manifest.json" />
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
@@ -18,9 +19,6 @@
   <meta property="og:description" content="Screen-capture troubleshooting for Shopify admin. Dictionary-first fixes, offline playbooks, no camera." />
   <meta property="og:image" content="./og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@400;550;650;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/app.css" />
 </head>
 <body>
@@ -41,6 +39,7 @@
       </a>
       <nav class="nav">
         <span class="pill" id="netPill" hidden>Online</span>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Switch appearance">Aa</button>
         <button class="ghost" id="moreBtn" type="button">Help</button>
       </nav>
     </header>

@@ -66,6 +66,22 @@ const state = {
   ranks: {}
 };
 
+function applyTheme(mode) {
+  const next = mode === "dark" ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", next);
+  localStorage.setItem("ss_theme", next);
+  const meta = $("themeColor");
+  if (meta) meta.setAttribute("content", next === "dark" ? "#000000" : "#f5f5f7");
+  const btn = $("themeBtn");
+  if (btn) btn.textContent = next === "dark" ? "☼" : "☾";
+}
+
+function initTheme() {
+  const saved = localStorage.getItem("ss_theme");
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+}
+
 function toast(msg) {
   const el = $("toast");
   el.textContent = msg;
@@ -407,6 +423,7 @@ function renderResult(entry, meta) {
   if ($("homeTitle")) $("homeTitle").textContent = title;
   if ($("homeExpl")) $("homeExpl").textContent = expl;
   paintStepList("homeSteps", entry, 0);
+  paintPolaroid(entry);
   try { renderWhy(); } catch { /* keep steps */ }
   try { renderFlow(); } catch { /* keep steps */ }
   try { renderConflicts(meta.query || state.lastText); } catch { /* optional */ }
@@ -1331,6 +1348,11 @@ function wireUi() {
 }
 
 async function boot() {
+  initTheme();
+  on("themeBtn", "click", () => {
+    const now = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(now);
+  });
   wireUi();
   setOnlineUi();
   applyEmbedUi();

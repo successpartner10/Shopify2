@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.5.0";
+const VERSION = "storescope-v2.5.1";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -51,7 +51,13 @@ const PRECACHE = [
   "./samples/test-mode.svg",
   "./samples/toast-declined.svg",
   "./samples/app-conflict.svg",
-  "./samples/inventory-toast.svg"
+  "./samples/inventory-toast.svg",
+  "./samples/polaroids/payout-hold.svg",
+  "./samples/polaroids/shipping.svg",
+  "./samples/polaroids/test-mode.svg",
+  "./samples/polaroids/collective.svg",
+  "./samples/polaroids/liquid.svg",
+  "./samples/polaroids/edit-code.svg"
 ];
 
 self.addEventListener("install", (event) => {
