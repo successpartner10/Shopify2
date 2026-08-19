@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.2.1";
+const VERSION = "storescope-v2.2.2";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -71,6 +71,21 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
+  const isHtml = req.mode === "navigate" || (req.headers.get("accept") || "").includes("text/html");
+  if (isHtml) {
+    event.respondWith(
+      fetch(req)
+        .then((res) => {
+          if (res && res.ok) {
+            const copy = res.clone();
+            caches.open(VERSION).then((cache) => cache.put(req, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
   event.respondWith(
     caches.match(req).then((cached) => {
       const fetched = fetch(req)

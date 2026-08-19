@@ -84,8 +84,8 @@
               </article>
               <article class="step">
                 <div class="step-num">2</div>
-                <h3>Tap Start scan</h3>
-                <p>We'll ask which tab to watch — pick your Shopify tab.</p>
+                <h3 id="stepTwoTitle">Share a tab or screenshot</h3>
+                <p id="stepTwoCopy">Desktop: share the Shopify admin tab. Phone: take an OS screenshot and upload it from Photos.</p>
               </article>
               <article class="step">
                 <div class="step-num">3</div>
@@ -99,12 +99,15 @@
           </p>
 
           <div class="cta-row">
-            <button class="solid" id="startBtn" type="button">Start scanning</button>
+            <button class="solid" id="startBtn" type="button">Share a tab</button>
             <button class="ghost" id="uploadBtn" type="button">Upload screenshot</button>
             <a class="ghost" id="openTabBtn" href="./index.html" target="_blank" rel="noopener" hidden>Open in new tab</a>
             <button class="ghost" id="shareBtn2" type="button">Share app</button>
           </div>
-          <p class="fine" id="capNote">The browser share picker is a security boundary. Storescope never sees other tabs unless you pick them.</p>
+          <div class="shot-drop" id="shotDrop">
+            Drop a screenshot here, or tap Upload. On a phone, pick the image from Photos.
+          </div>
+          <p class="fine" id="capNote">Desktop can share a Shopify tab. Phones cannot — upload an OS screenshot instead.</p>
         </div>
         <aside class="preview-card" aria-hidden="true">
           <div class="chrome"><i></i><i></i><i></i></div>
@@ -204,7 +207,7 @@
     </section>
   </div>
 
-  <input id="fileInput" type="file" accept="image/*" hidden />
+  <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden />
 
   <div class="drawer-back" id="howDrawer" hidden>
     <div class="drawer" role="dialog" aria-labelledby="howTitle">
@@ -214,7 +217,7 @@
       </header>
       <ol>
         <li><b>Open Shopify</b> — have admin open in a browser tab.</li>
-        <li><b>Tap Start scan</b> — pick that Shopify tab. On phones, upload an OS screenshot.</li>
+        <li><b>Desktop:</b> share the Shopify admin tab. <b>Phone:</b> screenshot the banner, then upload it from Photos (not the camera).</li>
         <li><b>Tap What's wrong?</b> — we OCR banners/toasts, search the local playbook, then draw an arrow.</li>
         <li><b>Work the checklist</b> — re-scan after each step. Stuck? offers an alternate path.</li>
       </ol>

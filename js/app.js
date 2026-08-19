@@ -493,6 +493,7 @@ function showShareDenied(reason) {
 
 function applyEmbedUi() {
   const embedded = isEmbedded();
+  const mobile = isMobile();
   const blocked = captureBlockReason();
   if ($("iframeBanner")) $("iframeBanner").hidden = !embedded;
   if ($("openTabBtn")) $("openTabBtn").hidden = !embedded;
@@ -501,13 +502,28 @@ function applyEmbedUi() {
     const el = $(id);
     if (el) el.href = href;
   });
-  if (blocked === "iframe") {
+  const start = $("startBtn");
+  const upload = $("uploadBtn");
+  if (mobile || blocked === "unsupported") {
+    if (start) start.textContent = "Upload screenshot";
+    if (upload) {
+      upload.textContent = canCapture() && !mobile ? "Share a tab instead" : "Upload another";
+      if (!canCapture() || mobile) upload.hidden = true;
+    }
+    $("capNote").textContent = "On a phone: screenshot Shopify admin, then upload that image from Photos. Do not take a camera photo of the screen.";
+    const s2 = $("stepTwoCopy");
+    if (s2) s2.textContent = "Screenshot the Shopify banner, then tap Upload screenshot and pick it from Photos.";
+    const s2h = $("stepTwoTitle");
+    if (s2h) s2h.textContent = "Upload the screenshot";
+  } else if (blocked === "iframe") {
     $("capNote").textContent = "This preview cannot share tabs. Open in a new tab, or upload / use a sample here.";
-    $("startBtn").textContent = "Open tab share (needs new tab)";
-  } else if (blocked === "unsupported") {
-    $("capNote").textContent = "This browser cannot share tabs. Use Upload screenshot or a sample.";
+    if (start) start.textContent = "Upload screenshot";
   } else if (blocked === "insecure") {
     $("capNote").textContent = "Screen share needs https or localhost. Upload a screenshot instead.";
+    if (start) start.textContent = "Upload screenshot";
+  } else {
+    if (start) start.textContent = "Share a tab";
+    $("capNote").textContent = "Desktop: share the Shopify admin tab. Phone: upload an OS screenshot. Samples work anywhere.";
   }
 }
 
@@ -515,7 +531,13 @@ async function beginCapture() {
   markOnboarded();
   showScanner();
   const blocked = captureBlockReason();
-  if (blocked) {
+  // Phones and blocked browsers skip the tab picker entirely.
+  if (blocked === "mobile" || blocked === "unsupported" || blocked === "insecure") {
+    showShareDenied(blocked);
+    $("fileInput")?.click();
+    return;
+  }
+  if (blocked === "iframe") {
     showShareDenied(blocked);
     return;
   }
@@ -535,7 +557,8 @@ async function beginCapture() {
     toast("Pick your Shopify admin tab — not this Storescope tab.");
   } catch (err) {
     const reason = err.name === "NotAllowedError" ? "denied" : (err.code || "denied").toLowerCase();
-    showShareDenied(reason === "iframe" || reason === "unsupported" || reason === "insecure" ? reason : "denied");
+    showShareDenied(reason === "iframe" || reason === "unsupported" || reason === "insecure" || reason === "mobile" ? reason : "denied");
+    if (isMobile()) $("fileInput")?.click();
   }
 }
 
@@ -893,17 +916,19 @@ function wireUi() {
     e.target.value = "";
     if (file) onFile(file);
   });
-  const drop = $("frameWrap");
-  if (drop) {
-    drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("drop"); });
-    drop.addEventListener("dragleave", () => drop.classList.remove("drop"));
-    drop.addEventListener("drop", (e) => {
+  const bindDrop = (el) => {
+    if (!el) return;
+    el.addEventListener("dragover", (e) => { e.preventDefault(); el.classList.add("drop"); });
+    el.addEventListener("dragleave", () => el.classList.remove("drop"));
+    el.addEventListener("drop", (e) => {
       e.preventDefault();
-      drop.classList.remove("drop");
+      el.classList.remove("drop");
       const file = e.dataTransfer?.files?.[0];
       if (file) onFile(file);
     });
-  }
+  };
+  bindDrop($("frameWrap"));
+  bindDrop($("shotDrop"));
   on("scanBtn", "click", () => runScan());
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });

@@ -10,11 +10,22 @@ export function isEmbedded() {
   }
 }
 
+export function isMobile() {
+  const ua = navigator.userAgent || "";
+  const touch = navigator.maxTouchPoints > 1;
+  return /iPhone|iPad|iPod|Android/i.test(ua) || (touch && /Mac/.test(ua));
+}
+
+export function prefersScreenshots() {
+  return !!(isMobile() || captureBlockReason());
+}
+
 /** Why getDisplayMedia will fail before we even prompt. */
 export function captureBlockReason() {
   if (!window.isSecureContext) return "insecure";
   if (!canCapture()) return "unsupported";
   if (isEmbedded()) return "iframe";
+  if (isMobile()) return "mobile";
   return null;
 }
 
@@ -30,7 +41,11 @@ export function captureHelp(reason) {
     },
     unsupported: {
       title: "This browser cannot share tabs",
-      body: "Safari on iOS and some in-app browsers have no tab-share API. Upload an OS screenshot, or type the banner text."
+      body: "Safari on iPhone and many in-app browsers have no tab-share. Take an OS screenshot of Shopify admin (not a camera photo), then upload it here."
+    },
+    mobile: {
+      title: "On a phone, use a screenshot",
+      body: "Phones cannot share another app’s tab into this page. In Shopify: take a screenshot → come back here → upload it from Photos. Or try a sample."
     },
     denied: {
       title: "Share was dismissed or blocked",
