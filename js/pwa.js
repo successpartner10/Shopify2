@@ -1,4 +1,5 @@
 import { looksLikeAdminUrl } from "./routes.js";
+import { looksLikeSecret } from "./privacy.js";
 
 const SHARE_CACHE = "ss-share";
 
@@ -27,6 +28,7 @@ export async function takeSharedInbound() {
 export function looksUsefulClip(text) {
   const t = String(text || "").trim();
   if (t.length < 6 || t.length > 500) return false;
+  if (looksLikeSecret(t)) return false;
   if (looksLikeAdminUrl(t)) return true;
   return /payout|on hold|shipping|theme|collective|liquid|shopify|declined|test mode|password|domain/i.test(t);
 }

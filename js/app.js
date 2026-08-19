@@ -14,7 +14,7 @@ import { flowFor, initProgress, markStep, autoAdvance, stuckOptions, percent } f
 import { snapshotFrom, diffSnapshots, mapDiffToPlaybook } from "./diff.js";
 import { detectConflicts } from "./conflicts.js";
 import { speak, hush, canSpeak, SHORTCUTS, shortcutFromEvent } from "./voice.js";
-import { scrubText, thumbnailDataUrl } from "./privacy.js";
+import { scrubText, thumbnailDataUrl, looksLikeSecret } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
 import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
@@ -1437,6 +1437,10 @@ async function consumeSharedLaunch() {
     return;
   }
   if (shared.text) {
+    if (looksLikeSecret(shared.text)) {
+      toast("That looked like a secret key. It was not used.");
+      return;
+    }
     markOnboarded();
     if ($("homeAskInput")) $("homeAskInput").value = shared.text;
     applyQuery(shared.text);

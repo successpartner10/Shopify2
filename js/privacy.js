@@ -2,9 +2,18 @@ const EMAIL = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 const PHONE = /(?:\+?\d{1,3}[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?){2}\d{4}/g;
 const CARD = /\b(?:\d[ -]*?){13,19}\b/g;
 const ACCOUNT = /\b(?:acct|account|transit|routing|iban)[:\s#]*[A-Z0-9-]{4,}\b/gi;
-const APIKEY = /\b(?:sk_live|sk_test|rk_live|shpat_|shpss_|shpua_|shpca_)[A-Za-z0-9]+\b/g;
+const APIKEY = /\b(?:sk_live|sk_test|rk_live|shpat_|shpss_|shpua_|shpca_|ghp_|gho_|ghu_|ghs_|ghr_|github_pat_|xox[baprs]-|AIza)[A-Za-z0-9_-]+\b/g;
 const ORDER = /\b#\d{4,}\b/g;
 const MONEY = /(?:CAD|USD|GBP|EUR|\$|£|€)\s?[\d,]+\.?\d*/g;
+
+/** True if the string looks like a pasted secret (never show / search it). */
+export function looksLikeSecret(text) {
+  const t = String(text || "").trim();
+  if (!t) return false;
+  if (/^(ghp|gho|ghu|ghs|ghr|github_pat|shpat|shpss|shpua|shpca|sk_live|sk_test|rk_live)_/i.test(t)) return true;
+  if (/\b(?:ghp_|gho_|ghu_|ghs_|ghr_|github_pat_|shpat_|shpss_|xox[baprs]-)[A-Za-z0-9_-]{8,}/.test(t)) return true;
+  return false;
+}
 
 export function scrubText(text, { keepMoney = true } = {}) {
   if (!text) return "";
