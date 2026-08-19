@@ -1,6 +1,6 @@
 import { loadDictionaries, buildIndex, searchDictionary, fallbackAnswer, detectScreen, findById } from "./dictionary.js";
 import { saveSession, listSessions, clearSessions, newRecording, recordEvent, saveRecording, diagnosticPackage, downloadJson, listCommunity, upsertCommunity, communityAsEntries, importCommunity, bumpCommunity } from "./session.js";
-import { canCapture, startTabCapture, stopStream, isEmbedded, captureBlockReason, captureHelp } from "./capture.js";
+import { canCapture, startTabCapture, stopStream, isEmbedded, captureBlockReason, captureHelp, isMobile } from "./capture.js";
 import { ocrAvailable, recognize, frameToCanvas } from "./ocr.js";
 import { SAMPLES } from "./samples.js";
 import {
@@ -523,7 +523,11 @@ function applyEmbedUi() {
     if (start) start.textContent = "Upload screenshot";
   } else {
     if (start) start.textContent = "Share a tab";
-    $("capNote").textContent = "Desktop: share the Shopify admin tab. Phone: upload an OS screenshot. Samples work anywhere.";
+    if (upload) {
+      upload.hidden = false;
+      upload.textContent = "Upload screenshot";
+    }
+    $("capNote").textContent = "Desktop: Share a tab, or upload / drop / paste (Ctrl+V) a screenshot. Same OCR either way.";
   }
 }
 
@@ -606,13 +610,18 @@ function loadSample(sample) {
 }
 
 async function onFile(file) {
-  if (!file || !file.type.startsWith("image/")) return toast("Choose a screenshot image.");
+  const name = (file && file.name) || "";
+  const typed = file && (file.type || "");
+  const looksImage = typed.startsWith("image/") || /\.(png|jpe?g|webp|gif|bmp|heic)$/i.test(name);
+  if (!file || !looksImage) return toast("Choose a PNG or JPEG screenshot.");
   markOnboarded();
   showScanner();
   stopCapture();
+  hideDenied();
   const url = URL.createObjectURL(file);
   setStill(url);
   setLiveStatus("Screenshot");
+  toast("Screenshot loaded — reading the banner…");
   await runScan();
 }
 
@@ -929,6 +938,22 @@ function wireUi() {
   };
   bindDrop($("frameWrap"));
   bindDrop($("shotDrop"));
+  on("shotDrop", "click", () => $("fileInput").click());
+  document.addEventListener("paste", (e) => {
+    const tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA") return;
+    const items = e.clipboardData?.items || [];
+    for (const item of items) {
+      if (item.type && item.type.startsWith("image/")) {
+        const file = item.getAsFile();
+        if (file) {
+          e.preventDefault();
+          onFile(file);
+          return;
+        }
+      }
+    }
+  });
   on("scanBtn", "click", () => runScan());
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
