@@ -855,6 +855,9 @@ function wireUi() {
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
   on("howBtn", "click", () => { $("howDrawer").hidden = false; });
   on("howClose", "click", () => { $("howDrawer").hidden = true; });
+  on("newBtn", "click", () => { $("newDrawer").hidden = false; });
+  on("newClose", "click", () => { $("newDrawer").hidden = true; });
+  on("newDrawer", "click", (e) => { if (e.target.id === "newDrawer") e.target.hidden = true; });
   on("histBtn", "click", async () => { await refreshHistory(); $("histDrawer").hidden = false; });
   on("histClose", "click", () => { $("histDrawer").hidden = true; });
   on("histClear", "click", async () => { await clearSessions(); await refreshHistory(); });
