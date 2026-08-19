@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" fill="none">
+  <rect width="360" height="140" rx="12" fill="#F1F8F5"/>
+  <rect x="12" y="12" width="110" height="116" rx="8" fill="#1A1C1D"/>
+  <text x="24" y="36" fill="#8C9196" font-family="ui-sans-serif,system-ui" font-size="9">SALES CHANNELS</text>
+  <rect x="20" y="48" width="94" height="22" rx="4" fill="#008060"/>
+  <text x="28" y="63" fill="#fff" font-family="ui-sans-serif,system-ui" font-size="10" font-weight="700">Collective</text>
+  <rect x="134" y="12" width="214" height="116" rx="8" fill="#FFF" stroke="#C9CFD6"/>
+  <text x="148" y="48" fill="#1A1A1A" font-family="ui-sans-serif,system-ui" font-size="13" font-weight="700">Collective: Retailer</text>
+  <text x="148" y="70" fill="#6D7175" font-family="ui-sans-serif,system-ui" font-size="11">Invite a supplier or import products</text>
+  <circle cx="67" cy="59" r="11" fill="none" stroke="#3EE0B0" stroke-width="3"/>
+</svg>

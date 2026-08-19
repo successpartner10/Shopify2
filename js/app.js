@@ -1,5 +1,5 @@
 import { loadDictionaries, buildIndex, searchDictionary, fallbackAnswer, detectScreen, findById } from "./dictionary.js";
-import { saveSession, listSessions, clearSessions, newRecording, recordEvent, saveRecording, diagnosticPackage, downloadJson, listCommunity, upsertCommunity, communityAsEntries, importCommunity, bumpCommunity } from "./session.js";
+import { saveSession, listSessions, clearSessions, newRecording, recordEvent, saveRecording, diagnosticPackage, downloadJson, listCommunity, upsertCommunity, communityAsEntries, importCommunity, bumpCommunity, getRanks, bumpRank, rankBoost } from "./session.js";
 import { canCapture, startTabCapture, stopStream, isEmbedded, captureBlockReason, captureHelp, isMobile } from "./capture.js";
 import { ocrAvailable, recognize, frameToCanvas } from "./ocr.js";
 import { SAMPLES } from "./samples.js";
@@ -17,6 +17,8 @@ import { speak, hush, canSpeak, SHORTCUTS, shortcutFromEvent } from "./voice.js"
 import { scrubText, thumbnailDataUrl } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
+import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
+import { polaroidFor } from "./polaroids.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
@@ -60,7 +62,8 @@ const state = {
   lastDiff: null,
   lastSessionId: null,
   community: [],
-  lastChatFound: null
+  lastChatFound: null,
+  ranks: {}
 };
 
 function toast(msg) {
@@ -187,7 +190,10 @@ function allEntries() {
 function runSearch(query, extras = {}) {
   const entries = allEntries();
   if (!state.fuse || !entries.length) return { match: null, alternatives: [], source: "empty", confidence: 0 };
-  return searchDictionary(entries, state.fuse, query, extras);
+  return searchDictionary(entries, state.fuse, query, {
+    ...extras,
+    rankBoost: (entry) => rankBoost(entry, state.ranks)
+  });
 }
 
 function sharePayload(mode = state.shareMode) {
@@ -348,6 +354,18 @@ function stepLines(entry) {
   return (entry?.steps || []).map((s) => (typeof s === "string" ? s : normalizeStep(s).text)).filter(Boolean);
 }
 
+function paintPolaroid(entry) {
+  const shot = polaroidFor(entry);
+  ["homePolaroid", "tipPolaroid"].forEach((id) => {
+    const el = $(id);
+    if (!el) return;
+    if (!shot) { el.hidden = true; el.innerHTML = ""; return; }
+    el.hidden = false;
+    el.innerHTML = `<img src="${esc(shot.image)}" alt="">
+      <span>${esc(shot.caption)}</span>`;
+  });
+}
+
 function paintStepList(hostId, entry, current) {
   const host = $(hostId);
   if (!host) return;
@@ -412,7 +430,9 @@ function renderResult(entry, meta) {
 }
 
 function applyQuery(query, extras = {}) {
-  const q = String(query || "").trim();
+  let q = String(query || "").trim();
+  const routed = queryFromAdminUrl(q);
+  if (routed) q = routed;
   const screen = detectScreen(q);
   let found = { match: null, alternatives: [], source: "empty", confidence: 0 };
   try {
@@ -468,7 +488,7 @@ async function runScan({ textOverride, reason } = {}) {
         });
         text = result.text;
         canvas = result.canvas;
-        const bands = detectColorBands(canvas);
+        const bands = result.bands?.length ? result.bands : detectColorBands(canvas);
         state.lastVision = annotateVision(text, {
           bands,
           bannerText: result.bannerText,
@@ -1147,13 +1167,25 @@ function wireUi() {
   on("commClose", "click", () => { $("commDrawer").hidden = true; });
   on("workedBtn", "click", async () => {
     if (!state.current) return;
-    toast("Glad that helped.");
+    try {
+      const rec = await bumpRank(state.current.id, true);
+      if (rec) state.ranks[state.current.id] = rec;
+    } catch { /* local only */ }
+    toast("Saved. We’ll show this one first next time.");
     logRec("worked", { id: state.current.id });
     if (state.current.local) await bumpCommunity(state.current.id, true);
   });
-  on("nopeBtn", "click", () => {
+  on("nopeBtn", "click", async () => {
+    if (state.current) {
+      try {
+        const rec = await bumpRank(state.current.id, false);
+        if (rec) state.ranks[state.current.id] = rec;
+      } catch { /* local only */ }
+    }
     toast("Try one of the other suggestions below.");
     logRec("nope", { id: state.current?.id });
+    const alts = state.lastMeta?.alternatives || [];
+    if (alts[0]) renderResult(alts[0], { source: "nope", confidence: 0.6, alternatives: alts.slice(1), query: state.lastText });
   });
   on("commForm", "submit", async (e) => {
     e.preventDefault();
@@ -1209,7 +1241,7 @@ function wireUi() {
       applyQuery(q);
       $("homeAskInput")?.blur();
       $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      toast("Follow the numbered steps.");
+      toast(looksLikeAdminUrl(q) ? "Matched that admin page. Follow the steps." : "Follow the numbered steps.");
     };
     if (state.ready) return go();
     toast("Looking that up…");
@@ -1308,6 +1340,7 @@ async function boot() {
     const { entries, errors, pack } = await loadDictionaries();
     state.pack = pack;
     state.community = await listCommunity().catch(() => []);
+    state.ranks = await getRanks().catch(() => ({}));
     state.entries = entries;
     state.fuse = buildIndex(allEntries());
     state.ready = true;

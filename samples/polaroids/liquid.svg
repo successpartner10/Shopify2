@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" fill="none">
+  <rect width="360" height="140" rx="12" fill="#F4F6F8"/>
+  <rect x="12" y="12" width="140" height="116" rx="8" fill="#FFF" stroke="#C9CFD6"/>
+  <text x="24" y="36" fill="#6D7175" font-family="ui-sans-serif,system-ui" font-size="10">SECTIONS</text>
+  <rect x="20" y="48" width="124" height="24" rx="4" fill="#EAF4F0" stroke="#008060"/>
+  <text x="28" y="64" fill="#008060" font-family="ui-sans-serif,system-ui" font-size="11" font-weight="700">+ Custom Liquid</text>
+  <rect x="164" y="12" width="184" height="116" rx="8" fill="#1A1C1D"/>
+  <text x="176" y="48" fill="#8CE0C0" font-family="ui-monospace,monospace" font-size="10">{{ product.title }}</text>
+  <text x="176" y="68" fill="#C4CDD5" font-family="ui-monospace,monospace" font-size="10">Paste snippet here</text>
+  <circle cx="82" cy="60" r="11" fill="none" stroke="#3EE0B0" stroke-width="3"/>
+</svg>

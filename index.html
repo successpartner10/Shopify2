@@ -58,10 +58,8 @@
       <div class="hero">
         <div>
           <div class="kicker"><i class="pulse"></i> No signup · nothing to set up</div>
-          <h1>Show us the Shopify screen.<br><em>We’ll say what to tap.</em></h1>
-          <p class="lede">
-            Open your Shopify admin. Then share that tab, or upload a screenshot.
-          </p>
+          <h1>What’s wrong in Shopify?</h1>
+          <p class="lede">Upload a screenshot, type it, or paste the admin link.</p>
 
           <div id="onboardingFull" hidden></div>
           <p id="onboardingMini" hidden>
@@ -78,12 +76,13 @@
             Or drop a screenshot here — you can also paste it.
           </div>
           <form class="ask-box home-ask" id="homeAsk">
-            <input id="homeAskInput" type="search" enterkeyhint="search" inputmode="search" placeholder="Type it — Collective, edit code, head tag" autocomplete="off" />
+            <input id="homeAskInput" type="search" enterkeyhint="search" inputmode="url" placeholder="Type it, or paste admin.shopify.com/…" autocomplete="off" />
             <button class="solid" type="submit">Search</button>
           </form>
           <div class="card result-card" id="homeResult" hidden>
             <h2 id="homeTitle">What to do</h2>
             <p class="expl" id="homeExpl"></p>
+            <figure class="polaroid" id="homePolaroid" hidden></figure>
             <ol class="steps-ol" id="homeSteps"></ol>
             <div class="card-actions">
               <button class="solid" id="homeNext" type="button">Next step</button>
@@ -161,6 +160,7 @@
               <h2 id="tipTitle">What to do</h2>
               <div class="meta pro" id="tipMeta" hidden></div>
               <p class="expl" id="tipExpl"></p>
+              <figure class="polaroid" id="tipPolaroid" hidden></figure>
               <div id="whyBox"></div>
               <div id="conflictBox" hidden></div>
               <ol class="steps-ol" id="tipSteps"></ol>

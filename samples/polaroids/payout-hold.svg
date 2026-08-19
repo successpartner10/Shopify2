@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" fill="none">
+  <rect width="360" height="140" rx="12" fill="#FFF8E6"/>
+  <rect x="12" y="12" width="336" height="116" rx="8" fill="#FFF" stroke="#E3C56A"/>
+  <circle cx="36" cy="44" r="10" fill="#F0B429"/>
+  <text x="56" y="40" fill="#1A1A1A" font-family="ui-sans-serif,system-ui" font-size="13" font-weight="700">Payouts are on hold</text>
+  <text x="56" y="58" fill="#5C5344" font-family="ui-sans-serif,system-ui" font-size="11">Finish identity verification</text>
+  <rect x="200" y="86" width="136" height="28" rx="6" fill="#008060"/>
+  <text x="212" y="105" fill="#fff" font-family="ui-sans-serif,system-ui" font-size="11" font-weight="700">Complete setup</text>
+  <circle cx="336" cy="100" r="9" fill="none" stroke="#3EE0B0" stroke-width="3"/>
+  <circle cx="336" cy="100" r="3" fill="#3EE0B0"/>
+</svg>

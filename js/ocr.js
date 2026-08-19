@@ -57,36 +57,67 @@ function crop(canvas, y0, y1) {
   return out;
 }
 
+function enough(s) {
+  return String(s || "").replace(/\s+/g, "").length >= 12;
+}
+
 export async function recognize(source, onProgress) {
   const canvas = source instanceof HTMLCanvasElement ? source : frameToCanvas(source);
   const worker = await getWorker(onProgress);
-  const full = await worker.recognize(canvas);
-  const text = (full?.data?.text || "").replace(/[ \t]+\n/g, "\n").trim();
-  const words = (full?.data?.words || [])
-    .filter((w) => (w.text || "").trim().length > 1)
-    .map((w) => ({
-      text: w.text,
-      conf: w.confidence || 0,
-      x: ((w.bbox?.x0 || 0) + (w.bbox?.x1 || 0)) / 2 / canvas.width,
-      y: ((w.bbox?.y0 || 0) + (w.bbox?.y1 || 0)) / 2 / canvas.height,
-      bbox: {
-        x0: (w.bbox?.x0 || 0) / canvas.width,
-        y0: (w.bbox?.y0 || 0) / canvas.height,
-        x1: (w.bbox?.x1 || 0) / canvas.width,
-        y1: (w.bbox?.y1 || 0) / canvas.height
-      }
-    }));
+  const bands = detectColorBands(canvas);
+  const hot = bands.filter((b) => b.tone === "critical" || b.tone === "warning");
 
   let bannerText = "";
   let toastText = "";
+  let bandText = "";
   try {
-    const top = await worker.recognize(crop(canvas, 0, 0.22));
-    bannerText = (top?.data?.text || "").trim();
-    const bot = await worker.recognize(crop(canvas, 0.78, 1));
-    toastText = (bot?.data?.text || "").trim();
+    for (const b of hot.slice(0, 3)) {
+      const pad0 = Math.max(0, b.y0 - 0.02);
+      const pad1 = Math.min(1, b.y1 + 0.04);
+      const part = await worker.recognize(crop(canvas, pad0, pad1));
+      const t = (part?.data?.text || "").trim();
+      if (!t) continue;
+      if (b.kind === "toast") toastText = [toastText, t].filter(Boolean).join("\n");
+      else bannerText = [bannerText, t].filter(Boolean).join("\n");
+      bandText = [bandText, t].filter(Boolean).join("\n");
+    }
+    if (!bannerText) {
+      const top = await worker.recognize(crop(canvas, 0, 0.22));
+      bannerText = (top?.data?.text || "").trim();
+      bandText = [bandText, bannerText].filter(Boolean).join("\n");
+    }
   } catch {
-    /* zone OCR is best-effort */
+    /* band OCR is best-effort */
   }
 
-  return { text, canvas, words, bannerText, toastText };
+  let text = (bandText || "").replace(/[ \t]+\n/g, "\n").trim();
+  let words = [];
+  if (!enough(text)) {
+    const full = await worker.recognize(canvas);
+    text = (full?.data?.text || "").replace(/[ \t]+\n/g, "\n").trim();
+    words = (full?.data?.words || [])
+      .filter((w) => (w.text || "").trim().length > 1)
+      .map((w) => ({
+        text: w.text,
+        conf: w.confidence || 0,
+        x: ((w.bbox?.x0 || 0) + (w.bbox?.x1 || 0)) / 2 / canvas.width,
+        y: ((w.bbox?.y0 || 0) + (w.bbox?.y1 || 0)) / 2 / canvas.height,
+        bbox: {
+          x0: (w.bbox?.x0 || 0) / canvas.width,
+          y0: (w.bbox?.y0 || 0) / canvas.height,
+          x1: (w.bbox?.x1 || 0) / canvas.width,
+          y1: (w.bbox?.y1 || 0) / canvas.height
+        }
+      }));
+    if (!toastText) {
+      try {
+        const bot = await worker.recognize(crop(canvas, 0.78, 1));
+        toastText = (bot?.data?.text || "").trim();
+      } catch { /* optional */ }
+    }
+  } else {
+    text = [bannerText, toastText].filter(Boolean).join("\n") || text;
+  }
+
+  return { text, canvas, words, bannerText, toastText, bands };
 }

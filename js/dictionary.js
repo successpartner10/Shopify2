@@ -160,10 +160,11 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
     if (hits > 0) {
       const catBoost = entry.category === preferred || entry.system === preferred ? 0.12 : 0;
       const priBoost = (4 - Math.max(0, CATEGORY_ORDER.indexOf(entry.source_category_db || "general"))) * 0.02;
+      const rank = typeof opts.rankBoost === "function" ? opts.rankBoost(entry) : 0;
       exact.push({
         entry,
         matched,
-        score: Math.min(0.99, 0.34 + hits * 0.11 + longest / 90 + catBoost + priBoost + zoneBoostFor(entry))
+        score: Math.min(0.99, 0.34 + hits * 0.11 + longest / 90 + catBoost + priBoost + zoneBoostFor(entry) + rank)
       });
     }
   }
@@ -173,7 +174,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
   try {
     fuzzy = fuse.search(q, { limit: 10 }).map((r) => ({
       entry: r.item,
-      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5
+      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5 + (typeof opts.rankBoost === "function" ? opts.rankBoost(r.item) : 0)
     }));
   } catch {
     fuzzy = [];

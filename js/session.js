@@ -1,7 +1,7 @@
 import { scrubText, scrubObject } from "./privacy.js";
 
 const DB_NAME = "storescope";
-const VERSION = 2;
+const VERSION = 3;
 
 function openDb() {
   return new Promise((resolve, reject) => {
@@ -19,6 +19,9 @@ function openDb() {
       if (!db.objectStoreNames.contains("recordings")) {
         const os = db.createObjectStore("recordings", { keyPath: "id" });
         os.createIndex("createdAt", "createdAt");
+      }
+      if (!db.objectStoreNames.contains("ranks")) {
+        db.createObjectStore("ranks", { keyPath: "id" });
       }
     };
     req.onsuccess = () => resolve(req.result);
@@ -236,6 +239,50 @@ export function communityAsEntries(rows) {
       rate: r.attempts ? r.success / r.attempts : 0
     }))
     .sort((a, b) => (b.rate - a.rate) || (b.success - a.success));
+}
+
+export async function getRanks() {
+  try {
+    const db = await openDb();
+    if (!db.objectStoreNames.contains("ranks")) return {};
+    const rows = await new Promise((resolve, reject) => {
+      const tx = db.transaction("ranks", "readonly");
+      const req = tx.objectStore("ranks").getAll();
+      req.onsuccess = () => resolve(req.result || []);
+      req.onerror = () => reject(req.error);
+    });
+    const map = {};
+    for (const r of rows) map[r.id] = r;
+    return map;
+  } catch {
+    return {};
+  }
+}
+
+export async function bumpRank(id, worked) {
+  if (!id) return null;
+  const db = await openDb();
+  if (!db.objectStoreNames.contains("ranks")) return null;
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction("ranks", "readwrite");
+    const store = tx.objectStore("ranks");
+    const req = store.get(id);
+    req.onsuccess = () => {
+      const rec = req.result || { id, up: 0, down: 0 };
+      if (worked) rec.up = (rec.up || 0) + 1;
+      else rec.down = (rec.down || 0) + 1;
+      rec.updatedAt = Date.now();
+      store.put(rec);
+      resolve(rec);
+    };
+    req.onerror = () => reject(req.error);
+  });
+}
+
+export function rankBoost(entry, ranks) {
+  const r = ranks?.[entry?.id];
+  if (!r) return 0;
+  return Math.max(-0.2, Math.min(0.22, (r.up || 0) * 0.07 - (r.down || 0) * 0.09));
 }
 
 export async function importCommunity(json) {

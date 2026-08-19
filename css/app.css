@@ -234,6 +234,18 @@ h1 em { font-style: normal; color: var(--mint); }
 .ask-box { display: flex; gap: 8px; flex: 1; min-width: 200px; }
 .home-ask { margin-top: 14px; max-width: 560px; }
 .result-card { margin-top: 16px; max-width: 560px; }
+.polaroid {
+  margin: 0 0 14px;
+  background: #0d131b;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.polaroid img { width: 100%; height: auto; display: block; background: #fff; }
+.polaroid span {
+  display: block; padding: 8px 12px;
+  color: var(--mint); font-size: 0.82rem; font-weight: 650;
+}
 .ask-box input {
   flex: 1; background: #0d131b; border: 1px solid var(--line);
   border-radius: 12px; padding: 10px 12px; outline: none;
