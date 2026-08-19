@@ -2,7 +2,8 @@
 
 Privacy-first **Shopify admin live scanner**. Share the admin tab (or drop a screenshot). Storescope reads the visible banner/toast, matches a local playbook, and shows the next click — with arrows — in your browser.
 
-- **Live:** https://successpartner10.github.io/Shopify2/
+- **Live (this build):** https://successpartner10.github.io/Shopify2/
+- **Legacy Cloudflare URL:** https://storescope-cwl.pages.dev/ — still the old 1.x app until you reconnect it ([DEPLOY.md](./DEPLOY.md))
 - **Repo:** https://github.com/successpartner10/Shopify2
 - **Full guide:** [STORESCOPE.md](./STORESCOPE.md)
 - **Offline zip:** see the latest GitHub Release (`storescope-offline.zip`)
