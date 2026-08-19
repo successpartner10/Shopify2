@@ -15,6 +15,7 @@ import { snapshotFrom, diffSnapshots, mapDiffToPlaybook } from "./diff.js";
 import { detectConflicts } from "./conflicts.js";
 import { speak, hush, canSpeak, SHORTCUTS, shortcutFromEvent } from "./voice.js";
 import { scrubText, thumbnailDataUrl } from "./privacy.js";
+import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
@@ -54,7 +55,8 @@ const state = {
   after: null,
   lastDiff: null,
   lastSessionId: null,
-  community: []
+  community: [],
+  lastChatFound: null
 };
 
 function toast(msg) {
@@ -399,7 +401,8 @@ function applyQuery(query, extras = {}) {
 
 function maybeSpeak() {
   if (!state.voice || !state.current) return;
-  const step = state.current.steps?.[state.stepIndex] || state.current.cause;
+  const raw = state.current.steps?.[state.stepIndex] || state.current.cause;
+  const step = typeof raw === "string" ? raw : normalizeStep(raw).text;
   speak(`${state.current.target_ui_hint}. ${step}`);
 }
 
@@ -804,6 +807,57 @@ function paintSources() {
   `).join("") + `<p class="note">${state.pack.sources.recommendation}</p>`;
 }
 
+function openChat(prefill) {
+  $("chatDrawer").hidden = false;
+  if (prefill) $("chatInput").value = prefill;
+  $("chatInput").focus();
+}
+
+function appendChat(role, html) {
+  const log = $("chatLog");
+  const div = document.createElement("div");
+  div.className = `chat-msg ${role}`;
+  div.innerHTML = html;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+async function copyHandoff() {
+  const q = state.lastChatQuery || state.lastText || "";
+  const prompt = handoffPrompt(scrubText(q), state.lastChatFound);
+  const ok = await copyText(prompt);
+  toast(ok ? "Prompt copied. Paste it into ChatGPT, Gemini, Perplexity, or Sidekick." : "Copy failed.");
+}
+
+function runChat(q) {
+  if (!q) return;
+  if (!state.ready) return toast("Playbook still loading.");
+  $("chatInput").value = "";
+  appendChat("user", `<p>${esc(q)}</p>`);
+  const found = runSearch(q, { preferErrors: true });
+  state.lastChatFound = found;
+  state.lastChatQuery = q;
+  const reply = localReply(q, found);
+  let extra = "";
+  if (reply.kind === "hit" && reply.entry) {
+    extra = `<button class="solid" type="button" data-open="${esc(reply.entry.id)}">Open this playbook</button>`;
+  } else if (reply.alternatives) {
+    extra = reply.alternatives.map((a) =>
+      `<button class="sample" type="button" data-open="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b></button>`
+    ).join("");
+  }
+  const links = handoffLinks(handoffPrompt(scrubText(q), found));
+  extra += `<div class="chat-handoff">
+    <span class="note">No API. Local playbook first. Optional paste:</span>
+    <button class="ghost" type="button" id="copyHandoff">Copy prompt</button>
+    <a class="ghost" href="${esc(links.chatgpt)}" target="_blank" rel="noopener">ChatGPT</a>
+    <a class="ghost" href="${esc(links.gemini)}" target="_blank" rel="noopener">Gemini</a>
+    <a class="ghost" href="${esc(links.perplexity)}" target="_blank" rel="noopener">Perplexity</a>
+    <a class="ghost" href="${esc(links.grok)}" target="_blank" rel="noopener">Grok</a>
+  </div>`;
+  appendChat("bot", `<pre>${esc(reply.text)}</pre>${extra}`);
+}
+
 function paintShortcuts() {
   $("shortcutList").innerHTML = SHORTCUTS.map((s) =>
     `<li><kbd>${s.keys}</kbd> ${s.label}</li>`
@@ -888,6 +942,12 @@ function wireUi() {
     clearArrow();
   });
   on("tipSteps", "click", (e) => {
+    const speakBtn = e.target.closest("[data-speak]");
+    if (speakBtn && state.current) {
+      e.stopPropagation();
+      speak(normalizeStep(state.current.steps[Number(speakBtn.dataset.speak)]).text);
+      return;
+    }
     const li = e.target.closest("li");
     if (!li) return;
     state.stepIndex = Number(li.dataset.i);
@@ -994,6 +1054,27 @@ function wireUi() {
     toast(ok ? "Bookmarklet copied. Bookmark it, open Shopify admin, click it, then paste here." : "Select the bookmarklet text.");
   });
   on("howBtnMini", "click", () => { $("howDrawer").hidden = false; });
+  on("chatBtn", "click", () => openChat());
+  on("chatClose", "click", () => { $("chatDrawer").hidden = true; });
+  on("chatDrawer", "click", (e) => { if (e.target.id === "chatDrawer") e.target.hidden = true; });
+  on("chatForm", "submit", (e) => {
+    e.preventDefault();
+    runChat(($("chatInput").value || "").trim());
+  });
+  on("chatLog", "click", (e) => {
+    const open = e.target.closest("[data-open]");
+    if (open) {
+      const entry = allEntries().find((x) => x.id === open.dataset.open);
+      if (entry) {
+        $("chatDrawer").hidden = true;
+        showScanner();
+        renderResult(entry, { source: "chat", confidence: 0.8, alternatives: [], query: entry.match_phrases?.[0] || "" });
+      }
+      return;
+    }
+    const copy = e.target.closest("#copyHandoff");
+    if (copy) copyHandoff();
+  });
   on("histList", "click", (e) => {
     const art = e.target.closest("[data-reopen]");
     if (!art || !art.dataset.reopen) return;

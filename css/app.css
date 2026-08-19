@@ -442,4 +442,12 @@ a.ghost, a.solid {
 }
 #shareDenied { margin-top: 12px; }
 .frame-wrap.drop { outline: 2px dashed var(--mint); outline-offset: -8px; }
+.step-img { max-width: 100%; border-radius: 8px; margin: 8px 0; border: 1px solid var(--line); }
+.speak-step { padding: 0; margin-top: 4px; font-size: 0.76rem; }
+.chat-log { max-height: 46vh; overflow: auto; display: grid; gap: 10px; margin: 12px 0; }
+.chat-msg { border-radius: 12px; padding: 10px 12px; border: 1px solid var(--line); }
+.chat-msg.user { background: var(--mint-dim); border-color: #1d4d3e; }
+.chat-msg.bot { background: var(--surface); }
+.chat-msg pre { white-space: pre-wrap; font-family: inherit; margin: 0 0 8px; font-size: 0.88rem; }
+.chat-handoff { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
 

@@ -374,6 +374,21 @@
   </div>
 
 
+  <div class="drawer-back" id="chatDrawer" hidden>
+    <div class="drawer" role="dialog" aria-labelledby="chatTitle">
+      <header>
+        <h2 id="chatTitle">Playbook chat</h2>
+        <button class="ghost" id="chatClose" type="button">Close</button>
+      </header>
+      <p class="empty">Searches the local playbook only. No API keys. If it misses, copy a prompt and paste it into ChatGPT, Gemini, Perplexity, or Sidekick yourself.</p>
+      <div id="chatLog" class="chat-log"></div>
+      <form id="chatForm" class="ask-box">
+        <input id="chatInput" type="search" placeholder="e.g. payouts on hold, no shipping rates" autocomplete="off" />
+        <button class="solid" type="submit">Ask</button>
+      </form>
+    </div>
+  </div>
+
   <div class="toast" id="toast" hidden></div>
 
   <script src="./js/vendor/fuse.min.js"></script>
