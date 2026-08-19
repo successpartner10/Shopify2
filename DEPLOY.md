@@ -1,5 +1,19 @@
 # Update storescope-cwl.pages.dev + private-repo notes
 
+## GitHub Actions: the red “failed” run
+
+The first `Deploy GitHub Pages` run failed with:
+
+`Get Pages site failed … repository has Pages enabled … Error: Not Found`
+
+That was **only** the first push, before Pages existed. The next three runs **succeeded**. Live site: https://successpartner10.github.io/Shopify2/
+
+The workflow now sets `enablement: true` so a fresh repo will create Pages instead of failing.
+
+Ignore the old red X, or delete that run. **Do not** treat it as the current build.
+
+---
+
 ## Two live URLs (today)
 
 | URL | Host | Build |
