@@ -3,7 +3,7 @@ export const SAMPLES = [
     id: "payout-hold",
     title: "Payouts on hold",
     blurb: "Yellow Payments banner — forums + official holds doc",
-    image: "./samples/payout-hold.svg",
+    image: "./samples/screenshots/01-payouts-on-hold.png",
     text: `Shopify admin
 Home  Orders  Products  Customers  Analytics  Marketing  Discounts  Content  Markets  Finance
 Settings  Payments
@@ -22,7 +22,7 @@ Jul 23  $1,104.02  Paid`
     id: "no-shipping",
     title: "No shipping methods",
     blurb: "Checkout empty rates — zones + carrier disconnect",
-    image: "./samples/no-shipping.svg",
+    image: "./samples/screenshots/03-no-shipping-rates.png",
     text: `Shopify admin
 Settings  Shipping and delivery
 Shipping
@@ -43,7 +43,7 @@ Local pickup  Off`
     id: "no-provider",
     title: "Can't accept payments",
     blurb: "Official banner: no primary provider",
-    image: "./samples/no-provider.svg",
+    image: "./samples/screenshots/02-unable-to-accept-payments.png",
     text: `Shopify admin
 Settings  Payments
 Payment providers
@@ -61,7 +61,7 @@ Test mode  Off`
     id: "theme-errors",
     title: "Theme has errors",
     blurb: "Liquid compile banner — duplicate first",
-    image: "./samples/theme-errors.svg",
+    image: "./samples/screenshots/04-theme-has-errors.png",
     text: `Shopify admin
 Online Store  Themes
 Current theme  Horizon
