@@ -40,10 +40,11 @@
         </span>
       </a>
       <nav class="nav">
-        <span class="pill on" id="verPill">v2.2</span>
+        <span class="pill on" id="verPill">v2.3</span>
         <span class="pill" id="dictPill">Loading playbooks</span>
         <span class="pill" id="netPill">Online</span>
         <button class="ghost" id="chatBtn" type="button">Chat</button>
+        <button class="ghost" id="cloudBtn" type="button">Cloud</button>
         <button class="ghost" id="howBtn" type="button">How it works</button>
         <button class="ghost" id="histBtn" type="button">Playbook</button>
         <button class="ghost" id="commBtn" type="button">Known issues</button>
@@ -377,6 +378,25 @@
     </div>
   </div>
 
+
+  <div class="drawer-back" id="cloudDrawer" hidden>
+    <div class="drawer" role="dialog">
+      <header>
+        <h2>Gemini &amp; Grok (optional)</h2>
+        <button class="ghost" id="cloudClose" type="button">Close</button>
+      </header>
+      <p class="empty">Used only when you tap Ask Gemini / Ask Grok. Sends <b>scrubbed banner text</b>, never the screenshot. Keys stay in this browser — not GitHub, not a Storescope server.</p>
+      <label class="share-label"><input id="cloudOptin" type="checkbox" /> Allow miss-only cloud calls</label>
+      <label class="share-label" for="geminiKey">Gemini API key</label>
+      <input id="geminiKey" type="password" autocomplete="off" placeholder="from aistudio.google.com/apikey" />
+      <label class="share-label" for="grokKey">Grok / xAI API key</label>
+      <input id="grokKey" type="password" autocomplete="off" placeholder="from console.x.ai" />
+      <p class="note">Free tiers: Google AI Studio (Gemini Flash) and xAI console credits. Both rate-limit. Local playbook still runs first.</p>
+      <div class="card-actions">
+        <button class="solid" id="cloudSave" type="button">Save on this device</button>
+      </div>
+    </div>
+  </div>
 
   <div class="drawer-back" id="chatDrawer" hidden>
     <div class="drawer" role="dialog" aria-labelledby="chatTitle">

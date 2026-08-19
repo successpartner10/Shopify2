@@ -16,6 +16,7 @@ import { detectConflicts } from "./conflicts.js";
 import { speak, hush, canSpeak, SHORTCUTS, shortcutFromEvent } from "./voice.js";
 import { scrubText, thumbnailDataUrl } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
+import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
@@ -839,7 +840,46 @@ function paintSources() {
   `).join("") + `<p class="note">${state.pack.sources.recommendation}</p>`;
 }
 
-function openChat(prefill) {
+function paintCloudForm() {
+  const g = $("geminiKey");
+  const k = $("grokKey");
+  const o = $("cloudOptin");
+  if (g) g.value = getGeminiKey();
+  if (k) k.value = getGrokKey();
+  if (o) o.checked = cloudOptIn();
+}
+
+function saveCloudForm() {
+  saveCloudSettings({
+    gemini: $("geminiKey")?.value || "",
+    grok: $("grokKey")?.value || "",
+    optin: !!$("cloudOptin")?.checked
+  });
+  toast("Saved on this device only. Keys are not uploaded to Storescope or GitHub.");
+}
+
+async function runCloud(provider) {
+  const q = scrubText(state.lastChatQuery || state.lastText || $("chatInput")?.value || "");
+  if (!q) return toast("Scan a screen or type the banner first.");
+  if (!cloudOptIn()) {
+    paintCloudForm();
+    $("cloudDrawer").hidden = false;
+    return toast("Turn on “Allow miss-only cloud” and save a key first.");
+  }
+  $("chatDrawer").hidden = false;
+  appendChat("user", `<p>Ask ${provider} (text only, opt-in)</p>`);
+  appendChat("bot", `<p class="empty">Calling ${provider}…</p>`);
+  try {
+    const out = provider === "grok" ? await askGrok(q) : await askGemini(q);
+    const log = $("chatLog");
+    if (log?.lastChild) log.lastChild.remove();
+    appendChat("bot", `<pre>${esc(out.text)}</pre><p class="note">${esc(out.provider)} · ${esc(out.model)} · banner text only, no image</p>`);
+  } catch (err) {
+    const log = $("chatLog");
+    if (log?.lastChild) log.lastChild.remove();
+    appendChat("bot", `<p>${esc(err.message || "Cloud call failed")}</p>`);
+  }
+}
   $("chatDrawer").hidden = false;
   if (prefill) $("chatInput").value = prefill;
   $("chatInput").focus();
@@ -880,12 +920,13 @@ function runChat(q) {
   }
   const links = handoffLinks(handoffPrompt(scrubText(q), found));
   extra += `<div class="chat-handoff">
-    <span class="note">No API. Local playbook first. Optional paste:</span>
+    <span class="note">No key needed: copy/paste. Or opt-in miss-only API:</span>
     <button class="ghost" type="button" id="copyHandoff">Copy prompt</button>
-    <a class="ghost" href="${esc(links.chatgpt)}" target="_blank" rel="noopener">ChatGPT</a>
-    <a class="ghost" href="${esc(links.gemini)}" target="_blank" rel="noopener">Gemini</a>
+    <button class="ghost" type="button" data-cloud="gemini">Ask Gemini</button>
+    <button class="ghost" type="button" data-cloud="grok">Ask Grok</button>
+    <a class="ghost" href="${esc(links.chatgpt)}" target="_blank" rel="noopener">ChatGPT tab</a>
+    <a class="ghost" href="${esc(links.gemini)}" target="_blank" rel="noopener">Gemini tab</a>
     <a class="ghost" href="${esc(links.perplexity)}" target="_blank" rel="noopener">Perplexity</a>
-    <a class="ghost" href="${esc(links.grok)}" target="_blank" rel="noopener">Grok</a>
   </div>`;
   appendChat("bot", `<pre>${esc(reply.text)}</pre>${extra}`);
 }
@@ -1104,7 +1145,10 @@ function wireUi() {
     toast(ok ? "Bookmarklet copied. Bookmark it, open Shopify admin, click it, then paste here." : "Select the bookmarklet text.");
   });
   on("howBtnMini", "click", () => { $("howDrawer").hidden = false; });
-  on("chatBtn", "click", () => openChat());
+  on("cloudBtn", "click", () => { paintCloudForm(); $("cloudDrawer").hidden = false; });
+  on("cloudClose", "click", () => { $("cloudDrawer").hidden = true; });
+  on("cloudDrawer", "click", (e) => { if (e.target.id === "cloudDrawer") e.target.hidden = true; });
+  on("cloudSave", "click", saveCloudForm);
   on("chatClose", "click", () => { $("chatDrawer").hidden = true; });
   on("chatDrawer", "click", (e) => { if (e.target.id === "chatDrawer") e.target.hidden = true; });
   on("chatForm", "submit", (e) => {
