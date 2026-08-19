@@ -99,7 +99,7 @@ img { max-width: 100%; display: block; }
 }
 .logo svg { width: 20px; height: 20px; }
 .logo svg [stroke] { stroke: var(--mint); }
-.brand-name { font-weight: 650; letter-spacing: -0.03em; font-size: 1.2rem; }
+.brand-name { font-family: var(--display); font-weight: 700; letter-spacing: -0.03em; font-size: 1.25rem; }
 .brand-name span { color: var(--mint); }
 .brand-sub { color: var(--faint); font-size: 0.78rem; letter-spacing: 0.04em; }
 
@@ -117,8 +117,9 @@ img { max-width: 100%; display: block; }
   color: var(--ink);
   border-radius: 14px;
   padding: 14px 18px;
+  font-family: var(--display);
   font-size: 1.0625rem;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.01em;
   min-height: 50px;
 }
@@ -151,10 +152,11 @@ img { max-width: 100%; display: block; }
   width: 8px; height: 8px; border-radius: 50%; background: var(--mint);
 }
 h1 {
-  font-size: clamp(2.1rem, 6vw, 3.1rem);
+  font-family: var(--display);
+  font-size: clamp(2.2rem, 6.2vw, 3.25rem);
   line-height: 1.08;
   letter-spacing: -0.035em;
-  font-weight: 700;
+  font-weight: 750;
   margin: 10px 0 12px;
 }
 h1 em { font-style: normal; color: var(--mint); }
@@ -274,7 +276,7 @@ h1 em { font-style: normal; color: var(--mint); }
   padding: 20px;
   box-shadow: var(--shadow);
 }
-.card h2 { margin: 0 0 10px; font-size: 1.45rem; letter-spacing: -0.025em; font-weight: 700; }
+.card h2 { margin: 0 0 10px; font-family: var(--display); font-size: 1.5rem; letter-spacing: -0.025em; font-weight: 700; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 12px; }
 .tag {
   font-size: 0.88rem; color: var(--muted); font-weight: 600;
@@ -335,7 +337,7 @@ h1 em { font-style: normal; color: var(--mint); }
   font-size: 1.1rem;
 }
 .drawer header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.drawer h2 { font-size: 1.4rem; margin: 0; }
+.drawer h2 { font-family: var(--display); font-size: 1.45rem; margin: 0; }
 .drawer ol { padding-left: 1.2em; }
 .drawer li { margin: 0.45em 0; color: var(--ink); }
 .hist-item {
@@ -446,6 +448,8 @@ h1 em { font-style: normal; color: var(--mint); }
   background: var(--surface-2); border: var(--hair) solid var(--line); border-radius: 14px;
   padding: 14px; color: var(--ink); width: 100%; font-size: 1.05rem;
 }
+#si0%; font-size: 1.05rem;
+}
 #sidekickText { font-family: var(--mono); font-size: 0.95rem; }
 
 .iframe-banner { background: var(--coral-dim); color: var(--coral); }
@@ -485,7 +489,8 @@ a.ghost, a.solid {
   .frame-wrap { min-height: 140px; }
   #liveVideo, #stillImage { max-height: 28vh; }
   .scanner { display: flex; flex-direction: column-reverse; gap: 12px; }
-  h1 { font-size: 2.15rem; }
+  h1 { font-size: 2.25rem; }
+  .card h2 { font-size: 1.6rem; }
   .lede { font-size: 1.2rem; max-width: none; }
   .cta-row { flex-direction: column; align-items: stretch; }
   .cta-row .solid, .cta-row .ghost { width: 100%; min-height: 54px; font-size: 1.15rem; }
