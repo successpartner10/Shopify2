@@ -36,67 +36,53 @@
         </span>
         <span>
           <div class="brand-name">Store<span>scope</span></div>
-          <div class="brand-sub">Shopify live scanner</div>
+          <div class="brand-sub">What to tap next</div>
         </span>
       </a>
       <nav class="nav">
-        <span class="pill" id="netPill">Online</span>
-        <button class="solid" id="moreBtn" type="button">More</button>
+        <span class="pill" id="netPill" hidden>Online</span>
+        <button class="ghost" id="moreBtn" type="button">Help</button>
       </nav>
     </header>
 
     <div class="offline-banner" id="offlineBanner" hidden>
-      You're offline. Dictionary answers and history still work. Live OCR needs a connection the first time.
+      You're offline. You can still follow saved steps. Reading a new screenshot needs a connection the first time.
     </div>
     <div class="offline-banner iframe-banner" id="iframeBanner" hidden>
-      Tab share is blocked in this embedded preview.
+      This preview cannot share a tab.
       <a id="openTabLink" href="./index.html" target="_blank" rel="noopener">Open in a new tab</a>
-      to watch a Shopify admin tab — or upload a screenshot / try a sample here.
+      or upload a screenshot here.
     </div>
 
     <section id="landing">
       <div class="hero">
         <div>
-          <div class="kicker"><i class="pulse"></i> Screen capture only · never a camera</div>
-          <h1>Your Shopify admin, <em>diagnosed live</em>.</h1>
+          <div class="kicker"><i class="pulse"></i> No signup · nothing to set up</div>
+          <h1>Show us the Shopify screen.<br><em>We’ll say what to tap.</em></h1>
           <p class="lede">
-            Share the admin tab (or drop a screenshot). Storescope reads the banner,
-            matches a local playbook — forums, official docs, and Sidekick-aware notes —
-            and tells you the next click.
+            Open your Shopify admin. Then share that tab, or upload a screenshot.
           </p>
 
-          <div id="onboardingFull">
-            <div class="steps">
-              <article class="step">
-                <div class="step-num">1</div>
-                <h3>Open Shopify</h3>
-                <p>Have your Shopify admin open in a browser tab.</p>
-              </article>
-              <article class="step">
-                <div class="step-num">2</div>
-                <h3 id="stepTwoTitle">Share a tab or screenshot</h3>
-                <p id="stepTwoCopy">Desktop: share the Shopify admin tab. Phone: take an OS screenshot and upload it from Photos.</p>
-              </article>
-              <article class="step">
-                <div class="step-num">3</div>
-                <h3>Get instant answers</h3>
-                <p>Tips and arrows show what to click next.</p>
-              </article>
-            </div>
-          </div>
+          <div id="onboardingFull" hidden></div>
           <p id="onboardingMini" hidden>
             <button class="linkish" id="howBtnMini" type="button">How it works</button>
           </p>
+          <p hidden><span id="stepTwoTitle"></span><span id="stepTwoCopy"></span></p>
 
           <div class="cta-row">
-            <button class="solid" id="startBtn" type="button">Share a tab</button>
-            <button class="ghost" id="uploadBtn" type="button">Upload screenshot</button>
+            <button class="solid" id="startBtn" type="button">Share Shopify tab</button>
+            <button class="ghost" id="uploadBtn" type="button">Upload a screenshot</button>
             <a class="ghost" id="openTabBtn" href="./index.html" target="_blank" rel="noopener" hidden>Open in new tab</a>
           </div>
           <div class="shot-drop" id="shotDrop" role="button" tabindex="0">
-            <b>Desktop upload</b> — click to pick a file, drop a PNG/JPEG here, or paste with Ctrl+V / Cmd+V.
+            Or drop a screenshot here — you can also paste it.
           </div>
-          <p class="fine" id="capNote">Desktop can share a Shopify tab. Phones cannot — upload an OS screenshot instead.</p>
+          <form class="ask-box home-ask" id="homeAsk">
+            <input id="homeAskInput" type="search" placeholder="Or type it — e.g. Shop Collective, edit code, head tag" autocomplete="off" />
+            <button class="ghost" type="submit">Search</button>
+          </form>
+          <p class="fine" id="capNote">On a phone: take a screenshot of Shopify, then upload it from Photos.</p>
+          <p class="fine"><button class="linkish" id="demoBtn" type="button">See a demo first</button></p>
         </div>
         <aside class="preview-card" aria-hidden="true">
           <div class="chrome"><i></i><i></i><i></i></div>
@@ -117,30 +103,30 @@
       <div class="scanner">
         <div class="stage">
           <div class="stage-bar">
-            <span class="pill" id="livePill">Idle</span>
-            <span class="pill" id="ocrStatus">Ready</span>
-            <span class="pill" id="hybridPill">OCR</span>
-            <span class="pill rec" id="recDot" hidden>REC</span>
+            <span class="pill" id="livePill">Ready</span>
+            <span class="pill" id="ocrStatus">Waiting for a screen</span>
+            <span class="pill pro" id="hybridPill" hidden>OCR</span>
+            <span class="pill rec pro" id="recDot" hidden>REC</span>
           </div>
           <div class="frame-wrap" id="frameWrap">
             <video id="liveVideo" autoplay playsinline muted hidden></video>
-            <img id="stillImage" alt="Captured Shopify admin" hidden />
+            <img id="stillImage" alt="Your Shopify screen" hidden />
             <svg id="arrowLayer" xmlns="http://www.w3.org/2000/svg"></svg>
           </div>
           <div class="stage-actions">
-            <button class="solid" id="scanBtn" type="button">What's wrong?</button>
-            <button class="amber" id="pauseBtn" type="button">Pause</button>
-            <button class="danger" id="stopBtn" type="button">Stop</button>
-            <button class="ghost" id="uploadBtn2" type="button">Upload</button>
-            <button class="ghost" id="beforeBtn" type="button">Before</button>
-            <button class="ghost" id="afterBtn" type="button">After</button>
-            <button class="ghost" id="diffBtn" type="button">Diff</button>
-            <button class="ghost" id="voiceBtn" type="button">Voice</button>
-            <button class="ghost" id="recBtn" type="button">Record</button>
-            <button class="ghost" id="sidekickBtn" type="button">Ask Sidekick</button>
-            <button class="ghost" id="exportBtn" type="button">Export</button>
-            <form class="ask-box" id="askForm">
-              <input id="askInput" type="search" placeholder="Banner text, or paste STORESCOPE_DOM:…" autocomplete="off" />
+            <button class="solid" id="scanBtn" type="button">Find the problem</button>
+            <button class="ghost" id="uploadBtn2" type="button">New screenshot</button>
+            <button class="ghost" id="stopBtn" type="button">Start over</button>
+            <button class="amber pro" id="pauseBtn" type="button" hidden>Pause</button>
+            <button class="ghost pro" id="beforeBtn" type="button" hidden>Before</button>
+            <button class="ghost pro" id="afterBtn" type="button" hidden>After</button>
+            <button class="ghost pro" id="diffBtn" type="button" hidden>Diff</button>
+            <button class="ghost pro" id="voiceBtn" type="button" hidden>Voice</button>
+            <button class="ghost pro" id="recBtn" type="button" hidden>Record</button>
+            <button class="ghost pro" id="sidekickBtn" type="button" hidden>Ask Sidekick</button>
+            <button class="ghost pro" id="exportBtn" type="button" hidden>Export</button>
+            <form class="ask-box pro" id="askForm" hidden>
+              <input id="askInput" type="search" placeholder="Type the banner if the picture is unclear" autocomplete="off" />
               <button class="ghost" type="submit">Ask</button>
             </form>
           </div>
@@ -149,8 +135,8 @@
         <aside class="side">
           <div class="card">
             <div id="emptyTip">
-              <h2>Waiting for a screen</h2>
-              <p class="empty">Share the Shopify tab and tap <b>What's wrong?</b> — or try a sample. Answers come from the local dictionary first.</p>
+              <h2>Waiting for your screen</h2>
+              <p class="empty">Share the Shopify tab or upload a screenshot. We’ll read it and tell you the next tap.</p>
             </div>
             <div id="shareDenied" class="conflict-card" hidden>
               <div class="kicker">Share denied</div>
@@ -163,33 +149,31 @@
               </div>
             </div>
             <div id="tipBody" hidden>
-              <h2 id="tipTitle">Next fix</h2>
-              <div class="meta" id="tipMeta"></div>
+              <h2 id="tipTitle">What to do</h2>
+              <div class="meta pro" id="tipMeta" hidden></div>
               <p class="expl" id="tipExpl"></p>
               <div id="whyBox"></div>
               <div id="conflictBox" hidden></div>
               <ol class="steps-ol" id="tipSteps"></ol>
-              <div id="flowBox" class="flow-box" hidden></div>
+              <div id="flowBox" class="flow-box pro" hidden></div>
               <div class="card-actions">
                 <button class="solid" id="nextBtn" type="button">Next step</button>
                 <button class="ghost" id="workedBtn" type="button">This worked</button>
                 <button class="ghost" id="nopeBtn" type="button">Not this</button>
-                <button class="ghost" id="shareFixBtn" type="button">Share this fix</button>
-                <button class="ghost" id="dismissBtn" type="button">Dismiss</button>
+                <button class="ghost pro" id="shareFixBtn" type="button" hidden>Share this fix</button>
+                <button class="ghost" id="dismissBtn" type="button">Done</button>
               </div>
               <div id="related" class="samples" style="margin-top:12px"></div>
             </div>
           </div>
-          <div class="card">
+          <div class="card pro" hidden>
             <h2>Try a sample screen</h2>
-            <p class="empty">No Shopify tab handy? Mock admin screens hit the same dictionary — including toasts and app conflicts.</p>
             <div class="samples" id="sampleList"></div>
           </div>
-          <div class="card">
+          <div class="card pro" hidden>
             <h2>Words we read</h2>
             <pre class="ocr-box" id="ocrText">—</pre>
-            <p class="empty" style="margin-top:8px">Optional: copy the DOM-lite bookmarklet, run it on the Shopify tab, paste here.</p>
-            <button class="ghost" id="copyBmBtn" type="button">Copy DOM-lite bookmarklet</button>
+            <button class="ghost" id="copyBmBtn" type="button">Copy helper</button>
           </div>
         </aside>
       </div>
@@ -201,30 +185,29 @@
   <div class="drawer-back" id="moreDrawer" hidden>
     <div class="drawer" role="dialog" aria-labelledby="moreTitle">
       <header>
-        <h2 id="moreTitle">More</h2>
+        <h2 id="moreTitle">Help</h2>
         <button class="ghost" id="moreClose" type="button">Close</button>
       </header>
-      <p class="empty" id="moreMeta">Share a screen. The playbook is already on the device.</p>
-      <div class="more-grid">
-        <button class="sample" id="chatBtn" type="button"><b>Chat</b><span>Ask the local playbook</span></button>
-        <button class="sample" id="histBtn" type="button"><b>History</b><span>Past diagnoses on this device</span></button>
-        <button class="sample" id="howBtn" type="button"><b>How it works</b><span>Tab share vs screenshot</span></button>
-        <button class="sample" id="shareBtn" type="button"><b>Share app</b><span>Link for a teammate</span></button>
-        <button class="sample" id="installBtn" type="button" hidden><b>Install</b><span>Add to Home Screen</span></button>
-        <button class="sample" id="privBtn" type="button"><b>Privacy</b><span>What stays on this device</span></button>
-      </div>
-      <details class="adv">
-        <summary>Advanced — not required</summary>
-        <p class="empty">You never fill these in to use Storescope. They exist only if you want a custom local note or your own Gemini/Grok key on a miss.</p>
-        <div class="more-grid">
-          <button class="sample" id="cloudBtn" type="button"><b>Cloud keys</b><span>Your Gemini / Grok key, this browser only</span></button>
-          <button class="sample" id="commBtn" type="button"><b>My notes</b><span>Optional local fix you already know</span></button>
-          <button class="sample" id="keysBtn" type="button"><b>Keyboard</b><span>Shortcuts</span></button>
-          <button class="sample" id="srcBtn" type="button"><b>Sources</b><span>Why the playbook exists</span></button>
-        </div>
-      </details>
-      <p class="note" id="verPill">v2.3.2</p>
-      <p class="note" id="dictPill">Loading playbooks</p>
+      <p class="empty" id="moreMeta">Show a Shopify screen. That’s the whole app.</p>
+      <ol>
+        <li>Open Shopify admin.</li>
+        <li>Share that tab, or upload a screenshot from Photos.</li>
+        <li>Follow the numbered steps.</li>
+      </ol>
+      <p class="empty">Your picture stays on this device. <button class="linkish" id="privBtn" type="button">Privacy</button></p>
+      <p hidden>
+        <button id="howBtn" type="button">How</button>
+        <button id="chatBtn" type="button">Chat</button>
+        <button id="histBtn" type="button">History</button>
+        <button id="shareBtn" type="button">Share</button>
+        <button id="installBtn" type="button">Install</button>
+        <button id="cloudBtn" type="button">Cloud</button>
+        <button id="commBtn" type="button">Notes</button>
+        <button id="keysBtn" type="button">Keys</button>
+        <button id="srcBtn" type="button">Sources</button>
+      </p>
+      <p class="note pro" id="verPill" hidden>v2.4</p>
+      <p class="note pro" id="dictPill" hidden>Ready</p>
     </div>
   </div>
 
@@ -235,12 +218,11 @@
         <button class="ghost" id="howClose" type="button">Close</button>
       </header>
       <ol>
-        <li><b>Open Shopify</b> — have admin open in a browser tab.</li>
-        <li><b>Desktop:</b> share the Shopify admin tab. <b>Phone:</b> screenshot the banner, then upload it from Photos (not the camera).</li>
-        <li><b>Tap What's wrong?</b> — we OCR banners/toasts, search the local playbook, then draw an arrow.</li>
-        <li><b>Work the checklist</b> — re-scan after each step. Stuck? offers an alternate path.</li>
+        <li>Open Shopify admin in your browser.</li>
+        <li>On a computer: share that tab. On a phone: screenshot Shopify, then upload it from Photos.</li>
+        <li>Follow the numbered steps. Tap <b>Next step</b> when you’re ready.</li>
       </ol>
-      <p class="empty">Nothing is stored as an image unless you keep the file yourself. Session history saves the tip text only.</p>
+      <p class="empty">Your picture never leaves this device.</p>
     </div>
   </div>
 
@@ -264,14 +246,10 @@
         <h2 id="privTitle">Privacy</h2>
         <button class="solid" id="privClose" type="button">Got it</button>
       </header>
-      <p>Shopify admin can show customer names, payouts, and API keys. Treat this tool like a person looking over your shoulder.</p>
+      <p>Your Shopify screen can show names, payouts, and passwords. We treat it like someone standing next to you.</p>
       <ul>
-        <li>Screen pixels are processed in your browser. We do not upload screenshots to a Storescope server.</li>
-        <li>OCR runs from vendored Tesseract files in this repo (English). No screenshot leaves the device.</li>
-        <li>History stores tip text in IndexedDB on this device — never the raw image.</li>
-        <li>Diagnostic export scrubs emails, keys, phones, cards, and order numbers.</li>
-        <li>Use <b>Pause</b> before opening customer lists or secret keys.</li>
-        <li>Do not paste raw admin screenshots into ChatGPT / Gemini / Grok / Kimi unless you have redacted them.</li>
+        <li>The picture is read on this device. We do not upload it to a Storescope server.</li>
+        <li>We only save the written steps, not the image.</li>
       </ul>
     </div>
   </div>

@@ -232,6 +232,7 @@ h1 em { font-style: normal; color: var(--mint); }
   background: var(--surface-2);
 }
 .ask-box { display: flex; gap: 8px; flex: 1; min-width: 200px; }
+.home-ask { margin-top: 14px; max-width: 520px; }
 .ask-box input {
   flex: 1; background: #0d131b; border: 1px solid var(--line);
   border-radius: 12px; padding: 10px 12px; outline: none;
@@ -448,6 +449,7 @@ a.ghost, a.solid {
   color: var(--muted); font-size: 0.86rem; text-align: center;
 }
 .shot-drop.drop { border-color: var(--mint); color: var(--mint); background: var(--mint-dim); }
+.pro { display: none !important; }
 .more-grid { display: grid; gap: 8px; }
 .adv { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 10px; }
 .adv summary {

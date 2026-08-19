@@ -214,5 +214,244 @@
     "target_ui_hint": "Products > Gift cards",
     "arrow": { "x": 0.22, "y": 0.26 },
     "source_category_db": "general"
+  },
+  {
+    "id": "general-social-links-013",
+    "category": "general",
+    "match_phrases": [
+      "pinterest",
+      "pinterest link",
+      "pinterest profile",
+      "google profile",
+      "google profile link",
+      "social media links",
+      "social media icons",
+      "instagram link",
+      "facebook link",
+      "tiktok link",
+      "youtube link",
+      "theme settings social"
+    ],
+    "tags": ["social", "pinterest", "google", "theme", "footer"],
+    "synonyms": [
+      "add pinterest to my store",
+      "add google profile to shopify",
+      "footer social icons",
+      "social icons not showing",
+      "profile link help"
+    ],
+    "cause": "Footer icons come from Theme settings → Social media. A handle like @mystore will not work — paste the full https URL.",
+    "explanation": "This is a theme setting, not a sales channel. Pinterest and Google profile links go in the same list as Instagram and Facebook.",
+    "steps": [
+      "Online Store → Themes → Customize on your live theme.",
+      "Open Theme settings (the paintbrush / gear at the bottom left) → Social media.",
+      "Paste the full profile URL, for example https://www.pinterest.com/yourshop or your Google Business Profile link. Not just the name.",
+      "Open the Footer section and turn on Show social media icons / Brand information if the icons are still missing.",
+      "Save, then open the store in a new tab and tap the icon to confirm it opens the right profile."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Social media",
+    "arrow": { "x": 0.18, "y": 0.86 },
+    "docs": [{ "label": "Theme settings", "url": "https://help.shopify.com/en/manual/online-store/themes/customizing-themes/theme-settings" }],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-google-youtube-014",
+    "category": "general",
+    "match_phrases": [
+      "google & youtube",
+      "google and youtube",
+      "connect google account",
+      "google merchant center",
+      "google business profile",
+      "google profile not connecting",
+      "google shopping",
+      "merchant center not listed"
+    ],
+    "tags": ["google", "youtube", "merchant", "sales-channel"],
+    "synonyms": [
+      "link google to shopify",
+      "google channel setup",
+      "can't connect google",
+      "business profile missing in dropdown"
+    ],
+    "cause": "The Google & YouTube channel only lists Google accounts where you are an Admin. An unverified Business Profile or the wrong Google login will look like a broken link.",
+    "explanation": "This is Sales channels → Google & YouTube, not the theme social-icon field.",
+    "steps": [
+      "In Shopify admin search, type Google and open Google & YouTube. Install it from the App Store if it is missing.",
+      "Click Connect Google Account and pick the same Google login that owns Merchant Center / the Business Profile.",
+      "If Merchant Center is missing from the list, open Merchant Center → Settings → Account access and add that Google email as Admin.",
+      "A Business Profile must already be verified in Google before Shopify can connect it. Finish Google’s postcard / email / phone verify first.",
+      "Staff need Apps and channels + Manage settings permission. If Connect is greyed out, have the store owner do this step."
+    ],
+    "target_ui_hint": "Sales channels > Google & YouTube",
+    "arrow": { "x": 0.18, "y": 0.36 },
+    "docs": [{ "label": "Set up Google & YouTube", "url": "https://help.shopify.com/en/manual/online-sales-channels/marketplaces/google/getting-setup/connect" }],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-pinterest-channel-015",
+    "category": "general",
+    "match_phrases": [
+      "pinterest sales channel",
+      "connect pinterest",
+      "reconnect pinterest",
+      "pinterest for shopify",
+      "claim pinterest website",
+      "pinterest catalog",
+      "pinterest blank page"
+    ],
+    "tags": ["pinterest", "sales-channel", "catalog"],
+    "synonyms": [
+      "pinterest not connecting",
+      "pinterest loading bar",
+      "link shopify to pinterest",
+      "pinterest business account"
+    ],
+    "cause": "Pinterest only links one Business account per store. A personal Pinterest login, a changed password, or a leftover old install will stall on a blank page.",
+    "explanation": "Use the official Pinterest app / sales channel. Theme social icons only add a footer link — they do not sync products.",
+    "steps": [
+      "You need a Pinterest Business account (not a personal one) and the store password page turned off.",
+      "Settings → Apps and sales channels → Shopify App Store → install Pinterest.",
+      "Open the Pinterest channel → Connect Pinterest account. Log in as the Business account owner.",
+      "If you get a blank page or a stuck green bar: on Pinterest go to Settings → Security and login → revoke Shopify, then connect again from Shopify.",
+      "To switch Business accounts, uninstall Pinterest in Settings → Apps and sales channels, then install and connect the new account. Only one Pinterest Business profile can be linked at a time."
+    ],
+    "target_ui_hint": "Settings > Apps and sales channels > Pinterest",
+    "arrow": { "x": 0.2, "y": 0.4 },
+    "docs": [{ "label": "Pinterest troubleshooting", "url": "https://help.pinterest.com/en/business/article/shopify-app-troubleshooting" }],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-shop-collective-016",
+    "category": "general",
+    "match_phrases": [
+      "shop collective",
+      "shopify collective",
+      "collective retailer",
+      "collective supplier",
+      "collective: supplier",
+      "sell other brands",
+      "import products from supplier"
+    ],
+    "tags": ["collective", "sales-channel", "wholesale"],
+    "synonyms": [
+      "shop collective help",
+      "join shopify collective",
+      "collective not eligible",
+      "invite retailer collective"
+    ],
+    "cause": "Shopify Collective is two apps, not a theme setting. Retailers import products. Suppliers share a price list and fulfill the order.",
+    "explanation": "Look under Sales channels for Collective: Retailer or Collective: Supplier. If neither is there, install from the App Store. Pause and Build plans cannot use it.",
+    "steps": [
+      "Decide your role: Retailer = sell someone else’s products with no inventory. Supplier = let other stores sell yours and you ship.",
+      "In admin search type Collective. Open Collective: Retailer or Collective: Supplier. If missing: Settings → Apps and sales channels → Shopify App Store → Shopify Collective.",
+      "Install, then open Sales channels → that Collective app and finish the checklist (country, currency, paid plan, Shopify Payments).",
+      "Retailer: invite a supplier or use Discovery, then Import products. Supplier: create a price list, set it Active, invite a retailer by email.",
+      "If it says not eligible: Sales channels → Collective: Supplier → Settings and fix the red checklist. Both stores must be in a supported country and the same currency."
+    ],
+    "target_ui_hint": "Sales channels > Collective",
+    "arrow": { "x": 0.16, "y": 0.38 },
+    "docs": [
+      { "label": "Collective for retailers", "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/retailers" },
+      { "label": "Install Collective (supplier)", "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/suppliers/installation" }
+    ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-edit-theme-vs-code-017",
+    "category": "general",
+    "match_phrases": [
+      "edit theme",
+      "edit code",
+      "customize theme",
+      "how to get to edit code",
+      "theme editor",
+      "actions edit code",
+      "three dots edit code"
+    ],
+    "tags": ["theme", "editor", "code"],
+    "synonyms": [
+      "where is edit code",
+      "how do I edit my theme",
+      "open theme.liquid",
+      "customize vs edit code"
+    ],
+    "cause": "Customize (Edit theme) is the visual editor. Edit code is a different button behind the ⋯ menu. They are not the same screen.",
+    "explanation": "Use Customize for colors, sections, Custom Liquid, and social links. Use Edit code only when a guide says to open theme.liquid or a .liquid file.",
+    "steps": [
+      "Online Store → Themes. Your live theme is the one marked Current.",
+      "To change look and sections: click Customize (some phones say Edit theme). That is the safe editor. Save there.",
+      "To open files: on that same theme click ⋯ (three dots) next to Customize → Edit code. Do not click Customize for this.",
+      "Always ⋯ → Duplicate the live theme first. Edit the copy, Preview, then Publish only when it looks right.",
+      "Staff who cannot see Edit code need Themes permission from the store owner (Settings → Users and permissions)."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize or ⋯ Edit code",
+    "arrow": { "x": 0.82, "y": 0.28 },
+    "docs": [{ "label": "Edit theme code", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" }],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-custom-liquid-018",
+    "category": "general",
+    "match_phrases": [
+      "custom liquid",
+      "add custom liquid",
+      "custom liquid section",
+      "custom liquid block",
+      "add liquid code",
+      "paste liquid"
+    ],
+    "tags": ["liquid", "theme", "section"],
+    "synonyms": [
+      "add custom liquid code",
+      "liquid in theme editor",
+      "app said add custom liquid"
+    ],
+    "cause": "Most app snippets belong in a Custom Liquid section in Customize — not in Edit code. That keeps the theme upgradable.",
+    "explanation": "Custom Liquid is a block you add in the visual editor. It is the first place to paste Liquid an app gives you.",
+    "steps": [
+      "Online Store → Themes → Customize on the live theme.",
+      "Open the page (Home, Product, or Footer) where the snippet should show.",
+      "Add section or Add block → Custom Liquid (sometimes named Custom HTML / Liquid).",
+      "Paste the snippet, then Save. Preview the page on phone and desktop.",
+      "If Custom Liquid is not in the list, your theme is old — use ⋯ → Edit code only as a last step, on a duplicated theme."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Custom Liquid",
+    "arrow": { "x": 0.18, "y": 0.42 },
+    "docs": [{ "label": "Add custom HTML or Liquid", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend" }],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-head-tag-019",
+    "category": "general",
+    "match_phrases": [
+      "add in head",
+      "head tag",
+      "theme.liquid",
+      "paste in head",
+      "before </head>",
+      "content_for_header",
+      "add to header"
+    ],
+    "tags": ["head", "theme.liquid", "script"],
+    "synonyms": [
+      "add code to head tag",
+      "put script in head",
+      "edit theme.liquid",
+      "meta tag in head"
+    ],
+    "cause": "The <head> lives in layout/theme.liquid. Tracking pixels should not go there — checkout will not see them.",
+    "explanation": "Tracking (Meta, GA4, TikTok) → Settings → Customer events. Only paste into <head> when the instructions say theme.liquid and it is not a purchase pixel.",
+    "steps": [
+      "If this is a pixel / conversion tag: Settings → Customer events → Add custom pixel. Stop here.",
+      "Otherwise: Online Store → Themes → ⋯ next to the theme → Duplicate, then ⋯ → Edit code on the copy.",
+      "Left sidebar → layout → theme.liquid.",
+      "Find </head>. Paste the snippet on a new line just above </head>. Do not delete {{ content_for_header }}.",
+      "Save, Preview the unpublished theme, then Publish only if the store still loads."
+    ],
+    "target_ui_hint": "Online Store > Themes > ⋯ > Edit code > layout/theme.liquid",
+    "arrow": { "x": 0.22, "y": 0.22 },
+    "docs": [{ "label": "Edit theme.liquid", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" }],
+    "source_category_db": "general"
   }
 ]

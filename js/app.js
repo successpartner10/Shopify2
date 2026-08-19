@@ -73,18 +73,21 @@ function toast(msg) {
 
 function setOnlineUi() {
   $("offlineBanner").hidden = navigator.onLine;
-  $("netPill").textContent = navigator.onLine ? "Online" : "Offline";
-  $("netPill").classList.toggle("warn", !navigator.onLine);
+  if ($("netPill")) {
+    $("netPill").hidden = navigator.onLine;
+    $("netPill").textContent = navigator.onLine ? "Online" : "Offline";
+    $("netPill").classList.toggle("warn", !navigator.onLine);
+  }
 }
 
 function hasSeenOnboarding() { return localStorage.getItem("ss_onboarded") === "1"; }
 function markOnboarded() { localStorage.setItem("ss_onboarded", "1"); }
 
-function showLanding(full) {
+function showLanding() {
   $("landing").hidden = false;
   $("scanner").hidden = true;
-  $("onboardingFull").hidden = !full;
-  $("onboardingMini").hidden = full;
+  if ($("onboardingFull")) $("onboardingFull").hidden = true;
+  if ($("onboardingMini")) $("onboardingMini").hidden = true;
 }
 
 function showScanner() {
@@ -346,14 +349,16 @@ function renderResult(entry, meta) {
   hideDenied();
   $("emptyTip").hidden = true;
   $("tipBody").hidden = false;
-  $("tipTitle").textContent = entry.target_ui_hint || "Next fix";
+  $("tipTitle").textContent = entry.target_ui_hint || "What to do";
   $("tipExpl").textContent = entry.cause || entry.explanation;
-  $("tipSteps").innerHTML = (entry.steps || []).map((s, i) => `
+  $("tipSteps").innerHTML = (entry.steps || []).map((s, i) => {
+    const step = typeof s === "string" ? s : normalizeStep(s).text;
+    return `
     <li class="${i === 0 ? "current" : ""}" data-i="${i}">
       <span class="n">${i + 1}</span>
-      <p>${esc(s)}</p>
-    </li>
-  `).join("");
+      <p>${esc(step)}</p>
+    </li>`;
+  }).join("");
   $("related").innerHTML = (meta.alternatives || []).map((a) =>
     `<button class="sample" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b><span>${esc(a.cause || a.explanation)}</span></button>`
   ).join("");
@@ -416,9 +421,9 @@ function logRec(type, payload) {
 }
 
 async function runScan({ textOverride, reason } = {}) {
-  if (!state.ready) return toast("Dictionary is still loading.");
+  if (!state.ready) return toast("Just a moment — still starting up.");
   $("scanBtn").disabled = true;
-  $("scanBtn").textContent = "Reading screen…";
+  $("scanBtn").textContent = "Reading…";
   try {
     let text = textOverride || "";
     let canvas = null;
@@ -429,9 +434,9 @@ async function runScan({ textOverride, reason } = {}) {
         throw new Error("Waiting for the first frame. Try again in a second.");
       }
       if (ocrAvailable()) {
-        $("ocrStatus").textContent = "OCR running…";
+        $("ocrStatus").textContent = "Reading the screen…";
         const result = await recognize(src, (m) => {
-          if (m.progress) $("ocrStatus").textContent = `OCR ${Math.round(m.progress * 100)}%`;
+          if (m.progress) $("ocrStatus").textContent = `Reading… ${Math.round(m.progress * 100)}%`;
         });
         text = result.text;
         canvas = result.canvas;
@@ -446,9 +451,9 @@ async function runScan({ textOverride, reason } = {}) {
         state.lastVision.bands = bands;
         state.lastCanvas = canvas;
       } else if (!navigator.onLine) {
-        throw new Error("Live OCR needs a network connection the first time. Type the banner text below, or use a sample.");
+        throw new Error("Need a connection the first time we read a screen. Try again online, or upload after you reconnect.");
       } else {
-        throw new Error("OCR library is not available. Type the banner text, or retry online.");
+        throw new Error("Could not read the screen. Upload a clearer screenshot.");
       }
     }
     const typedDom = parseDomLite(text);
@@ -472,13 +477,13 @@ async function runScan({ textOverride, reason } = {}) {
       renderFlow();
     }
     applyQuery(reason ? `${reason}\n${state.lastText}` : state.lastText);
-    toast("Fix ready — follow the numbered steps.");
+    toast("Follow the numbered steps.");
   } catch (err) {
-    toast(err.message || "Scan failed");
-    $("ocrStatus").textContent = err.message || "Scan failed";
+    toast(err.message || "Could not read the screen");
+    $("ocrStatus").textContent = err.message || "Could not read the screen";
   } finally {
     $("scanBtn").disabled = false;
-    $("scanBtn").textContent = "What's wrong?";
+    $("scanBtn").textContent = "Find the problem";
   }
 }
 
@@ -514,24 +519,24 @@ function applyEmbedUi() {
       upload.textContent = canCapture() && !mobile ? "Share a tab instead" : "Upload another";
       if (!canCapture() || mobile) upload.hidden = true;
     }
-    $("capNote").textContent = "On a phone: screenshot Shopify admin, then upload that image from Photos. Do not take a camera photo of the screen.";
+    $("capNote").textContent = "On a phone: screenshot Shopify, then upload that picture from Photos — not a camera photo of the screen.";
     const s2 = $("stepTwoCopy");
-    if (s2) s2.textContent = "Screenshot the Shopify banner, then tap Upload screenshot and pick it from Photos.";
+    if (s2) s2.textContent = "Screenshot the Shopify banner, then upload it from Photos.";
     const s2h = $("stepTwoTitle");
     if (s2h) s2h.textContent = "Upload the screenshot";
   } else if (blocked === "iframe") {
-    $("capNote").textContent = "This preview cannot share tabs. Open in a new tab, or upload / use a sample here.";
-    if (start) start.textContent = "Upload screenshot";
+    $("capNote").textContent = "This preview cannot share tabs. Open in a new tab, or upload a screenshot here.";
+    if (start) start.textContent = "Upload a screenshot";
   } else if (blocked === "insecure") {
-    $("capNote").textContent = "Screen share needs https or localhost. Upload a screenshot instead.";
-    if (start) start.textContent = "Upload screenshot";
+    $("capNote").textContent = "Upload a screenshot instead.";
+    if (start) start.textContent = "Upload a screenshot";
   } else {
-    if (start) start.textContent = "Share a tab";
+    if (start) start.textContent = "Share Shopify tab";
     if (upload) {
       upload.hidden = false;
-      upload.textContent = "Upload screenshot";
+      upload.textContent = "Upload a screenshot";
     }
-    $("capNote").textContent = "Desktop: Share a tab, or upload / drop / paste (Ctrl+V) a screenshot. Same OCR either way.";
+    $("capNote").textContent = "On a computer: share the Shopify tab, or drop / paste a screenshot.";
   }
 }
 
@@ -557,12 +562,15 @@ async function beginCapture() {
     state.stream = stream;
     state.paused = false;
     bindVideo(stream);
-    setLiveStatus("Watching tab", true);
+    setLiveStatus("Watching Shopify", true);
     stream.getVideoTracks()[0].addEventListener("ended", () => {
       setLiveStatus("Share ended");
       state.stream = null;
     });
-    toast("Pick your Shopify admin tab — not this Storescope tab.");
+    toast("Choose the Shopify admin tab — not this one.");
+    setTimeout(() => {
+      if (state.stream && state.lastSource) runScan();
+    }, 900);
   } catch (err) {
     const reason = err.name === "NotAllowedError" ? "denied" : (err.code || "denied").toLowerCase();
     showShareDenied(reason === "iframe" || reason === "unsupported" || reason === "insecure" || reason === "mobile" ? reason : "denied");
@@ -609,7 +617,7 @@ function loadSample(sample) {
   setLiveStatus("Sample");
   state.lastText = sample.text;
   state.lastVision = annotateVision(sample.text, { bands: [], bannerText: sample.text, toastText: "" });
-  $("ocrStatus").textContent = "Sample text (no OCR needed)";
+  $("ocrStatus").textContent = "Demo";
   applyQuery(sample.text);
 }
 
@@ -625,7 +633,7 @@ async function onFile(file) {
   const url = URL.createObjectURL(file);
   setStill(url);
   setLiveStatus("Screenshot");
-  toast("Screenshot loaded — reading the banner…");
+  toast("Reading your screenshot…");
   await runScan();
 }
 
@@ -1001,8 +1009,11 @@ function wireUi() {
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
   on("moreBtn", "click", () => {
-    if ($("moreMeta")) $("moreMeta").textContent = $("netPill")?.textContent === "Offline" ? "Offline — local playbook still works." : "Share a screen. No keys, no forms.";
     $("moreDrawer").hidden = false;
+  });
+  on("privBtn", "click", () => {
+    closeMore();
+    $("privDrawer").hidden = false;
   });
   on("moreClose", "click", () => { $("moreDrawer").hidden = true; });
   on("moreDrawer", "click", (e) => { if (e.target.id === "moreDrawer") e.target.hidden = true; });
@@ -1105,12 +1116,12 @@ function wireUi() {
   on("commClose", "click", () => { $("commDrawer").hidden = true; });
   on("workedBtn", "click", async () => {
     if (!state.current) return;
-    toast("Marked as worked on this device. Thanks — ranking stays local.");
+    toast("Glad that helped.");
     logRec("worked", { id: state.current.id });
     if (state.current.local) await bumpCommunity(state.current.id, true);
   });
   on("nopeBtn", "click", () => {
-    toast("Noted. Try a related playbook or Stuck? for an alternate path.");
+    toast("Try one of the other suggestions below.");
     logRec("nope", { id: state.current?.id });
   });
   on("commForm", "submit", async (e) => {
@@ -1153,6 +1164,20 @@ function wireUi() {
     toast(ok ? "Bookmarklet copied. Bookmark it, open Shopify admin, click it, then paste here." : "Select the bookmarklet text.");
   });
   on("howBtnMini", "click", () => { $("howDrawer").hidden = false; });
+  on("demoBtn", "click", () => {
+    const first = SAMPLES[0];
+    if (first) loadSample(first);
+  });
+  on("homeAsk", "submit", (e) => {
+    e.preventDefault();
+    const q = ($("homeAskInput")?.value || "").trim();
+    if (!q) return toast("Type a few words from the problem.");
+    if (!state.ready) return toast("Just a moment — still starting up.");
+    markOnboarded();
+    showScanner();
+    state.lastText = q;
+    applyQuery(q);
+  });
   on("cloudBtn", "click", () => { closeMore(); paintCloudForm(); $("cloudDrawer").hidden = false; });
   on("chatBtn", "click", () => { closeMore(); openChat(state.lastText); });
   on("cloudClose", "click", () => { $("cloudDrawer").hidden = true; });
@@ -1218,15 +1243,14 @@ function wireUi() {
   window.addEventListener("offline", setOnlineUi);
   window.addEventListener("resize", () => { if (state.current) drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); });
   if (state.voice) $("voiceBtn")?.classList.add("on");
-  $("voiceBtn").hidden = !canSpeak();
+  if ($("voiceBtn")) $("voiceBtn").hidden = true;
 }
 
 async function boot() {
   wireUi();
   setOnlineUi();
   applyEmbedUi();
-  showLanding(!hasSeenOnboarding());
-  if (!localStorage.getItem("ss_privacy")) $("privDrawer").hidden = false;
+  showLanding();
 
   try {
     const { entries, errors, pack } = await loadDictionaries();
@@ -1235,11 +1259,11 @@ async function boot() {
     state.entries = entries;
     state.fuse = buildIndex(allEntries());
     state.ready = true;
-    $("dictPill").textContent = `${allEntries().length} playbooks`;
-    if (errors.length) toast("Some dictionaries failed to load.");
+    if ($("dictPill")) $("dictPill").textContent = "Ready";
+    if (errors.length) console.warn("Some playbooks failed to load", errors);
     applyInbound();
   } catch (err) {
-    toast("Could not load the local dictionary.");
+    toast("Could not start. Refresh the page.");
     console.error(err);
   }
 

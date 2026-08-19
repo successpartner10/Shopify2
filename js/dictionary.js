@@ -11,7 +11,9 @@ const SCREEN_HINTS = {
   ],
   general: [
     "domain", "theme", "liquid", "tax", "markets", "pixel", "gift card",
-    "password", "notification", "inventory", "staff", "app embed"
+    "password", "notification", "inventory", "staff", "app embed",
+    "pinterest", "google", "social", "instagram", "youtube",
+    "collective", "liquid", "theme.liquid", "edit code", "head tag"
   ],
   errors: ["error", "failed", "unable", "declined", "on hold", "couldn't"]
 };
