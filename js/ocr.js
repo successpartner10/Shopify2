@@ -1,11 +1,10 @@
 let workerPromise = null;
 
 function tessPaths() {
-  return {
-    workerPath: "https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/worker.min.js",
-    corePath: "https://cdn.jsdelivr.net/npm/tesseract.js-core@5.1.1/tesseract-core-simd.wasm.js",
-    langPath: "https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.1/4.0.0"
-  };
+  const worker = new URL("./vendor/tesseract/worker.min.js", import.meta.url).href;
+  const core = new URL("./vendor/tesseract/tesseract-core-simd.wasm.js", import.meta.url).href;
+  const lang = new URL("./vendor/tesseract-lang", import.meta.url).href;
+  return { workerPath: worker, corePath: core, langPath: lang };
 }
 
 export function ocrAvailable() {
@@ -56,19 +55,6 @@ function crop(canvas, y0, y1) {
     0, 0, canvas.width, h
   );
   return out;
-}
-
-function wordsFrom(result, yOffsetNorm, canvasH) {
-  const words = result?.data?.words || [];
-  return words
-    .filter((w) => (w.text || "").trim().length > 1)
-    .map((w) => ({
-      text: w.text,
-      conf: w.confidence || 0,
-      x: ((w.bbox?.x0 || 0) + (w.bbox?.x1 || 0)) / 2 / (result.data?.imageWidth || 1),
-      y: yOffsetNorm + (((w.bbox?.y0 || 0) + (w.bbox?.y1 || 0)) / 2) / canvasH,
-      bbox: w.bbox
-    }));
 }
 
 export async function recognize(source, onProgress) {

@@ -441,3 +441,4 @@ a.ghost, a.solid {
   text-decoration: none;
 }
 #shareDenied { margin-top: 12px; }
+.frame-wrap.drop { outline: 2px dashed var(--mint); outline-offset: -8px; }

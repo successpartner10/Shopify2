@@ -18,6 +18,15 @@ import { scrubText, thumbnailDataUrl } from "./privacy.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
+const esc = (s) => String(s ?? "")
+  .replace(/&/g, "&amp;")
+  .replace(/</g, "&lt;")
+  .replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;");
+
+function hideDenied() {
+  if ($("shareDenied")) $("shareDenied").hidden = true;
+}
 
 const state = {
   entries: [],
@@ -287,7 +296,7 @@ function renderWhy() {
     <div id="whyBody" hidden>
       <p class="expl"><b>${w.cause || w.systemTitle}</b> ${w.body}</p>
       <p class="empty">${w.systemSummary}</p>
-      ${w.docs.length ? `<div class="docs">${w.docs.map((d) => `<a href="${d.url}" target="_blank" rel="noopener">${d.label}</a>`).join("")}</div>` : ""}
+      ${w.docs.length ? `<div class="docs">${w.docs.map((d) => `<a href="${esc(d.url)}" target="_blank" rel="noopener">${esc(d.label)}</a>`).join("")}<a href="${esc(helpSearchUrl(state.current))}" target="_blank" rel="noopener">Search Help Center</a></div>` : `<div class="docs"><a href="${esc(helpSearchUrl(state.current))}" target="_blank" rel="noopener">Search Help Center</a></div>`}
       ${w.sourcesNote ? `<p class="note">${w.sourcesNote}</p>` : ""}
       <p class="note">${w.recommendation}</p>
     </div>
@@ -328,6 +337,7 @@ function renderResult(entry, meta) {
   state.stepIndex = 0;
   const flow = flowFor(entry, state.pack.flows);
   state.progress = initProgress(flow, entry);
+  hideDenied();
   $("emptyTip").hidden = true;
   $("tipBody").hidden = false;
   $("tipTitle").textContent = entry.target_ui_hint || "Next fix";
@@ -335,11 +345,11 @@ function renderResult(entry, meta) {
   $("tipSteps").innerHTML = (entry.steps || []).map((s, i) => `
     <li class="${i === 0 ? "current" : ""}" data-i="${i}">
       <span class="n">${i + 1}</span>
-      <p>${s}</p>
+      <p>${esc(s)}</p>
     </li>
   `).join("");
   $("related").innerHTML = (meta.alternatives || []).map((a) =>
-    `<button class="sample" data-alt="${a.id}"><b>${a.target_ui_hint}</b><span>${a.cause || a.explanation}</span></button>`
+    `<button class="sample" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b><span>${esc(a.cause || a.explanation)}</span></button>`
   ).join("");
   $("ocrText").textContent = state.lastText || "";
   renderWhy();
@@ -560,6 +570,7 @@ function loadSample(sample) {
   markOnboarded();
   showScanner();
   stopCapture();
+  hideDenied();
   setStill(sample.image);
   setLiveStatus("Sample");
   state.lastText = sample.text;
@@ -596,11 +607,11 @@ async function refreshHistory() {
   const rows = await listSessions();
   $("histList").innerHTML = rows.length
     ? rows.map((r) => `
-      <article class="hist-item" data-reopen="${r.entryId || ""}">
-        <time>${new Date(r.createdAt).toLocaleString()}</time>
-        <h3>${r.title || "Fix"}</h3>
-        <p>${r.cause || r.explanation || ""}</p>
-        <ol>${(r.steps || []).map((s) => `<li>${s}</li>`).join("")}</ol>
+      <article class="hist-item" data-reopen="${esc(r.entryId || "")}">
+        <time>${esc(new Date(r.createdAt).toLocaleString())}</time>
+        <h3>${esc(r.title || "Fix")}</h3>
+        <p>${esc(r.cause || r.explanation || "")}</p>
+        <ol>${(r.steps || []).map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
       </article>
     `).join("")
     : `<p class="empty">No scans yet. Run “What's wrong?” and the playbook will land here — text only, no images.</p>`;
@@ -807,9 +818,9 @@ async function refreshCommunity() {
   host.innerHTML = rows.length
     ? rows.map((r) => `
       <article class="hist-item">
-        <h3>${r.target_ui_hint}</h3>
-        <p>${r.banner}</p>
-        <p class="empty">${r.success}/${r.attempts} marked successful on this device</p>
+        <h3>${esc(r.target_ui_hint)}</h3>
+        <p>${esc(r.banner)}</p>
+        <p class="empty">${esc(r.success)}/${esc(r.attempts)} marked successful on this device</p>
       </article>`).join("")
     : `<p class="empty">No local contributions yet. After a fix works, save the banner + steps. Nothing leaves this device unless you export.</p>`;
 }
@@ -828,6 +839,17 @@ function wireUi() {
     e.target.value = "";
     if (file) onFile(file);
   });
+  const drop = $("frameWrap");
+  if (drop) {
+    drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("drop"); });
+    drop.addEventListener("dragleave", () => drop.classList.remove("drop"));
+    drop.addEventListener("drop", (e) => {
+      e.preventDefault();
+      drop.classList.remove("drop");
+      const file = e.dataTransfer?.files?.[0];
+      if (file) onFile(file);
+    });
+  }
   on("scanBtn", "click", () => runScan());
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });

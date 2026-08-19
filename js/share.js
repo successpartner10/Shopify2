@@ -4,7 +4,7 @@ function publicBase() {
     const base = path.endsWith("/") ? path : `${path}/`;
     return `${location.origin}${base}`;
   }
-  return "https://storescope-cwl.pages.dev/";
+  return "https://successpartner10.github.io/Shopify2/";
 }
 
 export const APP_URL = publicBase();

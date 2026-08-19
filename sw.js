@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.0.0";
+const VERSION = "storescope-v2.1.0";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -19,6 +19,10 @@ const PRECACHE = [
   "./js/samples.js",
   "./js/privacy.js",
   "./js/vendor/fuse.min.js",
+  "./js/vendor/tesseract/tesseract.min.js",
+  "./js/vendor/tesseract/worker.min.js",
+  "./js/vendor/tesseract/tesseract-core-simd.wasm.js",
+  "./js/vendor/tesseract-lang/eng.traineddata.gz",
   "./data/payments.json",
   "./data/shipping.json",
   "./data/general.json",
