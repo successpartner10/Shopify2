@@ -40,19 +40,8 @@
         </span>
       </a>
       <nav class="nav">
-        <span class="pill on" id="verPill">v2.3</span>
-        <span class="pill" id="dictPill">Loading playbooks</span>
         <span class="pill" id="netPill">Online</span>
-        <button class="ghost" id="chatBtn" type="button">Chat</button>
-        <button class="ghost" id="cloudBtn" type="button">Cloud</button>
-        <button class="ghost" id="howBtn" type="button">How it works</button>
-        <button class="ghost" id="histBtn" type="button">Playbook</button>
-        <button class="ghost" id="commBtn" type="button">Known issues</button>
-        <button class="ghost" id="srcBtn" type="button">Sources</button>
-        <button class="ghost" id="keysBtn" type="button">Keys</button>
-        <button class="ghost" id="shareBtn" type="button">Share</button>
-        <button class="ghost" id="installBtn" type="button" hidden>Install</button>
-        <button class="ghost" id="privBtn" type="button">Privacy</button>
+        <button class="solid" id="moreBtn" type="button">More</button>
       </nav>
     </header>
 
@@ -103,7 +92,6 @@
             <button class="solid" id="startBtn" type="button">Share a tab</button>
             <button class="ghost" id="uploadBtn" type="button">Upload screenshot</button>
             <a class="ghost" id="openTabBtn" href="./index.html" target="_blank" rel="noopener" hidden>Open in new tab</a>
-            <button class="ghost" id="shareBtn2" type="button">Share app</button>
           </div>
           <div class="shot-drop" id="shotDrop" role="button" tabindex="0">
             <b>Desktop upload</b> — click to pick a file, drop a PNG/JPEG here, or paste with Ctrl+V / Cmd+V.
@@ -209,6 +197,30 @@
   </div>
 
   <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden />
+
+  <div class="drawer-back" id="moreDrawer" hidden>
+    <div class="drawer" role="dialog" aria-labelledby="moreTitle">
+      <header>
+        <h2 id="moreTitle">More</h2>
+        <button class="ghost" id="moreClose" type="button">Close</button>
+      </header>
+      <p class="empty" id="moreMeta">Storescope</p>
+      <div class="more-grid">
+        <button class="sample" id="chatBtn" type="button"><b>Chat</b><span>Ask the local playbook</span></button>
+        <button class="sample" id="cloudBtn" type="button"><b>Cloud</b><span>Optional Gemini / Grok keys</span></button>
+        <button class="sample" id="histBtn" type="button"><b>History</b><span>Past diagnoses on this device</span></button>
+        <button class="sample" id="commBtn" type="button"><b>Known issues</b><span>Save a fix that worked</span></button>
+        <button class="sample" id="howBtn" type="button"><b>How it works</b><span>Tab share vs screenshot</span></button>
+        <button class="sample" id="keysBtn" type="button"><b>Keyboard</b><span>Shortcuts</span></button>
+        <button class="sample" id="srcBtn" type="button"><b>Sources</b><span>Forums, Sidekick, AIs</span></button>
+        <button class="sample" id="shareBtn" type="button"><b>Share app</b><span>Link for a teammate</span></button>
+        <button class="sample" id="installBtn" type="button" hidden><b>Install</b><span>Add to Home Screen</span></button>
+        <button class="sample" id="privBtn" type="button"><b>Privacy</b><span>What stays on this device</span></button>
+      </div>
+      <p class="note" id="verPill">v2.3</p>
+      <p class="note" id="dictPill">Loading playbooks</p>
+    </div>
+  </div>
 
   <div class="drawer-back" id="howDrawer" hidden>
     <div class="drawer" role="dialog" aria-labelledby="howTitle">

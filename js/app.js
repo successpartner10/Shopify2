@@ -29,6 +29,9 @@ const esc = (s) => String(s ?? "")
 function hideDenied() {
   if ($("shareDenied")) $("shareDenied").hidden = true;
 }
+function closeMore() {
+  if ($("moreDrawer")) $("moreDrawer").hidden = true;
+}
 
 const state = {
   entries: [],
@@ -769,8 +772,7 @@ async function copySidekick() {
 }
 
 function wireShare() {
-  on("shareBtn", "click", () => paintShareDrawer(state.current ? "fix" : "app"));
-  on("shareBtn2", "click", () => paintShareDrawer("app"));
+  on("shareBtn", "click", () => { closeMore(); paintShareDrawer(state.current ? "fix" : "app"); });
   on("shareFixBtn", "click", () => paintShareDrawer("fix"));
   on("shareClose", "click", () => { $("shareDrawer").hidden = true; });
   on("shareDrawer", "click", (e) => { if (e.target.id === "shareDrawer") e.target.hidden = true; });
@@ -998,9 +1000,15 @@ function wireUi() {
   on("scanBtn", "click", () => runScan());
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
-  on("howBtn", "click", () => { $("howDrawer").hidden = false; });
+  on("moreBtn", "click", () => {
+    if ($("moreMeta")) $("moreMeta").textContent = $("netPill")?.textContent === "Offline" ? "Offline — local playbook still works." : "Local playbook first. Cloud only if you opt in.";
+    $("moreDrawer").hidden = false;
+  });
+  on("moreClose", "click", () => { $("moreDrawer").hidden = true; });
+  on("moreDrawer", "click", (e) => { if (e.target.id === "moreDrawer") e.target.hidden = true; });
+  on("howBtn", "click", () => { closeMore(); $("howDrawer").hidden = false; });
   on("howClose", "click", () => { $("howDrawer").hidden = true; });
-  on("histBtn", "click", async () => { await refreshHistory(); $("histDrawer").hidden = false; });
+  on("histBtn", "click", async () => { closeMore(); await refreshHistory(); $("histDrawer").hidden = false; });
   on("histClose", "click", () => { $("histDrawer").hidden = true; });
   on("histClear", "click", async () => { await clearSessions(); await refreshHistory(); });
   on("privBtn", "click", () => { $("privDrawer").hidden = false; });
@@ -1082,7 +1090,7 @@ function wireUi() {
   on("afterBtn", "click", () => captureDiffSide("after"));
   on("diffBtn", "click", showDiff);
   on("diffClose", "click", () => { $("diffDrawer").hidden = true; });
-  on("keysBtn", "click", () => { paintShortcuts(); $("keysDrawer").hidden = false; });
+  on("keysBtn", "click", () => { closeMore(); paintShortcuts(); $("keysDrawer").hidden = false; });
   on("keysClose", "click", () => { $("keysDrawer").hidden = true; });
   on("sidekickBtn", "click", copySidekick);
   on("sidekickClose", "click", () => { $("sidekickDrawer").hidden = true; });
@@ -1091,9 +1099,9 @@ function wireUi() {
     toast(ok ? "Copied." : "Select and copy.");
   });
   on("exportBtn", "click", exportPackage);
-  on("srcBtn", "click", () => { paintSources(); $("srcDrawer").hidden = false; });
+  on("srcBtn", "click", () => { closeMore(); paintSources(); $("srcDrawer").hidden = false; });
   on("srcClose", "click", () => { $("srcDrawer").hidden = true; });
-  on("commBtn", "click", async () => { await refreshCommunity(); $("commDrawer").hidden = false; });
+  on("commBtn", "click", async () => { closeMore(); await refreshCommunity(); $("commDrawer").hidden = false; });
   on("commClose", "click", () => { $("commDrawer").hidden = true; });
   on("workedBtn", "click", async () => {
     if (!state.current) return;
@@ -1145,7 +1153,7 @@ function wireUi() {
     toast(ok ? "Bookmarklet copied. Bookmark it, open Shopify admin, click it, then paste here." : "Select the bookmarklet text.");
   });
   on("howBtnMini", "click", () => { $("howDrawer").hidden = false; });
-  on("cloudBtn", "click", () => { paintCloudForm(); $("cloudDrawer").hidden = false; });
+  on("cloudBtn", "click", () => { closeMore(); paintCloudForm(); $("cloudDrawer").hidden = false; });
   on("cloudClose", "click", () => { $("cloudDrawer").hidden = true; });
   on("cloudDrawer", "click", (e) => { if (e.target.id === "cloudDrawer") e.target.hidden = true; });
   on("cloudSave", "click", saveCloudForm);
