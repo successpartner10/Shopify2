@@ -264,8 +264,12 @@ function renderFlow() {
 
 function highlightStep() {
   if (!state.current) return;
-  [...$("tipSteps").children].forEach((li, i) => li.classList.toggle("current", i === state.stepIndex));
-  drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] });
+  ["tipSteps", "homeSteps"].forEach((id) => {
+    const host = $(id);
+    if (!host) return;
+    [...host.children].forEach((li, i) => li.classList.toggle("current", i === state.stepIndex));
+  });
+  try { drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); } catch { /* optional */ }
   maybeSpeak();
 }
 
@@ -314,7 +318,7 @@ function renderWhy() {
     const b = $("whyBody");
     if (b) b.hidden = !b.hidden;
   });
-  $("tipMeta").innerHTML = `
+  if ($("tipMeta")) $("tipMeta").innerHTML = `
     <span class="tag hit">${state.current.category}</span>
     <span class="tag ${tone.cls}">${tone.label} · ${state.current.error_kind}</span>
     <span class="tag">${state.lastMeta?.source || ""}</span>
@@ -340,33 +344,55 @@ function renderConflicts(text) {
   `;
 }
 
-function renderResult(entry, meta) {
-  state.current = entry;
-  state.lastMeta = meta;
-  state.stepIndex = 0;
-  const flow = flowFor(entry, state.pack.flows);
-  state.progress = initProgress(flow, entry);
-  hideDenied();
-  $("emptyTip").hidden = true;
-  $("tipBody").hidden = false;
-  $("tipTitle").textContent = entry.target_ui_hint || "What to do";
-  $("tipExpl").textContent = entry.cause || entry.explanation;
-  $("tipSteps").innerHTML = (entry.steps || []).map((s, i) => {
-    const step = typeof s === "string" ? s : normalizeStep(s).text;
-    return `
-    <li class="${i === 0 ? "current" : ""}" data-i="${i}">
+function stepLines(entry) {
+  return (entry?.steps || []).map((s) => (typeof s === "string" ? s : normalizeStep(s).text)).filter(Boolean);
+}
+
+function paintStepList(hostId, entry, current) {
+  const host = $(hostId);
+  if (!host) return;
+  const steps = stepLines(entry);
+  host.innerHTML = steps.length
+    ? steps.map((step, i) => `
+    <li class="${i === current ? "current" : ""}" data-i="${i}">
       <span class="n">${i + 1}</span>
       <p>${esc(step)}</p>
-    </li>`;
-  }).join("");
-  $("related").innerHTML = (meta.alternatives || []).map((a) =>
-    `<button class="sample" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b><span>${esc(a.cause || a.explanation)}</span></button>`
-  ).join("");
-  $("ocrText").textContent = state.lastText || "";
-  renderWhy();
-  renderFlow();
-  renderConflicts(meta.query || state.lastText);
-  drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] });
+    </li>`).join("")
+    : `<li class="current"><span class="n">1</span><p>Open Shopify admin search and type the problem in your own words.</p></li>`;
+}
+
+function renderResult(entry, meta) {
+  state.current = entry;
+  state.lastMeta = meta || {};
+  state.stepIndex = 0;
+  try {
+    const flow = flowFor(entry, state.pack.flows);
+    state.progress = initProgress(flow, entry);
+  } catch {
+    state.progress = null;
+  }
+  hideDenied();
+  if ($("emptyTip")) $("emptyTip").hidden = true;
+  if ($("tipBody")) $("tipBody").hidden = false;
+  const title = entry.target_ui_hint || "What to do";
+  const expl = entry.cause || entry.explanation || "";
+  if ($("tipTitle")) $("tipTitle").textContent = title;
+  if ($("tipExpl")) $("tipExpl").textContent = expl;
+  paintStepList("tipSteps", entry, 0);
+  if ($("related")) {
+    $("related").innerHTML = (meta.alternatives || []).map((a) =>
+      `<button class="sample" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b><span>${esc(a.cause || a.explanation)}</span></button>`
+    ).join("");
+  }
+  if ($("ocrText")) $("ocrText").textContent = state.lastText || "";
+  if ($("homeResult")) $("homeResult").hidden = false;
+  if ($("homeTitle")) $("homeTitle").textContent = title;
+  if ($("homeExpl")) $("homeExpl").textContent = expl;
+  paintStepList("homeSteps", entry, 0);
+  try { renderWhy(); } catch { /* keep steps */ }
+  try { renderFlow(); } catch { /* keep steps */ }
+  try { renderConflicts(meta.query || state.lastText); } catch { /* optional */ }
+  try { drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); } catch { /* optional */ }
   maybeSpeak();
   logRec("match", { id: entry.id, source: meta.source, confidence: meta.confidence });
   saveSession({
@@ -386,26 +412,28 @@ function renderResult(entry, meta) {
 }
 
 function applyQuery(query, extras = {}) {
-  const screen = detectScreen(query);
-  const found = runSearch(query, {
-    preferredCategory: extras.category || screen.category,
-    bannerText: state.lastVision?.bannerText,
-    toastText: state.lastVision?.toastText,
-    kind: state.lastVision?.kind,
-    preferErrors: true
-  });
-  if (found.match) {
-    renderResult(found.match, { ...found, query });
-    return found.match;
+  const q = String(query || "").trim();
+  const screen = detectScreen(q);
+  let found = { match: null, alternatives: [], source: "empty", confidence: 0 };
+  try {
+    found = runSearch(q, {
+      preferredCategory: extras.category || screen.category,
+      bannerText: state.lastVision?.bannerText,
+      toastText: state.lastVision?.toastText,
+      kind: state.lastVision?.kind,
+      preferErrors: extras.preferErrors !== false
+    });
+  } catch {
+    found = { match: null, alternatives: [], source: "error", confidence: 0 };
   }
-  const fb = fallbackAnswer(query, found.alternatives, screen);
-  renderResult(fb, {
-    source: "local-fallback",
-    confidence: Math.max(found.confidence, 0.3),
-    alternatives: found.alternatives,
-    query
+  const entry = found.match || fallbackAnswer(q, found.alternatives, screen);
+  renderResult(entry, {
+    ...found,
+    source: found.match ? found.source : "local-fallback",
+    confidence: found.match ? found.confidence : Math.max(found.confidence, 0.3),
+    query: q
   });
-  return fb;
+  return entry;
 }
 
 function maybeSpeak() {
@@ -478,6 +506,9 @@ async function runScan({ textOverride, reason } = {}) {
     }
     applyQuery(reason ? `${reason}\n${state.lastText}` : state.lastText);
     toast("Follow the numbered steps.");
+    if (isMobile()) {
+      ($("tipBody") || $("homeResult"))?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   } catch (err) {
     toast(err.message || "Could not read the screen");
     $("ocrStatus").textContent = err.message || "Could not read the screen";
@@ -513,13 +544,12 @@ function applyEmbedUi() {
   });
   const start = $("startBtn");
   const upload = $("uploadBtn");
+  document.body.classList.toggle("is-phone", mobile);
   if (mobile || blocked === "unsupported") {
-    if (start) start.textContent = "Upload screenshot";
-    if (upload) {
-      upload.textContent = canCapture() && !mobile ? "Share a tab instead" : "Upload another";
-      if (!canCapture() || mobile) upload.hidden = true;
-    }
-    $("capNote").textContent = "On a phone: screenshot Shopify, then upload that picture from Photos — not a camera photo of the screen.";
+    if (start) start.textContent = "Upload a screenshot";
+    if (upload) upload.hidden = true;
+    if ($("shotDrop")) $("shotDrop").hidden = true;
+    $("capNote").textContent = "On a phone: screenshot Shopify, then tap Upload and pick it from Photos." ;
     const s2 = $("stepTwoCopy");
     if (s2) s2.textContent = "Screenshot the Shopify banner, then upload it from Photos.";
     const s2h = $("stepTwoTitle");
@@ -542,14 +572,13 @@ function applyEmbedUi() {
 
 async function beginCapture() {
   markOnboarded();
-  showScanner();
   const blocked = captureBlockReason();
-  // Phones and blocked browsers skip the tab picker entirely.
+  // Phones: stay on home and open Photos. Do not dump them into an empty scanner.
   if (blocked === "mobile" || blocked === "unsupported" || blocked === "insecure") {
-    showShareDenied(blocked);
     $("fileInput")?.click();
     return;
   }
+  showScanner();
   if (blocked === "iframe") {
     showShareDenied(blocked);
     return;
@@ -624,8 +653,8 @@ function loadSample(sample) {
 async function onFile(file) {
   const name = (file && file.name) || "";
   const typed = file && (file.type || "");
-  const looksImage = typed.startsWith("image/") || /\.(png|jpe?g|webp|gif|bmp|heic)$/i.test(name);
-  if (!file || !looksImage) return toast("Choose a PNG or JPEG screenshot.");
+  const looksImage = !typed || typed.startsWith("image/") || /\.(png|jpe?g|webp|gif|bmp|heic)$/i.test(name);
+  if (!file || !looksImage) return toast("Pick a screenshot from Photos.");
   markOnboarded();
   showScanner();
   stopCapture();
@@ -1077,9 +1106,11 @@ function wireUi() {
     const entry = allEntries().find((x) => x.id === btn.dataset.alt);
     if (entry) renderResult(entry, { source: "stuck", confidence: 0.65, alternatives: [], query: entry.match_phrases?.[0] || "" });
   });
-  $("sampleList").innerHTML = SAMPLES.map((s) =>
-    `<button class="sample" data-sample="${s.id}"><b>${s.title}</b><span>${s.blurb}</span></button>`
-  ).join("");
+  if ($("sampleList")) {
+    $("sampleList").innerHTML = SAMPLES.map((s) =>
+      `<button class="sample" data-sample="${s.id}"><b>${s.title}</b><span>${s.blurb}</span></button>`
+    ).join("");
+  }
   on("sampleList", "click", (e) => {
     const btn = e.target.closest("[data-sample]");
     if (!btn) return;
@@ -1172,11 +1203,32 @@ function wireUi() {
     e.preventDefault();
     const q = ($("homeAskInput")?.value || "").trim();
     if (!q) return toast("Type a few words from the problem.");
-    if (!state.ready) return toast("Just a moment — still starting up.");
     markOnboarded();
-    showScanner();
     state.lastText = q;
-    applyQuery(q);
+    const go = () => {
+      applyQuery(q);
+      $("homeAskInput")?.blur();
+      $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      toast("Follow the numbered steps.");
+    };
+    if (state.ready) return go();
+    toast("Looking that up…");
+    const started = Date.now();
+    const wait = setInterval(() => {
+      if (state.ready || Date.now() - started > 4000) {
+        clearInterval(wait);
+        go();
+      }
+    }, 80);
+  });
+  on("homeNext", "click", () => $("nextBtn")?.click());
+  on("homeWorked", "click", () => $("workedBtn")?.click());
+  on("homeSteps", "click", (e) => {
+    const li = e.target.closest("li");
+    if (!li || !state.current) return;
+    state.stepIndex = Number(li.dataset.i);
+    if (state.progress) state.progress.index = state.stepIndex;
+    highlightStep();
   });
   on("cloudBtn", "click", () => { closeMore(); paintCloudForm(); $("cloudDrawer").hidden = false; });
   on("chatBtn", "click", () => { closeMore(); openChat(state.lastText); });

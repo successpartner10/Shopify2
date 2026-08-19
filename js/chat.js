@@ -51,7 +51,7 @@ export function handoffLinks(prompt) {
 export function localReply(query, found) {
   const q = (query || "").trim();
   if (!q) return { kind: "empty", text: "Ask about a banner, toast, or page — e.g. “payouts on hold”." };
-  if (found?.match && (found.confidence || 0) >= 0.46) {
+  if (found?.match && (found.confidence || 0) >= 0.38) {
     const e = found.match;
     const steps = (e.steps || []).map((s, i) => `${i + 1}. ${normalizeStep(s).text}`).join("\n");
     return {

@@ -78,9 +78,18 @@
             Or drop a screenshot here — you can also paste it.
           </div>
           <form class="ask-box home-ask" id="homeAsk">
-            <input id="homeAskInput" type="search" placeholder="Or type it — e.g. Shop Collective, edit code, head tag" autocomplete="off" />
-            <button class="ghost" type="submit">Search</button>
+            <input id="homeAskInput" type="search" enterkeyhint="search" inputmode="search" placeholder="Type it — Collective, edit code, head tag" autocomplete="off" />
+            <button class="solid" type="submit">Search</button>
           </form>
+          <div class="card result-card" id="homeResult" hidden>
+            <h2 id="homeTitle">What to do</h2>
+            <p class="expl" id="homeExpl"></p>
+            <ol class="steps-ol" id="homeSteps"></ol>
+            <div class="card-actions">
+              <button class="solid" id="homeNext" type="button">Next step</button>
+              <button class="ghost" id="homeWorked" type="button">This worked</button>
+            </div>
+          </div>
           <p class="fine" id="capNote">On a phone: take a screenshot of Shopify, then upload it from Photos.</p>
           <p class="fine"><button class="linkish" id="demoBtn" type="button">See a demo first</button></p>
         </div>
@@ -180,7 +189,7 @@
     </section>
   </div>
 
-  <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,.png,.jpg,.jpeg,.webp" hidden />
+  <input id="fileInput" type="file" accept="image/*" hidden />
 
   <div class="drawer-back" id="moreDrawer" hidden>
     <div class="drawer" role="dialog" aria-labelledby="moreTitle">

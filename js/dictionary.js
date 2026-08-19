@@ -104,7 +104,7 @@ export function buildIndex(entries) {
   if (!window.Fuse) throw new Error("Fuse.js failed to load");
   return new window.Fuse(entries, {
     includeScore: true,
-    threshold: 0.46,
+    threshold: 0.52,
     ignoreLocation: true,
     minMatchCharLength: 3,
     keys: [
@@ -187,7 +187,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
   const ranked = [...merged.values()].sort((a, b) => b.score - a.score);
   const top = ranked[0];
 
-  if (top && top.score >= 0.46) {
+  if (top && top.score >= 0.38) {
     return {
       match: top.entry,
       alternatives: ranked.slice(1, 5).map((r) => r.entry),

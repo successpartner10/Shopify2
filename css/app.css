@@ -232,7 +232,8 @@ h1 em { font-style: normal; color: var(--mint); }
   background: var(--surface-2);
 }
 .ask-box { display: flex; gap: 8px; flex: 1; min-width: 200px; }
-.home-ask { margin-top: 14px; max-width: 520px; }
+.home-ask { margin-top: 14px; max-width: 560px; }
+.result-card { margin-top: 16px; max-width: 560px; }
 .ask-box input {
   flex: 1; background: #0d131b; border: 1px solid var(--line);
   border-radius: 12px; padding: 10px 12px; outline: none;
@@ -362,8 +363,27 @@ h1 em { font-style: normal; color: var(--mint); }
 @media (max-width: 860px) {
   .hero, .scanner, .steps { grid-template-columns: 1fr; }
   .preview-card { display: none; }
-  .app { width: min(100% - 18px, 1180px); }
-  .stage { min-height: 300px; }
+  .app { width: min(100% - 16px, 1180px); padding: 10px 0 96px; }
+  .stage { min-height: 0; }
+  .frame-wrap { min-height: 160px; }
+  #liveVideo, #stillImage { max-height: 32vh; }
+  .scanner { display: flex; flex-direction: column-reverse; gap: 12px; }
+  h1 { font-size: 1.7rem; }
+  .lede { font-size: 0.95rem; }
+  .cta-row { flex-direction: column; align-items: stretch; }
+  .cta-row .solid, .cta-row .ghost { width: 100%; min-height: 48px; }
+  .home-ask { flex-direction: column; max-width: none; }
+  .home-ask input, .ask-box input {
+    font-size: 16px;
+    min-height: 48px;
+    width: 100%;
+  }
+  .home-ask button { width: 100%; min-height: 48px; }
+  .result-card { max-width: none; }
+  .shot-drop { display: none; }
+  .card-actions .solid, .card-actions .ghost { min-height: 44px; }
+  .toast { bottom: max(18px, env(safe-area-inset-bottom)); width: min(92vw, 420px); text-align: center; }
+  .drawer { padding-bottom: max(28px, env(safe-area-inset-bottom)); }
 }
 
 /* —— Storescope 2.0 additions —— */
