@@ -882,6 +882,8 @@ async function runCloud(provider) {
     appendChat("bot", `<p>${esc(err.message || "Cloud call failed")}</p>`);
   }
 }
+
+function openChat(prefill) {
   $("chatDrawer").hidden = false;
   if (prefill) $("chatInput").value = prefill;
   $("chatInput").focus();
@@ -921,11 +923,9 @@ function runChat(q) {
     ).join("");
   }
   const links = handoffLinks(handoffPrompt(scrubText(q), found));
-  extra += `<div class="chat-handoff">
-    <span class="note">No key needed: copy/paste. Or opt-in miss-only API:</span>
+    extra += `<div class="chat-handoff">
+    <span class="note">No key needed — copy and paste into any chat:</span>
     <button class="ghost" type="button" id="copyHandoff">Copy prompt</button>
-    <button class="ghost" type="button" data-cloud="gemini">Ask Gemini</button>
-    <button class="ghost" type="button" data-cloud="grok">Ask Grok</button>
     <a class="ghost" href="${esc(links.chatgpt)}" target="_blank" rel="noopener">ChatGPT tab</a>
     <a class="ghost" href="${esc(links.gemini)}" target="_blank" rel="noopener">Gemini tab</a>
     <a class="ghost" href="${esc(links.perplexity)}" target="_blank" rel="noopener">Perplexity</a>
@@ -1001,7 +1001,7 @@ function wireUi() {
   on("pauseBtn", "click", pauseCapture);
   on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
   on("moreBtn", "click", () => {
-    if ($("moreMeta")) $("moreMeta").textContent = $("netPill")?.textContent === "Offline" ? "Offline — local playbook still works." : "Local playbook first. Cloud only if you opt in.";
+    if ($("moreMeta")) $("moreMeta").textContent = $("netPill")?.textContent === "Offline" ? "Offline — local playbook still works." : "Share a screen. No keys, no forms.";
     $("moreDrawer").hidden = false;
   });
   on("moreClose", "click", () => { $("moreDrawer").hidden = true; });
@@ -1154,6 +1154,7 @@ function wireUi() {
   });
   on("howBtnMini", "click", () => { $("howDrawer").hidden = false; });
   on("cloudBtn", "click", () => { closeMore(); paintCloudForm(); $("cloudDrawer").hidden = false; });
+  on("chatBtn", "click", () => { closeMore(); openChat(state.lastText); });
   on("cloudClose", "click", () => { $("cloudDrawer").hidden = true; });
   on("cloudDrawer", "click", (e) => { if (e.target.id === "cloudDrawer") e.target.hidden = true; });
   on("cloudSave", "click", saveCloudForm);

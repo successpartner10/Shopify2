@@ -4,9 +4,10 @@ Privacy-first Shopify admin live scanner.
 
 | | |
 |---|---|
-| **Live site (GitHub Pages)** | https://successpartner10.github.io/Shopify2/ |
+| **Live site (this build)** | https://successpartner10.github.io/Shopify2/ |
+| **Legacy Cloudflare URL** | https://storescope-cwl.pages.dev/ (old 1.x until reconnect — see [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](./storescope-offline.zip) |
+| **Offline package** | [GitHub Release zip](https://github.com/successpartner10/Shopify2/releases/download/v2.1.0/storescope-offline.zip) |
 | **License** | MIT |
 
 Pixels stay in the browser. History stores tip text only. No Storescope server receives screenshots.

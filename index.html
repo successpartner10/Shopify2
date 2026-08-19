@@ -204,20 +204,26 @@
         <h2 id="moreTitle">More</h2>
         <button class="ghost" id="moreClose" type="button">Close</button>
       </header>
-      <p class="empty" id="moreMeta">Storescope</p>
+      <p class="empty" id="moreMeta">Share a screen. The playbook is already on the device.</p>
       <div class="more-grid">
         <button class="sample" id="chatBtn" type="button"><b>Chat</b><span>Ask the local playbook</span></button>
-        <button class="sample" id="cloudBtn" type="button"><b>Cloud</b><span>Optional Gemini / Grok keys</span></button>
         <button class="sample" id="histBtn" type="button"><b>History</b><span>Past diagnoses on this device</span></button>
-        <button class="sample" id="commBtn" type="button"><b>Known issues</b><span>Save a fix that worked</span></button>
         <button class="sample" id="howBtn" type="button"><b>How it works</b><span>Tab share vs screenshot</span></button>
-        <button class="sample" id="keysBtn" type="button"><b>Keyboard</b><span>Shortcuts</span></button>
-        <button class="sample" id="srcBtn" type="button"><b>Sources</b><span>Forums, Sidekick, AIs</span></button>
         <button class="sample" id="shareBtn" type="button"><b>Share app</b><span>Link for a teammate</span></button>
         <button class="sample" id="installBtn" type="button" hidden><b>Install</b><span>Add to Home Screen</span></button>
         <button class="sample" id="privBtn" type="button"><b>Privacy</b><span>What stays on this device</span></button>
       </div>
-      <p class="note" id="verPill">v2.3</p>
+      <details class="adv">
+        <summary>Advanced — not required</summary>
+        <p class="empty">You never fill these in to use Storescope. They exist only if you want a custom local note or your own Gemini/Grok key on a miss.</p>
+        <div class="more-grid">
+          <button class="sample" id="cloudBtn" type="button"><b>Cloud keys</b><span>Your Gemini / Grok key, this browser only</span></button>
+          <button class="sample" id="commBtn" type="button"><b>My notes</b><span>Optional local fix you already know</span></button>
+          <button class="sample" id="keysBtn" type="button"><b>Keyboard</b><span>Shortcuts</span></button>
+          <button class="sample" id="srcBtn" type="button"><b>Sources</b><span>Why the playbook exists</span></button>
+        </div>
+      </details>
+      <p class="note" id="verPill">v2.3.2</p>
       <p class="note" id="dictPill">Loading playbooks</p>
     </div>
   </div>
@@ -356,10 +362,10 @@
   <div class="drawer-back" id="commDrawer" hidden>
     <div class="drawer" role="dialog">
       <header>
-        <h2>Known issues (this device)</h2>
+        <h2>My notes (this device)</h2>
         <button class="ghost" id="commClose" type="button">Close</button>
       </header>
-      <p class="empty">Anonymized banner + steps that worked. Stored in IndexedDB. Export JSON to share with a teammate — nothing is uploaded.</p>
+      <p class="empty">Optional. The shipped playbook already covers known Shopify banners. Use this only if you want a private note on this device. Nothing is uploaded.</p>
       <form id="commForm" class="comm-form">
         <label>Banner / toast text
           <textarea id="commBanner" rows="2" required placeholder="Your payouts are temporarily on hold"></textarea>

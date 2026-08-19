@@ -449,6 +449,14 @@ a.ghost, a.solid {
 }
 .shot-drop.drop { border-color: var(--mint); color: var(--mint); background: var(--mint-dim); }
 .more-grid { display: grid; gap: 8px; }
+.adv { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 10px; }
+.adv summary {
+  cursor: pointer; color: var(--faint); font-size: 0.78rem;
+  letter-spacing: 0.06em; text-transform: uppercase; font-weight: 650;
+  list-style: none;
+}
+.adv summary::-webkit-details-marker { display: none; }
+.adv[open] summary { color: var(--muted); margin-bottom: 8px; }
 .step-img { max-width: 100%; border-radius: 8px; margin: 8px 0; border: 1px solid var(--line); }
 .speak-step { padding: 0; margin-top: 4px; font-size: 0.76rem; }
 .chat-log { max-height: 46vh; overflow: auto; display: grid; gap: 10px; margin: 12px 0; }
