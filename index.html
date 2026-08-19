@@ -241,7 +241,7 @@
       <p>Shopify admin can show customer names, payouts, and API keys. Treat this tool like a person looking over your shoulder.</p>
       <ul>
         <li>Screen pixels are processed in your browser. We do not upload screenshots to a Storescope server.</li>
-        <li>OCR libraries may load from a public CDN the first time you scan.</li>
+        <li>OCR runs from vendored Tesseract files in this repo (English). No screenshot leaves the device.</li>
         <li>History stores tip text in IndexedDB on this device — never the raw image.</li>
         <li>Diagnostic export scrubs emails, keys, phones, cards, and order numbers.</li>
         <li>Use <b>Pause</b> before opening customer lists or secret keys.</li>
@@ -373,7 +373,7 @@
   <div class="toast" id="toast" hidden></div>
 
   <script src="./js/vendor/fuse.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+  <script src="./js/vendor/tesseract/tesseract.min.js"></script>
   <script type="module" src="./js/app.js"></script>
 </body>
 </html>
