@@ -1,93 +1,50 @@
-# Update storescope-cwl.pages.dev + private-repo notes
+# Put this build on Cloudflare (`storescope-cwl.pages.dev`)
 
-## The red X you see on the latest commit
+GitHub Pages is already live: https://successpartner10.github.io/Shopify2/
 
-There are **two** checks on GitHub:
+The red **Workers Builds: shopify2** check is Cloudflare treating the repo as a **Worker**. The site is static HTML. Use **Pages**, not Workers.
 
-| Check | Status | What it is |
-|---|---|---|
-| **deploy** (GitHub Actions) | Green — this is the live github.io site | https://successpartner10.github.io/Shopify2/ |
-| **Workers Builds: shopify2** (Cloudflare) | Was failing | Cloudflare auto-created a **Worker** named `shopify2` and tried to compile this folder as a Worker script |
+## Do this once (dashboard)
 
-The Worker check failed because Storescope is a **static site**, not a Worker. `wrangler.toml` is now set to **static assets** so that Cloudflare check should go green and publish a `*.workers.dev` URL.
+1. Open [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages**.
+2. Open the existing project **`storescope-cwl`** (the one that owns `storescope-cwl.pages.dev`).
+3. **Settings → Builds & deployments**.
+4. **Connect to Git** → GitHub → repo **`successpartner10/Shopify2`**.
+5. Fill exactly:
+   - Production branch: `main`
+   - Build command: *(leave empty)* or `npm run build`
+   - Build output directory: `/`
+6. Save. Trigger **Retry deployment** / **Deploy**.
 
-It still does **not** update https://storescope-cwl.pages.dev/ unless you attach this repo to the **Pages** project `storescope-cwl` (not a Worker).
+When it finishes, https://storescope-cwl.pages.dev/ should show the mint **v2.1** pill.
 
----
+## Stop the failing Worker check
 
-## GitHub Actions: the old first-run failure
+The Worker named **`shopify2`** is a second, extra project. It is not your Pages URL.
 
-The first `Deploy GitHub Pages` run failed with:
+1. Workers & Pages → **`shopify2`** (Worker, not Pages).
+2. **Settings → Build** → disconnect Git, **or** delete the Worker if you do not need it.
 
-`Get Pages site failed … repository has Pages enabled … Error: Not Found`
+That removes the red X on GitHub commits. It does not affect `pages.dev`.
 
-That was **only** the first push, before Pages existed. The next three runs **succeeded**. Live site: https://successpartner10.github.io/Shopify2/
+## If you cannot find `storescope-cwl`
 
-The workflow now sets `enablement: true` so a fresh repo will create Pages instead of failing.
+Create a **Pages** project (not a Worker):
 
-Ignore the old red X, or delete that run. **Do not** treat it as the current build.
+1. Workers & Pages → **Create → Pages → Connect to Git**.
+2. Repo `successpartner10/Shopify2`, branch `main`, empty build, output `/`.
+3. After first deploy, **Custom domains** → add `storescope-cwl.pages.dev` only if Cloudflare offers to transfer it, or keep the new `*.pages.dev` name.
 
----
+## Private repo
 
-## Two live URLs (today)
+Cloudflare Pages **can** build a **private** GitHub repo. The **website stays public**.  
+GitHub Pages on a **Free** plan usually **stops** if the repo is private.
 
-| URL | Host | Build |
-|---|---|---|
-| https://successpartner10.github.io/Shopify2/ | GitHub Pages | **New** Storescope 2.1 |
-| https://storescope-cwl.pages.dev/ | Cloudflare Pages | **Old** 1.x scanner |
-
-This workspace cannot log into Cloudflare. To point `storescope-cwl.pages.dev` at this repo, do **one** of the following.
-
-### A. Connect the GitHub repo (recommended)
-
-1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** → project **`storescope-cwl`**.
-2. **Settings → Builds & deployments → Connect to Git**.
-3. Authorize GitHub and pick **`successpartner10/Shopify2`**.
-4. Production branch: `main`.
-5. Build command: *(empty)*.
-6. Build output directory: `/` or `.`
-7. Save. The next push to `main` republishes https://storescope-cwl.pages.dev/
-
-If the project is not connected to Git, use **Create a project → Direct Upload** once, or reconnect it.
-
-### B. CLI from this folder
+## CLI (optional)
 
 ```bash
+npx wrangler login
 npx wrangler pages deploy . --project-name=storescope-cwl
 ```
 
-You must already be logged in (`npx wrangler login`) or set `CLOUDFLARE_API_TOKEN` with **Account.Cloudflare Pages:Edit**.
-
-Do **not** paste that token into chat.
-
----
-
-## Will it work if the GitHub repo is private?
-
-**Two different things: source visibility vs the live website.**
-
-| | Public repo (now) | Private repo |
-|---|---|---|
-| Anyone can read the code on GitHub | Yes | No |
-| https://successpartner10.github.io/Shopify2/ | Works on **GitHub Free** | Needs **GitHub Pro** (personal) or **Team** (org). On Free, Pages usually **stops / 404s**. |
-| Published github.io site is secret | No — Pages is a public website | Still **public** unless Enterprise Cloud + Pages access control |
-| https://storescope-cwl.pages.dev/ via Cloudflare | Works | **Works.** Cloudflare Pages can build from a private GitHub repo on a free CF plan. The **site stays public**. |
-| Offline zip | Still works | Still works |
-
-### Practical recommendation
-
-- Want **secret source**, public app: make `Shopify2` **private**, keep deploying with **Cloudflare Pages** to `storescope-cwl.pages.dev`. That is the reliable free path.
-- Stay on **GitHub Pages only** and go private: upgrade to **GitHub Pro**, or the github.io URL will break on Free.
-- Want the **website** itself private (login wall): neither GitHub Pages (non-Enterprise) nor a normal Pages.dev project does that. You would need Cloudflare Access or similar.
-
-The live HTML/JS is always downloadable by anyone who has the site URL. Do not put tokens or merchant data in the repo or the built site.
-
----
-
-## After you flip the repo to private
-
-1. Confirm Cloudflare is still connected (Settings → Builds should still list the repo).
-2. Push once; confirm https://storescope-cwl.pages.dev/ updates.
-3. Open https://successpartner10.github.io/Shopify2/ in a private window:
-   - **200** → your plan allows private-repo Pages (site is still public).
-   - **404** → expected on GitHub Free; use the Cloudflare URL instead.
+Do not paste Cloudflare tokens into chat.

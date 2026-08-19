@@ -443,28 +443,3 @@ a.ghost, a.solid {
 #shareDenied { margin-top: 12px; }
 .frame-wrap.drop { outline: 2px dashed var(--mint); outline-offset: -8px; }
 
-.whats-new { margin-top: 36px; padding-top: 8px; }
-.whats-new-head h2 { margin: 6px 0 8px; letter-spacing: -0.03em; }
-.feat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
-}
-.feat {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 14px 14px 16px;
-}
-.feat-n {
-  display: inline-grid; place-items: center;
-  width: 26px; height: 26px; border-radius: 8px;
-  background: var(--mint-dim); color: var(--mint);
-  font-size: 0.76rem; font-weight: 700; margin-bottom: 8px;
-}
-.feat h3 { margin: 0 0 6px; font-size: 0.95rem; letter-spacing: -0.02em; }
-.feat p { margin: 0 0 8px; color: var(--muted); font-size: 0.84rem; line-height: 1.45; }
-.feat em { color: var(--faint); font-size: 0.74rem; font-style: normal; display: block; }
-.new-ol { padding-left: 18px; color: var(--muted); line-height: 1.55; }
-.new-ol b { color: var(--ink); }

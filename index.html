@@ -43,7 +43,6 @@
         <span class="pill on" id="verPill">v2.1</span>
         <span class="pill" id="dictPill">Loading playbooks</span>
         <span class="pill" id="netPill">Online</span>
-        <button class="ghost" id="newBtn" type="button">What's new</button>
         <button class="ghost" id="howBtn" type="button">How it works</button>
         <button class="ghost" id="histBtn" type="button">Playbook</button>
         <button class="ghost" id="commBtn" type="button">Known issues</button>
@@ -118,25 +117,6 @@
         </aside>
       </div>
 
-      <section class="whats-new" id="whatsNew">
-        <div class="whats-new-head">
-          <div class="kicker">New in 2.1 · this URL</div>
-          <h2>What this build adds</h2>
-          <p class="empty">The old Cloudflare app only scanned a banner and listed steps. This github.io build adds the ten features below. Each card says where to find it in the app.</p>
-        </div>
-        <div class="feat-grid">
-          <article class="feat"><span class="feat-n">1</span><h3>Error-banner &amp; toast recognition</h3><p>Reads red/yellow banners, bottom toasts, and field validation. Draws an arrow on the control to click.</p><em>Try a sample: Payouts on hold, Test mode, Card declined</em></article>
-          <article class="feat"><span class="feat-n">2</span><h3>Guided multi-step flows</h3><p>Interactive checklist with progress. Re-scan after each step. <b>Stuck?</b> offers another path.</p><em>After a match: I did this · Re-scan step · Stuck?</em></article>
-          <article class="feat"><span class="feat-n">3</span><h3>Why am I seeing this?</h3><p>Plain-language cause plus the Shopify system behind it, with official Help links.</p><em>On a result, expand “Why am I seeing this?”</em></article>
-          <article class="feat"><span class="feat-n">4</span><h3>Before / after diff</h3><p>Snapshot state A, change admin, snapshot B. Highlights what changed and remaps the playbook.</p><em>Scanner toolbar: Before · After · Diff</em></article>
-          <article class="feat"><span class="feat-n">5</span><h3>Screenshot + DOM-lite</h3><p>OCR word boxes + color bands. Optional bookmarklet copies Polaris banners from the Shopify tab.</p><em>Copy DOM-lite bookmarklet under “Words we read”</em></article>
-          <article class="feat"><span class="feat-n">6</span><h3>App &amp; theme conflict detector</h3><p>Flags embeds, checkout apps, shipping apps, fraud filters. Suggests a disable/test sequence.</p><em>Appears as a red “Likely conflict” card</em></article>
-          <article class="feat"><span class="feat-n">7</span><h3>Diagnostic package</h3><p>Optional event log. Export a privacy-scrubbed JSON (no raw screenshots) for support.</p><em>Record · Export</em></article>
-          <article class="feat"><span class="feat-n">8</span><h3>Known-issue playbook</h3><p>Save banner + steps that worked, ranked locally. Import/export JSON. Nothing uploaded.</p><em>Nav: Known issues</em></article>
-          <article class="feat"><span class="feat-n">9</span><h3>Offline + history</h3><p>Playbooks and OCR are cached. History reopens a past diagnosis (text only).</p><em>Nav: Playbook · works offline after first load</em></article>
-          <article class="feat"><span class="feat-n">10</span><h3>Voice, keys, Sidekick</h3><p>Reads the tip aloud. Keyboard shortcuts. Copies a Sidekick prompt for the purple glasses in admin.</p><em>Voice · Keys · Ask Sidekick</em></article>
-        </div>
-      </section>
 
     </section>
 
@@ -393,29 +373,6 @@
     </div>
   </div>
 
-
-  <div class="drawer-back" id="newDrawer" hidden>
-    <div class="drawer" role="dialog" aria-labelledby="newTitle">
-      <header>
-        <h2 id="newTitle">What's new in 2.1</h2>
-        <button class="ghost" id="newClose" type="button">Close</button>
-      </header>
-      <p class="empty">You are on the new github.io build. The old pages.dev app does not include these.</p>
-      <ol class="new-ol">
-        <li><b>Error banners &amp; toasts</b> — color bands + zone OCR + arrows.</li>
-        <li><b>Guided flows</b> — checklist, re-scan, Stuck?</li>
-        <li><b>Why am I seeing this?</b> — system explainer + Help docs.</li>
-        <li><b>Diff</b> — Before / After on the scanner bar.</li>
-        <li><b>DOM-lite</b> — bookmarklet under Words we read.</li>
-        <li><b>Conflict detector</b> — red card when an app/theme pattern hits.</li>
-        <li><b>Export</b> — scrubbed diagnostic JSON.</li>
-        <li><b>Known issues</b> — local community playbook.</li>
-        <li><b>Offline + Playbook history</b> — text only, this device.</li>
-        <li><b>Voice / Keys / Ask Sidekick</b> — hands-free + prompt hand-off.</li>
-      </ol>
-      <p class="empty">How to tell you're on 2.1: the mint <b>v2.1</b> pill is in the top bar, and this feature grid is on the home page.</p>
-    </div>
-  </div>
 
   <div class="toast" id="toast" hidden></div>
 
