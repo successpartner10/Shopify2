@@ -39,7 +39,7 @@ export async function loadDictionaries() {
   await Promise.all([
     ...files.map(async (name) => {
       try {
-        const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });
+        const res = await fetch(`./data/${name}.json`);
         if (!res.ok) throw new Error(`${name} ${res.status}`);
         const data = await res.json();
         for (const row of data) entries.push(enrich(row, name));
@@ -49,7 +49,7 @@ export async function loadDictionaries() {
     }),
     ...extras.map(async (name) => {
       try {
-        const res = await fetch(`./data/${name}.json`, { cache: "force-cache" });
+        const res = await fetch(`./data/${name}.json`);
         if (!res.ok) throw new Error(`${name} ${res.status}`);
         const data = await res.json();
         if (name === "systems") pack.systems = data;

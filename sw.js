@@ -1,8 +1,13 @@
-const VERSION = "storescope-v2.7.0";
+const VERSION = "storescope-v2.7.1";
 const PRECACHE = [
   "./",
   "./index.html",
+  "./privacy.html",
   "./css/app.css",
+  "./fonts/montserrat-latin.woff2",
+  "./fonts/montserrat-latin-ext.woff2",
+  "./fonts/raleway-latin.woff2",
+  "./fonts/raleway-latin-ext.woff2",
   "./js/app.js",
   "./js/dictionary.js",
   "./js/banners.js",
@@ -99,7 +104,15 @@ self.addEventListener("fetch", (event) => {
           }
           return res;
         })
-        .catch(() => caches.match(req))
+        .catch(async () => {
+          return (await caches.match(req))
+            || (await caches.match("./index.html"))
+            || (await caches.match("./"))
+            || new Response("Storescope is offline and this page is not cached yet. Reopen once online.", {
+              status: 503,
+              headers: { "Content-Type": "text/plain; charset=utf-8" }
+            });
+        })
     );
     return;
   }
@@ -136,5 +149,5 @@ async function handleSharePost(request) {
   } catch {
     /* still bounce home */
   }
-  return Response.redirect(new URL("./index.html?v=2.7.0&shared=1", request.url), 303);
+  return Response.redirect(new URL("./index.html?v=2.7.1&shared=1", request.url), 303);
 }

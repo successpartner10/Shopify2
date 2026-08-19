@@ -1,3 +1,5 @@
+import { detectColorBands } from "./banners.js";
+
 let workerPromise = null;
 
 function tessPaths() {

@@ -1,14 +1,15 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner.
+Privacy-first Shopify admin live scanner. **v2.7.1** · 19 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.7.0 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.0 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.0 |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.7.1 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.1 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.1 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [GitHub Release zip](https://github.com/successpartner10/Shopify2/releases/download/v2.1.0/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.1/storescope-offline.zip) |
+| **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
 Pixels stay in the browser. History stores tip text only. No Storescope server receives screenshots.
@@ -19,23 +20,34 @@ Pixels stay in the browser. History stores tip text only. No Storescope server r
 
 Share a Shopify admin tab (or drop a screenshot). Storescope:
 
-1. Reads banners, toasts, and validation text (OCR + optional DOM-lite).
-2. Matches a local playbook built from official Help, Community forums, and known Sidekick / ChatGPT / Gemini / Grok / Kimi gaps.
+1. Reads banners, toasts, and validation text (band-first OCR + optional DOM-lite).
+2. Matches a local playbook (71 entries) built from official Help, Community forums, and known Sidekick / ChatGPT / Gemini / Grok / Kimi gaps.
 3. Shows the **cause**, **next clicks**, and an **arrow** on the capture.
-4. Walks a checklist. Re-scan after each step. **Stuck?** offers another path.
+4. Walks numbered steps. **This worked** ranks that playbook higher next time on this device.
 
 It does **not** log into Shopify, click for you, or lift a Risk/Payments hold.
+
+Merchant path (nothing to set up):
+
+1. Upload a screenshot, type the problem, or paste an `admin.shopify.com` link.
+2. On a computer you can also **Share Shopify tab**.
+3. Follow the numbered steps.
 
 ---
 
 ## 2. Live URLs
 
-- GitHub Pages: https://successpartner10.github.io/Shopify2/?v=2.7.0
-- Worker: https://shopify2.panchgani2025.workers.dev/?v=2.7.0
-- Pages: https://storescope-cwl.pages.dev/?v=2.7.0
-- Repo: https://github.com/successpartner10/Shopify2
-- Shared playbook: `https://successpartner10.github.io/Shopify2/?v=2.7.0&fix=error-payout-hold-banner`
-- Search: `https://successpartner10.github.io/Shopify2/?v=2.7.0&q=payouts%20on%20hold`
+| Purpose | URL |
+|---|---|
+| Open the app | https://successpartner10.github.io/Shopify2/?v=2.7.1 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=2.7.1 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=2.7.1 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=2.7.1&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=2.7.1&q=payouts%20on%20hold` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=2.7.1&action=upload` |
+| Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
+
+`?v=2.7.1` cache-busts CSS/JS and the service worker (`storescope-v2.7.1`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -45,86 +57,77 @@ Browsers block **tab share** (`getDisplayMedia`) when the app is inside an **ifr
 
 | Situation | What to do |
 |---|---|
-| Embedded preview | Click **Open in a new tab**, then **Start scanning** |
-| You dismissed the picker | Run it again → Allow → pick the **Shopify admin** tab (not Storescope) |
-| iPhone / in-app browser | **Upload screenshot** or type the banner |
+| Embedded preview | **Open in a new tab**, then share the **Shopify admin** tab |
+| You dismissed the picker | Run it again → Allow → pick Shopify admin, not Storescope |
+| iPhone / Android | Screenshot Shopify → **Upload** from Photos (not a camera photo) |
 | `http://` (not localhost) | Use https or localhost |
-| Just want to try the UI | Tap a **sample screen** |
+| Just want to try the UI | Tap **See a demo first** |
 
-Upload, samples, and typed Ask work without tab share.
+Upload, samples, typed search, and pasted admin URLs work without tab share.
 
 ---
 
-## 4. Features (all 10)
+## 4. Features
 
-### 1. Error-banner & toast recognition
+### Merchant path (always visible)
 
-- Zone OCR: top ~22% (Polaris banner) and bottom ~22% (toast).
-- Color bands: red / amber / blue regions outlined on the capture.
-- Dedicated `data/errors.json` for exact Shopify copy: payouts on hold, unable to accept payments, test mode, card declined toast, bank validation, no shipping rates, theme errors, permission toast, inventory, billing, domain, app conflict, admin 500.
-- Arrow targets the banner or CTA.
+| Feature | What you see |
+|---|---|
+| Home search | “What’s wrong in Shopify?” — type words or paste `admin.shopify.com/…` |
+| Upload / drop / paste | Screenshot from Photos or clipboard image |
+| Share Shopify tab | Desktop only; phones open Photos instead |
+| Numbered steps | **Next step** / **This worked** on the same page |
+| Polaroids | Tiny “tap here” crop on common paths (payouts, shipping, Collective, Liquid, Edit code) |
+| Help | Three steps + Privacy. Power tools stay hidden |
+| Light / dark | ☾ / ☼ · saved as `ss_theme` |
 
-### 2. Multi-step guided flows
+### Built-in, not on the home screen
 
-`data/flows.json` — checklist, progress %, **I did this**, **Re-scan step** (auto-advance when `done_if` phrases appear), **Stuck?** alternate playbooks.
+| Feature | Where |
+|---|---|
+| Error-banner & toast recognition | Zone OCR: color bands first, then full frame |
+| Guided flows | `data/flows.json` — checklist, **I did this**, **Stuck?** |
+| “Why am I seeing this?” | Cause + Shopify system + Help Center chips |
+| Diff / before-after | Hidden pro controls |
+| DOM-lite bookmarklet | Paste `STORESCOPE_DOM:` into Ask |
+| App & theme conflict detector | `data/conflicts.json` |
+| Session / diagnostic export | Text only, PII scrubbed |
+| Local notes | IndexedDB; import/export JSON; nothing uploaded |
+| Offline + history | Service worker + IndexedDB |
+| Voice + keyboard + Sidekick hand-off | Hidden pro / keyboard |
+| Optional Gemini / Grok | Miss-only, text only, keys in `localStorage` |
+| PWA pack (v2.7) | Share target, clipboard chip, shortcuts, launch-existing, wake lock + resume |
 
-### 3. “Why am I seeing this?”
+### PWA (1–5 shipped)
 
-Cause + Shopify system (`data/systems.json`) + official doc chips + Help Center search + notes on what forums / Sidekick / generic AIs miss.
+1. **Share to Storescope** — Android share sheet → POST `./share` → screenshot opens in the app. iOS does **not** support `share_target`.
+2. **Clipboard on open** — if you copied a useful banner or admin URL, a chip asks “Use this?”
+3. **Home-screen shortcuts** — Upload / Payouts / Shipping / Collective.
+4. **Same-window launch** — `launch_handler.client_mode = navigate-existing`.
+5. **Wake lock + resume** — screen stays awake during OCR; last playbook restores for 6 hours.
 
-### 4. Diff / before-after
-
-**Before** → change in admin → **After**. Line-level added/removed, mapped back to the playbook. Tiny thumbs stay on-device.
-
-### 5. Screenshot + DOM-lite hybrid
-
-OCR word boxes + color bands. Optional bookmarklet copies `STORESCOPE_DOM:` (Polaris banners/toasts/alerts) from the Shopify tab — paste into Ask. No cross-tab DOM access (impossible in the browser).
-
-### 6. App & theme conflict detector
-
-`data/conflicts.json` — checkout extensions, shipping apps, embeds, fraud apps, currency converters, subscriptions, outdated apps. Suggests a disable/test sequence.
-
-### 7. Session recording + diagnostic package
-
-Optional event log (not raw video). **Export** downloads JSON scrubbed of emails, API keys, phones, cards, order numbers.
-
-### 8. Community known issues
-
-Local IndexedDB. Save banner + steps that worked. Ranked by “This worked”. Import/export JSON. Nothing is uploaded.
-
-### 9. Offline-first + history
-
-Service worker caches playbooks, UI, and vendored Tesseract. After the first load on https, typed search, samples, and history work offline. History reopens a past playbook.
-
-### 10. Voice + keyboard + Sidekick hand-off
-
-Narrates the current tip. Shortcuts: `S` scan, `N`/`B` step, `Space` done, `R` re-scan, `?` stuck, `D` diff, `V` voice, `K` Sidekick, `/` ask, `Esc` close.
-
-**Ask Sidekick** copies a prompt (detected banner, cause, current step). Paste into the purple glasses in Shopify admin. Sidekick cannot see this screenshot and cannot lift a Risk hold.
+Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, desk-side PiP.
 
 ---
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=2.7.0 as a **top-level tab**.
-2. Open Shopify admin in another tab.
-3. **Start scanning** → pick the Shopify tab.
-4. **What's wrong?**
-5. Follow the numbered steps. Re-scan after each change.
-6. **Pause** before customer lists or API keys.
-
-Or: upload a PNG/JPEG, drag a screenshot onto the stage, tap a sample, or type the banner.
+1. Open https://successpartner10.github.io/Shopify2/?v=2.7.1 as a **top-level tab**.
+2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
+3. Share the Shopify tab, upload the screenshot, or type the banner.
+4. Follow the numbered steps. Re-scan after each change.
+5. Pause before customer lists or API keys.
 
 ---
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](./storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.1/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
 
-The zip includes playbooks, samples, icons, and vendored Tesseract (English). No network is required after unzip **if** you use samples, typed Ask, or a screenshot. Tab share still needs a modern desktop browser.
+The zip includes playbooks, samples, icons, **local Montserrat + Raleway**, and vendored Tesseract (English). No network is required after unzip **if** you use samples, typed search, or a screenshot. Tab share still needs a modern desktop browser.
 
 ---
 
@@ -143,18 +146,22 @@ No build step. Static files only.
 
 ## 8. Playbook data
 
-| File | Role |
-|---|---|
-| `data/errors.json` | Exact banners / toasts / validation |
-| `data/payments.json` | Payments & payouts |
-| `data/shipping.json` | Rates, zones, carriers |
-| `data/general.json` | Themes, domains, inventory, staff |
-| `data/flows.json` | Guided checklists |
-| `data/systems.json` | “Why am I seeing this?” |
-| `data/conflicts.json` | App / theme patterns |
-| `data/sources.json` | Forum / Sidekick / AI evaluation |
+71 searchable entries. No duplicate ids.
+
+| File | Role | Count |
+|---|---|---|
+| `data/errors.json` | Exact banners / toasts / validation | 16 |
+| `data/payments.json` | Payments & payouts | 18 |
+| `data/shipping.json` | Rates, zones, carriers | 18 |
+| `data/general.json` | Themes, domains, Collective, Liquid, social | 19 |
+| `data/flows.json` | Guided checklists | 6 |
+| `data/systems.json` | “Why am I seeing this?” | 10 systems |
+| `data/conflicts.json` | App / theme patterns | 7 |
+| `data/sources.json` | Forum / Sidekick / AI evaluation | — |
 
 Each playbook entry: `id`, `match_phrases`, `cause`, `steps`, `arrow`, optional `flow_id`, `docs`, `severity`, `error_kind`.
+
+Extra coverage: Pinterest channel vs profile link, Google & YouTube, Shop Collective, Customize vs Edit code, Custom Liquid, `theme.liquid` head.
 
 Do **not** commit real merchant screenshots.
 
@@ -164,33 +171,40 @@ Do **not** commit real merchant screenshots.
 
 - No Storescope backend. No screenshot upload.
 - OCR runs in-page (vendored Tesseract).
-- IndexedDB on this device only.
-- Export scrubs PII-shaped strings.
+- IndexedDB on this device only (`storescope` DB, version 3: sessions, community, recordings, ranks).
+- Export scrubs emails, keys, phones, cards, order numbers.
+- Optional cloud: `ss_gemini_key` / `ss_grok_key` / `ss_cloud_optin` in `localStorage`. Never committed.
 - Treat the tool like someone looking over your shoulder.
 
-**Revoke any GitHub token you paste into chat.** Tokens in tickets or chat logs should be rotated at https://github.com/settings/tokens
+**Revoke any GitHub token you paste into chat.** Rotate at https://github.com/settings/tokens
 
 ---
 
-## 10. Audit log (2026-08-19)
+## 10. Audit log (2026-08-19, v2.7.1)
 
 Fixed in this release:
 
-- Iframe **Share denied** no longer looks like a crash — recovery card + Open in new tab.
-- Missing **Open in new tab** CTA restored.
-- Community / history / step HTML escaped (XSS).
-- Tesseract vendored so GitHub Pages and the zip work offline after first cache.
-- Default share / canonical URLs point at github.io, not the old Pages.dev host.
-- Drag-and-drop screenshots on the stage.
-- Share-denied panel hides when a sample or upload succeeds.
-- Service worker cache bumped to `v2.1.0` and includes OCR assets.
+| Bug | Fix |
+|---|---|
+| Screenshot / tab OCR crashed (`detectColorBands` was never imported in `ocr.js`) | Import from `banners.js` |
+| Montserrat / Raleway loaded from Google but never applied (`--display` undefined; `--font` was system) | Local `@font-face` + CSS variables |
+| Corrupt CSS rule `#si0%` | Removed |
+| Offline navigate to `?v=…` missed the SW cache | HTML fallback to `./index.html` / `./` |
+| Playbook fetch used `force-cache` | Default cache; SW version bump clears old files |
+| Typed “pinterest” opened theme social links, not the channel | Phrase split |
+| Typed “payouts on hold” / “no shipping rates” / “domain not connected” / “theme has errors” missed the exact banner row | Phrases added on error entries |
+| Diagnostic export still said `2.0.0` | `2.7.1` |
+| History / flow HTML could render raw objects | Escaped + string steps |
+| Shopify app docs still said `?v=2.6.0` | `?v=2.7.1` |
+| Offline zip pointed at the v2.1.0 release | v2.7.1 release |
+| Tap targets 44–50px | 54px |
 
 Still needs a real Shopify admin (cannot be fully tested here):
 
-- OCR on 12px Polaris validation and vanishing toasts.
-- Arrow calibration on new vs old admin nav / zoom.
-- Bookmarklet selectors vs current Polaris class names.
-- `getDisplayMedia` picker labels per browser.
+- OCR on 12px Polaris validation and vanishing toasts
+- Arrow calibration on new vs old admin nav / zoom
+- Bookmarklet selectors vs current Polaris class names
+- `getDisplayMedia` picker labels per browser
 
 ---
 
@@ -208,3 +222,24 @@ Still needs a real Shopify admin (cannot be fully tested here):
 | K | Copy Sidekick prompt |
 | / | Focus Ask |
 | Esc | Close drawer |
+
+---
+
+## 12. Shopify app + charging
+
+Storescope is a **standalone** static site (`embedded = false`). Embedding it in admin **breaks tab share**.
+
+A **public** Shopify app must use **Shopify App Pricing** (not Gumroad) after install. A **custom** app cannot use the Billing API. Until Partner OAuth + GDPR webhook stubs exist on the Worker, the honest first charge path is a separate SaaS / Gumroad license — not an App Store listing.
+
+See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
+
+---
+
+## 13. Version map
+
+| Piece | Value |
+|---|---|
+| App | `2.7.1` (`js/version.js`) |
+| Service worker | `storescope-v2.7.1` |
+| Public query | `?v=2.7.1` on HTML, CSS, JS, manifest, shortcuts |
+| IndexedDB | `storescope` v3 |

@@ -732,7 +732,7 @@ async function refreshHistory() {
         <time>${esc(new Date(r.createdAt).toLocaleString())}</time>
         <h3>${esc(r.title || "Fix")}</h3>
         <p>${esc(r.cause || r.explanation || "")}</p>
-        <ol>${(r.steps || []).map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
+        <ol>${(r.steps || []).map((s) => `<li>${esc(typeof s === "string" ? s : (s?.text || s))}</li>`).join("")}</ol>
       </article>
     `).join("")
     : `<p class="empty">No scans yet. Run “What's wrong?” and the playbook will land here — text only, no images.</p>`;
@@ -1119,7 +1119,7 @@ function wireUi() {
   });
   on("nextBtn", "click", () => {
     if (!state.current) return;
-    state.stepIndex = Math.min(state.current.steps.length - 1, state.stepIndex + 1);
+    state.stepIndex = Math.min(Math.max(0, (state.current.steps || []).length - 1), state.stepIndex + 1);
     if (state.progress) state.progress.index = state.stepIndex;
     highlightStep();
     renderFlow();

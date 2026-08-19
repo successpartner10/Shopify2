@@ -2,9 +2,22 @@
   {
     "id": "general-domain-not-verified-001",
     "category": "general",
-    "match_phrases": ["domain not verified", "verify connection", "dns records", "domain is not connected", "pointing to shopify"],
-    "tags": ["domain", "dns", "ssl"],
-    "synonyms": ["custom domain not working", "www not connecting"],
+    "match_phrases": [
+      "domain not verified",
+      "verify connection",
+      "dns records",
+      "domain is not connected",
+      "pointing to shopify"
+    ],
+    "tags": [
+      "domain",
+      "dns",
+      "ssl"
+    ],
+    "synonyms": [
+      "custom domain not working",
+      "www not connecting"
+    ],
     "explanation": "Shopify cannot see the DNS records that should point your domain at the store. Until they verify, SSL will not issue and checkout on that domain can fail.",
     "steps": [
       "Online Store → Domains and click the domain that shows an error.",
@@ -14,15 +27,30 @@
       "Once Connected, set it as the primary domain so SSL can finish issuing."
     ],
     "target_ui_hint": "Online Store > Domains",
-    "arrow": { "x": 0.55, "y": 0.3 },
+    "arrow": {
+      "x": 0.55,
+      "y": 0.3
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-theme-errors-002",
     "category": "general",
-    "match_phrases": ["theme has errors", "liquid syntax error", "online store editor", "failed to save theme"],
-    "tags": ["theme", "liquid", "editor"],
-    "synonyms": ["storefront broken after edit", "theme code red error"],
+    "match_phrases": [
+      "theme has errors",
+      "liquid syntax error",
+      "online store editor",
+      "failed to save theme"
+    ],
+    "tags": [
+      "theme",
+      "liquid",
+      "editor"
+    ],
+    "synonyms": [
+      "storefront broken after edit",
+      "theme code red error"
+    ],
     "explanation": "A Liquid or JSON template error is blocking the editor or the live storefront. Shopify usually names the file in the banner.",
     "steps": [
       "Online Store → Themes → the red error count. Click it to open the first broken file.",
@@ -32,15 +60,32 @@
       "Preview the theme on a product, collection, and cart page before publishing again."
     ],
     "target_ui_hint": "Online Store > Themes > Errors",
-    "arrow": { "x": 0.72, "y": 0.22 },
+    "arrow": {
+      "x": 0.72,
+      "y": 0.22
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-tax-003",
     "category": "general",
-    "match_phrases": ["tax registration", "collect tax", "vat", "sales tax", "tax override", "shopify tax"],
-    "tags": ["tax", "vat", "duties"],
-    "synonyms": ["tax not charging", "wrong tax at checkout"],
+    "match_phrases": [
+      "tax registration",
+      "collect tax",
+      "vat",
+      "sales tax",
+      "tax override",
+      "shopify tax"
+    ],
+    "tags": [
+      "tax",
+      "vat",
+      "duties"
+    ],
+    "synonyms": [
+      "tax not charging",
+      "wrong tax at checkout"
+    ],
     "explanation": "Taxes only calculate when a registration exists for that region and the product is not marked tax-exempt.",
     "steps": [
       "Settings → Taxes and duties.",
@@ -50,15 +95,31 @@
       "Test checkout with an address in that region and compare the tax line to your registration."
     ],
     "target_ui_hint": "Settings > Taxes and duties",
-    "arrow": { "x": 0.2, "y": 0.64 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.64
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-checkout-settings-004",
     "category": "general",
-    "match_phrases": ["customer accounts", "require account", "checkout language", "tipping", "checkout customization"],
-    "tags": ["checkout", "accounts", "settings"],
-    "synonyms": ["force login at checkout", "tips not showing"],
+    "match_phrases": [
+      "customer accounts",
+      "require account",
+      "checkout language",
+      "tipping",
+      "checkout customization"
+    ],
+    "tags": [
+      "checkout",
+      "accounts",
+      "settings"
+    ],
+    "synonyms": [
+      "force login at checkout",
+      "tips not showing"
+    ],
     "explanation": "Checkout behavior is controlled in Settings → Checkout, not in the theme. Theme edits will not change account requirements or tipping.",
     "steps": [
       "Settings → Checkout.",
@@ -68,15 +129,31 @@
       "After changes, test in an incognito window so a logged-in staff session does not hide the real flow."
     ],
     "target_ui_hint": "Settings > Checkout",
-    "arrow": { "x": 0.2, "y": 0.58 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.58
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-product-inventory-005",
     "category": "general",
-    "match_phrases": ["out of stock", "inventory policy", "continue selling when out of stock", "sku", "barcode"],
-    "tags": ["inventory", "product", "stock"],
-    "synonyms": ["product not buyable", "sold out but I have stock"],
+    "match_phrases": [
+      "out of stock",
+      "inventory policy",
+      "continue selling when out of stock",
+      "sku",
+      "barcode"
+    ],
+    "tags": [
+      "inventory",
+      "product",
+      "stock"
+    ],
+    "synonyms": [
+      "product not buyable",
+      "sold out but I have stock"
+    ],
     "explanation": "The product is hidden from purchase because inventory tracking hit zero, the variant is not published, or stock sits at a location that does not fulfill online.",
     "steps": [
       "Open the product → Variants → Inventory. Add stock to a location that fulfills online orders.",
@@ -86,15 +163,31 @@
       "If only one variant fails, check that variant's inventory — not the parent product."
     ],
     "target_ui_hint": "Products > Inventory",
-    "arrow": { "x": 0.48, "y": 0.42 },
+    "arrow": {
+      "x": 0.48,
+      "y": 0.42
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-app-conflict-006",
     "category": "general",
-    "match_phrases": ["app error", "uninstall app", "theme app extension", "script conflict", "checkout extension"],
-    "tags": ["apps", "conflict", "extensions"],
-    "synonyms": ["store broke after installing app", "two apps fighting"],
+    "match_phrases": [
+      "app error",
+      "uninstall app",
+      "theme app extension",
+      "script conflict",
+      "checkout extension"
+    ],
+    "tags": [
+      "apps",
+      "conflict",
+      "extensions"
+    ],
+    "synonyms": [
+      "store broke after installing app",
+      "two apps fighting"
+    ],
     "explanation": "Two apps injecting into the same cart, checkout, or product page is one of the most common \"mystery\" breakages.",
     "steps": [
       "List apps installed in the last 7 days. Those are the first suspects.",
@@ -104,15 +197,30 @@
       "Avoid two apps that both do reviews, upsells, or shipping — pick one."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
-    "arrow": { "x": 0.18, "y": 0.4 },
+    "arrow": {
+      "x": 0.18,
+      "y": 0.4
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-password-page-007",
     "category": "general",
-    "match_phrases": ["password page", "online store is password protected", "remove password", "coming soon"],
-    "tags": ["password", "launch", "storefront"],
-    "synonyms": ["store looks closed", "visitors see password"],
+    "match_phrases": [
+      "password page",
+      "online store is password protected",
+      "remove password",
+      "coming soon"
+    ],
+    "tags": [
+      "password",
+      "launch",
+      "storefront"
+    ],
+    "synonyms": [
+      "store looks closed",
+      "visitors see password"
+    ],
     "explanation": "The storefront is still behind Shopify's password page. That is not a DNS or theme bug.",
     "steps": [
       "Online Store → Preferences (or Themes → the password banner).",
@@ -122,15 +230,30 @@
       "Search engines will not index a password-protected store."
     ],
     "target_ui_hint": "Online Store > Preferences > Password",
-    "arrow": { "x": 0.6, "y": 0.36 },
+    "arrow": {
+      "x": 0.6,
+      "y": 0.36
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-staff-permissions-008",
     "category": "general",
-    "match_phrases": ["permission", "you don't have permission", "staff account", "two-step authentication"],
-    "tags": ["staff", "permissions", "2fa"],
-    "synonyms": ["va can't see payments", "locked out of settings"],
+    "match_phrases": [
+      "permission",
+      "you don't have permission",
+      "staff account",
+      "two-step authentication"
+    ],
+    "tags": [
+      "staff",
+      "permissions",
+      "2fa"
+    ],
+    "synonyms": [
+      "va can't see payments",
+      "locked out of settings"
+    ],
     "explanation": "Staff accounts only see what the store owner granted. Payments, billing, and domains are often hidden on purpose.",
     "steps": [
       "The store owner goes to Settings → Users and permissions.",
@@ -140,15 +263,31 @@
       "Owners who are locked out must use Shopify's account recovery — staff cannot reset the owner."
     ],
     "target_ui_hint": "Settings > Users and permissions",
-    "arrow": { "x": 0.2, "y": 0.78 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.78
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-email-deliverability-009",
     "category": "general",
-    "match_phrases": ["notification email", "spf", "dkim", "sender email", "emails going to spam"],
-    "tags": ["email", "spf", "notifications"],
-    "synonyms": ["order emails not arriving", "custom email domain"],
+    "match_phrases": [
+      "notification email",
+      "spf",
+      "dkim",
+      "sender email",
+      "emails going to spam"
+    ],
+    "tags": [
+      "email",
+      "spf",
+      "notifications"
+    ],
+    "synonyms": [
+      "order emails not arriving",
+      "custom email domain"
+    ],
     "explanation": "Shopify notification emails fail or land in spam when the sender domain is not authenticated, or the notification was disabled.",
     "steps": [
       "Settings → Notifications and confirm Order confirmation is enabled.",
@@ -158,15 +297,30 @@
       "Branded domains need a CNAME Shopify gives you; add it at your DNS host and click Verify."
     ],
     "target_ui_hint": "Settings > Notifications",
-    "arrow": { "x": 0.2, "y": 0.7 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.7
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-markets-010",
     "category": "general",
-    "match_phrases": ["markets", "market is unpublished", "pricing in this market", "catalogs"],
-    "tags": ["markets", "catalog", "international"],
-    "synonyms": ["country not seeing store", "wrong prices abroad"],
+    "match_phrases": [
+      "markets",
+      "market is unpublished",
+      "pricing in this market",
+      "catalogs"
+    ],
+    "tags": [
+      "markets",
+      "catalog",
+      "international"
+    ],
+    "synonyms": [
+      "country not seeing store",
+      "wrong prices abroad"
+    ],
     "explanation": "A Market controls whether a country can see the store, which catalog/prices they get, and which domain they land on.",
     "steps": [
       "Settings → Markets and open the country that is failing.",
@@ -176,15 +330,31 @@
       "Use the market preview (globe icon) rather than a VPN when testing."
     ],
     "target_ui_hint": "Settings > Markets",
-    "arrow": { "x": 0.2, "y": 0.54 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.54
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-pixel-011",
     "category": "general",
-    "match_phrases": ["customer events", "pixel", "meta pixel", "google analytics", "checkout pixel"],
-    "tags": ["pixel", "tracking", "analytics"],
-    "synonyms": ["facebook pixel not firing", "ga4 missing purchases"],
+    "match_phrases": [
+      "customer events",
+      "pixel",
+      "meta pixel",
+      "google analytics",
+      "checkout pixel"
+    ],
+    "tags": [
+      "pixel",
+      "tracking",
+      "analytics"
+    ],
+    "synonyms": [
+      "facebook pixel not firing",
+      "ga4 missing purchases"
+    ],
     "explanation": "Checkout is sandboxed. Old theme pixels will not see purchases — they must be installed as customer events pixels.",
     "steps": [
       "Settings → Customer events.",
@@ -194,15 +364,28 @@
       "Remove duplicate pixels from the theme to avoid double-counted purchases."
     ],
     "target_ui_hint": "Settings > Customer events",
-    "arrow": { "x": 0.2, "y": 0.6 },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.6
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-gift-card-012",
     "category": "general",
-    "match_phrases": ["gift card", "gift cards are disabled", "issue gift card"],
-    "tags": ["giftcard", "product"],
-    "synonyms": ["gift cards not selling", "balance not applying"],
+    "match_phrases": [
+      "gift card",
+      "gift cards are disabled",
+      "issue gift card"
+    ],
+    "tags": [
+      "giftcard",
+      "product"
+    ],
+    "synonyms": [
+      "gift cards not selling",
+      "balance not applying"
+    ],
     "explanation": "Gift cards are a special product type. They must be issued, not just created as a normal product with a price.",
     "steps": [
       "Products → Gift cards (or add a new product of type Gift card).",
@@ -212,14 +395,16 @@
       "Check the gift card's remaining balance if a customer says it did not work."
     ],
     "target_ui_hint": "Products > Gift cards",
-    "arrow": { "x": 0.22, "y": 0.26 },
+    "arrow": {
+      "x": 0.22,
+      "y": 0.26
+    },
     "source_category_db": "general"
   },
   {
     "id": "general-social-links-013",
     "category": "general",
     "match_phrases": [
-      "pinterest",
       "pinterest link",
       "pinterest profile",
       "google profile",
@@ -232,7 +417,13 @@
       "youtube link",
       "theme settings social"
     ],
-    "tags": ["social", "pinterest", "google", "theme", "footer"],
+    "tags": [
+      "social",
+      "pinterest",
+      "google",
+      "theme",
+      "footer"
+    ],
     "synonyms": [
       "add pinterest to my store",
       "add google profile to shopify",
@@ -250,8 +441,16 @@
       "Save, then open the store in a new tab and tap the icon to confirm it opens the right profile."
     ],
     "target_ui_hint": "Online Store > Themes > Customize > Social media",
-    "arrow": { "x": 0.18, "y": 0.86 },
-    "docs": [{ "label": "Theme settings", "url": "https://help.shopify.com/en/manual/online-store/themes/customizing-themes/theme-settings" }],
+    "arrow": {
+      "x": 0.18,
+      "y": 0.86
+    },
+    "docs": [
+      {
+        "label": "Theme settings",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/customizing-themes/theme-settings"
+      }
+    ],
     "source_category_db": "general"
   },
   {
@@ -267,7 +466,12 @@
       "google shopping",
       "merchant center not listed"
     ],
-    "tags": ["google", "youtube", "merchant", "sales-channel"],
+    "tags": [
+      "google",
+      "youtube",
+      "merchant",
+      "sales-channel"
+    ],
     "synonyms": [
       "link google to shopify",
       "google channel setup",
@@ -284,14 +488,23 @@
       "Staff need Apps and channels + Manage settings permission. If Connect is greyed out, have the store owner do this step."
     ],
     "target_ui_hint": "Sales channels > Google & YouTube",
-    "arrow": { "x": 0.18, "y": 0.36 },
-    "docs": [{ "label": "Set up Google & YouTube", "url": "https://help.shopify.com/en/manual/online-sales-channels/marketplaces/google/getting-setup/connect" }],
+    "arrow": {
+      "x": 0.18,
+      "y": 0.36
+    },
+    "docs": [
+      {
+        "label": "Set up Google & YouTube",
+        "url": "https://help.shopify.com/en/manual/online-sales-channels/marketplaces/google/getting-setup/connect"
+      }
+    ],
     "source_category_db": "general"
   },
   {
     "id": "general-pinterest-channel-015",
     "category": "general",
     "match_phrases": [
+      "pinterest",
       "pinterest sales channel",
       "connect pinterest",
       "reconnect pinterest",
@@ -300,7 +513,11 @@
       "pinterest catalog",
       "pinterest blank page"
     ],
-    "tags": ["pinterest", "sales-channel", "catalog"],
+    "tags": [
+      "pinterest",
+      "sales-channel",
+      "catalog"
+    ],
     "synonyms": [
       "pinterest not connecting",
       "pinterest loading bar",
@@ -317,8 +534,16 @@
       "To switch Business accounts, uninstall Pinterest in Settings → Apps and sales channels, then install and connect the new account. Only one Pinterest Business profile can be linked at a time."
     ],
     "target_ui_hint": "Settings > Apps and sales channels > Pinterest",
-    "arrow": { "x": 0.2, "y": 0.4 },
-    "docs": [{ "label": "Pinterest troubleshooting", "url": "https://help.pinterest.com/en/business/article/shopify-app-troubleshooting" }],
+    "arrow": {
+      "x": 0.2,
+      "y": 0.4
+    },
+    "docs": [
+      {
+        "label": "Pinterest troubleshooting",
+        "url": "https://help.pinterest.com/en/business/article/shopify-app-troubleshooting"
+      }
+    ],
     "source_category_db": "general"
   },
   {
@@ -333,7 +558,11 @@
       "sell other brands",
       "import products from supplier"
     ],
-    "tags": ["collective", "sales-channel", "wholesale"],
+    "tags": [
+      "collective",
+      "sales-channel",
+      "wholesale"
+    ],
     "synonyms": [
       "shop collective help",
       "join shopify collective",
@@ -350,10 +579,19 @@
       "If it says not eligible: Sales channels → Collective: Supplier → Settings and fix the red checklist. Both stores must be in a supported country and the same currency."
     ],
     "target_ui_hint": "Sales channels > Collective",
-    "arrow": { "x": 0.16, "y": 0.38 },
+    "arrow": {
+      "x": 0.16,
+      "y": 0.38
+    },
     "docs": [
-      { "label": "Collective for retailers", "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/retailers" },
-      { "label": "Install Collective (supplier)", "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/suppliers/installation" }
+      {
+        "label": "Collective for retailers",
+        "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/retailers"
+      },
+      {
+        "label": "Install Collective (supplier)",
+        "url": "https://help.shopify.com/en/manual/online-sales-channels/shopify-collective/suppliers/installation"
+      }
     ],
     "source_category_db": "general"
   },
@@ -369,7 +607,11 @@
       "actions edit code",
       "three dots edit code"
     ],
-    "tags": ["theme", "editor", "code"],
+    "tags": [
+      "theme",
+      "editor",
+      "code"
+    ],
     "synonyms": [
       "where is edit code",
       "how do I edit my theme",
@@ -386,8 +628,16 @@
       "Staff who cannot see Edit code need Themes permission from the store owner (Settings → Users and permissions)."
     ],
     "target_ui_hint": "Online Store > Themes > Customize or ⋯ Edit code",
-    "arrow": { "x": 0.82, "y": 0.28 },
-    "docs": [{ "label": "Edit theme code", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" }],
+    "arrow": {
+      "x": 0.82,
+      "y": 0.28
+    },
+    "docs": [
+      {
+        "label": "Edit theme code",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code"
+      }
+    ],
     "source_category_db": "general"
   },
   {
@@ -401,7 +651,11 @@
       "add liquid code",
       "paste liquid"
     ],
-    "tags": ["liquid", "theme", "section"],
+    "tags": [
+      "liquid",
+      "theme",
+      "section"
+    ],
     "synonyms": [
       "add custom liquid code",
       "liquid in theme editor",
@@ -417,8 +671,16 @@
       "If Custom Liquid is not in the list, your theme is old — use ⋯ → Edit code only as a last step, on a duplicated theme."
     ],
     "target_ui_hint": "Online Store > Themes > Customize > Custom Liquid",
-    "arrow": { "x": 0.18, "y": 0.42 },
-    "docs": [{ "label": "Add custom HTML or Liquid", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend" }],
+    "arrow": {
+      "x": 0.18,
+      "y": 0.42
+    },
+    "docs": [
+      {
+        "label": "Add custom HTML or Liquid",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend"
+      }
+    ],
     "source_category_db": "general"
   },
   {
@@ -433,7 +695,11 @@
       "content_for_header",
       "add to header"
     ],
-    "tags": ["head", "theme.liquid", "script"],
+    "tags": [
+      "head",
+      "theme.liquid",
+      "script"
+    ],
     "synonyms": [
       "add code to head tag",
       "put script in head",
@@ -450,8 +716,16 @@
       "Save, Preview the unpublished theme, then Publish only if the store still loads."
     ],
     "target_ui_hint": "Online Store > Themes > ⋯ > Edit code > layout/theme.liquid",
-    "arrow": { "x": 0.22, "y": 0.22 },
-    "docs": [{ "label": "Edit theme.liquid", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" }],
+    "arrow": {
+      "x": 0.22,
+      "y": 0.22
+    },
+    "docs": [
+      {
+        "label": "Edit theme.liquid",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code"
+      }
+    ],
     "source_category_db": "general"
   }
 ]

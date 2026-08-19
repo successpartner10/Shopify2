@@ -6,14 +6,24 @@
     "severity": "warning",
     "error_kind": "banner",
     "match_phrases": [
+      "payouts on hold",
       "your payouts are temporarily on hold",
       "payouts are paused",
       "payouts are on hold",
       "next payout on hold",
       "standard review"
     ],
-    "tags": ["payout", "hold", "banner", "risk"],
-    "synonyms": ["money stuck", "shopify holding payouts", "deposit frozen"],
+    "tags": [
+      "payout",
+      "hold",
+      "banner",
+      "risk"
+    ],
+    "synonyms": [
+      "money stuck",
+      "shopify holding payouts",
+      "deposit frozen"
+    ],
     "cause": "Payments/Risk paused transfers while it verifies identity, bank details, or recent disputes. Checkout can stay live.",
     "explanation": "Forums consistently show this yellow/red admin banner with little detail. Official docs say: read the homepage banner and have the store owner check email. Community staff cannot see the hold reason.",
     "steps": [
@@ -24,27 +34,79 @@
       "If it only says wait / standard review, reply on the existing ticket — do not open a new chat."
     ],
     "step_arrows": [
-      { "x": 0.62, "y": 0.16, "label": "Hold banner" },
-      { "x": 0.18, "y": 0.08, "label": "Owner account" },
-      { "x": 0.62, "y": 0.16, "label": "Banner CTA" },
-      { "x": 0.38, "y": 0.42, "label": "Complete account setup" },
-      { "x": 0.62, "y": 0.16, "label": "Hold banner" }
+      {
+        "x": 0.62,
+        "y": 0.16,
+        "label": "Hold banner"
+      },
+      {
+        "x": 0.18,
+        "y": 0.08,
+        "label": "Owner account"
+      },
+      {
+        "x": 0.62,
+        "y": 0.16,
+        "label": "Banner CTA"
+      },
+      {
+        "x": 0.38,
+        "y": 0.42,
+        "label": "Complete account setup"
+      },
+      {
+        "x": 0.62,
+        "y": 0.16,
+        "label": "Hold banner"
+      }
     ],
-    "expected": ["complete account setup", "view payouts", "identity", "documents"],
-    "done_if": ["payouts are no longer on hold", "next payout", "paid"],
-    "still_if": ["on hold", "paused", "temporarily on hold"],
+    "expected": [
+      "complete account setup",
+      "view payouts",
+      "identity",
+      "documents"
+    ],
+    "done_if": [
+      "payouts are no longer on hold",
+      "next payout",
+      "paid"
+    ],
+    "still_if": [
+      "on hold",
+      "paused",
+      "temporarily on hold"
+    ],
     "alternatives": [
-      { "id": "payments-identity-verification-006", "when": "Banner mentions verify / documents / identity" },
-      { "id": "payments-bank-mismatch-004", "when": "Bank account needs attention" },
-      { "id": "payments-chargeback-005", "when": "Negative balance or dispute" }
+      {
+        "id": "payments-identity-verification-006",
+        "when": "Banner mentions verify / documents / identity"
+      },
+      {
+        "id": "payments-bank-mismatch-004",
+        "when": "Bank account needs attention"
+      },
+      {
+        "id": "payments-chargeback-005",
+        "when": "Negative balance or dispute"
+      }
     ],
     "target_ui_hint": "Home / Payments hold banner",
-    "arrow": { "x": 0.62, "y": 0.16, "label": "Hold banner" },
+    "arrow": {
+      "x": 0.62,
+      "y": 0.16,
+      "label": "Hold banner"
+    },
     "zone": "top",
     "tone": "warning",
     "docs": [
-      { "label": "Account holds", "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts/account-holds" },
-      { "label": "Payments troubleshooting", "url": "https://help.shopify.com/en/manual/payments/troubleshooting" }
+      {
+        "label": "Account holds",
+        "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts/account-holds"
+      },
+      {
+        "label": "Payments troubleshooting",
+        "url": "https://help.shopify.com/en/manual/payments/troubleshooting"
+      }
     ],
     "sources_note": "Forums: merchants notice £0 next payout and a silent hold. Sidekick cannot lift Risk holds. Generic AIs invent “Settings → Bank” paths.",
     "flow_id": "flow-payout-hold",
@@ -62,8 +124,15 @@
       "unable to accept payments",
       "currently unable to accept"
     ],
-    "tags": ["checkout", "provider", "critical"],
-    "synonyms": ["checkout dead", "can't take cards"],
+    "tags": [
+      "checkout",
+      "provider",
+      "critical"
+    ],
+    "synonyms": [
+      "checkout dead",
+      "can't take cards"
+    ],
     "cause": "No active primary card provider. PayPal or Shop Pay alone does not satisfy this banner.",
     "explanation": "Official help uses this exact sentence. It is a setup gap, not a customer-card decline.",
     "steps": [
@@ -74,17 +143,46 @@
       "Incognito checkout: a real card method must appear under Pay."
     ],
     "step_arrows": [
-      { "x": 0.55, "y": 0.16, "label": "Payments banner" },
-      { "x": 0.38, "y": 0.42, "label": "Complete setup" },
-      { "x": 0.55, "y": 0.62, "label": "Third-party" },
-      { "x": 0.7, "y": 0.42, "label": "Active status" },
-      { "x": 0.5, "y": 0.5, "label": "Checkout" }
+      {
+        "x": 0.55,
+        "y": 0.16,
+        "label": "Payments banner"
+      },
+      {
+        "x": 0.38,
+        "y": 0.42,
+        "label": "Complete setup"
+      },
+      {
+        "x": 0.55,
+        "y": 0.62,
+        "label": "Third-party"
+      },
+      {
+        "x": 0.7,
+        "y": 0.42,
+        "label": "Active status"
+      },
+      {
+        "x": 0.5,
+        "y": 0.5,
+        "label": "Checkout"
+      }
     ],
     "target_ui_hint": "Settings > Payments > setup banner",
-    "arrow": { "x": 0.55, "y": 0.16, "label": "Unable to accept" },
+    "arrow": {
+      "x": 0.55,
+      "y": 0.16,
+      "label": "Unable to accept"
+    },
     "zone": "top",
     "tone": "critical",
-    "docs": [{ "label": "Troubleshoot payment setup", "url": "https://help.shopify.com/en/manual/payments/troubleshooting" }],
+    "docs": [
+      {
+        "label": "Troubleshoot payment setup",
+        "url": "https://help.shopify.com/en/manual/payments/troubleshooting"
+      }
+    ],
     "sources_note": "Docs are precise here. ChatGPT often suggests PayPal as the fix — that will not clear this banner.",
     "flow_id": "flow-no-provider",
     "source_category_db": "errors"
@@ -103,8 +201,15 @@
       "test mode",
       "bogus gateway"
     ],
-    "tags": ["test", "live", "banner"],
-    "synonyms": ["sandbox still on", "real cards declined"],
+    "tags": [
+      "test",
+      "live",
+      "banner"
+    ],
+    "synonyms": [
+      "sandbox still on",
+      "real cards declined"
+    ],
     "cause": "Provider is accepting only test cards. Live customers are declined; some orders stay stamped “created in test mode”.",
     "explanation": "Community threads show the banner toggle is not enough — you must Settings → Payments → Manage → uncheck Test mode → Save. Abandoned-cart links created in test mode can keep failing.",
     "steps": [
@@ -115,17 +220,46 @@
       "Send a fresh checkout link. Do not reuse a test-mode abandoned checkout."
     ],
     "step_arrows": [
-      { "x": 0.55, "y": 0.14, "label": "Test banner" },
-      { "x": 0.78, "y": 0.42, "label": "Manage" },
-      { "x": 0.72, "y": 0.72, "label": "Test mode checkbox" },
-      { "x": 0.7, "y": 0.5, "label": "Live keys" },
-      { "x": 0.5, "y": 0.5, "label": "New checkout" }
+      {
+        "x": 0.55,
+        "y": 0.14,
+        "label": "Test banner"
+      },
+      {
+        "x": 0.78,
+        "y": 0.42,
+        "label": "Manage"
+      },
+      {
+        "x": 0.72,
+        "y": 0.72,
+        "label": "Test mode checkbox"
+      },
+      {
+        "x": 0.7,
+        "y": 0.5,
+        "label": "Live keys"
+      },
+      {
+        "x": 0.5,
+        "y": 0.5,
+        "label": "New checkout"
+      }
     ],
     "target_ui_hint": "Settings > Payments > Manage > Test mode",
-    "arrow": { "x": 0.72, "y": 0.72, "label": "Test mode" },
+    "arrow": {
+      "x": 0.72,
+      "y": 0.72,
+      "label": "Test mode"
+    },
     "zone": "top",
     "tone": "warning",
-    "docs": [{ "label": "Payments test mode", "url": "https://help.shopify.com/en/manual/checkout-settings/test-orders/payments-test-mode" }],
+    "docs": [
+      {
+        "label": "Payments test mode",
+        "url": "https://help.shopify.com/en/manual/checkout-settings/test-orders/payments-test-mode"
+      }
+    ],
     "sources_note": "Forum accepted solution: Manage → Test mode, then a brand-new checkout. Sidekick sometimes toggles the wrong provider.",
     "flow_id": "flow-test-mode",
     "source_category_db": "errors"
@@ -143,8 +277,15 @@
       "do not honor",
       "insufficient funds"
     ],
-    "tags": ["toast", "decline", "checkout"],
-    "synonyms": ["pay now failed", "red toast payment"],
+    "tags": [
+      "toast",
+      "decline",
+      "checkout"
+    ],
+    "synonyms": [
+      "pay now failed",
+      "red toast payment"
+    ],
     "cause": "The gateway returned a decline. One toast is a customer-bank issue; a store-wide toast storm is test mode, keys, or fraud rules.",
     "explanation": "Toasts vanish quickly. Capture them. Timeline on the order/abandoned checkout has the real code (generic_error, test_mode_live_card, config_error).",
     "steps": [
@@ -155,10 +296,19 @@
       "One customer, do_not_honor / insufficient_funds → ask them to retry or use Shop Pay."
     ],
     "target_ui_hint": "Checkout / order toast",
-    "arrow": { "x": 0.5, "y": 0.88, "label": "Decline toast" },
+    "arrow": {
+      "x": 0.5,
+      "y": 0.88,
+      "label": "Decline toast"
+    },
     "zone": "bottom",
     "tone": "critical",
-    "docs": [{ "label": "Customer checkout errors", "url": "https://help.shopify.com/en/manual/payments/troubleshooting" }],
+    "docs": [
+      {
+        "label": "Customer checkout errors",
+        "url": "https://help.shopify.com/en/manual/payments/troubleshooting"
+      }
+    ],
     "sources_note": "Gemini is decent if you screenshot the toast. ChatGPT without the code guesses fraud. Storescope keeps the toast text even after it fades.",
     "source_category_db": "errors"
   },
@@ -176,8 +326,14 @@
       "bank account couldn't be verified",
       "needs attention"
     ],
-    "tags": ["validation", "bank", "inline"],
-    "synonyms": ["red text under bank fields"],
+    "tags": [
+      "validation",
+      "bank",
+      "inline"
+    ],
+    "synonyms": [
+      "red text under bank fields"
+    ],
     "cause": "Inline Polaris validation — the form will not save. Usually a checksum fail or legal-name mismatch, not a hold yet.",
     "explanation": "Validation sits under the field in red, not in the top banner. OCR often misses it unless we scan the form body.",
     "steps": [
@@ -188,10 +344,19 @@
       "Save. If it saves but later says Needs attention, treat it as a bank-mismatch hold."
     ],
     "target_ui_hint": "Payments > Bank account fields",
-    "arrow": { "x": 0.48, "y": 0.52, "label": "Field error" },
+    "arrow": {
+      "x": 0.48,
+      "y": 0.52,
+      "label": "Field error"
+    },
     "zone": "form",
     "tone": "critical",
-    "docs": [{ "label": "Payout bank account", "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts" }],
+    "docs": [
+      {
+        "label": "Payout bank account",
+        "url": "https://help.shopify.com/en/manual/payments/shopify-payments/payouts"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -201,14 +366,22 @@
     "severity": "critical",
     "error_kind": "banner",
     "match_phrases": [
+      "no shipping rates",
       "there are no shipping rates available",
       "no shipping methods available",
       "shipping isn't available",
       "doesn't ship to this address",
       "no shipping rates available for this address"
     ],
-    "tags": ["rates", "checkout", "zones"],
-    "synonyms": ["checkout stuck on shipping", "no rates"],
+    "tags": [
+      "rates",
+      "checkout",
+      "zones"
+    ],
+    "synonyms": [
+      "checkout stuck on shipping",
+      "no rates"
+    ],
     "cause": "Checkout asked every matching profile and got zero rates — missing zone, weight, carrier disconnect, or an app that returned nothing.",
     "explanation": "Official troubleshooting starts with a draft order using the customer city/postal. Carrier apps (EasyShip, Zapiet, Addition) fail silently when the product has no weight or the location is not an origin.",
     "steps": [
@@ -219,13 +392,26 @@
       "Confirm every physical product has a weight and the inventory location is a shipping origin."
     ],
     "target_ui_hint": "Settings > Shipping and delivery > Rates",
-    "arrow": { "x": 0.72, "y": 0.36, "label": "Add rate" },
+    "arrow": {
+      "x": 0.72,
+      "y": 0.36,
+      "label": "Add rate"
+    },
     "zone": "mid",
     "tone": "critical",
-    "docs": [{ "label": "Troubleshoot shipping rates", "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-rates/troubleshooting" }],
+    "docs": [
+      {
+        "label": "Troubleshoot shipping rates",
+        "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-rates/troubleshooting"
+      }
+    ],
     "sources_note": "Forums push carrier apps; docs push zones + fallback rate. Sidekick cannot see the customer’s postal code unless you paste it.",
     "flow_id": "flow-no-shipping",
-    "conflict_signals": ["carrier-calculated", "account disconnected", "shipping app"],
+    "conflict_signals": [
+      "carrier-calculated",
+      "account disconnected",
+      "shipping app"
+    ],
     "source_category_db": "errors"
   },
   {
@@ -241,8 +427,15 @@
       "reconnect carrier",
       "carrier account"
     ],
-    "tags": ["carrier", "api", "disconnected"],
-    "synonyms": ["live rates missing", "usps disconnected"],
+    "tags": [
+      "carrier",
+      "api",
+      "disconnected"
+    ],
+    "synonyms": [
+      "live rates missing",
+      "usps disconnected"
+    ],
     "cause": "The carrier account token expired or the plan does not include carrier-calculated rates.",
     "explanation": "CCS is plan-gated (Advanced/Plus, or an add-on). A disconnected badge next to Canada Post / UPS / USPS is the tell.",
     "steps": [
@@ -253,10 +446,19 @@
       "Retest with a new postal code so Shopify does not reuse a cached empty quote."
     ],
     "target_ui_hint": "Settings > Shipping > Carriers",
-    "arrow": { "x": 0.7, "y": 0.7, "label": "Carrier disconnected" },
+    "arrow": {
+      "x": 0.7,
+      "y": 0.7,
+      "label": "Carrier disconnected"
+    },
     "zone": "mid",
     "tone": "warning",
-    "docs": [{ "label": "Carrier-calculated rates", "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-rates/carrier-calculated-rates" }],
+    "docs": [
+      {
+        "label": "Carrier-calculated rates",
+        "url": "https://help.shopify.com/en/manual/fulfillment/setup/shipping-rates/carrier-calculated-rates"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -266,6 +468,7 @@
     "severity": "critical",
     "error_kind": "banner",
     "match_phrases": [
+      "theme has errors",
       "theme has",
       "theme has 3 errors",
       "liquid syntax error",
@@ -273,8 +476,15 @@
       "unexpected character",
       "online store editor cannot preview"
     ],
-    "tags": ["theme", "liquid", "banner"],
-    "synonyms": ["storefront broken", "header.liquid error"],
+    "tags": [
+      "theme",
+      "liquid",
+      "banner"
+    ],
+    "synonyms": [
+      "storefront broken",
+      "header.liquid error"
+    ],
     "cause": "Liquid failed to compile — unclosed tag, bad character, or an app embed writing into a section.",
     "explanation": "Duplicate the theme first. The file path in the red line (sections/header.liquid) is the jump target. App embeds frequently masquerade as theme bugs.",
     "steps": [
@@ -285,13 +495,25 @@
       "If the error appeared after an app install, disable that app embed and re-preview."
     ],
     "target_ui_hint": "Online Store > Themes > Errors",
-    "arrow": { "x": 0.58, "y": 0.18, "label": "Theme errors banner" },
+    "arrow": {
+      "x": 0.58,
+      "y": 0.18,
+      "label": "Theme errors banner"
+    },
     "zone": "top",
     "tone": "critical",
-    "docs": [{ "label": "Edit theme code", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code" }],
+    "docs": [
+      {
+        "label": "Edit theme code",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/edit-theme-code"
+      }
+    ],
     "sources_note": "Forums: always duplicate first. Sidekick can draft Liquid but merchants report it breaking sections. Generic AIs invent filters.",
     "flow_id": "flow-theme-errors",
-    "conflict_signals": ["app embed", "theme app extension"],
+    "conflict_signals": [
+      "app embed",
+      "theme app extension"
+    ],
     "source_category_db": "errors"
   },
   {
@@ -307,8 +529,15 @@
       "don't have access",
       "insufficient permissions"
     ],
-    "tags": ["toast", "staff", "permissions"],
-    "synonyms": ["staff blocked", "can't click save"],
+    "tags": [
+      "toast",
+      "staff",
+      "permissions"
+    ],
+    "synonyms": [
+      "staff blocked",
+      "can't click save"
+    ],
     "cause": "The signed-in staff role lacks this resource. Not a store outage.",
     "explanation": "Payments, billing, and legal banners are often owner-only. Retry as owner or grant Finance / Settings.",
     "steps": [
@@ -319,10 +548,19 @@
       "Re-scan. The toast should be gone and the banner CTA clickable."
     ],
     "target_ui_hint": "Admin toast + Users and permissions",
-    "arrow": { "x": 0.5, "y": 0.9, "label": "Permission toast" },
+    "arrow": {
+      "x": 0.5,
+      "y": 0.9,
+      "label": "Permission toast"
+    },
     "zone": "bottom",
     "tone": "warning",
-    "docs": [{ "label": "Staff permissions", "url": "https://help.shopify.com/en/manual/your-account/staff-accounts/staff-permissions" }],
+    "docs": [
+      {
+        "label": "Staff permissions",
+        "url": "https://help.shopify.com/en/manual/your-account/staff-accounts/staff-permissions"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -338,8 +576,15 @@
       "can't fulfill",
       "inventory not available"
     ],
-    "tags": ["inventory", "fulfill", "toast"],
-    "synonyms": ["oversold", "location has zero"],
+    "tags": [
+      "inventory",
+      "fulfill",
+      "toast"
+    ],
+    "synonyms": [
+      "oversold",
+      "location has zero"
+    ],
     "cause": "The location you are fulfilling from has no available units (on hand minus committed).",
     "explanation": "Available is not On hand. Transfers, drafts, and other locations hide stock.",
     "steps": [
@@ -350,10 +595,19 @@
       "Retry fulfill. The red toast should clear."
     ],
     "target_ui_hint": "Products > Inventory / Order fulfill",
-    "arrow": { "x": 0.78, "y": 0.28, "label": "Fulfill" },
+    "arrow": {
+      "x": 0.78,
+      "y": 0.28,
+      "label": "Fulfill"
+    },
     "zone": "bottom",
     "tone": "critical",
-    "docs": [{ "label": "Inventory", "url": "https://help.shopify.com/en/manual/products/inventory" }],
+    "docs": [
+      {
+        "label": "Inventory",
+        "url": "https://help.shopify.com/en/manual/products/inventory"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -369,8 +623,14 @@
       "store has been frozen",
       "past due"
     ],
-    "tags": ["billing", "frozen", "banner"],
-    "synonyms": ["shopify invoice failed"],
+    "tags": [
+      "billing",
+      "frozen",
+      "banner"
+    ],
+    "synonyms": [
+      "shopify invoice failed"
+    ],
     "cause": "Shopify could not charge the card on file for the plan or an app. Different from customer payouts.",
     "explanation": "A frozen store is almost always Settings → Billing, not Payments.",
     "steps": [
@@ -381,10 +641,19 @@
       "Place a test order after it is current."
     ],
     "target_ui_hint": "Settings > Billing",
-    "arrow": { "x": 0.2, "y": 0.72, "label": "Billing" },
+    "arrow": {
+      "x": 0.2,
+      "y": 0.72,
+      "label": "Billing"
+    },
     "zone": "top",
     "tone": "critical",
-    "docs": [{ "label": "Manage billing", "url": "https://help.shopify.com/en/manual/your-account/manage-billing" }],
+    "docs": [
+      {
+        "label": "Manage billing",
+        "url": "https://help.shopify.com/en/manual/your-account/manage-billing"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -394,14 +663,21 @@
     "severity": "warning",
     "error_kind": "banner",
     "match_phrases": [
+      "domain not connected",
       "domain not verified",
       "domain is not connected",
       "verify connection",
       "pointing to shopify",
       "ssl pending"
     ],
-    "tags": ["domain", "dns", "ssl"],
-    "synonyms": ["www not connecting"],
+    "tags": [
+      "domain",
+      "dns",
+      "ssl"
+    ],
+    "synonyms": [
+      "www not connecting"
+    ],
     "cause": "DNS does not match Shopify’s expected A/CNAME, so SSL will not issue.",
     "explanation": "Extra AAAA or old CNAMEs are the usual stall.",
     "steps": [
@@ -412,10 +688,19 @@
       "Set it as primary once Connected so SSL can finish."
     ],
     "target_ui_hint": "Online Store > Domains",
-    "arrow": { "x": 0.55, "y": 0.3, "label": "Verify connection" },
+    "arrow": {
+      "x": 0.55,
+      "y": 0.3,
+      "label": "Verify connection"
+    },
     "zone": "mid",
     "tone": "warning",
-    "docs": [{ "label": "Connect a domain", "url": "https://help.shopify.com/en/manual/domains/add-a-domain" }],
+    "docs": [
+      {
+        "label": "Connect a domain",
+        "url": "https://help.shopify.com/en/manual/domains/add-a-domain"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -433,8 +718,15 @@
       "update this app",
       "block removed after a theme"
     ],
-    "tags": ["apps", "embeds", "conflict"],
-    "synonyms": ["app broke checkout", "theme switch broke app"],
+    "tags": [
+      "apps",
+      "embeds",
+      "conflict"
+    ],
+    "synonyms": [
+      "app broke checkout",
+      "theme switch broke app"
+    ],
     "cause": "A third-party embed, checkout UI extension, or outdated app is overriding native UI.",
     "explanation": "Shopify rarely names the app. Cleanest test: preview a clean theme, then disable embeds one by one.",
     "steps": [
@@ -445,10 +737,19 @@
       "If the preview is clean, the embed is the culprit — leave it off or update the app."
     ],
     "target_ui_hint": "Theme editor > App embeds",
-    "arrow": { "x": 0.86, "y": 0.22, "label": "App embeds" },
+    "arrow": {
+      "x": 0.86,
+      "y": 0.22,
+      "label": "App embeds"
+    },
     "zone": "mid",
     "tone": "warning",
-    "docs": [{ "label": "App embeds", "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/apps" }],
+    "docs": [
+      {
+        "label": "App embeds",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/theme-structure/extend/apps"
+      }
+    ],
     "sources_note": "Sidekick cannot query whether an embed is actually live. Forums: disable newest app first.",
     "flow_id": "flow-app-conflict",
     "source_category_db": "errors"
@@ -466,8 +767,15 @@
       "unexpected error",
       "admin returning errors"
     ],
-    "tags": ["admin", "500", "cookies"],
-    "synonyms": ["admin down", "all pages error"],
+    "tags": [
+      "admin",
+      "500",
+      "cookies"
+    ],
+    "synonyms": [
+      "admin down",
+      "all pages error"
+    ],
     "cause": "Often oversized cookies/headers or a broken app iframe — sometimes a Shopify status incident.",
     "explanation": "Dev forum staff: clear cookies first. Then status.shopify.com. Then try incognito as owner.",
     "steps": [
@@ -478,10 +786,19 @@
       "If only one resource errors, duplicate the theme or uninstall that app."
     ],
     "target_ui_hint": "Admin chrome / status",
-    "arrow": { "x": 0.5, "y": 0.12, "label": "Error banner" },
+    "arrow": {
+      "x": 0.5,
+      "y": 0.12,
+      "label": "Error banner"
+    },
     "zone": "top",
     "tone": "critical",
-    "docs": [{ "label": "Shopify status", "url": "https://status.shopify.com/" }],
+    "docs": [
+      {
+        "label": "Shopify status",
+        "url": "https://status.shopify.com/"
+      }
+    ],
     "source_category_db": "errors"
   },
   {
@@ -497,8 +814,14 @@
       "network error",
       "try again"
     ],
-    "tags": ["toast", "save", "network"],
-    "synonyms": ["save button does nothing"],
+    "tags": [
+      "toast",
+      "save",
+      "network"
+    ],
+    "synonyms": [
+      "save button does nothing"
+    ],
     "cause": "Validation, permission, or a network blip. The red field text (if any) wins over the toast.",
     "explanation": "If a field is red, it is validation. If the whole page toasts, check permission and network.",
     "steps": [
@@ -509,7 +832,11 @@
       "Still failing: copy the toast into Ask and re-scan."
     ],
     "target_ui_hint": "Save toast",
-    "arrow": { "x": 0.5, "y": 0.9, "label": "Save toast" },
+    "arrow": {
+      "x": 0.5,
+      "y": 0.9,
+      "label": "Save toast"
+    },
     "zone": "bottom",
     "tone": "warning",
     "source_category_db": "errors"
@@ -526,8 +853,14 @@
       "online store is password protected",
       "password protection is on"
     ],
-    "tags": ["password", "launch"],
-    "synonyms": ["store looks closed", "coming soon page"],
+    "tags": [
+      "password",
+      "launch"
+    ],
+    "synonyms": [
+      "store looks closed",
+      "coming soon page"
+    ],
     "cause": "Preferences still have the storefront password on. Checkout and Shop Pay checks can fail for outsiders.",
     "explanation": "A paid plan is required to remove the password. Friends hitting the password page is not a payments bug.",
     "steps": [
@@ -538,10 +871,19 @@
       "Retest Shop Pay / wallets; they often break while the password is on."
     ],
     "target_ui_hint": "Online Store > Preferences > Password",
-    "arrow": { "x": 0.6, "y": 0.4, "label": "Password toggle" },
+    "arrow": {
+      "x": 0.6,
+      "y": 0.4,
+      "label": "Password toggle"
+    },
     "zone": "mid",
     "tone": "info",
-    "docs": [{ "label": "Password protection", "url": "https://help.shopify.com/en/manual/online-store/themes/password-page" }],
+    "docs": [
+      {
+        "label": "Password protection",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/password-page"
+      }
+    ],
     "source_category_db": "errors"
   }
 ]

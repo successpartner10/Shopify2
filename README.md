@@ -2,16 +2,16 @@
 
 Privacy-first **Shopify admin live scanner**. Share the admin tab (or drop a screenshot). Storescope reads the visible banner/toast, matches a local playbook, and shows the next click — with arrows — in your browser.
 
-- **GitHub Pages:** https://successpartner10.github.io/Shopify2/?v=2.7.0
-- **Cloudflare Worker:** https://shopify2.panchgani2025.workers.dev/?v=2.7.0
-- **Cloudflare Pages:** https://storescope-cwl.pages.dev/?v=2.7.0
-- **Shopify app (how to list it):** [SHOPIFY_APP.md](./SHOPIFY_APP.md)
-- **Full guide:** [STORESCOPE.md](./STORESCOPE.md)
-- **Offline zip:** see the latest GitHub Release (`storescope-offline.zip`)
-
-## Why this exists
-
-Generic AIs (ChatGPT, Gemini, Grok, Kimi, Perplexity) and even **Shopify Sidekick** do not see *this* admin banner. Forums know the wording but cannot see your account. Storescope is: **this screen → this cause → this click**.
+| Host | URL |
+|---|---|
+| **GitHub Pages** (source of truth) | https://successpartner10.github.io/Shopify2/?v=2.7.1 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.1 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.1 — still the old 1.x until you reconnect Git; see [DEPLOY.md](./DEPLOY.md) |
+| **Source** | https://github.com/successpartner10/Shopify2 |
+| **Offline zip** | [GitHub Release v2.7.1](https://github.com/successpartner10/Shopify2/releases/tag/v2.7.1) |
+| **Shopify app notes** | [SHOPIFY_APP.md](./SHOPIFY_APP.md) |
+| **Full guide** | [STORESCOPE.md](./STORESCOPE.md) |
+| **Privacy** | [privacy.html](./privacy.html) |
 
 Pixels stay in the browser. History stores tip text only.
 
@@ -26,7 +26,7 @@ Or any static host. No build step.
 
 **Tab share will not work inside an iframe.** Open the app as a top-level tab, then pick the Shopify admin tab — not Storescope.
 
-If share is denied: **Upload screenshot**, type the banner, or tap a sample.
+On a phone: screenshot Shopify → Upload from Photos (not a camera photo).
 
 ## Privacy
 
