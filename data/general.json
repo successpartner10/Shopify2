@@ -727,5 +727,65 @@
       }
     ],
     "source_category_db": "general"
+  },
+  {
+    "id": "general-privacy-policy-theme-020",
+    "category": "general",
+    "match_phrases": [
+      "privacy policy",
+      "copy privacy policy",
+      "add privacy policy to theme",
+      "privacy policy footer",
+      "settings policies",
+      "add policy to footer",
+      "terms of service footer",
+      "refund policy footer",
+      "legal pages theme",
+      "policies/privacy-policy"
+    ],
+    "tags": [
+      "privacy",
+      "policy",
+      "footer",
+      "theme",
+      "legal"
+    ],
+    "synonyms": [
+      "copy privacy policy from settings",
+      "paste privacy policy into theme",
+      "add privacy policy to my store",
+      "privacy policy not in footer",
+      "show policies in footer",
+      "checkout policy link missing on store",
+      "terms and conditions footer",
+      "legal notice theme"
+    ],
+    "cause": "Do not copy the policy into theme.liquid. Save it under Settings → Policies, then link that Shopify page in the footer menu.",
+    "explanation": "Settings → Policies hosts the real privacy policy at /policies/privacy-policy. Checkout already links it. The storefront theme only needs a footer (or menu) link — not pasted HTML in Edit code.",
+    "steps": [
+      "Settings → Policies (Written policies). Open Privacy policy.",
+      "Insert template or paste your lawyer/generator text. Review it. Save. Shopify now hosts https://your-store.com/policies/privacy-policy and links it in checkout.",
+      "Do not open Edit code / theme.liquid and paste the policy. That duplicates it and breaks updates.",
+      "Content → Menus (older admin: Online Store → Navigation) → Footer menu → Add menu item.",
+      "Name: Privacy policy. In Link, search Policies and pick Privacy policy (or paste /policies/privacy-policy). Add → Save menu.",
+      "Optional: Online Store → Themes → Customize → Footer. If the theme has Show policy links, turn it on.",
+      "Open the storefront, scroll to the footer, tap Privacy policy. You should land on /policies/privacy-policy, not a blank Page."
+    ],
+    "target_ui_hint": "Settings > Policies, then Content > Menus > Footer",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.28
+    },
+    "docs": [
+      {
+        "label": "Adding store policies",
+        "url": "https://help.shopify.com/en/manual/checkout-settings/refund-privacy-tos"
+      },
+      {
+        "label": "Menus",
+        "url": "https://help.shopify.com/en/manual/online-store/menus-and-links"
+      }
+    ],
+    "source_category_db": "general"
   }
 ]

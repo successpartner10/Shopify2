@@ -14,6 +14,8 @@ const RULES = [
   { re: /\/domains/i, q: "domain not connected" },
   { re: /\/billing/i, q: "shopify bill past due" },
   { re: /\/markets/i, q: "markets unpublished" },
+  { re: /\/legal|\/policies|privacy.policy|settings\/legal/i, q: "privacy policy" },
+  { re: /content\/menus|\/menus/i, q: "privacy policy footer" },
   { re: /customer.events|pixels/i, q: "pixel customer events" },
   { re: /users|permissions|staff/i, q: "you don't have permission" },
   { re: /inventory|products/i, q: "insufficient inventory" },

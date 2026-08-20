@@ -40,6 +40,10 @@ export const POLAROIDS = {
   "general-edit-theme-vs-code-017": {
     image: "./samples/polaroids/edit-code.svg",
     caption: "Customize vs ⋯ Edit code"
+  },
+  "general-privacy-policy-theme-020": {
+    image: "./samples/polaroids/privacy-policy.svg",
+    caption: "Policies → Footer menu link"
   }
 };
 

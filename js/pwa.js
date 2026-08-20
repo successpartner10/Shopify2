@@ -30,7 +30,7 @@ export function looksUsefulClip(text) {
   if (t.length < 6 || t.length > 500) return false;
   if (looksLikeSecret(t)) return false;
   if (looksLikeAdminUrl(t)) return true;
-  return /payout|on hold|shipping|theme|collective|liquid|shopify|declined|test mode|password|domain/i.test(t);
+  return /payout|on hold|shipping|theme|collective|liquid|shopify|declined|test mode|password|domain|privacy policy|footer menu/i.test(t);
 }
 
 export async function readUsefulClipboard() {

@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.7.2";
+const VERSION = "storescope-v2.7.3";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -64,7 +64,8 @@ const PRECACHE = [
   "./samples/polaroids/test-mode.svg",
   "./samples/polaroids/collective.svg",
   "./samples/polaroids/liquid.svg",
-  "./samples/polaroids/edit-code.svg"
+  "./samples/polaroids/edit-code.svg",
+  "./samples/polaroids/privacy-policy.svg"
 ];
 
 self.addEventListener("install", (event) => {
@@ -149,5 +150,5 @@ async function handleSharePost(request) {
   } catch {
     /* still bounce home */
   }
-  return Response.redirect(new URL("./index.html?v=2.7.2&shared=1", request.url), 303);
+  return Response.redirect(new URL("./index.html?v=2.7.3&shared=1", request.url), 303);
 }

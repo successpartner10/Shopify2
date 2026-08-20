@@ -1,14 +1,14 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v2.7.2** · 19 August 2026.
+Privacy-first Shopify admin live scanner. **v2.7.3** · 19 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.7.2 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.2 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.2 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.7.3 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.3 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.3 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.2/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.3/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -39,15 +39,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=2.7.2 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=2.7.2 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=2.7.2 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=2.7.2&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=2.7.2&q=payouts%20on%20hold` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=2.7.2&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=2.7.3 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=2.7.3 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=2.7.3 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=2.7.3&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=2.7.3&q=payouts%20on%20hold` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=2.7.3&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=2.7.2` cache-busts CSS/JS and the service worker (`storescope-v2.7.2`). Hard-refresh if an old build is stuck.
+`?v=2.7.3` cache-busts CSS/JS and the service worker (`storescope-v2.7.3`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -112,7 +112,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=2.7.2 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=2.7.3 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner.
 4. Follow the numbered steps. Re-scan after each change.
@@ -122,7 +122,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.2/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.3/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
@@ -146,14 +146,14 @@ No build step. Static files only.
 
 ## 8. Playbook data
 
-71 searchable entries. No duplicate ids.
+72 searchable entries. No duplicate ids.
 
 | File | Role | Count |
 |---|---|---|
 | `data/errors.json` | Exact banners / toasts / validation | 16 |
 | `data/payments.json` | Payments & payouts | 18 |
 | `data/shipping.json` | Rates, zones, carriers | 18 |
-| `data/general.json` | Themes, domains, Collective, Liquid, social | 19 |
+| `data/general.json` | Themes, domains, Collective, Liquid, social, policies | 20 |
 | `data/flows.json` | Guided checklists | 6 |
 | `data/systems.json` | “Why am I seeing this?” | 10 systems |
 | `data/conflicts.json` | App / theme patterns | 7 |
@@ -180,12 +180,13 @@ Do **not** commit real merchant screenshots.
 
 ---
 
-## 10. Audit log (2026-08-19, v2.7.2)
+## 10. Audit log (2026-08-19, v2.7.3)
 
 Fixed in this release:
 
 | Bug | Fix |
 |---|---|
+| **Use this** chip / search could accept a pasted `ghp_` key | Secrets are blocked; never shown or searched |
 | Screenshot / tab OCR crashed (`detectColorBands` was never imported in `ocr.js`) | Import from `banners.js` |
 | Montserrat / Raleway loaded from Google but never applied (`--display` undefined; `--font` was system) | Local `@font-face` + CSS variables |
 | Corrupt CSS rule `#si0%` | Removed |
@@ -193,10 +194,10 @@ Fixed in this release:
 | Playbook fetch used `force-cache` | Default cache; SW version bump clears old files |
 | Typed “pinterest” opened theme social links, not the channel | Phrase split |
 | Typed “payouts on hold” / “no shipping rates” / “domain not connected” / “theme has errors” missed the exact banner row | Phrases added on error entries |
-| Diagnostic export still said `2.0.0` | `2.7.2` |
+| Diagnostic export still said `2.0.0` | `2.7.3` |
 | History / flow HTML could render raw objects | Escaped + string steps |
-| Shopify app docs still said `?v=2.6.0` | `?v=2.7.2` |
-| Offline zip pointed at the v2.1.0 release | v2.7.2 release |
+| Shopify app docs still said `?v=2.6.0` | `?v=2.7.3` |
+| Offline zip pointed at the v2.1.0 release | v2.7.3 release |
 | Tap targets 44–50px | 54px |
 
 Still needs a real Shopify admin (cannot be fully tested here):
@@ -239,7 +240,7 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `2.7.2` (`js/version.js`) |
-| Service worker | `storescope-v2.7.2` |
-| Public query | `?v=2.7.2` on HTML, CSS, JS, manifest, shortcuts |
+| App | `2.7.3` (`js/version.js`) |
+| Service worker | `storescope-v2.7.3` |
+| Public query | `?v=2.7.3` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |

@@ -51,6 +51,9 @@ EXPECT = {
     "domain not connected": "error-domain-not-connected",
     "insufficient inventory": "error-inventory-insufficient",
     "past due": "error-billing-past-due",
+    "privacy policy": "general-privacy-policy-theme-020",
+    "copy privacy policy from settings": "general-privacy-policy-theme-020",
+    "add privacy policy to theme": "general-privacy-policy-theme-020",
 }
 
 def main():

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 140" fill="none">
+  <rect width="360" height="140" rx="12" fill="#F4F6F8"/>
+  <rect x="12" y="12" width="160" height="116" rx="8" fill="#FFF" stroke="#C9CFD6"/>
+  <text x="24" y="36" fill="#6D7175" font-family="ui-sans-serif,system-ui" font-size="10">SETTINGS</text>
+  <rect x="20" y="48" width="144" height="24" rx="4" fill="#EAF4F0" stroke="#008060"/>
+  <text x="28" y="64" fill="#008060" font-family="ui-sans-serif,system-ui" font-size="11" font-weight="700">Policies</text>
+  <text x="28" y="88" fill="#202223" font-family="ui-sans-serif,system-ui" font-size="10">Privacy policy  Saved</text>
+  <rect x="184" y="12" width="164" height="116" rx="8" fill="#FFF" stroke="#C9CFD6"/>
+  <text x="196" y="36" fill="#6D7175" font-family="ui-sans-serif,system-ui" font-size="10">FOOTER MENU</text>
+  <rect x="192" y="48" width="148" height="28" rx="4" fill="#111820" />
+  <text x="200" y="66" fill="#3EE0B0" font-family="ui-sans-serif,system-ui" font-size="11" font-weight="700">+ Privacy policy</text>
+  <text x="196" y="100" fill="#6D7175" font-family="ui-sans-serif,system-ui" font-size="10">Link: Policies → Privacy</text>
+  <circle cx="92" cy="60" r="11" fill="none" stroke="#3EE0B0" stroke-width="3"/>
+</svg>
