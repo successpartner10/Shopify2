@@ -450,6 +450,7 @@ function renderResult(entry, meta) {
   paintStepList("homeSteps", entry, 0);
   paintPolaroid(entry);
   paintWalkHints();
+  paintStepProgress();
   persistResume({ id: entry.id, step: 0, query: meta.query || state.lastText });
   try { renderWhy(); } catch { /* keep steps */ }
   try { renderFlow(); } catch { /* keep steps */ }
