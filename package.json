@@ -1,7 +1,7 @@
 {
   "name": "shopify2",
   "private": true,
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "Storescope — privacy-first Shopify admin live scanner",
   "scripts": {
     "build": "node -e \"console.log('static site, nothing to compile')\""

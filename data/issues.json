@@ -193,8 +193,8 @@
     "severity": "medium",
     "match_phrases": [
       "abandoned cart recovery links",
-      "abandoned",
       "abandoned cart",
+      "abandoned",
       "cart recovery",
       "recovery",
       "recovery links",
@@ -217,11 +217,11 @@
     "cause": "Broken checkout restoration links sent via automation emails.",
     "explanation": "Abandoned Cart Recovery Links: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Checkout. Read any red or yellow banner before you change anything.",
-      "You are checking: Broken checkout restoration links sent via automation emails.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Checkout. Abandoned checkout emails are here (and in Shopify Email / Automations) — not in the theme.",
+      "Open a recent abandoned checkout under Orders → Abandoned checkouts. Tap the recovery link yourself in incognito.",
+      "If the link 404s, the checkout expired or the customer already completed it. Send a new recovery from that abandoned checkout.",
+      "Marketing → Automations (or Shopify Email): confirm the abandoned-cart flow is On and the button URL is the Shopify recovery link, not a homepage.",
+      "Place a test cart, wait for the email, open it on your phone. Copy these steps to a friend if the link still dies."
     ],
     "target_ui_hint": "Settings > Checkout",
     "arrow": {
@@ -264,11 +264,11 @@
     "cause": "Stacking restrictions failing or automatic discount codes not triggering.",
     "explanation": "Discount Code Logic Errors: start at Discounts. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Discounts. Read any red or yellow banner before you change anything.",
-      "You are checking: Stacking restrictions failing or automatic discount codes not triggering.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Discounts. Open the code that should have applied.",
+      "Check combinations: if it cannot combine with product discounts, an automatic deal is blocking it.",
+      "Customer, minimum purchase, usage limit, and sales channel must all match. A POS-only code will not work on the online store.",
+      "Incognito checkout with a new customer email. Old accounts often already used a once-per-customer code.",
+      "Do not paste discount logic into Liquid. Fix it on the discount, then retry."
     ],
     "target_ui_hint": "Discounts",
     "arrow": {
@@ -406,11 +406,11 @@
     "cause": "Locations showing unavailable despite local stock matching availability.",
     "explanation": "Local Pickup Setup Glitches: start at Settings > Shipping and delivery. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Shipping and delivery. Read any red or yellow banner before you change anything.",
-      "You are checking: Locations showing unavailable despite local stock matching availability.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Shipping and delivery → Local pickup.",
+      "Each pickup location must be enabled, with hours, and that location must have Available stock — On hand in another warehouse does not count.",
+      "Products → Inventory: the fulfilling location for pickup must track quantity.",
+      "Draft order: choose that pickup location and the customer's postal code. If pickup vanishes, the location is excluded from the delivery profile.",
+      "Test on the storefront in incognito. Copy the location name if you ask a friend."
     ],
     "target_ui_hint": "Settings > Shipping and delivery",
     "arrow": {
@@ -549,11 +549,11 @@
     "cause": "Fulfillment triggers failing to dispatch digital access links immediately.",
     "explanation": "Digital Product Download Delivery: start at Products > [product] > Digital. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Products > [product] > Digital. Read any red or yellow banner before you change anything.",
-      "You are checking: Fulfillment triggers failing to dispatch digital access links immediately.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. It must be a Digital product (or have no shipping required) for the download to send.",
+      "Files live on the product → media / digital files. A 404 download means the file was removed or never attached.",
+      "Settings → Notifications: the order confirmation / digital download email must be On.",
+      "Fulfillment: digital items auto-fulfill only if that setting is on. Manual fulfill if the email never sent.",
+      "Place a $1 test, complete payment, open the email on a phone. Do not put download URLs in theme.liquid."
     ],
     "target_ui_hint": "Products > [product] > Digital",
     "arrow": {
@@ -571,6 +571,7 @@
     "severity": "medium",
     "match_phrases": [
       "gift card balance processing",
+      "loop",
       "gift card",
       "card balance",
       "balance",
@@ -595,11 +596,11 @@
     "cause": "Partial-redemption loops or manual balance adjustments failing to save.",
     "explanation": "Gift Card Balance Processing: start at Products > Gift cards. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Products > Gift cards. Read any red or yellow banner before you change anything.",
-      "You are checking: Partial-redemption loops or manual balance adjustments failing to save.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Products → Gift cards. Open the card whose balance looks wrong.",
+      "Partial redemptions write a new remaining balance on the gift card — not on the order note.",
+      "If a manual balance edit will not save, you are not the store owner or the card is disabled.",
+      "Checkout test: apply the code, pay the remainder, then reopen the gift card. The new balance should match.",
+      "Do not Edit code to 'force' a balance. Copy the last four of the code to a friend — never the full code in chat."
     ],
     "target_ui_hint": "Products > Gift cards",
     "arrow": {
@@ -836,11 +837,11 @@
     "cause": "Rules blocking white-listed corporate card domains or accounts.",
     "explanation": "Fraud Filter App Exclusions: start at Settings > Payments. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Payments. Read any red or yellow banner before you change anything.",
-      "You are checking: Rules blocking white-listed corporate card domains or accounts.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Payments and open the fraud-filter / blocking app.",
+      "Corporate cards and +alias emails often trip 'high risk' rules. Find the rule that matched the declined order Timeline.",
+      "Allowlist the company domain if you truly want those orders — do not turn every filter off.",
+      "Disable the fraud app once and retry a $1 order. If it goes through, the app is the block, not Shopify Payments.",
+      "Re-enable with a narrower rule. Copy the rule name, not customer card numbers."
     ],
     "target_ui_hint": "Settings > Payments",
     "arrow": {
@@ -884,11 +885,11 @@
     "cause": "Google Maps autocomplete api failing or rejecting formatted regional inputs.",
     "explanation": "Address Validation Refusals: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Checkout. Read any red or yellow banner before you change anything.",
-      "You are checking: Google Maps autocomplete api failing or rejecting formatted regional inputs.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Checkout. Address autocomplete is Shopify + Google — not your theme's map pin.",
+      "If a country/region format is rejected, turn off strict address verification for that market or add the region in Shipping zones.",
+      "Test the same address in a draft order. If draft saves but checkout rejects, a checkout app is rewriting the address.",
+      "Customize → App embeds: disable address-validator apps and retry.",
+      "Do not paste a Google Maps key into theme.liquid on the live shop."
     ],
     "target_ui_hint": "Settings > Checkout",
     "arrow": {
@@ -981,11 +982,11 @@
     "cause": "Apple Pay/Google Pay buttons jumping layouts on mobile views.",
     "explanation": "Express Checkout Button Alignment: start at Online Store > Themes > Customize. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Apple Pay/Google Pay buttons jumping layouts on mobile views.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate first. Do not Edit code on the published theme.",
+      "Customize the copy → product / cart template. Shop Pay, Apple Pay, and Google Pay buttons are checkout settings plus the theme's payment-button block.",
+      "Settings → Payments: express methods must be on. A missing button is often Payments, not CSS.",
+      "Preview mobile width. If buttons jump, a custom CSS app or extra PayPal button is stacking. Disable one embed.",
+      "Publish the copy only when Preview on a phone looks stable."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -1077,11 +1078,11 @@
     "cause": "Cart attributes failing to pass safely into the order JSON object.",
     "explanation": "Custom Order Note Disappearances: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Checkout. Read any red or yellow banner before you change anything.",
-      "You are checking: Cart attributes failing to pass safely into the order JSON object.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Cart notes / attributes must be enabled in Settings → Checkout (or the cart form in Customize).",
+      "If the note vanishes on the order, an app is stripping cart attributes at checkout. Disable the newest checkout app embed.",
+      "Draft order: add a note, complete checkout in incognito, open the order. The note should sit on the order, not only in the cart drawer.",
+      "Do not add a hidden Liquid input on the live theme to 'save' notes.",
+      "Copy the missing note text from the cart screenshot if you ask a friend."
     ],
     "target_ui_hint": "Settings > Checkout",
     "arrow": {
@@ -1191,6 +1192,7 @@
     "severity": "medium",
     "match_phrases": [
       "customer account login requirements",
+      "loop",
       "customer",
       "customer account",
       "account",
@@ -1218,11 +1220,11 @@
     "cause": "Forced sign-in loops preventing guest users from finalizing cart checks.",
     "explanation": "Customer Account Login Requirements: start at Settings > Customer accounts. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Customer accounts. Read any red or yellow banner before you change anything.",
-      "You are checking: Forced sign-in loops preventing guest users from finalizing cart checks.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Customer accounts. If accounts are required, guests cannot finish checkout.",
+      "Classic vs new customer accounts both can loop if 'login to checkout' is on and the login page errors.",
+      "Try guest checkout in incognito. If it works, the customer is stuck on a login/password reset, not payments.",
+      "Disable required login temporarily to confirm. Then fix the login page (passwordless email, not Edit code).",
+      "Staff logins cannot complete customer checkout. Use a real customer test account."
     ],
     "target_ui_hint": "Settings > Customer accounts",
     "arrow": {
@@ -1361,11 +1363,11 @@
     "cause": "Fields reverting to default English despite multi-market localization.",
     "explanation": "Localized Checkout Translation Drops: start at Settings > Languages. Read the banner before you change a gateway or the theme.",
     "steps": [
-      "Go to Settings > Languages. Read any red or yellow banner before you change anything.",
-      "You are checking: Fields reverting to default English despite multi-market localization.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Languages (and Markets). Checkout language follows the market/locale, not a theme translate filter.",
+      "Publish the language and add checkout translations in Translate & Adapt (or Shopify's checkout editor).",
+      "If fields snap back to English, the market's default language is English — switch the market language or the domain.",
+      "Do not paste translated checkout.liquid. Checkout extensibility + Translate & Adapt only.",
+      "Incognito to that market domain and read the pay button. Copy these steps to a friend."
     ],
     "target_ui_hint": "Settings > Languages",
     "arrow": {
@@ -1431,6 +1433,7 @@
     "severity": "high",
     "match_phrases": [
       "liquid syntax parsing errors",
+      "loop",
       "liquid",
       "liquid syntax",
       "syntax",
@@ -1446,8 +1449,7 @@
       "missing tags unclosed",
       "tags unclosed loops",
       "unclosed loops or",
-      "loops or broken",
-      "or broken logic"
+      "loops or broken"
     ],
     "tags": [
       "themes",
@@ -1556,11 +1558,11 @@
     "cause": "Navigation menus or product grids breaking aspect ratios on screens.",
     "explanation": "Mobile Responsiveness Breaks: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Navigation menus or product grids breaking aspect ratios on screens.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate the live theme. Do not Edit code on the published theme.",
+      "Customize the copy. Preview at a phone width. Note which section overlaps (header, product grid, cart).",
+      "Turn off the newest app embed (menus, popups, chat). Overlaps are usually an extra overlay, not 'broken CSS'.",
+      "If a custom CSS app injected max-width rules, disable it on the copy and Preview again.",
+      "Publish the copy only when a real phone looks right. Never paste a forum CSS reset into the live shop."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -1654,11 +1656,11 @@
     "cause": "Cumulative Layout Shift (CLS) issues on media galleries or mobile devices.",
     "explanation": "Product Image Layout Shifts: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Cumulative Layout Shift (CLS) issues on media galleries or mobile devices.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate first.",
+      "Product images jumping are missing width/height or a gallery app fighting the theme.",
+      "Customize the copy → product media. Use Shopify image settings; turn off a second gallery/zoom app.",
+      "Compress huge PNGs (Products → media). 4000px files stutter on phones.",
+      "Preview the product on mobile. Publish the copy only."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -1753,11 +1755,11 @@
     "cause": "Nested link menus failing to expand or dropping child items on desktop hover.",
     "explanation": "Mega-Menu Navigation Drops: start at Online Store > Navigation. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Navigation. Read any red or yellow banner before you change anything.",
-      "You are checking: Nested link menus failing to expand or dropping child items on desktop hover.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Navigation. Open the menu that drops children.",
+      "Nested items must hang under the parent in the menu editor — not only in the theme.",
+      "Duplicate the theme. Customize → header. Mega-menu apps plus the theme mega-menu = dropped children. Leave one.",
+      "Preview desktop hover and mobile tap. Do not Edit code to 'force' dropdowns on live.",
+      "Publish the copy when both work."
     ],
     "target_ui_hint": "Online Store > Navigation",
     "arrow": {
@@ -1801,11 +1803,11 @@
     "cause": "Render-blocking scripts slowing down the Initial Server Response times.",
     "explanation": "CSS/JS Asset Loading Delays: start at Online Store > Themes. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes. Read any red or yellow banner before you change anything.",
-      "You are checking: Render-blocking scripts slowing down the Initial Server Response times.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate. Do not minify the live theme by hand.",
+      "Online Store → Themes → … → Edit code only on the copy if you must — first disable extra apps. Each app adds CSS/JS.",
+      "Settings → Apps: remove unused apps so their scripts stop loading.",
+      "Theme settings / speed: enable native lazy-loading; do not stack three speed apps.",
+      "Preview, then publish the copy. Copy these steps if a friend is chasing TTFB."
     ],
     "target_ui_hint": "Online Store > Themes",
     "arrow": {
@@ -1848,11 +1850,11 @@
     "cause": "Native Search & Discovery filters failing to dynamically refresh arrays.",
     "explanation": "Collection Grid Filter Drops: start at Online Store > Navigation > Search & Discovery. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Navigation > Search & Discovery. Read any red or yellow banner before you change anything.",
-      "You are checking: Native Search & Discovery filters failing to dynamically refresh arrays.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Search & Discovery (or Apps → Search & Discovery). Filters are not collection tags in the theme anymore.",
+      "The collection must be available to the Online Store channel and use the Search & Discovery filter group.",
+      "If filters do not refresh, a collection-filter app is fighting the native one. Disable the app embed.",
+      "Duplicate the theme before touching collection JSON templates.",
+      "Test the collection in incognito. Publish only the copy."
     ],
     "target_ui_hint": "Online Store > Navigation > Search & Discovery",
     "arrow": {
@@ -1919,6 +1921,7 @@
     "severity": "low",
     "match_phrases": [
       "video background aspect distortions",
+      "loop",
       "video",
       "video background",
       "background",
@@ -2046,11 +2049,11 @@
     "cause": "Variant-linked swatches showing blank circles or mapping to wrong HEX colors.",
     "explanation": "Color Swatch Asset Discrepancies: start at Products > [product] > Variants. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Products > [product] > Variants. Read any red or yellow banner before you change anything.",
-      "You are checking: Variant-linked swatches showing blank circles or mapping to wrong HEX colors.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product → Variants. Each color needs a swatch (variant image or native swatch category).",
+      "Blank circles mean the swatch image/hex is empty, or the option name is not 'Color'.",
+      "Search & Discovery → swatches: map the option. Do not paint circles in theme CSS on live.",
+      "Duplicate the theme if a swatch app is installed — two swatch systems hide each other.",
+      "Preview the product, tap each color, confirm the image changes."
     ],
     "target_ui_hint": "Products > [product] > Variants",
     "arrow": {
@@ -2118,6 +2121,7 @@
     "severity": "medium",
     "match_phrases": [
       "infinite scroll pagination freezes",
+      "loop",
       "infinite",
       "infinite scroll",
       "scroll",
@@ -2145,11 +2149,11 @@
     "cause": "Collection page script crashing instead of fetching subsequent page loops.",
     "explanation": "Infinite Scroll Pagination Freezes: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Collection page script crashing instead of fetching subsequent page loops.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate. Infinite scroll is a theme or app script, not Shopify core.",
+      "Customize the copy → collection. Turn off infinite scroll and use pagination, or disable the extra infinite-scroll app.",
+      "Two scroll scripts freeze the page. One at a time.",
+      "Test the 2nd page of the collection in incognito.",
+      "Publish the copy. Do not paste a jQuery infinite-scroll snippet into the live theme."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -2195,11 +2199,11 @@
     "cause": "Pop-up product previews showing misaligned data or broken close triggers.",
     "explanation": "Quick View Modal Visual Breaks: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Pop-up product previews showing misaligned data or broken close triggers.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Duplicate the theme. Quick view is an app or theme feature — not checkout.",
+      "Customize → App embeds: disable the newest quick-view / popup app.",
+      "If the close button fails, a second modal (newsletter, chat, age gate) is trapping focus. Disable that too.",
+      "Preview a collection on mobile. Open and close quick view twice.",
+      "Publish the copy only."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -2244,11 +2248,11 @@
     "cause": "Shopify code sanitizers removing custom embedded scripts or iframe blocks.",
     "explanation": "Custom Liquid Section Stripping: start at Online Store > Themes. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes. Read any red or yellow banner before you change anything.",
-      "You are checking: Shopify code sanitizers removing custom embedded scripts or iframe blocks.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Stop. Shopify strips scripts from Custom Liquid in some sections on purpose.",
+      "Online Store → Themes → Duplicate. Put allowed embeds in App embeds or Custom Liquid that Shopify still permits — never in the live published theme first.",
+      "iframes and third-party scripts belong in an app embed, not a Custom Liquid dump.",
+      "If you need a pixel, Settings → Customer events — not theme.liquid.",
+      "Preview the copy. Roll back if the section blanks."
     ],
     "target_ui_hint": "Online Store > Themes",
     "arrow": {
@@ -2387,11 +2391,11 @@
     "cause": "Header count indicators showing zero items despite heavy item additions.",
     "explanation": "Cart Count Bubble Desyncs: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Header count indicators showing zero items despite heavy item additions.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "The header cart count is theme JS plus the cart object. Duplicate the theme first.",
+      "If count stays 0, a cart-drawer app is not updating the header, or two cart scripts race.",
+      "Customize → App embeds: one cart app only. Preview add-to-cart.",
+      "Incognito (old service workers cache a broken cart.js).",
+      "Publish the copy when the bubble matches the cart."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -2577,11 +2581,11 @@
     "cause": "Predictive search overlays failing to query terms or render thumbnail blocks.",
     "explanation": "Search Bar Autocomplete Drops: start at Settings > Search & Discovery. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Settings > Search & Discovery. Read any red or yellow banner before you change anything.",
-      "You are checking: Predictive search overlays failing to query terms or render thumbnail blocks.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Search & Discovery → Predictive search. Turn it on and include products/collections.",
+      "If a search app (Algolia, Klevu) is installed, native predictive search will look empty. Use one engine.",
+      "Duplicate the theme before removing search JS. Disable the extra search embed first.",
+      "Type 3 letters on the storefront in incognito.",
+      "Do not paste a custom autocomplete script into the live header."
     ],
     "target_ui_hint": "Settings > Search & Discovery",
     "arrow": {
@@ -2627,11 +2631,11 @@
     "cause": "YouTube/Vimeo embedding scripts conflicting with theme native players.",
     "explanation": "Product Video Playback Interruptions: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: YouTube/Vimeo embedding scripts conflicting with theme native players.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Product videos: use Shopify-hosted video or one embed (YouTube or Vimeo), not both plus a theme player.",
+      "Duplicate the theme. Customize → product media. Disable a second video/zoom app.",
+      "Autoplay + muted is required on mobile. If it interrupts, turn off autoplay on the copy.",
+      "Preview on iPhone. Publish the copy only.",
+      "Do not paste extra YouTube iframe code into product descriptions on top of the media gallery."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -2727,11 +2731,11 @@
     "cause": "Malformed theme editor custom CSS styles leaking outside the parent block.",
     "explanation": "Custom CSS Section Inject Crashing: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Malformed theme editor custom CSS styles leaking outside the parent block.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate. Custom CSS in the editor leaks when a selector is missing a closing brace.",
+      "Customize the copy → the section → Custom CSS. Remove the last CSS you pasted. Save.",
+      "Do not put store-wide CSS in a single section box.",
+      "If an app injects CSS, disable that embed.",
+      "Preview, then publish the copy. Never paste CSS into the live theme.liquid."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -2776,11 +2780,11 @@
     "cause": "Star rating graphics breaking column margins inside product summary lines.",
     "explanation": "Review Widget Layout Distortions: start at Online Store > Themes > Customize. Duplicate the theme first — do not Edit code on the live shop.",
     "steps": [
-      "Go to Online Store > Themes > Customize. Read any red or yellow banner before you change anything.",
-      "You are checking: Star rating graphics breaking column margins inside product summary lines.",
-      "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
-      "Use Customize on the copy, then Preview. Publish only if Preview looks right.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Review stars breaking the layout are a review app embed, not the product description.",
+      "Duplicate the theme. Customize → App embeds: one review app (Judge.me, Loox, Yotpo). Two will overlap.",
+      "Put the widget in the product section Shopify provides, not a raw HTML dump.",
+      "Preview mobile. Publish the copy.",
+      "Do not Edit code to float stars on the live shop."
     ],
     "target_ui_hint": "Online Store > Themes > Customize",
     "arrow": {
@@ -3108,11 +3112,11 @@
     "cause": "Changing URL handles without setting automatic 301 structural forwards.",
     "explanation": "Product Handle Redirection Breaks: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Changing URL handles without setting automatic 301 structural forwards.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Changing the handle changes the URL. Shopify can create a redirect — confirm it.",
+      "Online Store → Navigation → URL redirects. Add old-handle → new product URL if it is missing.",
+      "Do not leave two products with the same handle. The leftover 404s.",
+      "Test the old URL in incognito. You should land on the product, not a loop.",
+      "Do not add redirects in Liquid."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3154,11 +3158,11 @@
     "cause": "Smart automated collections failing to pick up tags or titles properly.",
     "explanation": "Collection Rule Logic Dropping: start at Products > Collections. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > Collections. Read any red or yellow banner before you change anything.",
-      "You are checking: Smart automated collections failing to pick up tags or titles properly.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the smart collection. Conditions are AND/OR — a product must match the rule you think it does.",
+      "Tags are case-sensitive and must be saved on the product. A trailing space in a tag drops it.",
+      "If you recently renamed a tag, update the collection rule to the new tag.",
+      "Manual collections do not auto-add. Switch to automated or add the product by hand.",
+      "View the collection storefront in incognito after Save."
     ],
     "target_ui_hint": "Products > Collections",
     "arrow": {
@@ -3204,11 +3208,11 @@
     "cause": "Attempting to change thousands of product prices at once causing app freezes.",
     "explanation": "Bulk Editor Interface Timeouts: start at Products > [collection] > Bulk editor. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [collection] > Bulk editor. Read any red or yellow banner before you change anything.",
-      "You are checking: Attempting to change thousands of product prices at once causing app freezes.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "The bulk editor times out on thousands of rows. Select fewer products (one collection or a search).",
+      "Products → Export, edit in Google Sheets, then Import those columns only (price, inventory).",
+      "Do not keep retrying the same 5,000-row bulk edit — you will double-change some rows.",
+      "Work as the store owner. Some staff permissions cannot bulk-edit.",
+      "A 10-row test import first, then the rest."
     ],
     "target_ui_hint": "Products > [collection] > Bulk editor",
     "arrow": {
@@ -3298,11 +3302,11 @@
     "cause": "Missing product weights forcing orders into uncalculated shipping states.",
     "explanation": "Weight-Based Shipping Profile Drops: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Missing product weights forcing orders into uncalculated shipping states.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Physical products need a weight > 0 or carrier rates disappear.",
+      "Set weight and unit on every variant, not only the parent.",
+      "Settings → Shipping: the profile that includes this product must still have a rate.",
+      "Draft order with the customer's postal code. If rates appear, the storefront was missing weight.",
+      "CSV: Variant Grams must be a number. Do not Edit code."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3392,11 +3396,11 @@
     "cause": "Injecting plain text strings into integer or JSON-formatted definitions.",
     "explanation": "Metafields Value Type Mismatches: start at Settings > Custom data. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Custom data. Read any red or yellow banner before you change anything.",
-      "You are checking: Injecting plain text strings into integer or JSON-formatted definitions.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Custom data → Metafields. Open the definition. Type (number, JSON, list) must match what you paste.",
+      "A text string in a number field will not save. Change the value or the definition — not both at once.",
+      "Product metafields are on the product; variant metafields are on the variant. Wrong place looks like 'it vanished'.",
+      "Do not output the metafield in Liquid on the live theme until the value saves in admin.",
+      "Save, reload the product, confirm the value is still there."
     ],
     "target_ui_hint": "Settings > Custom data",
     "arrow": {
@@ -3441,11 +3445,11 @@
     "cause": "Draft profiles staying locked or failing to schedule publish windows correctly.",
     "explanation": "Product Status Publishing Sync: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Draft profiles staying locked or failing to schedule publish windows correctly.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Status Draft vs Active vs Scheduled is the publish switch — not the theme.",
+      "Sales channels: tick Online Store (and others). An Active product hidden from Online Store will 404.",
+      "Scheduled publish needs a future date. If it stayed draft, the schedule never ran — set Active now.",
+      "Markets: the product must be included in that market.",
+      "Incognito the product URL after Save."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3535,11 +3539,11 @@
     "cause": "Duplicate or confusing alphanumeric identifiers creating fulfillment mistakes.",
     "explanation": "SKU Syntax Structural Overlaps: start at Products > [product] > Variants. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product] > Variants. Read any red or yellow banner before you change anything.",
-      "You are checking: Duplicate or confusing alphanumeric identifiers creating fulfillment mistakes.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open variants. Two SKUs that look alike ('ABC-1' vs 'ABC–1') confuse warehouses even if Shopify allows them.",
+      "Search products for the SKU. Rename duplicates. Empty SKU is OK; colliding SKUs are not.",
+      "CSV imports often copy the same SKU down. Fix the sheet, re-import those rows.",
+      "POS barcode scan uses SKU/barcode — keep them unique.",
+      "Save. Fulfill a test order and read the SKU on the slip."
     ],
     "target_ui_hint": "Products > [product] > Variants",
     "arrow": {
@@ -3604,6 +3608,7 @@
     "severity": "medium",
     "match_phrases": [
       "compare at price structural loops",
+      "loop",
       "compare",
       "compare at",
       "at price",
@@ -3619,8 +3624,7 @@
       "than list price",
       "list price causing",
       "price causing system",
-      "causing system math",
-      "system math display"
+      "causing system math"
     ],
     "tags": [
       "products",
@@ -3633,11 +3637,11 @@
     "cause": "Compare pricing set lower than list price causing system math display bugs.",
     "explanation": "Compare At Price Structural Loops: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Compare pricing set lower than list price causing system math display bugs.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Compare-at price must be higher than price or the sale badge math looks broken.",
+      "Clear compare-at if you are not on sale. A lower compare-at confuses Markets and some feeds.",
+      "Check every variant — one leftover compare-at flags the whole product as sale.",
+      "Do not calculate discounts in Liquid to hide this.",
+      "View the product storefront in incognito."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3683,11 +3687,11 @@
     "cause": "High-res images or 4K videos hanging during bulk catalog product setup.",
     "explanation": "Media Gallery Upload Timeouts: start at Products > [product] > Media. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product] > Media. Read any red or yellow banner before you change anything.",
-      "You are checking: High-res images or 4K videos hanging during bulk catalog product setup.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Product media: upload one image at a time if a 4K batch hangs.",
+      "Resize over ~20MB files before upload. Shopify will fail the whole batch on one giant video.",
+      "Wait for the spinner. Re-upload only the failed file, not the whole gallery.",
+      "Do not paste image URLs into theme.liquid to skip the media library.",
+      "When the gallery shows in admin, Preview the product."
     ],
     "target_ui_hint": "Products > [product] > Media",
     "arrow": {
@@ -3826,11 +3830,11 @@
     "cause": "Failing to attach specialized tax override codes to niche product fields.",
     "explanation": "Tax-Exempt Category Allocation: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Failing to attach specialized tax override codes to niche product fields.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Tax is Settings → Taxes plus the product's 'charge tax' checkbox.",
+      "Tax-exempt collections do not exist as a magic tag unless you set a tax override on those products.",
+      "B2B company tax exempt is on the company, not the product.",
+      "Do not hide tax in the theme. Checkout will still charge it.",
+      "Draft order to that region and read the tax line."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3920,11 +3924,11 @@
     "cause": "Incoming supply dates failing to present clear customer arrival schedules.",
     "explanation": "Pre-order Tag Inventory Logic: start at Products > [product]. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product]. Read any red or yellow banner before you change anything.",
-      "You are checking: Incoming supply dates failing to present clear customer arrival schedules.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open the product. Preorder is continue-selling + a message, or a preorder app — pick one.",
+      "Inventory policy: Continue selling when out of stock. Add a theme block or metafield for the ship date — on a duplicate theme.",
+      "A tag named preorder does nothing by itself unless a collection/app looks for it.",
+      "Do not promise a date in Liquid that inventory cannot meet.",
+      "Test add-to-cart at quantity 0. Copy the ship-date text to a friend."
     ],
     "target_ui_hint": "Products > [product]",
     "arrow": {
@@ -3970,11 +3974,11 @@
     "cause": "Exceeding the native maximum of 3 option parameters (Size, Color, Fabric).",
     "explanation": "Options Allocation Limit Constraints: start at Products > [product] > Variants. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > [product] > Variants. Read any red or yellow banner before you change anything.",
-      "You are checking: Exceeding the native maximum of 3 option parameters (Size, Color, Fabric).",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Shopify allows 3 options (e.g. Size, Color, Material). A 4th option needs a split product or a line-item property.",
+      "Do not install an 'unlimited options' app and expect checkout, shipping, and POS to stay simple.",
+      "Split the product (e.g. by material) or use a personalization field for engraving.",
+      "Stay under 100 variants total.",
+      "Save, then add to cart in incognito."
     ],
     "target_ui_hint": "Products > [product] > Variants",
     "arrow": {
@@ -4114,11 +4118,11 @@
     "cause": "System failing to automatically append promotional free items into carts.",
     "explanation": "Gift with Purchase Trigger Breaks: start at Discounts. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Discounts. Read any red or yellow banner before you change anything.",
-      "You are checking: System failing to automatically append promotional free items into carts.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Discounts → create an automatic Buy X get Y (or open your GWP app).",
+      "The free item must have stock at the fulfilling location and be included in the sales channel.",
+      "Stacking: another automatic discount may block GWP. Check combinations.",
+      "Incognito: add the trigger product, confirm the gift appears in the cart before checkout.",
+      "Do not add the gift in theme JS. Checkout will not charge or track it correctly."
     ],
     "target_ui_hint": "Discounts",
     "arrow": {
@@ -4210,11 +4214,11 @@
     "cause": "Input line fields failing to save engraving details to order logs.",
     "explanation": "Customizable Personalization Text Blocks: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Checkout. Read any red or yellow banner before you change anything.",
-      "You are checking: Input line fields failing to save engraving details to order logs.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Personalization (engraving) is a line-item property on the product form, or a custom-options app.",
+      "Duplicate the theme before adding a property field. Do not Edit code on live.",
+      "After checkout, the text must appear on the order line. If it dies, the app is not passing properties.",
+      "Disable a second options app. One only.",
+      "Place a $1 test with sample text, open the order. Copy these steps to a friend."
     ],
     "target_ui_hint": "Settings > Checkout",
     "arrow": {
@@ -4259,11 +4263,11 @@
     "cause": "Incoming stock transfers from vendors hanging in pending states indefinitely.",
     "explanation": "Inventory Transfer Tracking Locks: start at Products > Inventory > Transfers. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Products > Inventory > Transfers. Read any red or yellow banner before you change anything.",
-      "You are checking: Incoming stock transfers from vendors hanging in pending states indefinitely.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Products → Inventory → Transfers. Open the stuck transfer.",
+      "Receive it at the destination location. 'Pending' forever usually means nobody tapped Receive.",
+      "Origin must have the stock. You cannot ship what that location does not have On hand.",
+      "If an ERP creates transfers, reconnect that app (see integrations) instead of duplicating in admin.",
+      "After Receive, Available at the destination should rise. Do not Edit code."
     ],
     "target_ui_hint": "Products > Inventory > Transfers",
     "arrow": {
@@ -4594,11 +4598,11 @@
     "cause": "Order webhooks delivering malformed payloads into shared apps.",
     "explanation": "Zapier Automation Task Breaks: start at Settings > Notifications. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Notifications. Read any red or yellow banner before you change anything.",
-      "You are checking: Order webhooks delivering malformed payloads into shared apps.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open Zapier (or Make). The Shopify connection often expires — Reconnect.",
+      "Check the Zap history for the failed order. A 400 usually means a missing field (SKU, email).",
+      "Do not fire the same order to two Zaps that both create tickets — you will double-process.",
+      "Shopify → Settings → Notifications webhooks are separate from Zapier. Use one path per job.",
+      "Replay one order, confirm the other app received it."
     ],
     "target_ui_hint": "Settings > Notifications",
     "arrow": {
@@ -4694,11 +4698,11 @@
     "cause": "Yotpo, Loox, or Judge.me imports failing to show on updated listings.",
     "explanation": "Customer Review Sync Disruptions: start at Online Store > Themes > Customize > App embeds. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Themes > Customize > App embeds. Read any red or yellow banner before you change anything.",
-      "You are checking: Yotpo, Loox, or Judge.me imports failing to show on updated listings.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open Yotpo / Loox / Judge.me. Reconnect Shopify if reviews vanished after a product handle change.",
+      "The widget is an app embed. Duplicate the theme, enable one review embed, disable extras.",
+      "Product must match by handle or SKU in the review app. A new product URL orphans old reviews.",
+      "Do not paste a second review script into product.liquid on live.",
+      "Preview the product. Publish the copy."
     ],
     "target_ui_hint": "Online Store > Themes > Customize > App embeds",
     "arrow": {
@@ -4742,11 +4746,11 @@
     "cause": "Referral cookies failing to register purchases on specific gateways.",
     "explanation": "Affiliate Tracking Credit Drops: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: Referral cookies failing to register purchases on specific gateways.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Affiliate cookies die on Shop Pay / PayPal sometimes — that is the affiliate app, not your theme.",
+      "Open the affiliate app. Check the last click and whether the order used an express wallet.",
+      "Allow the affiliate script in Customer privacy (marketing). A blocked cookie cannot credit.",
+      "Do not add a second affiliate pixel in theme.liquid.",
+      "Run a test order with the affiliate link in incognito, then a normal checkout, and compare credit."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -4793,11 +4797,11 @@
     "cause": "Printful or Printify setups failing due to missing artwork scaling configurations.",
     "explanation": "Print on Demand Production Holds: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: Printful or Printify setups failing due to missing artwork scaling configurations.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open Printful / Printify. Holds are usually missing print files or a size that does not match the mockup.",
+      "Re-push the order from the POD app. Check the variant mapping (SKU ↔ print file).",
+      "Shopify fulfillment stays 'unfulfilled' until the POD accepts it — do not also fulfill by hand or you will double-ship.",
+      "Artwork: PNG/PDF at their required DPI. A tiny logo triggers a hold.",
+      "Fix the file, resubmit one order, then the queue."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -4841,11 +4845,11 @@
     "cause": "HubSpot or Salesforce updating profiles with mismatched phone indexes.",
     "explanation": "CRM Profile Sync Mismatches: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: HubSpot or Salesforce updating profiles with mismatched phone indexes.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open HubSpot / Salesforce. Reconnect the Shopify connector.",
+      "Phone fields fail when Shopify stores +1 and the CRM expects digits only (or the reverse).",
+      "Turn off two-way phone sync if each edit overwrites the other system.",
+      "Sync one customer. Confirm the CRM ID. Do not map 20 fields at once.",
+      "This is not a theme issue."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -4942,11 +4946,11 @@
     "cause": "Smile.io or Yotpo Loyalty failing to issue rewards for custom orders.",
     "explanation": "Loyalty Point Accrual Failures: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: Smile.io or Yotpo Loyalty failing to issue rewards for custom orders.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open Smile.io / Yotpo Loyalty. Points miss custom/draft orders unless that event is enabled.",
+      "Reconnect Shopify. Enable Placed Order and the POS channel if you sell in person.",
+      "Refunds should claw back points — check the loyalty log, not the theme.",
+      "Do not calculate points in Liquid.",
+      "Place a test order, confirm points on the customer, then refund and confirm the clawback."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -5131,11 +5135,11 @@
     "cause": "Custom registration fields failing to alert admin validation chains.",
     "explanation": "Wholesale Registration Form Failures: start at Online Store > Pages. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Pages. Read any red or yellow banner before you change anything.",
-      "You are checking: Custom registration fields failing to alert admin validation chains.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Wholesale signup is a page + a form app or B2B company request — not a theme contact form unless you built it that way.",
+      "Check the form app's notifications. If admin never gets the email, the form failed to submit (required field / captcha).",
+      "Customers → Companies: approve the request. Pending companies cannot see wholesale prices.",
+      "Duplicate the theme before changing the form. Do not Edit code on live.",
+      "Submit a test application with a unique email."
     ],
     "target_ui_hint": "Online Store > Pages",
     "arrow": {
@@ -5273,11 +5277,11 @@
     "cause": "Post-purchase cart upsell apps breaking native currency checks.",
     "explanation": "Recurring Upsell App Disruptions: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: Post-purchase cart upsell apps breaking native currency checks.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Post-purchase upsell apps can break currency or Shop Pay. Open that app first.",
+      "Disable the upsell embed and run a $1 checkout. If currency is correct, the upsell app is the culprit.",
+      "Markets currency + upsell apps often disagree. Turn off the upsell on secondary markets.",
+      "Do not stack two upsell apps.",
+      "Re-enable one market, test once, then the rest."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -5465,11 +5469,11 @@
     "cause": "B2B login apps failing to hide retail prices from guest accounts.",
     "explanation": "Wholesale Pricing Table Breaks: start at Customers > Companies. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Customers > Companies. Read any red or yellow banner before you change anything.",
-      "You are checking: B2B login apps failing to hide retail prices from guest accounts.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "B2B catalogs hide retail prices for company contacts — not for guests.",
+      "Customers → Companies → catalog. Assign the catalog. Guest visitors will still see retail. That is expected.",
+      "If logged-in wholesale still sees retail, the contact is not linked to the company.",
+      "A B2B login app fighting Shopify B2B will show both prices. Use one.",
+      "Incognito: guest vs company contact. Copy both screenshots to a friend."
     ],
     "target_ui_hint": "Customers > Companies",
     "arrow": {
@@ -5515,11 +5519,11 @@
     "cause": "Algolia or Klevu engines returning empty search results during indexing.",
     "explanation": "Search App Override Interruptions: start at Settings > Search & Discovery. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Search & Discovery. Read any red or yellow banner before you change anything.",
-      "You are checking: Algolia or Klevu engines returning empty search results during indexing.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Algolia / Klevu empty results usually mean the index is rebuilding or credentials expired.",
+      "Open the search app → reindex. Wait. Do not also enable Shopify predictive search at the same time.",
+      "Duplicate the theme. One search embed only.",
+      "Type a SKU you know exists. If native search finds it and the app does not, the app index is stale.",
+      "Do not paste a new search script into the live header."
     ],
     "target_ui_hint": "Settings > Search & Discovery",
     "arrow": {
@@ -5635,6 +5639,7 @@
     "match_phrases": [
       "returns portal routing errors",
       "returnly",
+      "loop",
       "returns",
       "returns portal",
       "portal",
@@ -5649,8 +5654,7 @@
       "links failing to",
       "failing to print",
       "to print shipping",
-      "print shipping returns",
-      "shipping returns labels"
+      "print shipping returns"
     ],
     "tags": [
       "apps",
@@ -5663,11 +5667,11 @@
     "cause": "Loop or Returnly tracking links failing to print shipping returns labels.",
     "explanation": "Returns Portal Routing Errors: start at Settings > Apps and sales channels. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels. Read any red or yellow banner before you change anything.",
-      "You are checking: Loop or Returnly tracking links failing to print shipping returns labels.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Open Loop / Returnly / your returns app. The portal link is in that app, not in Shopify Shipping.",
+      "Reconnect Shopify. A failed label is usually address, carrier account, or prepaid label credits.",
+      "The order must be fulfilled before most return portals will print a label.",
+      "Do not paste a returns URL into theme.liquid; use the app's customer account block on a duplicate theme.",
+      "Run a test return on a $1 order."
     ],
     "target_ui_hint": "Settings > Apps and sales channels",
     "arrow": {
@@ -5712,11 +5716,11 @@
     "cause": "Intrusive split testing lines causing layout flicker shifts (FOUC).",
     "explanation": "A/B Testing Script Layout Shifts: start at Online Store > Themes > Customize > App embeds. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Themes > Customize > App embeds. Read any red or yellow banner before you change anything.",
-      "You are checking: Intrusive split testing lines causing layout flicker shifts (FOUC).",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "A/B testing apps inject extra CSS and cause flicker. Duplicate the theme first.",
+      "Customize → App embeds: pause the A/B app. If flicker dies, keep tests off the checkout and header.",
+      "Do not run two A/B tools.",
+      "Preview without the app, then with one experiment only.",
+      "Publish the stable copy. Never paste experiment JS into live theme.liquid."
     ],
     "target_ui_hint": "Online Store > Themes > Customize > App embeds",
     "arrow": {
@@ -5761,11 +5765,11 @@
     "cause": "Shopify POS app failing to handshake with Bluetooth barcode scanners.",
     "explanation": "POS Hardware Firmware Timeouts: start at Point of Sale > Settings. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Point of Sale > Settings. Read any red or yellow banner before you change anything.",
-      "You are checking: Shopify POS app failing to handshake with Bluetooth barcode scanners.",
-      "Settings → Apps and sales channels. Open the named app, or disable its embed in Customize → App embeds.",
-      "Toggle one app at a time. Last installed is the usual culprit.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "On the POS device: Shopify POS app → Settings → Connected tools.",
+      "Forget the Bluetooth scanner, toggle Bluetooth, pair again. Firmware updates happen in the POS app / reader settings, not in admin Liquid.",
+      "The location in POS must match admin. A mismatch looks like 'scanner does nothing'.",
+      "Test scan a barcode that exists as a variant barcode (not only SKU) into the cart.",
+      "If it still fails, swap the scanner before changing checkout settings."
     ],
     "target_ui_hint": "Point of Sale > Settings",
     "arrow": {
@@ -5830,6 +5834,7 @@
     "severity": "high",
     "match_phrases": [
       "301 url redirect loops",
+      "loop",
       "301 url",
       "url redirect",
       "redirect",
@@ -5901,11 +5906,11 @@
     "cause": "Google Search Console flagging broken product schema markup strings.",
     "explanation": "Rich Snippet Indexing Warnings: start at Online Store > Preferences. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Preferences. Read any red or yellow banner before you change anything.",
-      "You are checking: Google Search Console flagging broken product schema markup strings.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Google Search Console errors on product schema are usually missing price/availability or a theme JSON-LD app fighting Shopify's default.",
+      "Duplicate the theme. Disable extra SEO/schema apps so only one JSON-LD block remains.",
+      "Products need a price, image, and availability. Empty compare-at or hidden price breaks rich results.",
+      "Do not paste schema from a blog into the live product template.",
+      "Re-test the product URL in Google's rich results tool after Preview."
     ],
     "target_ui_hint": "Online Store > Preferences",
     "arrow": {
@@ -5996,11 +6001,11 @@
     "cause": "Shopify automatic sitemap file failing to surface fresh catalog edits.",
     "explanation": "Sitemap XML Re-indexing Delays: start at Online Store > Preferences. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Preferences. Read any red or yellow banner before you change anything.",
-      "You are checking: Shopify automatic sitemap file failing to surface fresh catalog edits.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Shopify rebuilds sitemap.xml automatically. New products can take hours to appear — do not paste a custom sitemap in Liquid.",
+      "The product must be Active and available to Online Store. Drafts never enter the sitemap.",
+      "Online Store → Preferences: confirm the domain Search Console is using is the primary storefront domain.",
+      "In Search Console, inspect the product URL. Request indexing after the product is truly live.",
+      "Do not block /sitemap in robots. Copy the product URL to a friend."
     ],
     "target_ui_hint": "Online Store > Preferences",
     "arrow": {
@@ -6063,6 +6068,7 @@
     "severity": "high",
     "match_phrases": [
       "shopify markets routing loops",
+      "loop",
       "shopify markets",
       "markets",
       "markets routing",
@@ -6132,11 +6138,11 @@
     "cause": "Consent banners failing to correctly block non-essential trackers.",
     "explanation": "GDPR Privacy Policy Compliance: start at Settings > Customer privacy. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Customer privacy. Read any red or yellow banner before you change anything.",
-      "You are checking: Consent banners failing to correctly block non-essential trackers.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Customer privacy. Cookie banner must actually block marketing cookies until accept.",
+      "Two privacy apps = broken banner. Keep Shopify privacy + one CMP, or just Shopify.",
+      "Pixels in Customer events should respect consent. Pixels pasted in theme.liquid will not.",
+      "Duplicate the theme and remove leftover cookie snippets from the copy.",
+      "Test EU-style deny vs accept in incognito. Publish the copy."
     ],
     "target_ui_hint": "Settings > Customer privacy",
     "arrow": {
@@ -6227,11 +6233,11 @@
     "cause": "Outstanding app or subscription balances locking administrative access.",
     "explanation": "Billing Invoice Payment Disputes: start at Settings > Billing. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Billing. Read any red or yellow banner before you change anything.",
-      "You are checking: Outstanding app or subscription balances locking administrative access.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Billing. A past-due Shopify or app invoice can lock features — pay it there.",
+      "App charges are separate from Shopify Payments payouts. The right screen is Billing, not Payments.",
+      "If a charge looks wrong, cancel the app or contact the app vendor. Do not rotate cards in a loop.",
+      "Store owner email gets the invoice. Staff may not see Billing.",
+      "This is not a theme issue. Copy the invoice number to a friend."
     ],
     "target_ui_hint": "Settings > Billing",
     "arrow": {
@@ -6317,11 +6323,11 @@
     "cause": "Mismatched localization markers confusing global indexing routines.",
     "explanation": "Hreflang Multi-Language Targets: start at Settings > Languages. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Languages. Read any red or yellow banner before you change anything.",
-      "You are checking: Mismatched localization markers confusing global indexing routines.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Languages / Markets. hreflang is emitted by Shopify for published languages and market domains.",
+      "Each language must be published. A translated theme string is not enough.",
+      "Do not paste a hreflang snippet into theme.liquid — you will duplicate Shopify's tags and confuse Google.",
+      "Primary domain + market subfolders/domains must match what Search Console expects.",
+      "View page source on two market URLs and confirm one hreflang set. Duplicate the theme if an SEO app adds a second set, then disable that app."
     ],
     "target_ui_hint": "Settings > Languages",
     "arrow": {
@@ -6502,11 +6508,11 @@
     "cause": "Daily remittance percentages mismatching bank settlement reports.",
     "explanation": "Shopify Capital Repayment Logs: start at Settings > Billing. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Billing. Read any red or yellow banner before you change anything.",
-      "You are checking: Daily remittance percentages mismatching bank settlement reports.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Billing / Shopify Capital. Daily remittance is a percent of sales — it will not match a single payout 1:1.",
+      "Compare Capital deductions on the payout Timeline, not on the bank statement alone.",
+      "If the percent looks wrong, it is Capital / Shopify — not the theme and not a tax setting.",
+      "Do not 'fix' this by changing Markets rounding.",
+      "Download the payout CSV and copy the Capital line to a friend or accountant."
     ],
     "target_ui_hint": "Settings > Billing",
     "arrow": {
@@ -6597,11 +6603,11 @@
     "cause": "Duplicate product paths failing to link to the primary collection base.",
     "explanation": "Canonical URL Target Pointing: start at Online Store > Preferences. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Preferences. Read any red or yellow banner before you change anything.",
-      "You are checking: Duplicate product paths failing to link to the primary collection base.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Duplicate product URLs: pick one canonical product and redirect the other handle.",
+      "Online Store → Navigation → URL redirects. Point extras at the main product.",
+      "Collections should not also list a second product URL for the same SKU.",
+      "SEO apps that rewrite canonicals can fight Shopify. Disable extras.",
+      "Do not paste canonical link tags into the live theme.liquid."
     ],
     "target_ui_hint": "Online Store > Preferences",
     "arrow": {
@@ -6838,11 +6844,11 @@
     "cause": "Large email database extraction tasks stalling out on network layers.",
     "explanation": "CSV Customer Export Timeouts: start at Customers. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Customers. Read any red or yellow banner before you change anything.",
-      "You are checking: Large email database extraction tasks stalling out on network layers.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Customers → Export. Huge lists time out in the browser. Filter (e.g. one tag) or use Shopify's emailed export.",
+      "Do not keep clicking Export. You will queue duplicates.",
+      "Work as store owner. Some staff cannot export PII.",
+      "If you need more than Shopify will email, use a customer-export app, not a theme hack.",
+      "Open the CSV in Google Sheets. Copy these steps to a friend."
     ],
     "target_ui_hint": "Customers",
     "arrow": {
@@ -6934,11 +6940,11 @@
     "cause": "Failing to duplicate core live layouts before executing manual script edits.",
     "explanation": "Theme File Backup Losses: start at Online Store > Themes. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Online Store > Themes. Read any red or yellow banner before you change anything.",
-      "You are checking: Failing to duplicate core live layouts before executing manual script edits.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Online Store → Themes → Duplicate the live theme before any code or app install. That duplicate is the backup.",
+      "Download a theme zip from the theme menu if you need an offline copy.",
+      "Shopify does not keep every keystroke. If you already edited live, duplicate whatever is left now and stop.",
+      "Roll back by publishing an older unpublished theme — not by pasting from chat.",
+      "Never Edit code on the published theme again."
     ],
     "target_ui_hint": "Online Store > Themes",
     "arrow": {
@@ -6983,11 +6989,11 @@
     "cause": "Deactivated team member access paths remaining active in API pools.",
     "explanation": "Staff Activity Authorization Revokes: start at Settings > Users and permissions. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Users and permissions. Read any red or yellow banner before you change anything.",
-      "You are checking: Deactivated team member access paths remaining active in API pools.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Users and permissions. Remove the staff account.",
+      "Settings → Apps → Develop apps / collaborator apps: revoke API tokens that staff created.",
+      "Collaborators from Partner accounts are removed in Users as well.",
+      "A leftover custom app token can still write products after the person is gone. Rotate it.",
+      "Do not share the owner login to 'replace' staff."
     ],
     "target_ui_hint": "Settings > Users and permissions",
     "arrow": {
@@ -7031,11 +7037,11 @@
     "cause": "Access tokens missing granular write scopes for backend asset access.",
     "explanation": "Custom App Credentials Creation: start at Settings > Apps and sales channels > Develop apps. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Apps and sales channels > Develop apps. Read any red or yellow banner before you change anything.",
-      "You are checking: Access tokens missing granular write scopes for backend asset access.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Settings → Apps → Develop apps → Create an app. You need the store owner.",
+      "Scopes: only what the job needs. Missing write_products is why 'it will not save'.",
+      "Install the app on this store after you set scopes. An uninstalled custom app has no token.",
+      "Never paste Client secret into Storescope, chat, or the theme.",
+      "If the token is already in chat, revoke it and create a new one."
     ],
     "target_ui_hint": "Settings > Apps and sales channels > Develop apps",
     "arrow": {
@@ -7127,11 +7133,11 @@
     "cause": "Native market rounding adjustments dropping cents values on invoices.",
     "explanation": "Multi-Currency Rounding Inconsistencies: start at Settings > Markets. Beginner path is admin settings — not Edit code.",
     "steps": [
-      "Go to Settings > Markets. Read any red or yellow banner before you change anything.",
-      "You are checking: Native market rounding adjustments dropping cents values on invoices.",
-      "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
-      "Save, then retest. Copy these steps to a friend if they are stuck."
+      "Go to Settings → Markets → the market → rounding / pricing.",
+      "Checkout cents that differ from the product page are market rounding or include/exclude tax — not a theme formatter.",
+      "Turn off rounding or set it to the same rule on every market.",
+      "Do not round prices in Liquid. Cart and checkout will disagree.",
+      "Preview that market, add to cart, read the checkout total. Copy both numbers to a friend."
     ],
     "target_ui_hint": "Settings > Markets",
     "arrow": {

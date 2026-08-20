@@ -9,9 +9,12 @@ from __future__ import annotations
 import csv
 import json
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).parent))
+from medium_steps import MEDIUM_STEPS
 CSV_PATH = ROOT / "data" / "categories.csv"
 OUT = ROOT / "data" / "issues.json"
 
@@ -34,7 +37,10 @@ BRANDS = [
     "instagram", "tiktok", "facebook", "pinterest", "google merchant",
     "godaddy", "cloudflare", "google maps", "youtube", "vimeo",
     "zapier", "amazon", "ebay", "multipass", "bogus gateway",
+    "abandoned checkout", "abandoned cart", "printful", "printify",
+    "judge.me", "loop", "returnly", "algolia", "klevu",
 ]
+
 
 STOP = {
     "the", "and", "or", "of", "a", "an", "to", "for", "in", "on", "with",
@@ -194,7 +200,7 @@ PATH = {
     150: "status.shopify.com",
 }
 
-# Unique next-click walkthroughs. Critical/High are fully specific.
+# Unique next-click walkthroughs. Critical/High/Medium are fully specific.
 # Theme rows always duplicate first. Some rows STOP instead of fake a fix.
 STEPS = {
     1: [
@@ -562,6 +568,7 @@ STEPS = {
         "Copy the banner text to a friend or lawyer. Only Shopify Risk can lift this.",
     ],
 }
+STEPS.update(MEDIUM_STEPS)
 
 THEME_SAFE = [
     "Online Store → Themes → Duplicate the live theme first. Do not Edit code on the published theme.",
@@ -692,6 +699,13 @@ def validate(items: list[dict]) -> None:
     unique_high = {tuple(i["steps"]) for i in crit_high}
     if len(unique_high) != len(crit_high):
         raise SystemExit(f"Critical/High steps not unique: {len(unique_high)}/{len(crit_high)}")
+    medium = [i for i in items if i["severity"] == "medium"]
+    unique_med = {tuple(i["steps"]) for i in medium}
+    if len(unique_med) != len(medium):
+        raise SystemExit(f"Medium steps not unique: {len(unique_med)}/{len(medium)}")
+    missing_med = [i["rank"] for i in medium if "Read any red or yellow banner" in (i["steps"] or [""])[0]]
+    if missing_med:
+        raise SystemExit(f"Medium still on fallback: {missing_med}")
     # every issue has unique first two steps (path + context or unique walkthrough)
     first2 = [tuple(i["steps"][:2]) for i in items]
     if len(set(first2)) != 150:

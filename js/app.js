@@ -529,6 +529,29 @@ function walkSpeakCurrent() {
   speak(line, { rate: 0.94 });
 }
 
+function paintStepProgress() {
+  const steps = state.current?.steps || [];
+  const n = Math.max(1, steps.length);
+  const i = Math.min((state.stepIndex || 0) + 1, n);
+  const label = `Step ${i} of ${n}`;
+  ["homeStepProgress", "tipStepProgress"].forEach((id) => {
+    const el = $(id);
+    if (el) el.textContent = label;
+  });
+  const nxt = steps[state.stepIndex + 1];
+  ["homeThenNext", "tipThenNext"].forEach((id) => {
+    const el = $(id);
+    if (!el) return;
+    if (nxt) {
+      el.hidden = false;
+      el.textContent = `Next: ${String(nxt).split(/[.→]/)[0].trim().slice(0, 80)}`;
+    } else {
+      el.hidden = true;
+      el.textContent = "";
+    }
+  });
+}
+
 function paintWalkHints() {
   const playing = state.walkOn && !state.walkPaused;
   document.querySelectorAll("[data-walk='play']").forEach((btn) => {
