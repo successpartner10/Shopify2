@@ -787,5 +787,485 @@
       }
     ],
     "source_category_db": "general"
+  },
+  {
+    "id": "general-theme-not-live-021",
+    "category": "general",
+    "match_phrases": [
+      "theme changes not showing",
+      "customize not live",
+      "theme not updating",
+      "changes don't appear",
+      "layout customization"
+    ],
+    "tags": [
+      "theme",
+      "customize",
+      "publish"
+    ],
+    "synonyms": [
+      "css not showing",
+      "section not appearing",
+      "I edited the theme nothing happened"
+    ],
+    "cause": "You edited a draft, the wrong theme, or the browser is showing an old copy.",
+    "explanation": "Shopify only shows the Published theme. Customize must be on that theme, then Save. Hard-refresh the storefront.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Online Store → Themes. Confirm the theme you edited has the Published badge — not a duplicate or trial.",
+      "Click Customize on the Published theme. Make the change again. Tap Save (top right).",
+      "On the storefront: hard-refresh (Ctrl+Shift+R or Cmd+Shift+R). Try an incognito window.",
+      "If you used Preview, that link is not the live shop. Click Publish only when Preview looks right."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Save",
+    "arrow": {
+      "x": 0.82,
+      "y": 0.12
+    },
+    "docs": [
+      {
+        "label": "Themes",
+        "url": "https://help.shopify.com/en/manual/online-store/themes"
+      }
+    ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-theme-mobile-layout-022",
+    "category": "general",
+    "match_phrases": [
+      "theme broken on mobile",
+      "section layout mobile",
+      "layout broken phone",
+      "theme screen size"
+    ],
+    "tags": [
+      "theme",
+      "mobile",
+      "layout"
+    ],
+    "synonyms": [
+      "desktop ok phone broken",
+      "header overlapping on iphone"
+    ],
+    "cause": "A section is hidden or stacked wrong on mobile. Fix it in Customize, not in CSS files.",
+    "explanation": "Theme editor has a mobile preview. Hide/show and padding per section there.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Online Store → Themes → Customize on the Published theme.",
+      "Bottom of the editor: switch to the phone preview icon.",
+      "Click the broken section. Check Hide on mobile, image height, and padding. Save.",
+      "If an app section is the problem: Theme settings → App embeds → turn that embed off, Save, recheck mobile."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > mobile preview",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.9
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-theme-after-update-023",
+    "category": "general",
+    "match_phrases": [
+      "theme broke after update",
+      "shopify update broke theme",
+      "theme features missing after update"
+    ],
+    "tags": [
+      "theme",
+      "update",
+      "rollback"
+    ],
+    "synonyms": [
+      "dawn update broke",
+      "os 2.0 broke my theme"
+    ],
+    "cause": "A Shopify or theme update changed a section. Roll back or duplicate, don’t patch live Liquid first.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Online Store → Themes. If Shopify added an update card, open it and read which files changed.",
+      "⋯ on the Published theme → Duplicate (safety copy).",
+      "⋯ → Last saved or older library version if you need yesterday’s theme.",
+      "Apps → remove or update any theme-app extension installed the same day.",
+      "Preview a product, collection, cart, and checkout before you Publish again."
+    ],
+    "target_ui_hint": "Online Store > Themes > Duplicate / rollback",
+    "arrow": {
+      "x": 0.85,
+      "y": 0.28
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-app-leftover-024",
+    "category": "general",
+    "match_phrases": [
+      "deleted app broke theme",
+      "leftover app code",
+      "ghost app code",
+      "uninstalled app still there",
+      "app overload"
+    ],
+    "tags": [
+      "apps",
+      "conflict",
+      "speed"
+    ],
+    "synonyms": [
+      "removed app still showing",
+      "app script left in theme"
+    ],
+    "cause": "Uninstalling an app often leaves an embed or a snippet. That leftover can break a section or slow the shop.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Settings → Apps and sales channels. Confirm the app is uninstalled.",
+      "Online Store → Themes → Customize → App embeds. Turn off anything named after the old app. Save.",
+      "Customize → look for leftover app blocks in header, footer, product. Remove the block, don’t Edit code.",
+      "If a step from the app’s docs says “paste in theme.liquid”: ignore it on the live theme. Duplicate first, or skip — most modern apps use embeds."
+    ],
+    "target_ui_hint": "Customize > App embeds",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.45
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-too-many-apps-025",
+    "category": "general",
+    "match_phrases": [
+      "too many apps",
+      "apps slowing store",
+      "conflicting apps",
+      "app conflict",
+      "code conflicts"
+    ],
+    "tags": [
+      "apps",
+      "speed",
+      "conflict"
+    ],
+    "synonyms": [
+      "popup app crashing",
+      "review app broke product page"
+    ],
+    "cause": "Several apps inject scripts. Two pop-ups or two review widgets often collide.",
+    "steps": [
+      "Settings → Apps and sales channels. List every app that touches the storefront (pop-up, reviews, upsell, chat).",
+      "Online Store → Themes → Customize → App embeds. Turn off all but one suspect. Save. Check the storefront.",
+      "Turn embeds back on one at a time until the break returns. Uninstall or replace that app.",
+      "Never stack two apps that do the same job (two pop-ups, two reviews)."
+    ],
+    "target_ui_hint": "Settings > Apps and sales channels",
+    "arrow": {
+      "x": 0.2,
+      "y": 0.3
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-page-speed-026",
+    "category": "general",
+    "match_phrases": [
+      "page speed",
+      "store is slow",
+      "pagespeed",
+      "slow mobile",
+      "performance optimization",
+      "heavy javascript"
+    ],
+    "tags": [
+      "speed",
+      "theme",
+      "apps",
+      "pixels"
+    ],
+    "synonyms": [
+      "gtmetrix bad",
+      "mobile score dropped",
+      "pixels delaying"
+    ],
+    "cause": "Huge images, extra apps, and extra pixels delay the page. Fix those before editing theme code.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Online Store → Themes → Customize → Theme settings → Media / images. Use Shopify-hosted images; don’t upload 4000px photos.",
+      "Settings → Customer events. Remove pixels you don’t use. Each pixel adds wait time.",
+      "Customize → App embeds: turn off unused embeds (especially sliders, pop-ups, live chat on every page).",
+      "Online Store → Preferences → check password is off if you meant the shop to be public (password pages also feel “slow”)."
+    ],
+    "target_ui_hint": "Theme settings > images, then Customer events",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.2
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-overselling-027",
+    "category": "general",
+    "match_phrases": [
+      "overselling",
+      "inventory sync",
+      "stock wrong",
+      "multi-location inventory",
+      "variant sync"
+    ],
+    "tags": [
+      "inventory",
+      "locations",
+      "variants"
+    ],
+    "synonyms": [
+      "sold more than I have",
+      "warehouse wrong stock"
+    ],
+    "cause": "Inventory is tracking at the wrong location, or a channel isn’t using Continue selling.",
+    "steps": [
+      "Settings → Locations. Confirm which location should fulfill online orders.",
+      "Products → Inventory. Filter the product. Check On hand vs Available at each location.",
+      "Product page → Inventory: Track quantity is on. Continue selling when out of stock is off if you don’t want oversell.",
+      "Sales channels: if Amazon/eBay/POS also sell, wait a few minutes after a stock edit — sync is not instant.",
+      "Orders → the oversold order → fulfill from the location that still has stock, or refund."
+    ],
+    "target_ui_hint": "Products > Inventory",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.4
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-line-items-invalid-028",
+    "category": "general",
+    "match_phrases": [
+      "line items invalid",
+      "massive stock changes",
+      "can't save inventory"
+    ],
+    "tags": [
+      "inventory",
+      "bulk"
+    ],
+    "synonyms": [
+      "csv inventory failed",
+      "bulk editor stock error"
+    ],
+    "cause": "A bulk inventory edit sent a blank or negative quantity, or the variant no longer exists.",
+    "steps": [
+      "Don’t retry the same CSV. Open Products → Inventory and fix one product by hand first.",
+      "Export a fresh CSV from Shopify (not an old file). Quantity must be a number, never blank.",
+      "If you deleted a variant, remove that row from the CSV.",
+      "Bulk editor: change fewer than 50 variants at a time if saves fail."
+    ],
+    "target_ui_hint": "Products > Inventory > bulk",
+    "arrow": {
+      "x": 0.6,
+      "y": 0.2
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-checkout-css-029",
+    "category": "general",
+    "match_phrases": [
+      "checkout broken",
+      "can't complete checkout",
+      "checkout css",
+      "pay button missing",
+      "checkout errors"
+    ],
+    "tags": [
+      "checkout",
+      "theme",
+      "apps"
+    ],
+    "synonyms": [
+      "checkout styling blocked pay",
+      "custom checkout broke"
+    ],
+    "cause": "Additional scripts or old checkout CSS can hide Pay now. Shopify Plus checkout extra scripts are the usual suspect; on basic plans, an app or discount is more likely.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Try checkout in an incognito window with no apps. If it works, an app is involved.",
+      "Settings → Checkout. Note any additional scripts. Temporarily clear them on a duplicate theme / after copying the text somewhere safe.",
+      "Customize → App embeds: turn off upsell, trust-badge, and checkout-related apps. Retest.",
+      "Discounts: disable automatic discounts, retry, then add back one at a time."
+    ],
+    "target_ui_hint": "Settings > Checkout",
+    "arrow": {
+      "x": 0.3,
+      "y": 0.25
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-discount-not-working-030",
+    "category": "general",
+    "match_phrases": [
+      "discount code not working",
+      "coupon not applying",
+      "automatic discount stack",
+      "abandoned carts"
+    ],
+    "tags": [
+      "checkout",
+      "discounts"
+    ],
+    "synonyms": [
+      "promo code invalid",
+      "abandoned cart email not sending"
+    ],
+    "cause": "The code has a date, usage, or combination rule — or two automatics are blocking each other.",
+    "steps": [
+      "Discounts → open the code. Check status Active, start/end dates, and minimum purchase.",
+      "Combinations: if it can’t combine with product discounts, turn the other automatic off to test.",
+      "Customer eligibility: if it’s “specific customers”, your test account must be on that list.",
+      "Abandoned checkout emails: Settings → Notifications → Abandoned checkout. Must be enabled. Customer must have entered an email at checkout."
+    ],
+    "target_ui_hint": "Discounts",
+    "arrow": {
+      "x": 0.15,
+      "y": 0.35
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-seo-duplicate-031",
+    "category": "general",
+    "match_phrases": [
+      "seo",
+      "duplicate content",
+      "collection filter urls",
+      "url navigation",
+      "broken breadcrumbs"
+    ],
+    "tags": [
+      "seo",
+      "collections",
+      "urls"
+    ],
+    "synonyms": [
+      "google duplicate collection",
+      "filter tags seo"
+    ],
+    "cause": "Filtered collection URLs look like extra pages to Google. Fix in collection + search settings, not in theme.liquid.",
+    "steps": [
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Products → Collections → the collection → Search engine listing preview. Write a unique title and description.",
+      "Online Store → Navigation. Fix breadcrumbs by using one menu parent, not duplicate collection links.",
+      "If you use filter apps, in that app turn off “index filter pages” or similar. Don’t paste robots.txt by hand unless you already have a duplicate theme.",
+      "Google Search Console: request indexing only for the main collection URL, not every ?filter= link."
+    ],
+    "target_ui_hint": "Collections > Search engine listing",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.7
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-variants-media-032",
+    "category": "general",
+    "match_phrases": [
+      "product variants",
+      "variant limit",
+      "blurry product images",
+      "product media",
+      "parent child variants"
+    ],
+    "tags": [
+      "products",
+      "variants",
+      "images"
+    ],
+    "synonyms": [
+      "too many variants",
+      "image stretched",
+      "variant pictures wrong"
+    ],
+    "cause": "Shopify caps variants at 100 per product. Images look blurry when the file is small or the theme stretches it.",
+    "steps": [
+      "Products → the product. If you need more than 100 variants, split into two products (e.g. by color) instead of Edit code hacks.",
+      "Media: upload PNG/JPG at least 2048px on the long side. Don’t screenshot a photo.",
+      "Click a variant → choose its image so the gallery matches the option.",
+      "Customize → product page → image block: check crop (circle/portrait) isn’t crushing the photo.",
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down."
+    ],
+    "target_ui_hint": "Products > variants and media",
+    "arrow": {
+      "x": 0.7,
+      "y": 0.35
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-markets-currency-033",
+    "category": "general",
+    "match_phrases": [
+      "multi-currency",
+      "multi-language",
+      "prices not switching",
+      "markets subdomain",
+      "language selector"
+    ],
+    "tags": [
+      "markets",
+      "currency",
+      "language"
+    ],
+    "synonyms": [
+      "wrong currency at checkout",
+      "language menu missing",
+      "IP price not changing"
+    ],
+    "cause": "Markets must include the country and a price list. The language selector is a theme setting, not a Liquid snippet you paste.",
+    "steps": [
+      "Settings → Markets. Open the country. Status must be Active. A price list or Shopify Payments currency must exist.",
+      "Settings → Payments → Shopify Payments → currencies (if you use Shopify Payments).",
+      "Online Store → Themes → Customize → header. Add the markets / language selector block if the theme has one. Do not paste a random language switcher into theme.liquid.",
+      "Stop. Do not tap Edit code or paste Liquid yet. Online Store → Themes → ⋯ → Duplicate first. A bad paste can take the storefront down.",
+      "Test in incognito with a VPN only as a last check — Shopify uses the market you pick more than IP."
+    ],
+    "target_ui_hint": "Settings > Markets",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.4
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-shipping-tax-034",
+    "category": "general",
+    "match_phrases": [
+      "tax calculations",
+      "wrong tax",
+      "geolocation tax",
+      "3pl sync",
+      "fulfillment backlog"
+    ],
+    "tags": [
+      "tax",
+      "shipping",
+      "fulfillment"
+    ],
+    "synonyms": [
+      "sales tax wrong state",
+      "shipstation not syncing"
+    ],
+    "cause": "Tax is a Markets + Taxes setting. Carrier/3PL errors are usually the app connection, not Liquid.",
+    "steps": [
+      "Settings → Taxes and duties. Collect tax is on. Open the country and check overrides.",
+      "Settings → Markets → the country → duties and import taxes if you sell internationally.",
+      "Settings → Shipping and delivery → carrier: reconnect if rates are zero.",
+      "3PL apps: Settings → Apps → the 3PL → reconnect. Then Orders → fulfill a test order.",
+      "Don’t paste tax tables into the theme."
+    ],
+    "target_ui_hint": "Settings > Taxes and duties",
+    "arrow": {
+      "x": 0.25,
+      "y": 0.35
+    },
+    "source_category_db": "general"
   }
 ]

@@ -54,6 +54,13 @@ EXPECT = {
     "privacy policy": "general-privacy-policy-theme-020",
     "copy privacy policy from settings": "general-privacy-policy-theme-020",
     "add privacy policy to theme": "general-privacy-policy-theme-020",
+    "theme changes not showing": "general-theme-not-live-021",
+    "too many apps": "general-too-many-apps-025",
+    "page speed": "general-page-speed-026",
+    "overselling": "general-overselling-027",
+    "checkout broken": "general-checkout-css-029",
+    "product variants": "general-variants-media-032",
+    "multi-currency": "general-markets-currency-033",
 }
 
 def main():

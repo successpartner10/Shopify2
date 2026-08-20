@@ -14,7 +14,8 @@ const SCREEN_HINTS = {
     "password", "notification", "inventory", "staff", "app embed",
     "pinterest", "google", "social", "instagram", "youtube",
     "collective", "liquid", "theme.liquid", "edit code", "head tag",
-    "privacy", "policy", "footer menu", "terms of service"
+    "privacy", "policy", "footer menu", "terms of service",
+    "speed", "apps", "seo", "variant", "inventory", "markets", "currency"
   ],
   errors: ["error", "failed", "unable", "declined", "on hold", "couldn't"]
 };

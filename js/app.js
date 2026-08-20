@@ -647,6 +647,25 @@ function walkHalt() {
   paintWalkHints();
 }
 
+async function copyStepsForFriend() {
+  if (!state.current) return toast("Find a fix first.");
+  const text = playbookText(state.current);
+  const ok = await copyText(text);
+  if (ok) {
+    toast("Steps copied. Paste them in a message to a friend.");
+    return;
+  }
+  if (canNativeShare()) {
+    try {
+      await nativeShare({ title: `Storescope: ${state.current.target_ui_hint}`, text, url: fixUrl(state.current.id) });
+      return;
+    } catch (err) {
+      if (err?.name === "AbortError") return;
+    }
+  }
+  toast("Copy failed. Long-press the steps and copy.");
+}
+
 function logRec(type, payload) {
   if (!state.recordingOn || !state.recording) return;
   recordEvent(state.recording, type, payload);
@@ -1509,6 +1528,8 @@ function wireUi() {
     if ($("coach")) $("coach").hidden = true;
   });
   on("homeNext", "click", () => $("nextBtn")?.click());
+  on("homeCopySteps", "click", copyStepsForFriend);
+  on("copyStepsBtn", "click", copyStepsForFriend);
   on("homePip", "click", popOutStep);
   on("tipPip", "click", popOutStep);
   on("homeWorked", "click", () => $("workedBtn")?.click());

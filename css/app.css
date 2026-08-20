@@ -516,6 +516,8 @@ h1 em { font-style: normal; color: var(--mint); }
 .drawer h2 { font-family: var(--display); font-size: 1.45rem; margin: 0; }
 .drawer ol { padding-left: 1.2em; }
 .drawer li { margin: 0.45em 0; color: var(--ink); }
+.help-list { margin: 0 0 16px; padding-left: 1.1em; }
+.help-list li { margin: 0.65em 0; line-height: 1.4; }
 .hist-item {
   border: var(--hair) solid var(--line); border-radius: 14px; padding: 14px; margin-bottom: 10px;
   background: var(--surface-2);
