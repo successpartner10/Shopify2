@@ -20,11 +20,35 @@ OUT = ROOT / "data" / "issues.json"
 
 HUB = {
     "Payments": "payments",
-    "Checkout": "payments",
+    "Checkout": "checkout",
     "Theme": "themes",
     "Catalog": "products",
     "Integrations": "apps",
     "Admin": "admin",
+}
+
+# Extra home topics (v2.9 names) split out of the 6 CSV cores.
+RANK_HUB = {
+    8: "shipping",
+    9: "shipping",
+    69: "shipping",
+    64: "inventory",
+    68: "inventory",
+    78: "inventory",
+    82: "inventory",
+    89: "inventory",
+    20: "domains",
+    121: "domains",
+    127: "domains",
+    135: "domains",
+    84: "seo",
+    122: "seo",
+    123: "seo",
+    125: "seo",
+    131: "seo",
+    132: "seo",
+    138: "seo",
+    141: "seo",
 }
 
 BRANDS = [
@@ -666,7 +690,7 @@ def build() -> list[dict]:
         core = row["Core Area"].strip()
         sev = row["Severity Level"].strip().lower()
         context = row["Troubleshooting Context"].strip()
-        hub = HUB[core]
+        hub = RANK_HUB.get(rank) or HUB[core]
         path = PATH[rank]
         slug = slugify(title)
         steps = STEPS.get(rank) or fallback_steps(hub, path, context)
@@ -727,7 +751,16 @@ def validate(items: list[dict]) -> None:
     kl = [i for i in items if any("klarna" in p for p in i["match_phrases"])]
     if not kl:
         raise SystemExit("klarna should match BNPL")
+    from collections import Counter
+    hubs = Counter(i["hub"] for i in items)
+    need = {"payments", "checkout", "shipping", "themes", "products", "inventory", "apps", "seo", "domains", "admin"}
+    missing = need - set(hubs)
+    if missing:
+        raise SystemExit(f"missing hubs {missing}")
+    if sum(hubs.values()) != 150:
+        raise SystemExit(hubs)
     print(f"OK {len(items)} issues · {len(crit_high)} critical/high unique · {len(set(tuple(i['steps']) for i in items))} unique step-sets")
+    print("hubs", dict(hubs))
 
 
 def main() -> None:

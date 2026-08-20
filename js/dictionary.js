@@ -91,17 +91,24 @@ function inferKind(entry) {
 
 function inferHub(row, file) {
   if (row.hub) return row.hub;
-  if (file === "payments" || file === "shipping") return "payments";
+  if (file === "payments") return "payments";
+  if (file === "shipping") return "shipping";
   const id = String(row.id || "");
   if (/theme|liquid|head-tag|custom-liquid|edit-theme|page-speed|speed/.test(id)) return "themes";
   if (/app-conflict|app-leftover|too-many-apps|pixel|pinterest|google-youtube|collective/.test(id)) return "apps";
-  if (/inventory|product|variant|gift|overselling|line-items/.test(id)) return "products";
-  if (/payout|payment|checkout|discount|shipping|tax|card|bank|test-mode/.test(id)) return "payments";
-  if (/domain|password|staff|billing|privacy|markets|seo|admin/.test(id)) return "admin";
+  if (/overselling|inventory-insufficient|inventory/.test(id)) return "inventory";
+  if (/product|variant|gift|line-items/.test(id)) return "products";
+  if (/no-shipping|shipping/.test(id)) return "shipping";
+  if (/checkout/.test(id)) return "checkout";
+  if (/payout|payment|discount|tax|card|bank|test-mode/.test(id)) return "payments";
+  if (/seo|sitemap|redirect|canonical|hreflang|robots/.test(id)) return "seo";
+  if (/domain|ssl|dns/.test(id)) return "domains";
+  if (/password|staff|billing|privacy|markets|admin/.test(id)) return "admin";
   if (file === "errors") {
-    if (/shipping|payout|payment|card|bank|test-mode/.test(id)) return "payments";
+    if (/shipping/.test(id)) return "shipping";
+    if (/payout|payment|card|bank|test-mode/.test(id)) return "payments";
     if (/theme/.test(id)) return "themes";
-    if (/inventory/.test(id)) return "products";
+    if (/inventory/.test(id)) return "inventory";
     if (/app/.test(id)) return "apps";
     return "admin";
   }

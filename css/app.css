@@ -231,6 +231,9 @@ h1 em { font-style: normal; color: var(--mint); }
   margin-top: 14px;
   max-width: 560px;
 }
+@media (min-width: 520px) {
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .cat-grid button {
   min-height: 54px;
   border-radius: 14px;

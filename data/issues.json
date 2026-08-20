@@ -48,8 +48,8 @@
   },
   {
     "id": "issue-002-checkout-extensibility-upgrades",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 2,
     "severity": "critical",
@@ -70,7 +70,7 @@
       "checkout.liquid to extensibility"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "critical"
     ],
@@ -78,7 +78,7 @@
       "Checkout Extensibility Upgrades"
     ],
     "cause": "Bugs or layout breaks when upgrading from checkout.liquid to extensibility.",
-    "explanation": "Checkout Extensibility Upgrades: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
+    "explanation": "Checkout Extensibility Upgrades: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Stop. Checkout.liquid upgrades break live checkout if you paste old code. Do not Edit code on the published theme.",
       "Go to Settings → Checkout. If Shopify offers Checkout extensibility / additional scripts, use that — not checkout.liquid.",
@@ -186,8 +186,8 @@
   },
   {
     "id": "issue-005-abandoned-cart-recovery-links",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 5,
     "severity": "medium",
@@ -207,7 +207,7 @@
       "via automation emails"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -215,7 +215,7 @@
       "Abandoned Cart Recovery Links"
     ],
     "cause": "Broken checkout restoration links sent via automation emails.",
-    "explanation": "Abandoned Cart Recovery Links: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
+    "explanation": "Abandoned Cart Recovery Links: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Checkout. Abandoned checkout emails are here (and in Shopify Email / Automations) — not in the theme.",
       "Open a recent abandoned checkout under Orders → Abandoned checkouts. Tap the recovery link yourself in incognito.",
@@ -232,8 +232,8 @@
   },
   {
     "id": "issue-006-discount-code-logic-errors",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 6,
     "severity": "medium",
@@ -254,7 +254,7 @@
       "codes not triggering"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -262,7 +262,7 @@
       "Discount Code Logic Errors"
     ],
     "cause": "Stacking restrictions failing or automatic discount codes not triggering.",
-    "explanation": "Discount Code Logic Errors: start at Discounts. Read the banner before you change a gateway or the theme.",
+    "explanation": "Discount Code Logic Errors: start at Discounts. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Discounts. Open the code that should have applied.",
       "Check combinations: if it cannot combine with product discounts, an automatic deal is blocking it.",
@@ -328,8 +328,8 @@
   },
   {
     "id": "issue-008-shipping-rate-api-discrepancies",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "shipping",
+    "category": "shipping",
     "core_area": "checkout",
     "rank": 8,
     "severity": "high",
@@ -349,7 +349,7 @@
       "mismatching at checkout"
     ],
     "tags": [
-      "payments",
+      "shipping",
       "issue",
       "high"
     ],
@@ -357,7 +357,7 @@
       "Shipping Rate API Discrepancies"
     ],
     "cause": "Carrier-provided rates failing to display or mismatching at checkout.",
-    "explanation": "Shipping Rate API Discrepancies: start at Settings > Shipping and delivery. Read the banner before you change a gateway or the theme.",
+    "explanation": "Shipping Rate API Discrepancies: start at Settings > Shipping and delivery. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Shipping and delivery → Manage rates.",
       "The customer's country must sit in exactly one zone that has a rate. Overlaps hide carrier rates.",
@@ -374,8 +374,8 @@
   },
   {
     "id": "issue-009-local-pickup-setup-glitches",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "shipping",
+    "category": "shipping",
     "core_area": "checkout",
     "rank": 9,
     "severity": "medium",
@@ -396,7 +396,7 @@
       "stock matching availability"
     ],
     "tags": [
-      "payments",
+      "shipping",
       "issue",
       "medium"
     ],
@@ -404,7 +404,7 @@
       "Local Pickup Setup Glitches"
     ],
     "cause": "Locations showing unavailable despite local stock matching availability.",
-    "explanation": "Local Pickup Setup Glitches: start at Settings > Shipping and delivery. Read the banner before you change a gateway or the theme.",
+    "explanation": "Local Pickup Setup Glitches: start at Settings > Shipping and delivery. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Shipping and delivery → Local pickup.",
       "Each pickup location must be enabled, with hours, and that location must have Available stock — On hand in another warehouse does not count.",
@@ -467,8 +467,8 @@
   },
   {
     "id": "issue-011-b2b-draft-order-checkouts",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 11,
     "severity": "high",
@@ -491,7 +491,7 @@
       "failing at checkout"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "high"
     ],
@@ -499,7 +499,7 @@
       "B2B Draft Order Checkouts"
     ],
     "cause": "Company account custom pricing or net terms terms failing at checkout.",
-    "explanation": "B2B Draft Order Checkouts: start at Customers > Companies. Read the banner before you change a gateway or the theme.",
+    "explanation": "B2B Draft Order Checkouts: start at Customers > Companies. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Customers → Companies. Open the company whose draft order failed.",
       "B2B prices and net terms live on the catalog / payment terms — not in the theme.",
@@ -516,8 +516,8 @@
   },
   {
     "id": "issue-012-digital-product-download-delivery",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 12,
     "severity": "medium",
@@ -539,7 +539,7 @@
       "access links immediately"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -547,7 +547,7 @@
       "Digital Product Download Delivery"
     ],
     "cause": "Fulfillment triggers failing to dispatch digital access links immediately.",
-    "explanation": "Digital Product Download Delivery: start at Products > [product] > Digital. Read the banner before you change a gateway or the theme.",
+    "explanation": "Digital Product Download Delivery: start at Products > [product] > Digital. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Open the product. It must be a Digital product (or have no shipping required) for the download to send.",
       "Files live on the product → media / digital files. A 404 download means the file was removed or never attached.",
@@ -660,8 +660,8 @@
   },
   {
     "id": "issue-015-tipping-donation-checkout-fields",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 15,
     "severity": "low",
@@ -683,7 +683,7 @@
       "order line-item values"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "low"
     ],
@@ -691,12 +691,12 @@
       "Tipping & Donation Checkout Fields"
     ],
     "cause": "Checkbox triggers failing to append correct order line-item values.",
-    "explanation": "Tipping & Donation Checkout Fields: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
+    "explanation": "Tipping & Donation Checkout Fields: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings > Checkout. Read any red or yellow banner before you change anything.",
       "You are checking: Checkbox triggers failing to append correct order line-item values.",
       "Retry as the store owner in an incognito window to rule out staff permissions.",
-      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
       "Save, then retest. Copy these steps to a friend if they are stuck."
     ],
     "target_ui_hint": "Settings > Checkout",
@@ -758,8 +758,8 @@
   },
   {
     "id": "issue-017-flash-sale-high-volume-throttling",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 17,
     "severity": "critical",
@@ -781,7 +781,7 @@
       "timeouts under load"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "critical"
     ],
@@ -789,7 +789,7 @@
       "Flash Sale High-Volume Throttling"
     ],
     "cause": "Queue system bypass issues or transaction lock timeouts under load.",
-    "explanation": "Flash Sale High-Volume Throttling: start at status.shopify.com. Read the banner before you change a gateway or the theme.",
+    "explanation": "Flash Sale High-Volume Throttling: start at status.shopify.com. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Stop editing the theme. Flash-sale 'no checkout' is often Shopify under load, not your code.",
       "Open status.shopify.com and the payment provider status page first.",
@@ -852,8 +852,8 @@
   },
   {
     "id": "issue-019-address-validation-refusals",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 19,
     "severity": "medium",
@@ -875,7 +875,7 @@
       "formatted regional inputs"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -883,7 +883,7 @@
       "Address Validation Refusals"
     ],
     "cause": "Google Maps autocomplete api failing or rejecting formatted regional inputs.",
-    "explanation": "Address Validation Refusals: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
+    "explanation": "Address Validation Refusals: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Checkout. Address autocomplete is Shopify + Google — not your theme's map pin.",
       "If a country/region format is rejected, turn off strict address verification for that market or add the region in Shipping zones.",
@@ -900,8 +900,8 @@
   },
   {
     "id": "issue-020-secure-checkout-ssl-handshakes",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "domains",
+    "category": "domains",
     "core_area": "checkout",
     "rank": 20,
     "severity": "critical",
@@ -921,7 +921,7 @@
       "domain checkout routes"
     ],
     "tags": [
-      "payments",
+      "domains",
       "issue",
       "critical"
     ],
@@ -929,7 +929,7 @@
       "Secure Checkout SSL Handshakes"
     ],
     "cause": "Intermittent security warnings blocking custom domain checkout routes.",
-    "explanation": "Secure Checkout SSL Handshakes: start at Settings > Domains. Read the banner before you change a gateway or the theme.",
+    "explanation": "Secure Checkout SSL Handshakes: start at Settings > Domains. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Domains. The checkout host must show Connected with a padlock — not 'pending'.",
       "If SSL is pending, wait. Adding extra CNAME/CAA 'fixes' in GoDaddy or Cloudflare often delays it more.",
@@ -946,8 +946,8 @@
   },
   {
     "id": "issue-021-express-checkout-button-alignment",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 21,
     "severity": "medium",
@@ -972,7 +972,7 @@
       "on mobile views"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -980,7 +980,7 @@
       "Express Checkout Button Alignment"
     ],
     "cause": "Apple Pay/Google Pay buttons jumping layouts on mobile views.",
-    "explanation": "Express Checkout Button Alignment: start at Online Store > Themes > Customize. Read the banner before you change a gateway or the theme.",
+    "explanation": "Express Checkout Button Alignment: start at Online Store > Themes > Customize. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Online Store → Themes → Duplicate first. Do not Edit code on the published theme.",
       "Customize the copy → product / cart template. Shop Pay, Apple Pay, and Google Pay buttons are checkout settings plus the theme's payment-button block.",
@@ -1044,8 +1044,8 @@
   },
   {
     "id": "issue-023-custom-order-note-disappearances",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 23,
     "severity": "medium",
@@ -1068,7 +1068,7 @@
       "order json object"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -1076,7 +1076,7 @@
       "Custom Order Note Disappearances"
     ],
     "cause": "Cart attributes failing to pass safely into the order JSON object.",
-    "explanation": "Custom Order Note Disappearances: start at Settings > Checkout. Read the banner before you change a gateway or the theme.",
+    "explanation": "Custom Order Note Disappearances: start at Settings > Checkout. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Cart notes / attributes must be enabled in Settings → Checkout (or the cart form in Customize).",
       "If the note vanishes on the order, an app is stripping cart attributes at checkout. Disable the newest checkout app embed.",
@@ -1185,8 +1185,8 @@
   },
   {
     "id": "issue-026-customer-account-login-requirements",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 26,
     "severity": "medium",
@@ -1210,7 +1210,7 @@
       "finalizing cart checks"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -1218,7 +1218,7 @@
       "Customer Account Login Requirements"
     ],
     "cause": "Forced sign-in loops preventing guest users from finalizing cart checks.",
-    "explanation": "Customer Account Login Requirements: start at Settings > Customer accounts. Read the banner before you change a gateway or the theme.",
+    "explanation": "Customer Account Login Requirements: start at Settings > Customer accounts. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Customer accounts. If accounts are required, guests cannot finish checkout.",
       "Classic vs new customer accounts both can loop if 'login to checkout' is on and the login page errors.",
@@ -1284,8 +1284,8 @@
   },
   {
     "id": "issue-028-wholesale-volume-tier-discounts",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 28,
     "severity": "high",
@@ -1306,7 +1306,7 @@
       "line-item prices dynamically"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "high"
     ],
@@ -1314,7 +1314,7 @@
       "Wholesale Volume Tier Discounts"
     ],
     "cause": "Quantity break tables failing to update line-item prices dynamically.",
-    "explanation": "Wholesale Volume Tier Discounts: start at Discounts. Read the banner before you change a gateway or the theme.",
+    "explanation": "Wholesale Volume Tier Discounts: start at Discounts. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Discounts (or B2B catalogs / quantity breaks app).",
       "Quantity breaks do not live in theme Liquid. If prices do not drop at 10+, the discount or catalog is wrong.",
@@ -1331,8 +1331,8 @@
   },
   {
     "id": "issue-029-localized-checkout-translation-drops",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 29,
     "severity": "medium",
@@ -1353,7 +1353,7 @@
       "despite multi-market localization"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "medium"
     ],
@@ -1361,7 +1361,7 @@
       "Localized Checkout Translation Drops"
     ],
     "cause": "Fields reverting to default English despite multi-market localization.",
-    "explanation": "Localized Checkout Translation Drops: start at Settings > Languages. Read the banner before you change a gateway or the theme.",
+    "explanation": "Localized Checkout Translation Drops: start at Settings > Languages. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Languages (and Markets). Checkout language follows the market/locale, not a theme translate filter.",
       "Publish the language and add checkout translations in Translate & Adapt (or Shopify's checkout editor).",
@@ -1378,8 +1378,8 @@
   },
   {
     "id": "issue-030-cookie-consent-checkout-blocks",
-    "hub": "payments",
-    "category": "payments",
+    "hub": "checkout",
+    "category": "checkout",
     "core_area": "checkout",
     "rank": 30,
     "severity": "high",
@@ -1401,7 +1401,7 @@
       "checkout tracking integrations"
     ],
     "tags": [
-      "payments",
+      "checkout",
       "issue",
       "high"
     ],
@@ -1409,7 +1409,7 @@
       "Cookie Consent Checkout Blocks"
     ],
     "cause": "GDPR banner blocking script loads for checkout tracking integrations.",
-    "explanation": "Cookie Consent Checkout Blocks: start at Settings > Customer privacy. Read the banner before you change a gateway or the theme.",
+    "explanation": "Cookie Consent Checkout Blocks: start at Settings > Customer privacy. Beginner path is admin settings — not Edit code.",
     "steps": [
       "Go to Settings → Customer privacy. A cookie banner that blocks scripts can kill checkout tracking — and some pay buttons.",
       "Set marketing cookies to load after consent, not to block Shopify checkout scripts.",
@@ -3033,8 +3033,8 @@
   },
   {
     "id": "issue-064-multi-location-inventory-desyncs",
-    "hub": "products",
-    "category": "products",
+    "hub": "inventory",
+    "category": "inventory",
     "core_area": "catalog",
     "rank": 64,
     "severity": "high",
@@ -3054,7 +3054,7 @@
       "physical warehouse systems"
     ],
     "tags": [
-      "products",
+      "inventory",
       "issue",
       "high"
     ],
@@ -3223,8 +3223,8 @@
   },
   {
     "id": "issue-068-inventory-policy-over-selling",
-    "hub": "products",
-    "category": "products",
+    "hub": "inventory",
+    "category": "inventory",
     "core_area": "catalog",
     "rank": 68,
     "severity": "high",
@@ -3244,7 +3244,7 @@
       "backorder setups active"
     ],
     "tags": [
-      "products",
+      "inventory",
       "issue",
       "high"
     ],
@@ -3269,8 +3269,8 @@
   },
   {
     "id": "issue-069-weight-based-shipping-profile-drops",
-    "hub": "products",
-    "category": "products",
+    "hub": "shipping",
+    "category": "shipping",
     "core_area": "catalog",
     "rank": 69,
     "severity": "medium",
@@ -3292,7 +3292,7 @@
       "uncalculated shipping states"
     ],
     "tags": [
-      "products",
+      "shipping",
       "issue",
       "medium"
     ],
@@ -3702,8 +3702,8 @@
   },
   {
     "id": "issue-078-product-bundling-parent-child-sync",
-    "hub": "products",
-    "category": "products",
+    "hub": "inventory",
+    "category": "inventory",
     "core_area": "catalog",
     "rank": 78,
     "severity": "high",
@@ -3725,7 +3725,7 @@
       "across standalone items"
     ],
     "tags": [
-      "products",
+      "inventory",
       "issue",
       "high"
     ],
@@ -3891,8 +3891,8 @@
   },
   {
     "id": "issue-082-pre-order-tag-inventory-logic",
-    "hub": "products",
-    "category": "products",
+    "hub": "inventory",
+    "category": "inventory",
     "core_area": "catalog",
     "rank": 82,
     "severity": "medium",
@@ -3914,7 +3914,7 @@
       "customer arrival schedules"
     ],
     "tags": [
-      "products",
+      "inventory",
       "issue",
       "medium"
     ],
@@ -3989,8 +3989,8 @@
   },
   {
     "id": "issue-084-seo-page-title-truncations",
-    "hub": "products",
-    "category": "products",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "catalog",
     "rank": 84,
     "severity": "low",
@@ -4011,7 +4011,7 @@
       "beyond ideal lengths"
     ],
     "tags": [
-      "products",
+      "seo",
       "issue",
       "low"
     ],
@@ -4023,8 +4023,8 @@
     "steps": [
       "Go to Products > [product] > Search engine listing. Read any red or yellow banner before you change anything.",
       "You are checking: Bulk text imports clipping meta descriptive texts beyond ideal lengths.",
-      "Do not Edit code to “fix” catalog data. Change the product, variant, or CSV — then Save.",
-      "View the product on the storefront in an incognito window.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Stay in Settings for domain, staff, SEO, or billing. Do not paste Liquid.",
       "Save, then retest. Copy these steps to a friend if they are stuck."
     ],
     "target_ui_hint": "Products > [product] > Search engine listing",
@@ -4229,8 +4229,8 @@
   },
   {
     "id": "issue-089-inventory-transfer-tracking-locks",
-    "hub": "products",
-    "category": "products",
+    "hub": "inventory",
+    "category": "inventory",
     "core_area": "catalog",
     "rank": 89,
     "severity": "medium",
@@ -4253,7 +4253,7 @@
       "pending states indefinitely"
     ],
     "tags": [
-      "products",
+      "inventory",
       "issue",
       "medium"
     ],
@@ -5780,8 +5780,8 @@
   },
   {
     "id": "issue-121-custom-domain-ssl-failures",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "domains",
+    "category": "domains",
     "core_area": "admin",
     "rank": 121,
     "severity": "critical",
@@ -5802,7 +5802,7 @@
       "stores flagged unsafe"
     ],
     "tags": [
-      "admin",
+      "domains",
       "issue",
       "critical"
     ],
@@ -5827,8 +5827,8 @@
   },
   {
     "id": "issue-122-301-url-redirect-loops",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 122,
     "severity": "high",
@@ -5849,7 +5849,7 @@
       "browser network errors"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "high"
     ],
@@ -5874,8 +5874,8 @@
   },
   {
     "id": "issue-123-rich-snippet-indexing-warnings",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 123,
     "severity": "medium",
@@ -5896,7 +5896,7 @@
       "schema markup strings"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "medium"
     ],
@@ -5968,8 +5968,8 @@
   },
   {
     "id": "issue-125-sitemap-xml-re-indexing-delays",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 125,
     "severity": "medium",
@@ -5991,7 +5991,7 @@
       "fresh catalog edits"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "medium"
     ],
@@ -6061,8 +6061,8 @@
   },
   {
     "id": "issue-127-shopify-markets-routing-loops",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "domains",
+    "category": "domains",
     "core_area": "admin",
     "rank": 127,
     "severity": "high",
@@ -6082,7 +6082,7 @@
       "geo-targeted redirect chains"
     ],
     "tags": [
-      "admin",
+      "domains",
       "issue",
       "high"
     ],
@@ -6248,8 +6248,8 @@
   },
   {
     "id": "issue-131-robots-txt-customization-breaks",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 131,
     "severity": "low",
@@ -6269,7 +6269,7 @@
       "structural product links"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "low"
     ],
@@ -6294,8 +6294,8 @@
   },
   {
     "id": "issue-132-hreflang-multi-language-targets",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 132,
     "severity": "medium",
@@ -6313,7 +6313,7 @@
       "global indexing routines"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "medium"
     ],
@@ -6429,8 +6429,8 @@
   },
   {
     "id": "issue-135-custom-domain-dns-mismatches",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "domains",
+    "category": "domains",
     "core_area": "admin",
     "rank": 135,
     "severity": "high",
@@ -6454,7 +6454,7 @@
       "or a records"
     ],
     "tags": [
-      "admin",
+      "domains",
       "issue",
       "high"
     ],
@@ -6571,8 +6571,8 @@
   },
   {
     "id": "issue-138-canonical-url-target-pointing",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 138,
     "severity": "medium",
@@ -6593,7 +6593,7 @@
       "primary collection base"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "medium"
     ],
@@ -6714,8 +6714,8 @@
   },
   {
     "id": "issue-141-internal-search-engine-query-logging",
-    "hub": "admin",
-    "category": "admin",
+    "hub": "seo",
+    "category": "seo",
     "core_area": "admin",
     "rank": 141,
     "severity": "low",
@@ -6739,7 +6739,7 @@
       "customer search keywords"
     ],
     "tags": [
-      "admin",
+      "seo",
       "issue",
       "low"
     ],

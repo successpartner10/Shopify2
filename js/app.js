@@ -672,11 +672,16 @@ function walkHalt() {
 }
 
 const HUBS = {
-  payments: { label: "Payments", blurb: "Checkout, payouts, discounts, shipping rates, tax." },
-  themes: { label: "Themes", blurb: "Layout, mobile, menus, Customize — not Edit code first." },
-  products: { label: "Products", blurb: "Inventory, variants, CSV, collections." },
-  apps: { label: "Apps", blurb: "Embeds, pixels, leftover code after uninstall." },
-  admin: { label: "Admin", blurb: "Domains, staff, SEO, policies, billing." }
+  payments: { label: "Payments", blurb: "Payouts, gateways, gift cards, BNPL, tax." },
+  checkout: { label: "Checkout", blurb: "Cart, discounts, Shop Pay buttons, accounts." },
+  shipping: { label: "Shipping", blurb: "Rates, pickup, weight, carriers." },
+  themes: { label: "Themes", blurb: "Layout, mobile, menus. Duplicate first — not Edit code." },
+  products: { label: "Products", blurb: "CSV, variants, collections, metafields." },
+  inventory: { label: "Inventory", blurb: "Locations, overselling, transfers, bundles." },
+  apps: { label: "Apps", blurb: "Embeds, pixels, Klaviyo, Printful, leftovers." },
+  seo: { label: "SEO", blurb: "Redirects, sitemap, schema, Search Console." },
+  domains: { label: "Domains", blurb: "SSL, DNS, Markets domains." },
+  admin: { label: "Admin", blurb: "Staff, billing, policies, 2FA." }
 };
 
 function hubTitle(entry) {
