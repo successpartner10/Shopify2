@@ -310,6 +310,7 @@ function highlightStep() {
   try { drawArrow(currentArrow(), { n: state.stepIndex + 1, label: shortStepLabel() }); } catch { /* optional */ }
   paintPolaroid(state.current);
   paintWalkHints();
+  paintStepProgress();
   if (state.current) persistResume({ id: state.current.id, step: state.stepIndex, query: state.lastText });
   maybeSpeak();
 }
@@ -1600,7 +1601,7 @@ async function boot() {
   setOnlineUi();
   applyEmbedUi();
   showLanding();
-  if (!localStorage.getItem("ss_coach") && $("coach")) $("coach").hidden = false;
+  if ($("coach")) $("coach").hidden = true;
 
   try {
     const { entries, errors, pack } = await loadDictionaries();
