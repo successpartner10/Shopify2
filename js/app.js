@@ -13,7 +13,7 @@ import { whyBlock, sidekickPrompt, helpSearchUrl } from "./explain.js";
 import { flowFor, initProgress, markStep, autoAdvance, stuckOptions, percent } from "./guide.js";
 import { snapshotFrom, diffSnapshots, mapDiffToPlaybook } from "./diff.js";
 import { detectConflicts } from "./conflicts.js";
-import { speak, hush, canSpeak, SHORTCUTS, shortcutFromEvent } from "./voice.js";
+import { speak, hush, canSpeak, canListen, startCommandListen, stopCommandListen, SHORTCUTS, shortcutFromEvent } from "./voice.js";
 import { scrubText, thumbnailDataUrl, looksLikeSecret } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
@@ -67,7 +67,9 @@ const state = {
   lastSessionId: null,
   community: [],
   lastChatFound: null,
-  ranks: {}
+  ranks: {},
+  walkOn: false,
+  walkPaused: false
 };
 
 function applyTheme(mode) {
@@ -410,6 +412,7 @@ function renderResult(entry, meta) {
   } catch {
     state.progress = null;
   }
+  walkHalt();
   hideDenied();
   if ($("emptyTip")) $("emptyTip").hidden = true;
   if ($("tipBody")) $("tipBody").hidden = false;
@@ -429,6 +432,7 @@ function renderResult(entry, meta) {
   if ($("homeExpl")) $("homeExpl").textContent = expl;
   paintStepList("homeSteps", entry, 0);
   paintPolaroid(entry);
+  paintWalkHints();
   persistResume({ id: entry.id, step: 0, query: meta.query || state.lastText });
   try { renderWhy(); } catch { /* keep steps */ }
   try { renderFlow(); } catch { /* keep steps */ }
@@ -480,10 +484,104 @@ function applyQuery(query, extras = {}) {
 }
 
 function maybeSpeak() {
+  if (state.walkOn) return;
   if (!state.voice || !state.current) return;
+  walkSpeakCurrent();
+}
+
+function currentStepText() {
+  if (!state.current) return "";
   const raw = state.current.steps?.[state.stepIndex] || state.current.cause;
-  const step = typeof raw === "string" ? raw : normalizeStep(raw).text;
-  speak(`${state.current.target_ui_hint}. ${step}`);
+  return typeof raw === "string" ? raw : normalizeStep(raw).text;
+}
+
+function walkSpeakCurrent() {
+  if (!state.current) return;
+  const steps = state.current.steps || [];
+  const n = Math.max(1, steps.length);
+  const i = state.stepIndex + 1;
+  const line = `Step ${i} of ${n}. ${currentStepText()}`;
+  speak(line, { rate: 0.94 });
+}
+
+function paintWalkHints() {
+  const listening = state.walkOn && canListen() && !state.walkPaused;
+  document.querySelectorAll(".audio-bar").forEach((el) => el.classList.toggle("listening", listening));
+  const msg = !state.current
+    ? ""
+    : !canSpeak()
+      ? "This browser cannot read steps aloud. Use Next step."
+      : state.walkOn && state.walkPaused
+        ? "Paused. Say “continue” for the next step, or tap Continue."
+        : state.walkOn
+          ? (canListen() ? "Playing. Say “pause” or “continue”." : "Playing. Tap Pause or Continue.")
+          : (canListen() ? "Tap Play step, then say “pause” or “continue” while you click Shopify." : "Tap Play step to hear each step.");
+  document.querySelectorAll("[data-walk-hint]").forEach((el) => { el.textContent = msg; });
+}
+
+let walkCmdAt = 0;
+function onWalkHeard(cmd) {
+  const now = Date.now();
+  if (now - walkCmdAt < 900) return;
+  walkCmdAt = now;
+  if (cmd === "pause") walkPause();
+  else if (cmd === "continue") walkContinue();
+  else if (cmd === "repeat") walkPlay({ resume: true });
+}
+
+function walkPlay({ resume = false } = {}) {
+  if (!state.current) return toast("Search or upload first.");
+  if (!canSpeak()) return toast("This browser cannot read steps aloud.");
+  state.walkOn = true;
+  state.walkPaused = false;
+  if (canListen()) {
+    const ok = startCommandListen((c) => onWalkHeard(c));
+    if (!ok) toast("Could not start the mic. Use Pause / Continue on screen.");
+  }
+  walkSpeakCurrent();
+  paintWalkHints();
+  if (!resume) toast("Playing this step. Say pause or continue.");
+}
+
+function walkPause() {
+  hush();
+  if (!state.walkOn) return;
+  state.walkPaused = true;
+  paintWalkHints();
+  toast("Paused.");
+}
+
+function walkContinue() {
+  if (!state.current) return;
+  const steps = state.current.steps || [];
+  if (!state.walkOn) {
+    walkPlay();
+    return;
+  }
+  if (state.stepIndex >= steps.length - 1) {
+    hush();
+    state.walkPaused = true;
+    paintWalkHints();
+    toast("That was the last step.");
+    return;
+  }
+  state.stepIndex += 1;
+  if (state.progress) state.progress.index = state.stepIndex;
+  highlightStep();
+  renderFlow();
+  state.walkOn = true;
+  state.walkPaused = false;
+  if (canListen()) startCommandListen((c) => onWalkHeard(c));
+  walkSpeakCurrent();
+  paintWalkHints();
+}
+
+function walkHalt() {
+  hush();
+  stopCommandListen();
+  state.walkOn = false;
+  state.walkPaused = false;
+  paintWalkHints();
 }
 
 function logRec(type, payload) {
@@ -1085,7 +1183,7 @@ function wireUi() {
   });
   on("scanBtn", "click", () => runScan());
   on("pauseBtn", "click", pauseCapture);
-  on("stopBtn", "click", () => { stopCapture(); showLanding(!hasSeenOnboarding()); });
+  on("stopBtn", "click", () => { walkHalt(); stopCapture(); showLanding(!hasSeenOnboarding()); });
   on("moreBtn", "click", () => {
     $("moreDrawer").hidden = false;
   });
@@ -1280,6 +1378,7 @@ function wireUi() {
     e.preventDefault();
     const q = ($("homeAskInput")?.value || "").trim();
     if (!q) return toast("Type a few words from the problem.");
+    if (looksLikeSecret(q)) return toast("That looks like a secret key. Type the Shopify banner instead.");
     markOnboarded();
     state.lastText = q;
     const go = () => {
@@ -1297,6 +1396,14 @@ function wireUi() {
         go();
       }
     }, 80);
+  });
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-walk]");
+    if (!btn) return;
+    const act = btn.getAttribute("data-walk");
+    if (act === "play") walkPlay();
+    if (act === "pause") walkPause();
+    if (act === "continue") walkContinue();
   });
   on("homeNext", "click", () => $("nextBtn")?.click());
   on("homeWorked", "click", () => $("workedBtn")?.click());

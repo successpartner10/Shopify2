@@ -345,6 +345,13 @@ h1 em { font-style: normal; color: var(--mint); }
 .steps-ol li.current .n { background: var(--mint); color: var(--mint-ink); border-color: transparent; }
 .steps-ol p { margin: 0; color: var(--ink); font-size: 1.125rem; line-height: 1.4; font-weight: 500; }
 .card-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.audio-bar {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 14px;
+}
+.audio-bar .solid, .audio-bar .ghost { flex: 1; min-height: 54px; }
+.walk-hint { margin-top: 8px; }
+.audio-bar.listening .solid { box-shadow: 0 0 0 3px var(--mint-dim); }
 .empty { color: var(--muted); font-size: 1.1rem; line-height: 1.45; }
 .ocr-box {
   font-family: var(--mono); font-size: 0.88rem; color: var(--faint);
