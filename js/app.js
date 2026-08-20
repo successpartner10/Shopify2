@@ -1768,7 +1768,10 @@ async function boot() {
   });
 
   if ("serviceWorker" in navigator) {
-    try { await navigator.serviceWorker.register("./sw.js"); } catch { /* optional */ }
+    try {
+      const reg = await navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" });
+      reg.update().catch(() => {});
+    } catch { /* optional */ }
   }
 }
 

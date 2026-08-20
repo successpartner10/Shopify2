@@ -32,9 +32,9 @@ You cannot skip review and still let *any* production store install. Custom = on
 1. [partners.shopify.com](https://partners.shopify.com) → **Apps → Create app**.
 2. App name: **Storescope**.
 3. **App URL** (standalone):  
-   `https://successpartner10.github.io/Shopify2/?v=3.3.0`  
+   `https://successpartner10.github.io/Shopify2/?v=3.3.1`  
    or the Worker once it is on this build:  
-   `https://shopify2.panchgani2025.workers.dev/?v=3.3.0`
+   `https://shopify2.panchgani2025.workers.dev/?v=3.3.1`
 4. **Allowed redirection URL(s)** — required even with zero scopes. You need a tiny HTTPS callback (see Worker below). Example:  
    `https://shopify2.panchgani2025.workers.dev/auth/callback`
 5. **Embedded app: Off**.
@@ -57,7 +57,7 @@ GitHub Pages cannot do OAuth or webhooks. The existing **Cloudflare Worker** can
 |---|---|
 | `GET /` | Serve the static Storescope site (already possible with `[assets]`) |
 | `GET /auth` | Start Shopify managed install / OAuth |
-| `GET /auth/callback` | Exchange code, then redirect to `/?v=3.3.0&shop=…` |
+| `GET /auth/callback` | Exchange code, then redirect to `/?v=3.3.1&shop=…` |
 | `POST /webhooks/customers-data-request` | 200 |
 | `POST /webhooks/customers-redact` | 200 |
 | `POST /webhooks/shop-redact` | 200 |

@@ -231,17 +231,14 @@ h1 em { font-style: normal; color: var(--mint); }
   margin-top: 14px;
   max-width: 560px;
 }
-@media (min-width: 520px) {
-  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
 .cat-grid button {
-  min-height: 54px;
+  min-height: 48px;
   border-radius: 14px;
   border: var(--hair) solid var(--line);
   background: var(--surface);
   font-family: var(--display);
   font-weight: 650;
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 .cat-grid button:active { transform: scale(0.98); }
 .hub-panel { margin-top: 16px; max-width: 560px; }
