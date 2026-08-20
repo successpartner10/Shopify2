@@ -1,0 +1,151 @@
+Rank,Category Name,Core Area,Severity Level,Troubleshooting Context
+1,Payment Gateway Configurations,Payments,High,"Failures linking Shopify Payments, PayPal, or third-party providers."
+2,Checkout Extensibility Upgrades,Checkout,Critical,Bugs or layout breaks when upgrading from checkout.liquid to extensibility.
+3,Multi-Currency Conversion Pricing,Payments,High,Incorrect currency displays or rounding discrepancies at checkout.
+4,Subscription Billing Failures,Payments,High,Recurring payment token errors or automated order generation drops.
+5,Abandoned Cart Recovery Links,Checkout,Medium,Broken checkout restoration links sent via automation emails.
+6,Discount Code Logic Errors,Checkout,Medium,Stacking restrictions failing or automatic discount codes not triggering.
+7,Fraud Control & False Positives,Payments,High,Valid transactions being blocked or high-risk flags failing to alert.
+8,Shipping Rate API Discrepancies,Checkout,High,Carrier-provided rates failing to display or mismatching at checkout.
+9,Local Pickup Setup Glitches,Checkout,Medium,Locations showing unavailable despite local stock matching availability.
+10,Tax Calculation Discrepancies,Payments,High,Avalara or native engine miscalculating regional or international duties.
+11,B2B Draft Order Checkouts,Checkout,High,Company account custom pricing or net terms terms failing at checkout.
+12,Digital Product Download Delivery,Checkout,Medium,Fulfillment triggers failing to dispatch digital access links immediately.
+13,Gift Card Balance Processing,Payments,Medium,Partial-redemption loops or manual balance adjustments failing to save.
+14,Point of Sale (POS) Sync Drops,Payments,High,Hardware reader payment drops or physical transaction data sync delays.
+15,Tipping & Donation Checkout Fields,Checkout,Low,Checkbox triggers failing to append correct order line-item values.
+16,Buy Now Pay Later (BNPL) Delays,Payments,High,"Klarna, Affirm, or Shop Pay Installments transaction confirmation hanging."
+17,Flash Sale High-Volume Throttling,Checkout,Critical,Queue system bypass issues or transaction lock timeouts under load.
+18,Fraud Filter App Exclusions,Payments,Medium,Rules blocking white-listed corporate card domains or accounts.
+19,Address Validation Refusals,Checkout,Medium,Google Maps autocomplete api failing or rejecting formatted regional inputs.
+20,Secure Checkout SSL Handshakes,Checkout,Critical,Intermittent security warnings blocking custom domain checkout routes.
+21,Express Checkout Button Alignment,Checkout,Medium,Apple Pay/Google Pay buttons jumping layouts on mobile views.
+22,Refund and Restock Glitches,Payments,High,Gateway communication timeouts during partial or total automated returns.
+23,Custom Order Note Disappearances,Checkout,Medium,Cart attributes failing to pass safely into the order JSON object.
+24,Duties & Import Fee Estimates,Payments,High,Cross-border landed cost calculations breaking for DDP delivery.
+25,Payment Capture Hold Expirations,Payments,High,Manual capture timelines expiring before warehouse fulfillment finishes.
+26,Customer Account Login Requirements,Checkout,Medium,Forced sign-in loops preventing guest users from finalizing cart checks.
+27,Test Mode Transaction Cleanups,Payments,Low,Bogus Gateway remaining active or test orders mixing with analytics data.
+28,Wholesale Volume Tier Discounts,Checkout,High,Quantity break tables failing to update line-item prices dynamically.
+29,Localized Checkout Translation Drops,Checkout,Medium,Fields reverting to default English despite multi-market localization.
+30,Cookie Consent Checkout Blocks,Checkout,High,GDPR banner blocking script loads for checkout tracking integrations.
+31,Liquid Syntax Parsing Errors,Theme,High,"Fatal visual breaks caused by missing tags, unclosed loops, or broken logic."
+32,JSON Template Schema Corruption,Theme,High,Section settings failing to save or blocking the Theme Editor layout UI.
+33,Mobile Responsiveness Breaks,Theme,Medium,Navigation menus or product grids breaking aspect ratios on screens.
+34,Ajax Cart Drawer Freezes,Theme,High,Slide-out carts failing to update quantities or spin endless loader icons.
+35,Product Image Layout Shifts,Theme,Medium,Cumulative Layout Shift (CLS) issues on media galleries or mobile devices.
+36,Typography & Font Loading Failures,Theme,Low,Custom Adobe or Google web fonts dropping or displaying fallback fonts.
+37,Mega-Menu Navigation Drops,Theme,Medium,Nested link menus failing to expand or dropping child items on desktop hover.
+38,CSS/JS Asset Loading Delays,Theme,Medium,Render-blocking scripts slowing down the Initial Server Response times.
+39,Collection Grid Filter Drops,Theme,Medium,Native Search & Discovery filters failing to dynamically refresh arrays.
+40,Theme Upgrade Version Conflicts,Theme,High,Customized layout blocks wiping out when updating OS 2.0 themes.
+41,Video Background Aspect Distortions,Theme,Low,Hero banner videos cropping improperly or looping with long black screens.
+42,Sticky Header Overlap Glitches,Theme,Low,Fixed navigation covering content blocks or interactive elements during scroll.
+43,Color Swatch Asset Discrepancies,Theme,Medium,Variant-linked swatches showing blank circles or mapping to wrong HEX colors.
+44,Product Description Accordion Collapses,Theme,Low,Tabs or toggle modules breaking and displaying plain unformatted text block.
+45,Infinite Scroll Pagination Freezes,Theme,Medium,Collection page script crashing instead of fetching subsequent page loops.
+46,Quick View Modal Visual Breaks,Theme,Medium,Pop-up product previews showing misaligned data or broken close triggers.
+47,Custom Liquid Section Stripping,Theme,Medium,Shopify code sanitizers removing custom embedded scripts or iframe blocks.
+48,Dark Mode Style Inversions,Theme,Low,Text layers remaining black on dark backgrounds causing invisible legibility.
+49,Breadcrumb Traversal Path Drops,Theme,Low,Hierarchical link trails dropping sub-collections or linking to root indexes.
+50,Cart Count Bubble Desyncs,Theme,Medium,Header count indicators showing zero items despite heavy item additions.
+51,Dynamic Badge Styling Mismatches,Theme,Low,'Sale' or 'Sold Out' badges overlapping title text grids unevenly.
+52,Lazy Loading Image Micro-Stutters,Theme,Low,Blur-up placeholder scripts causing jarring visual jolts during scrolling.
+53,Multi-Language Selector Formatting,Theme,Low,Footer or header language choice drops breaking horizontal menu rows.
+54,Search Bar Autocomplete Drops,Theme,Medium,Predictive search overlays failing to query terms or render thumbnail blocks.
+55,Product Video Playback Interruptions,Theme,Medium,YouTube/Vimeo embedding scripts conflicting with theme native players.
+56,Footer Social Icon Link Failures,Theme,Low,Theme settings dropping hyperlink attributes on configured brand social icons.
+57,Custom CSS Section Inject Crashing,Theme,Medium,Malformed theme editor custom CSS styles leaking outside the parent block.
+58,Review Widget Layout Distortions,Theme,Medium,Star rating graphics breaking column margins inside product summary lines.
+59,Size Chart Modal Triggers,Theme,Low,Sizing link buttons failing to open overlay drawers or closing instantly.
+60,Announcement Bar Text Overflow,Theme,Low,Marquee or multi-message slide blocks clipping text or failing to scroll.
+61,Variant Limit Rules Bypass,Catalog,High,Hitting the 100-variant limit barrier on complex multi-option listings.
+62,CSV Catalog File Corruptions,Catalog,High,"Encoding errors, trailing commas, or header shifts breaking bulk upload sheets."
+63,Metaobject Reference Breaks,Catalog,High,Cross-referenced data profiles dropping connections across product objects.
+64,Multi-Location Inventory Desyncs,Catalog,High,Inventory counts failing to balance across physical warehouse systems.
+65,Product Handle Redirection Breaks,Catalog,Medium,Changing URL handles without setting automatic 301 structural forwards.
+66,Collection Rule Logic Dropping,Catalog,Medium,Smart automated collections failing to pick up tags or titles properly.
+67,Bulk Editor Interface Timeouts,Catalog,Medium,Attempting to change thousands of product prices at once causing app freezes.
+68,Inventory Policy Over-selling,Catalog,High,Products continuing to sell past zero stock without backorder setups active.
+69,Weight-Based Shipping Profile Drops,Catalog,Medium,Missing product weights forcing orders into uncalculated shipping states.
+70,Vendor and Type Mapping Errors,Catalog,Low,Inconsistent naming causing organization filters to scatter items.
+71,Metafields Value Type Mismatches,Catalog,Medium,Injecting plain text strings into integer or JSON-formatted definitions.
+72,Product Status Publishing Sync,Catalog,Medium,Draft profiles staying locked or failing to schedule publish windows correctly.
+73,Barcode Data Duplicate Conflicts,Catalog,High,Identical UPC/EAN markers across unique product variants blocking saves.
+74,SKU Syntax Structural Overlaps,Catalog,Medium,Duplicate or confusing alphanumeric identifiers creating fulfillment mistakes.
+75,Cost Per Item Margin Analytics,Catalog,Low,Missing cost history tracking distorting gross profit reporting insights.
+76,Compare At Price Structural Loops,Catalog,Medium,Compare pricing set lower than list price causing system math display bugs.
+77,Media Gallery Upload Timeouts,Catalog,Medium,High-res images or 4K videos hanging during bulk catalog product setup.
+78,Product Bundling Parent-Child Sync,Catalog,High,Bundle kits failing to split inventory counts across standalone items.
+79,Archived Product Cleanups,Catalog,Low,Hidden archived entries continuing to surface via specific internal filters.
+80,Tax-Exempt Category Allocation,Catalog,Medium,Failing to attach specialized tax override codes to niche product fields.
+81,HS Code Classification Drops,Catalog,High,Missing harmonized system code lines blocking cross-border global sales.
+82,Pre-order Tag Inventory Logic,Catalog,Medium,Incoming supply dates failing to present clear customer arrival schedules.
+83,Options Allocation Limit Constraints,Catalog,Medium,"Exceeding the native maximum of 3 option parameters (Size, Color, Fabric)."
+84,SEO Page Title Truncations,Catalog,Low,Bulk text imports clipping meta descriptive texts beyond ideal lengths.
+85,Collection Image Display Mismatches,Catalog,Low,Collection listing banners pulling wrong feature items for layouts.
+86,Gift with Purchase Trigger Breaks,Catalog,Medium,System failing to automatically append promotional free items into carts.
+87,Unit Pricing Field Misalignments,Catalog,Low,EU price-per-milliliter rules showing incorrect decimal values on layouts.
+88,Customizable Personalization Text Blocks,Catalog,Medium,Input line fields failing to save engraving details to order logs.
+89,Inventory Transfer Tracking Locks,Catalog,Medium,Incoming stock transfers from vendors hanging in pending states indefinitely.
+90,Tag Serialization Delimiter Issues,Catalog,Low,"Using incorrect punctuation separating tags, causing mashed groupings."
+91,Third-Party App Script Collisions,Integrations,High,Multiple apps injecting conflicting JavaScript assets into store layouts.
+92,Marketing Pixel Event Drops,Integrations,High,Meta/Google Purchase tracking tags failing to log correct order totals.
+93,API Rate Limit Throttling,Integrations,High,Custom ERP or CRM synchronization tasks exhausting REST/GraphQL limits.
+94,Dropshipping Pipeline Sync Failures,Integrations,High,"DSers, Zendrop, or CJ Dropshipping syncs dropping tracking numbers."
+95,Marketing Email Flow Dispatches,Integrations,High,Klaviyo or Mailchimp webhooks failing to log active customer events.
+96,Zapier Automation Task Breaks,Integrations,Medium,Order webhooks delivering malformed payloads into shared apps.
+97,ERP Order Ingestion Delays,Integrations,High,"NetSuite, SAP, or QuickBooks systems missing real-time sync batches."
+98,Customer Review Sync Disruptions,Integrations,Medium,"Yotpo, Loox, or Judge.me imports failing to show on updated listings."
+99,Affiliate Tracking Credit Drops,Integrations,Medium,Referral cookies failing to register purchases on specific gateways.
+100,Print on Demand Production Holds,Integrations,Medium,Printful or Printify setups failing due to missing artwork scaling configurations.
+101,CRM Profile Sync Mismatches,Integrations,Medium,HubSpot or Salesforce updating profiles with mismatched phone indexes.
+102,Live Chat Widget Display Delays,Integrations,Low,Gorgias or Zendesk icons blocking mobile interactive tap fields.
+103,Loyalty Point Accrual Failures,Integrations,Medium,Smile.io or Yotpo Loyalty failing to issue rewards for custom orders.
+104,Google Merchant Center Disapprovals,Integrations,High,"Feed apps transmitting mismatched values, triggering item suspensions."
+105,Sub-processor Data Access Blocks,Integrations,High,Privacy compliance apps breaking third-party tags on European visits.
+106,Marketplace Sync Sync Delays,Integrations,High,Amazon or eBay integration apps dropping order variant variables.
+107,Wholesale Registration Form Failures,Integrations,Medium,Custom registration fields failing to alert admin validation chains.
+108,Social Commerce Shop Sync Drops,Integrations,High,Instagram/TikTok shopping catalogs desynced from store stock profiles.
+109,Web-push Notification Authorization,Integrations,Low,Opt-in prompt popups crashing on specific browser engine builds.
+110,Recurring Upsell App Disruptions,Integrations,Medium,Post-purchase cart upsell apps breaking native currency checks.
+111,Inventory Forecast Engine Drops,Integrations,Low,Analytical inventory assistant tools generating blank recommendations.
+112,Store Locator Map Loading Errors,Integrations,Low,Google Maps API keys expiring inside physical storefront finder apps.
+113,Size Recommender UI Freezes,Integrations,Low,Interactive AI sizing widgets failing to fetch dynamic profile results.
+114,Wholesale Pricing Table Breaks,Integrations,Medium,B2B login apps failing to hide retail prices from guest accounts.
+115,Search App Override Interruptions,Integrations,Medium,Algolia or Klevu engines returning empty search results during indexing.
+116,Order Editing Post-Purchase Faults,Integrations,High,Apps amending existing orders causing credit card re-auth errors.
+117,Sales Tax Automation Downtime,Integrations,High,TaxJar or internal links failing during peak Black Friday spikes.
+118,Returns Portal Routing Errors,Integrations,Medium,Loop or Returnly tracking links failing to print shipping returns labels.
+119,A/B Testing Script Layout Shifts,Integrations,Medium,Intrusive split testing lines causing layout flicker shifts (FOUC).
+120,POS Hardware Firmware Timeouts,Integrations,Medium,Shopify POS app failing to handshake with Bluetooth barcode scanners.
+121,Custom Domain SSL Failures,Admin,Critical,SSL generation hanging for days leaving stores flagged unsafe.
+122,301 URL Redirect Loops,Admin,High,Chained or circular layout pathways generating browser network errors.
+123,Rich Snippet Indexing Warnings,Admin,Medium,Google Search Console flagging broken product schema markup strings.
+124,Staff Account Permission Locks,Admin,High,Restricted profiles unable to access essential collection configurations.
+125,Sitemap XML Re-indexing Delays,Admin,Medium,Shopify automatic sitemap file failing to surface fresh catalog edits.
+126,Two-Factor Auth Lockouts,Admin,Critical,Store owners losing authenticator access or backup access credentials.
+127,Shopify Markets Routing Loops,Admin,High,Geolocation setups forcing endless geo-targeted redirect chains.
+128,GDPR Privacy Policy Compliance,Admin,Medium,Consent banners failing to correctly block non-essential trackers.
+129,Store Transfer Ownership Holds,Admin,High,Developer partners unable to pass created sites to live accounts.
+130,Billing Invoice Payment Disputes,Admin,Medium,Outstanding app or subscription balances locking administrative access.
+131,Robots.txt Customization Breaks,Admin,Low,Incorrect rule strings blocking Googlebot from structural product links.
+132,Hreflang Multi-Language Targets,Admin,Medium,Mismatched localization markers confusing global indexing routines.
+133,GDPR Customer Data Requests,Admin,Low,Failing to pull complete account erasure profiles upon official request.
+134,Activity Log Discrepancies,Admin,Low,Store timeline events missing detailed user attribution entries.
+135,Custom Domain DNS Mismatches,Admin,High,Cloudflare or GoDaddy setups dropping structural CNAME or A records.
+136,Shopify Capital Repayment Logs,Admin,Medium,Daily remittance percentages mismatching bank settlement reports.
+137,Store Pause and Build Status,Admin,Low,Checkout remaining locked after shifting back to full active tiers.
+138,Canonical URL Target Pointing,Admin,Medium,Duplicate product paths failing to link to the primary collection base.
+139,Legal Policy Document Templates,Admin,Low,Default legal text generators dropping required country-specific blocks.
+140,Sales Channel Connection Drops,Admin,High,Facebook or Pinterest channels dropping authorization token status.
+141,Internal Search Engine Query Logging,Admin,Low,Analytics dashboard failing to populate popular customer search keywords.
+142,Payout Bank Account Verification,Admin,Critical,Stuck verification flows holding up processed revenue funds transfers.
+143,CSV Customer Export Timeouts,Admin,Medium,Large email database extraction tasks stalling out on network layers.
+144,Tax Registration Number Validation,Admin,High,VAT/HST ID inputs showing invalid against regulatory database checks.
+145,Theme File Backup Losses,Admin,Medium,Failing to duplicate core live layouts before executing manual script edits.
+146,Staff Activity Authorization Revokes,Admin,Medium,Deactivated team member access paths remaining active in API pools.
+147,Custom App Credentials Creation,Admin,Medium,Access tokens missing granular write scopes for backend asset access.
+148,Merchant Level Terms Violations,Admin,Critical,Risk assessment teams locking payment privileges due to policy review items.
+149,Multi-Currency Rounding Inconsistencies,Admin,Medium,Native market rounding adjustments dropping cents values on invoices.
+150,Shopify Status Dashboard Mismatches,Admin,Low,Local system dropouts occurring while global infrastructure reads green.

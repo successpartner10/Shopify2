@@ -2,7 +2,10 @@
 
 const TONES = {
   critical: { label: "Critical", cls: "tone-crit" },
+  high: { label: "High", cls: "tone-warn" },
   warning: { label: "Warning", cls: "tone-warn" },
+  medium: { label: "Medium", cls: "tone-info" },
+  low: { label: "Low", cls: "tone-info" },
   info: { label: "Info", cls: "tone-info" }
 };
 

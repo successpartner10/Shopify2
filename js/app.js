@@ -1554,6 +1554,11 @@ function wireUi() {
     if (act === "continue") $("nextBtn")?.click();
   });
   on("catGrid", "click", (e) => {
+    const hubBtn = e.target.closest("[data-hub]");
+    if (hubBtn) {
+      openHub(hubBtn.getAttribute("data-hub"));
+      return;
+    }
     const btn = e.target.closest("[data-cat]");
     if (!btn) return;
     const q = btn.getAttribute("data-cat") || "";
@@ -1566,6 +1571,22 @@ function wireUi() {
     if ($("homeAskInput")) $("homeAskInput").value = q;
     state.lastText = q;
     applyQuery(q);
+    $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  on("hubBack", "click", closeHub);
+  on("hubAsk", "submit", (e) => {
+    e.preventDefault();
+    paintHubList($("hubSearch")?.value || "");
+  });
+  on("hubSearch", "input", () => paintHubList($("hubSearch")?.value || ""));
+  on("hubList", "click", (e) => {
+    const btn = e.target.closest("[data-open]");
+    if (!btn) return;
+    const entry = allEntries().find((x) => x.id === btn.dataset.open);
+    if (!entry) return;
+    markOnboarded();
+    state.lastText = hubTitle(entry);
+    renderResult(entry, { source: "hub", confidence: 1, alternatives: [], query: hubTitle(entry) });
     $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
   });
   const expandSteps = () => {
@@ -1762,15 +1783,6 @@ function restoreIfNeeded() {
   if (!rec?.id) return;
   const entry = allEntries().find((e) => e.id === rec.id);
   if (!entry) return;
-  renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
-  state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
-  if (state.progress) state.progress.index = state.stepIndex;
-  highlightStep();
-  toast("Picked up where you left off.");
-}
-
-boot();
-rn;
   renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
   state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
   if (state.progress) state.progress.index = state.stepIndex;

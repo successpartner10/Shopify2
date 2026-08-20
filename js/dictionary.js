@@ -67,11 +67,18 @@ export async function loadDictionaries() {
 }
 
 function inferSeverity(entry) {
-  if (entry.severity) return entry.severity;
+  if (entry.severity) return String(entry.severity).toLowerCase();
   const hay = `${(entry.match_phrases || []).join(" ")} ${entry.explanation || ""}`.toLowerCase();
-  if (/unable to accept|frozen|declined|syntax error|no shipping/.test(hay)) return "critical";
+  if (/unable to accept|frozen|declined|syntax error|no shipping|terms violation/.test(hay)) return "critical";
   if (/hold|test mode|needs attention|permission|outdated/.test(hay)) return "warning";
   return "info";
+}
+
+function severityBoost(entry) {
+  const s = String(entry?.severity || "").toLowerCase();
+  if (s === "critical") return 0.08;
+  if (s === "high" || s === "warning") return 0.04;
+  return 0;
 }
 
 function inferKind(entry) {
@@ -130,10 +137,10 @@ export function buildIndex(entries) {
     ignoreLocation: true,
     minMatchCharLength: 3,
     keys: [
-      { name: "match_phrases", weight: 0.48 },
+      { name: "match_phrases", weight: 0.46 },
       { name: "synonyms", weight: 0.22 },
-      { name: "tags", weight: 0.12 },
-      { name: "cause", weight: 0.08 },
+      { name: "cause", weight: 0.14 },
+      { name: "tags", weight: 0.08 },
       { name: "explanation", weight: 0.07 },
       { name: "target_ui_hint", weight: 0.03 }
     ]
@@ -186,7 +193,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
       exact.push({
         entry,
         matched,
-        score: Math.min(0.99, 0.34 + hits * 0.11 + longest / 90 + catBoost + priBoost + zoneBoostFor(entry) + rank)
+        score: Math.min(0.99, 0.34 + hits * 0.11 + longest / 90 + catBoost + priBoost + zoneBoostFor(entry) + rank + severityBoost(entry))
       });
     }
   }
@@ -196,7 +203,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
   try {
     fuzzy = fuse.search(q, { limit: 10 }).map((r) => ({
       entry: r.item,
-      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5 + (typeof opts.rankBoost === "function" ? opts.rankBoost(r.item) : 0)
+      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5 + (typeof opts.rankBoost === "function" ? opts.rankBoost(r.item) : 0) + severityBoost(r.item)
     }));
   } catch {
     fuzzy = [];

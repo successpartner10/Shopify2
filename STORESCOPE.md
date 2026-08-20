@@ -1,12 +1,12 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v3.0.0** · 19 August 2026.
+Privacy-first Shopify admin live scanner. **v3.1.0** · 20 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.0.0 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.0.0 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.0.0 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.1.0 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.1.0 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.1.0 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
 | **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.0.0/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
@@ -39,15 +39,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=3.0.0 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.0.0 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=3.0.0 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.0.0&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.0.0&q=payouts%20on%20hold` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.0.0&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=3.1.0 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.1.0 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=3.1.0 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.1.0&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.1.0&q=klarna` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.1.0&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=3.0.0` cache-busts CSS/JS and the service worker (`storescope-v3.0.0`). Hard-refresh if an old build is stuck.
+`?v=3.1.0` cache-busts CSS/JS and the service worker (`storescope-v3.1.0`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -114,7 +114,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=3.0.0 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=3.1.0 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner.
 4. Follow the numbered steps. Re-scan after each change.
@@ -148,10 +148,11 @@ No build step. Static files only.
 
 ## 8. Playbook data
 
-72 searchable entries. No duplicate ids.
+Searchable playbooks: banner rows plus **150 hub issues**. No duplicate ids. Not a 1,500-row generated grid.
 
 | File | Role | Count |
 |---|---|---|
+| `data/issues.json` | 5 hubs × 30 ranked issues, CSV titles + click paths | 150 |
 | `data/errors.json` | Exact banners / toasts / validation | 16 |
 | `data/payments.json` | Payments & payouts | 18 |
 | `data/shipping.json` | Rates, zones, carriers | 18 |
@@ -182,7 +183,13 @@ Do **not** commit real merchant screenshots.
 
 ---
 
-## 10. Audit log (2026-08-19, v3.0.0)
+## 10. Audit log
+
+### 2026-08-20, v3.1.0
+
+CSV titles, severity, and context folded into `data/issues.json`. 52 Critical/High rows have unique click-paths (Klarna, SSL, 100 variants, Risk lock, duplicate-theme first). Medium/Low use that issue’s admin path + context — not a 1,500-row modulo grid. Hub tiles (`data-hub`) open the topic list. Trailing `app.js` parse junk removed.
+
+### 2026-08-19, v3.0.0
 
 Fixed in this release:
 
