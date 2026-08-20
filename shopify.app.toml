@@ -2,7 +2,7 @@
 # Do not commit client_secret. Use `shopify app config` or Worker secrets.
 
 name = "Storescope"
-application_url = "https://successpartner10.github.io/Shopify2/?v=2.9.0"
+application_url = "https://successpartner10.github.io/Shopify2/?v=3.0.0"
 embedded = false
 
 [access_scopes]

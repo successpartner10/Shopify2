@@ -241,6 +241,9 @@ h1 em { font-style: normal; color: var(--mint); }
   font-size: 1.05rem;
 }
 .cat-grid button:active { transform: scale(0.98); }
+.hub-panel { margin-top: 16px; max-width: 560px; }
+.hub-panel h2 { font-family: var(--display); font-size: 1.45rem; margin: 8px 0 4px; }
+.hub-list { margin-top: 14px; max-height: 52vh; overflow: auto; }
 
 .cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 22px; }
 .fine { color: var(--faint); font-size: 1rem; margin-top: 14px; line-height: 1.4; }

@@ -32,7 +32,7 @@ export function detectScreen(text) {
 }
 
 export async function loadDictionaries() {
-  const files = ["errors", "payments", "shipping", "general"];
+  const files = ["errors", "payments", "shipping", "general", "issues"];
   const extras = ["systems", "flows", "conflicts", "sources"];
   const entries = [];
   const errors = [];
@@ -82,10 +82,30 @@ function inferKind(entry) {
   return "banner";
 }
 
+function inferHub(row, file) {
+  if (row.hub) return row.hub;
+  if (file === "payments" || file === "shipping") return "payments";
+  const id = String(row.id || "");
+  if (/theme|liquid|head-tag|custom-liquid|edit-theme|page-speed|speed/.test(id)) return "themes";
+  if (/app-conflict|app-leftover|too-many-apps|pixel|pinterest|google-youtube|collective/.test(id)) return "apps";
+  if (/inventory|product|variant|gift|overselling|line-items/.test(id)) return "products";
+  if (/payout|payment|checkout|discount|shipping|tax|card|bank|test-mode/.test(id)) return "payments";
+  if (/domain|password|staff|billing|privacy|markets|seo|admin/.test(id)) return "admin";
+  if (file === "errors") {
+    if (/shipping|payout|payment|card|bank|test-mode/.test(id)) return "payments";
+    if (/theme/.test(id)) return "themes";
+    if (/inventory/.test(id)) return "products";
+    if (/app/.test(id)) return "apps";
+    return "admin";
+  }
+  return "admin";
+}
+
 function enrich(row, file) {
   return {
     ...row,
     category: row.category || (file === "errors" ? "general" : file),
+    hub: inferHub(row, file),
     severity: inferSeverity(row),
     error_kind: inferKind(row),
     cause: row.cause || (row.explanation || "").split(". ")[0] + ".",

@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.9.0";
+const VERSION = "storescope-v3.0.0";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -43,6 +43,7 @@ const PRECACHE = [
   "./data/flows.json",
   "./data/conflicts.json",
   "./data/sources.json",
+  "./data/issues.json",
   "./manifest.json",
   "./icons/favicon.svg",
   "./icons/icon-192.png",
@@ -151,5 +152,5 @@ async function handleSharePost(request) {
   } catch {
     /* still bounce home */
   }
-  return Response.redirect(new URL("./index.html?v=2.9.0&shared=1", request.url), 303);
+  return Response.redirect(new URL("./index.html?v=3.0.0&shared=1", request.url), 303);
 }

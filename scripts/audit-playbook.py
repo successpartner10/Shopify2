@@ -60,7 +60,7 @@ EXPECT = {
     "overselling": "general-overselling-027",
     "checkout broken": "general-checkout-css-029",
     "product variants": "general-variants-media-032",
-    "multi-currency": "general-markets-currency-033",
+    "prices not switching": "general-markets-currency-033",
 }
 
 def main():

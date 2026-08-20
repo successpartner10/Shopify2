@@ -1,0 +1,5146 @@
+[
+  {
+    "id": "issue-001-checkout-failures",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 1,
+    "match_phrases": [
+      "checkout failures",
+      "checkout",
+      "failures"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Checkout Failures"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Checkout Failures: start at Settings > Checkout. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Checkout",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-002-payment-gateway-integration",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 2,
+    "match_phrases": [
+      "payment gateway integration",
+      "payment",
+      "gateway",
+      "integration"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Payment Gateway Integration"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Payment Gateway Integration: start at Settings > Payments. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Payments. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Payments",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-003-declined-transactions",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 3,
+    "match_phrases": [
+      "declined transactions",
+      "declined",
+      "transactions"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Declined Transactions"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Declined Transactions: start at Orders > Timeline. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Timeline. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Timeline",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-004-multi-currency-pricing-errors",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 4,
+    "match_phrases": [
+      "multi-currency pricing errors",
+      "multi",
+      "currency",
+      "pricing",
+      "errors"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Multi-Currency Pricing Errors"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Multi-Currency Pricing Errors: start at Settings > Markets. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Markets. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Markets",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-005-shopify-payments-onboarding",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 5,
+    "match_phrases": [
+      "shopify payments onboarding",
+      "shopify",
+      "payments",
+      "onboarding"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Shopify Payments Onboarding"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Shopify Payments Onboarding: start at Settings > Payments. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Payments. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Payments",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-006-fraud-chargeback-flags",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 6,
+    "match_phrases": [
+      "fraud & chargeback flags",
+      "fraud and chargeback flags",
+      "fraud",
+      "chargeback",
+      "flags"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Fraud & Chargeback Flags"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Fraud & Chargeback Flags: start at Orders > Chargebacks. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Chargebacks. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Chargebacks",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-007-subscription-billing-errors",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 7,
+    "match_phrases": [
+      "subscription billing errors",
+      "subscription",
+      "billing",
+      "errors"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Subscription Billing Errors"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Subscription Billing Errors: start at Settings > Billing. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Billing. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Billing",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-008-tax-calculation-mistakes",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 8,
+    "match_phrases": [
+      "tax calculation mistakes",
+      "calculation",
+      "mistakes"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Tax Calculation Mistakes"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Tax Calculation Mistakes: start at Settings > Taxes and duties. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Taxes and duties. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Taxes and duties",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-009-shipping-rate-inaccuracies",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 9,
+    "match_phrases": [
+      "shipping rate inaccuracies",
+      "shipping",
+      "rate",
+      "inaccuracies"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Shipping Rate Inaccuracies"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Shipping Rate Inaccuracies: start at Settings > Shipping and delivery. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Shipping and delivery. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Shipping and delivery",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-010-discount-code-failures",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 10,
+    "match_phrases": [
+      "discount code failures",
+      "discount",
+      "code",
+      "failures"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Discount Code Failures"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Discount Code Failures: start at Discounts. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Discounts. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Discounts",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-011-abandoned-cart-email-triggers",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 11,
+    "match_phrases": [
+      "abandoned cart email triggers",
+      "abandoned",
+      "cart",
+      "email",
+      "triggers"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Abandoned Cart Email Triggers"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Abandoned Cart Email Triggers: start at Settings > Notifications. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Notifications. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Notifications",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-012-gift-card-redemption-issues",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 12,
+    "match_phrases": [
+      "gift card redemption issues",
+      "gift",
+      "card",
+      "redemption",
+      "issues"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Gift Card Redemption Issues"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Gift Card Redemption Issues: start at Products > Gift cards. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Gift cards. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Products > Gift cards",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-013-pos-sync",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 13,
+    "match_phrases": [
+      "pos sync",
+      "sync"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "POS Sync"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "POS Sync: start at Point of Sale > Settings. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Point of Sale > Settings. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Point of Sale > Settings",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-014-manual-order-creation-errors",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 14,
+    "match_phrases": [
+      "manual order creation errors",
+      "manual",
+      "order",
+      "creation",
+      "errors"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Manual Order Creation Errors"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Manual Order Creation Errors: start at Orders > Create order. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Create order. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Create order",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-015-refund-return-processing",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 15,
+    "match_phrases": [
+      "refund & return processing",
+      "refund and return processing",
+      "refund",
+      "return",
+      "processing"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Refund & Return Processing"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Refund & Return Processing: start at Orders > Refund. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Refund. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Refund",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-016-draft-order-invoicing",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 16,
+    "match_phrases": [
+      "draft order invoicing",
+      "draft",
+      "order",
+      "invoicing"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Draft Order Invoicing"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Draft Order Invoicing: start at Orders > Drafts. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Drafts. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Drafts",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-017-b2b-wholesale-checkout-rules",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 17,
+    "match_phrases": [
+      "b2b wholesale checkout rules",
+      "wholesale",
+      "checkout",
+      "rules"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "B2B Wholesale Checkout Rules"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "B2B Wholesale Checkout Rules: start at Settings > Checkout > B2B. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout > B2B. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Checkout > B2B",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-018-local-pickup-setup-errors",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 18,
+    "match_phrases": [
+      "local pickup setup errors",
+      "local",
+      "pickup",
+      "setup",
+      "errors"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Local Pickup Setup Errors"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Local Pickup Setup Errors: start at Settings > Shipping > Local pickup. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Shipping > Local pickup. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Shipping > Local pickup",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-019-duties-import-tax",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 19,
+    "match_phrases": [
+      "duties & import tax",
+      "duties and import tax",
+      "duties",
+      "import"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Duties & Import Tax"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Duties & Import Tax: start at Settings > Taxes and duties. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Taxes and duties. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Taxes and duties",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-020-payment-retry-failures",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 20,
+    "match_phrases": [
+      "payment retry failures",
+      "payment",
+      "retry",
+      "failures"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Payment Retry Failures"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Payment Retry Failures: start at Orders > Capture / retry. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Capture / retry. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Capture / retry",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-021-custom-checkout-layout",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 21,
+    "match_phrases": [
+      "custom checkout layout",
+      "custom",
+      "checkout",
+      "layout"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom Checkout Layout"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Custom Checkout Layout: start at Settings > Checkout > extensibility. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout > extensibility. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Checkout > extensibility",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-022-digital-product-delivery-breaks",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 22,
+    "match_phrases": [
+      "digital product delivery breaks",
+      "digital",
+      "product",
+      "delivery",
+      "breaks"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Digital Product Delivery Breaks"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Digital Product Delivery Breaks: start at Products > Digital files. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Digital files. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Products > Digital files",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-023-pre-order-billing-glitches",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 23,
+    "match_phrases": [
+      "pre-order billing glitches",
+      "order",
+      "billing",
+      "glitches"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Pre-order Billing Glitches"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Pre-order Billing Glitches: start at Products > Purchase options. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Purchase options. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Products > Purchase options",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-024-tip-line-item-glitches",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 24,
+    "match_phrases": [
+      "tip line item glitches",
+      "line",
+      "item",
+      "glitches"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Tip Line Item Glitches"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Tip Line Item Glitches: start at Settings > Checkout > tips. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout > tips. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Checkout > tips",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-025-fraud-filter-app-conflicts",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 25,
+    "match_phrases": [
+      "fraud filter app conflicts",
+      "fraud",
+      "filter",
+      "conflicts"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Fraud Filter App Conflicts"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Fraud Filter App Conflicts: start at Settings > Apps > fraud. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Apps > fraud. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Apps > fraud",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-026-buy-now-pay-later-setup",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 26,
+    "match_phrases": [
+      "buy now pay later setup",
+      "later",
+      "setup"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Buy Now Pay Later Setup"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Buy Now Pay Later Setup: start at Settings > Payments > BNPL. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Payments > BNPL. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Payments > BNPL",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-027-commercial-invoice-generation",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 27,
+    "match_phrases": [
+      "commercial invoice generation",
+      "commercial",
+      "invoice",
+      "generation"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Commercial Invoice Generation"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Commercial Invoice Generation: start at Orders > Customs. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Orders > Customs. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Orders > Customs",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-028-payout-bank-discrepancies",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 28,
+    "match_phrases": [
+      "payout bank discrepancies",
+      "payout",
+      "bank",
+      "discrepancies"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Payout Bank Discrepancies"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Payout Bank Discrepancies: start at Settings > Payments > Payouts. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Payments > Payouts. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Payments > Payouts",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-029-store-currency-switching",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 29,
+    "match_phrases": [
+      "store currency switching",
+      "store",
+      "currency",
+      "switching"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Store Currency Switching"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Store Currency Switching: start at Settings > Markets > currency. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Markets > currency. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Markets > currency",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-030-address-validation-failures",
+    "hub": "payments",
+    "category": "payments",
+    "rank": 30,
+    "match_phrases": [
+      "address validation failures",
+      "address",
+      "validation",
+      "failures"
+    ],
+    "tags": [
+      "payments",
+      "issue"
+    ],
+    "synonyms": [
+      "Address Validation Failures"
+    ],
+    "cause": "Checkout, payouts, or a payment app is blocking the money path. Read the admin banner before changing code.",
+    "explanation": "Address Validation Failures: start at Settings > Checkout > address. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout > address. Read any banner or toast before you change anything.",
+      "Retry as the store owner in an incognito window to rule out staff permissions.",
+      "Turn Test mode off (Settings → Payments → Manage) if this is a live checkout.",
+      "If an app touches checkout or payments, disable it in Customize → App embeds and retest.",
+      "Place a $1 test order in incognito, then refund it. Copy these steps to a friend if they are stuck."
+    ],
+    "target_ui_hint": "Settings > Checkout > address",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-031-liquid-code-syntax-errors",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 31,
+    "match_phrases": [
+      "liquid code syntax errors",
+      "liquid",
+      "code",
+      "syntax",
+      "errors"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Liquid Code Syntax Errors"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Liquid Code Syntax Errors: start at Online Store > Themes > Errors. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Themes > Errors. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Online Store > Themes > Errors",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-032-theme-editor-visual-glitches",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 32,
+    "match_phrases": [
+      "theme editor visual glitches",
+      "theme",
+      "editor",
+      "visual",
+      "glitches"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Theme Editor Visual Glitches"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Theme Editor Visual Glitches: start at Online Store > Themes > Customize. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Themes > Customize. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-033-mobile-responsiveness-breaks",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 33,
+    "match_phrases": [
+      "mobile responsiveness breaks",
+      "mobile",
+      "responsiveness",
+      "breaks"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Mobile Responsiveness Breaks"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Mobile Responsiveness Breaks: start at Customize > mobile preview. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > mobile preview. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > mobile preview",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-034-navigation-menu-dropdown-bugs",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 34,
+    "match_phrases": [
+      "navigation menu dropdown bugs",
+      "navigation",
+      "menu",
+      "dropdown",
+      "bugs"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Navigation Menu Dropdown Bugs"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Navigation Menu Dropdown Bugs: start at Content > Menus. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Content > Menus. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Content > Menus",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-035-cart-drawer-ajax-freezes",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 35,
+    "match_phrases": [
+      "cart drawer ajax freezes",
+      "cart",
+      "drawer",
+      "ajax",
+      "freezes"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Cart Drawer Ajax Freezes"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Cart Drawer Ajax Freezes: start at Customize > cart drawer. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > cart drawer. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > cart drawer",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-036-product-image-gallery-lag",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 36,
+    "match_phrases": [
+      "product image gallery lag",
+      "product",
+      "image",
+      "gallery"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Image Gallery Lag"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Product Image Gallery Lag: start at Products > Media / theme gallery. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Media / theme gallery. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Products > Media / theme gallery",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-037-font-loading-css-blocks",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 37,
+    "match_phrases": [
+      "font loading & css blocks",
+      "font loading and css blocks",
+      "font",
+      "loading",
+      "blocks"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Font Loading & CSS Blocks"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Font Loading & CSS Blocks: start at Customize > Theme settings > Typography. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Theme settings > Typography. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > Theme settings > Typography",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-038-header-footer-alignment",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 38,
+    "match_phrases": [
+      "header & footer alignment",
+      "header and footer alignment",
+      "header",
+      "footer",
+      "alignment"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Header & Footer Alignment"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Header & Footer Alignment: start at Customize > Header / Footer. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Header / Footer. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > Header / Footer",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-039-custom-section-schema-errors",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 39,
+    "match_phrases": [
+      "custom section schema errors",
+      "custom",
+      "section",
+      "schema",
+      "errors"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom Section Schema Errors"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Custom Section Schema Errors: start at Themes > Errors / Customize. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Themes > Errors / Customize. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Themes > Errors / Customize",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-040-theme-update-version-conflicts",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 40,
+    "match_phrases": [
+      "theme update version conflicts",
+      "theme",
+      "update",
+      "version",
+      "conflicts"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Theme Update Version Conflicts"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Theme Update Version Conflicts: start at Online Store > Themes > Duplicate. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Themes > Duplicate. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Online Store > Themes > Duplicate",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-041-app-block-integration-layouts",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 41,
+    "match_phrases": [
+      "app block integration layouts",
+      "block",
+      "integration",
+      "layouts"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "App Block Integration Layouts"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "App Block Integration Layouts: start at Customize > App embeds. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > App embeds. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > App embeds",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-042-translation-localization-overlays",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 42,
+    "match_phrases": [
+      "translation localization overlays",
+      "translation",
+      "localization",
+      "overlays"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Translation Localization Overlays"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Translation Localization Overlays: start at Customize > language / Markets. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > language / Markets. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > language / Markets",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-043-search-bar-missing-results",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 43,
+    "match_phrases": [
+      "search bar missing results",
+      "search",
+      "missing",
+      "results"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Search Bar Missing Results"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Search Bar Missing Results: start at Online Store > search / Predictive search. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > search / Predictive search. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Online Store > search / Predictive search",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-044-product-filtering-facets-broken",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 44,
+    "match_phrases": [
+      "product filtering facets broken",
+      "product",
+      "filtering",
+      "facets",
+      "broken"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Filtering Facets Broken"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Product Filtering Facets Broken: start at Collection > filters. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Collection > filters. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Collection > filters",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-045-color-swatch-sync-flaws",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 45,
+    "match_phrases": [
+      "color swatch sync flaws",
+      "color",
+      "swatch",
+      "sync",
+      "flaws"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Color Swatch Sync Flaws"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Color Swatch Sync Flaws: start at Products > variants > swatches. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > variants > swatches. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Products > variants > swatches",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-046-video-3d-model-media-errors",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 46,
+    "match_phrases": [
+      "video 3d model media errors",
+      "video",
+      "model",
+      "media",
+      "errors"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Video 3D Model Media Errors"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Video 3D Model Media Errors: start at Products > Media. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Media. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Products > Media",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-047-sticky-cart-button-jitter",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 47,
+    "match_phrases": [
+      "sticky cart button jitter",
+      "sticky",
+      "cart",
+      "button",
+      "jitter"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Sticky Cart Button Jitter"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Sticky Cart Button Jitter: start at Customize > cart / announcement. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > cart / announcement. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > cart / announcement",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-048-favicon-branding-scaling",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 48,
+    "match_phrases": [
+      "favicon branding scaling",
+      "favicon",
+      "branding",
+      "scaling"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Favicon Branding Scaling"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Favicon Branding Scaling: start at Customize > Theme settings > Logo. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Theme settings > Logo. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > Theme settings > Logo",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-049-custom-font-upload-rejections",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 49,
+    "match_phrases": [
+      "custom font upload rejections",
+      "custom",
+      "font",
+      "upload",
+      "rejections"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom Font Upload Rejections"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Custom Font Upload Rejections: start at Theme settings > Typography. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Theme settings > Typography. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Theme settings > Typography",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-050-announcements-bar-sizing",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 50,
+    "match_phrases": [
+      "announcements bar sizing",
+      "announcements",
+      "sizing"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Announcements Bar Sizing"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Announcements Bar Sizing: start at Customize > Announcement bar. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Announcement bar. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > Announcement bar",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-051-grid-layout-misalignments",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 51,
+    "match_phrases": [
+      "grid layout misalignments",
+      "grid",
+      "layout",
+      "misalignments"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Grid Layout Misalignments"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Grid Layout Misalignments: start at Customize > collection grid. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > collection grid. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > collection grid",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-052-dark-mode-styling-overrides",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 52,
+    "match_phrases": [
+      "dark mode styling overrides",
+      "dark",
+      "mode",
+      "styling",
+      "overrides"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Dark Mode Styling Overrides"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Dark Mode Styling Overrides: start at Customize > colors. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > colors. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > colors",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-053-collection-page-pagination-bugs",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 53,
+    "match_phrases": [
+      "collection page pagination bugs",
+      "collection",
+      "page",
+      "pagination",
+      "bugs"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Collection Page Pagination Bugs"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Collection Page Pagination Bugs: start at Customize > collection. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > collection. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > collection",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-054-infinite-scroll-crashes",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 54,
+    "match_phrases": [
+      "infinite scroll crashes",
+      "infinite",
+      "scroll",
+      "crashes"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Infinite Scroll Crashes"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Infinite Scroll Crashes: start at Customize / app embeds. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize / app embeds. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize / app embeds",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-055-pop-up-sign-up-blocks",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 55,
+    "match_phrases": [
+      "pop-up sign-up blocks",
+      "sign",
+      "blocks"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Pop-up Sign-up Blocks"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Pop-up Sign-up Blocks: start at App embeds > pop-up. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to App embeds > pop-up. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "App embeds > pop-up",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-056-breadcrumb-navigation-links",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 56,
+    "match_phrases": [
+      "breadcrumb navigation links",
+      "breadcrumb",
+      "navigation",
+      "links"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Breadcrumb Navigation Links"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Breadcrumb Navigation Links: start at Customize > breadcrumbs / Navigation. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > breadcrumbs / Navigation. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > breadcrumbs / Navigation",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-057-quick-view-modal-failures",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 57,
+    "match_phrases": [
+      "quick view modal failures",
+      "quick",
+      "view",
+      "modal",
+      "failures"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Quick View Modal Failures"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Quick View Modal Failures: start at Customize > product / app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > product / app. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > product / app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-058-footer-copyright-editing",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 58,
+    "match_phrases": [
+      "footer copyright editing",
+      "footer",
+      "copyright",
+      "editing"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Footer Copyright Editing"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Footer Copyright Editing: start at Customize > Footer. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Footer. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > Footer",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-059-css-flexbox-grid-broken",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 59,
+    "match_phrases": [
+      "css flexbox grid broken",
+      "flexbox",
+      "grid",
+      "broken"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "CSS Flexbox Grid Broken"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "CSS Flexbox Grid Broken: start at Customize first, not Edit code. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize first, not Edit code. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize first, not Edit code",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-060-trust-badge-layout",
+    "hub": "themes",
+    "category": "themes",
+    "rank": 60,
+    "match_phrases": [
+      "trust badge layout",
+      "trust",
+      "badge",
+      "layout"
+    ],
+    "tags": [
+      "themes",
+      "issue"
+    ],
+    "synonyms": [
+      "Trust Badge Layout"
+    ],
+    "cause": "The published theme or an app block is drawing the storefront wrong. Fix in Customize; Edit code can take the shop down.",
+    "explanation": "Trust Badge Layout: start at Customize > footer / app block. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > footer / app block. Read any banner or toast before you change anything.",
+      "Online Store → Themes. Work on a Duplicate, not the live theme.",
+      "Customize (not Edit code). Use the phone preview if it is a layout issue.",
+      "Theme settings / the broken section: hide, move, or remove the block. Save.",
+      "App embeds: turn off the last app you installed. Preview product, collection, and cart before Publish."
+    ],
+    "target_ui_hint": "Customize > footer / app block",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-061-csv-product-import-formatting",
+    "hub": "products",
+    "category": "products",
+    "rank": 61,
+    "match_phrases": [
+      "csv product import formatting",
+      "product",
+      "import",
+      "formatting"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "CSV Product Import Formatting"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "CSV Product Import Formatting: start at Products > Import. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Import. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Import",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-062-variant-limit-100-cap",
+    "hub": "products",
+    "category": "products",
+    "rank": 62,
+    "match_phrases": [
+      "variant limit 100 cap",
+      "variant",
+      "limit"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Variant Limit 100 Cap"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Variant Limit 100 Cap: start at Products > variants. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > variants. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > variants",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-063-inventory-stock-level-desync",
+    "hub": "products",
+    "category": "products",
+    "rank": 63,
+    "match_phrases": [
+      "inventory stock level desync",
+      "inventory",
+      "stock",
+      "level",
+      "desync"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Inventory Stock Level Desync"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Inventory Stock Level Desync: start at Products > Inventory. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Inventory. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Inventory",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-064-collection-smart-rules-failure",
+    "hub": "products",
+    "category": "products",
+    "rank": 64,
+    "match_phrases": [
+      "collection smart rules failure",
+      "collection",
+      "smart",
+      "rules",
+      "failure"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Collection Smart Rules Failure"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Collection Smart Rules Failure: start at Products > Collections. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Collections. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Collections",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-065-product-metafields-formatting",
+    "hub": "products",
+    "category": "products",
+    "rank": 65,
+    "match_phrases": [
+      "product metafields formatting",
+      "product",
+      "metafields",
+      "formatting"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Metafields Formatting"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Product Metafields Formatting: start at Settings > Custom data. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Custom data. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Settings > Custom data",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-066-bulk-editor-saving-glitches",
+    "hub": "products",
+    "category": "products",
+    "rank": 66,
+    "match_phrases": [
+      "bulk editor saving glitches",
+      "bulk",
+      "editor",
+      "saving",
+      "glitches"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Bulk Editor Saving Glitches"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Bulk Editor Saving Glitches: start at Products > Bulk editor. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Bulk editor. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Bulk editor",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-067-duplicate-sku-overlaps",
+    "hub": "products",
+    "category": "products",
+    "rank": 67,
+    "match_phrases": [
+      "duplicate sku overlaps",
+      "duplicate",
+      "overlaps"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Duplicate SKU Overlaps"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Duplicate SKU Overlaps: start at Products > SKU. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > SKU. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > SKU",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-068-variant-option-dropdown-ordering",
+    "hub": "products",
+    "category": "products",
+    "rank": 68,
+    "match_phrases": [
+      "variant option dropdown ordering",
+      "variant",
+      "option",
+      "dropdown",
+      "ordering"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Variant Option Dropdown Ordering"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Variant Option Dropdown Ordering: start at Products > Options. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Options. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Options",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-069-product-description-html",
+    "hub": "products",
+    "category": "products",
+    "rank": 69,
+    "match_phrases": [
+      "product description html",
+      "product",
+      "description",
+      "html"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Description HTML"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Product Description HTML: start at Products > Description. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Description. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Description",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-070-price-rounding-automation",
+    "hub": "products",
+    "category": "products",
+    "rank": 70,
+    "match_phrases": [
+      "price rounding automation",
+      "price",
+      "rounding",
+      "automation"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Price Rounding Automation"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Price Rounding Automation: start at Settings > Markets / price lists. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Markets / price lists. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Settings > Markets / price lists",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-071-hidden-archived-product-visibility",
+    "hub": "products",
+    "category": "products",
+    "rank": 71,
+    "match_phrases": [
+      "hidden archived product visibility",
+      "hidden",
+      "archived",
+      "product",
+      "visibility"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Hidden Archived Product Visibility"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Hidden Archived Product Visibility: start at Products > status. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > status. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > status",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-072-vendor-type-tag-organization",
+    "hub": "products",
+    "category": "products",
+    "rank": 72,
+    "match_phrases": [
+      "vendor type tag organization",
+      "vendor",
+      "type",
+      "organization"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Vendor Type Tag Organization"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Vendor Type Tag Organization: start at Products > vendor / tags. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > vendor / tags. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > vendor / tags",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-073-weight-dimension-unit-mix-ups",
+    "hub": "products",
+    "category": "products",
+    "rank": 73,
+    "match_phrases": [
+      "weight dimension unit mix-ups",
+      "weight",
+      "dimension",
+      "unit"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Weight Dimension Unit Mix-ups"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Weight Dimension Unit Mix-ups: start at Products > Shipping. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Shipping. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Shipping",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-074-inventory-location-assignment",
+    "hub": "products",
+    "category": "products",
+    "rank": 74,
+    "match_phrases": [
+      "inventory location assignment",
+      "inventory",
+      "location",
+      "assignment"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Inventory Location Assignment"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Inventory Location Assignment: start at Settings > Locations. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Locations. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Settings > Locations",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-075-out-of-stock-tracking-rules",
+    "hub": "products",
+    "category": "products",
+    "rank": 75,
+    "match_phrases": [
+      "out of stock tracking rules",
+      "stock",
+      "tracking",
+      "rules"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Out of Stock Tracking Rules"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Out of Stock Tracking Rules: start at Products > Inventory > track. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Inventory > track. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Inventory > track",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-076-digital-file-upload-limits",
+    "hub": "products",
+    "category": "products",
+    "rank": 76,
+    "match_phrases": [
+      "digital file upload limits",
+      "digital",
+      "file",
+      "upload",
+      "limits"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Digital File Upload Limits"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Digital File Upload Limits: start at Products > Digital downloads. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Digital downloads. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Digital downloads",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-077-collection-image-thumbnails",
+    "hub": "products",
+    "category": "products",
+    "rank": 77,
+    "match_phrases": [
+      "collection image thumbnails",
+      "collection",
+      "image",
+      "thumbnails"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Collection Image Thumbnails"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Collection Image Thumbnails: start at Collections > image. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Collections > image. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Collections > image",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-078-barcode-gtin-validation",
+    "hub": "products",
+    "category": "products",
+    "rank": 78,
+    "match_phrases": [
+      "barcode gtin validation",
+      "barcode",
+      "gtin",
+      "validation"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Barcode GTIN Validation"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Barcode GTIN Validation: start at Products > barcode. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > barcode. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > barcode",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-079-product-bundle-mapping",
+    "hub": "products",
+    "category": "products",
+    "rank": 79,
+    "match_phrases": [
+      "product bundle mapping",
+      "product",
+      "bundle",
+      "mapping"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Bundle Mapping"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Product Bundle Mapping: start at Products / bundle app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products / bundle app. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products / bundle app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-080-compare-at-price-logic",
+    "hub": "products",
+    "category": "products",
+    "rank": 80,
+    "match_phrases": [
+      "compare at price logic",
+      "compare",
+      "price",
+      "logic"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Compare At Price Logic"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Compare At Price Logic: start at Products > Pricing. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Pricing. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Pricing",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-081-metaobject-reference-breakers",
+    "hub": "products",
+    "category": "products",
+    "rank": 81,
+    "match_phrases": [
+      "metaobject reference breakers",
+      "metaobject",
+      "reference",
+      "breakers"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Metaobject Reference Breakers"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Metaobject Reference Breakers: start at Settings > Custom data > metaobjects. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Custom data > metaobjects. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Settings > Custom data > metaobjects",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-082-pre-order-inventory-allocations",
+    "hub": "products",
+    "category": "products",
+    "rank": 82,
+    "match_phrases": [
+      "pre-order inventory allocations",
+      "order",
+      "inventory",
+      "allocations"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Pre-order Inventory Allocations"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Pre-order Inventory Allocations: start at Products > Continue selling. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Continue selling. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Continue selling",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-083-cost-per-item-analytics",
+    "hub": "products",
+    "category": "products",
+    "rank": 83,
+    "match_phrases": [
+      "cost per item analytics",
+      "cost",
+      "item",
+      "analytics"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Cost Per Item Analytics"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Cost Per Item Analytics: start at Products > Cost per item. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Cost per item. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Cost per item",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-084-gift-wrap-upsell-bundling",
+    "hub": "products",
+    "category": "products",
+    "rank": 84,
+    "match_phrases": [
+      "gift wrap upsell bundling",
+      "gift",
+      "wrap",
+      "upsell",
+      "bundling"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Gift Wrap Upsell Bundling"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Gift Wrap Upsell Bundling: start at Products / app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products / app. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products / app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-085-multi-language-product-copy-sync",
+    "hub": "products",
+    "category": "products",
+    "rank": 85,
+    "match_phrases": [
+      "multi-language product copy sync",
+      "multi",
+      "language",
+      "product",
+      "copy",
+      "sync"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Multi-Language Product Copy Sync"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Multi-Language Product Copy Sync: start at Markets > Translate. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Markets > Translate. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Markets > Translate",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-086-product-sorting-hierarchy",
+    "hub": "products",
+    "category": "products",
+    "rank": 86,
+    "match_phrases": [
+      "product sorting hierarchy",
+      "product",
+      "sorting",
+      "hierarchy"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Product Sorting Hierarchy"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Product Sorting Hierarchy: start at Collections > sort. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Collections > sort. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Collections > sort",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-087-custom-liquid-product-tabs",
+    "hub": "products",
+    "category": "products",
+    "rank": 87,
+    "match_phrases": [
+      "custom liquid product tabs",
+      "custom",
+      "liquid",
+      "product",
+      "tabs"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom Liquid Product Tabs"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Custom Liquid Product Tabs: start at Customize > product tabs. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > product tabs. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Customize > product tabs",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-088-seo-title-description-caps",
+    "hub": "products",
+    "category": "products",
+    "rank": 88,
+    "match_phrases": [
+      "seo title description caps",
+      "title",
+      "description",
+      "caps"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "SEO Title Description Caps"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "SEO Title Description Caps: start at Product > Search engine listing. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Product > Search engine listing. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Product > Search engine listing",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-089-tax-exempt-product-overrides",
+    "hub": "products",
+    "category": "products",
+    "rank": 89,
+    "match_phrases": [
+      "tax-exempt product overrides",
+      "exempt",
+      "product",
+      "overrides"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Tax-Exempt Product Overrides"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Tax-Exempt Product Overrides: start at Product > Charge tax. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Product > Charge tax. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Product > Charge tax",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-090-inventory-history-log-missing",
+    "hub": "products",
+    "category": "products",
+    "rank": 90,
+    "match_phrases": [
+      "inventory history log missing",
+      "inventory",
+      "history",
+      "missing"
+    ],
+    "tags": [
+      "products",
+      "issue"
+    ],
+    "synonyms": [
+      "Inventory History Log Missing"
+    ],
+    "cause": "Catalog data (variants, stock, CSV) is out of sync with what checkout expects.",
+    "explanation": "Inventory History Log Missing: start at Products > Inventory. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Products > Inventory. Read any banner or toast before you change anything.",
+      "Settings → Locations if stock looks wrong — Available vs On hand at the fulfilling location.",
+      "Do not Edit code to “fix” variants. Split the product if you hit the 100-variant cap.",
+      "Bulk/CSV: export a fresh file; quantities must be numbers, never blank.",
+      "Save, then view the product on the storefront in incognito."
+    ],
+    "target_ui_hint": "Products > Inventory",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-091-app-script-tag-conflicts",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 91,
+    "match_phrases": [
+      "app script tag conflicts",
+      "script",
+      "conflicts"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "App Script Tag Conflicts"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "App Script Tag Conflicts: start at Customize > App embeds. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > App embeds. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Customize > App embeds",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-092-api-rate-limit-exceeded",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 92,
+    "match_phrases": [
+      "api rate limit exceeded",
+      "rate",
+      "limit",
+      "exceeded"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "API Rate Limit Exceeded"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "API Rate Limit Exceeded: start at Settings > Apps > API. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Apps > API. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Apps > API",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-093-webhooks-missing-payloads",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 93,
+    "match_phrases": [
+      "webhooks missing payloads",
+      "webhooks",
+      "missing",
+      "payloads"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Webhooks Missing Payloads"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Webhooks Missing Payloads: start at Settings > Notifications / app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Notifications / app. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Notifications / app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-094-erp-crm-sync-drops",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 94,
+    "match_phrases": [
+      "erp crm sync drops",
+      "sync",
+      "drops"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "ERP CRM Sync Drops"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "ERP CRM Sync Drops: start at Settings > Apps > ERP. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Apps > ERP. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Apps > ERP",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-095-marketing-pixel-drops",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 95,
+    "match_phrases": [
+      "marketing pixel drops",
+      "marketing",
+      "pixel",
+      "drops"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Marketing Pixel Drops"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Marketing Pixel Drops: start at Settings > Customer events. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Customer events. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Customer events",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-096-dropshipping-app-product-sync",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 96,
+    "match_phrases": [
+      "dropshipping app product sync",
+      "dropshipping",
+      "product",
+      "sync"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Dropshipping App Product Sync"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Dropshipping App Product Sync: start at Apps > dropshipping. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > dropshipping. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > dropshipping",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-097-print-on-demand-asset-scaling",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 97,
+    "match_phrases": [
+      "print on demand asset scaling",
+      "print",
+      "demand",
+      "asset",
+      "scaling"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Print on Demand Asset Scaling"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Print on Demand Asset Scaling: start at Apps > POD. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > POD. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > POD",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-098-email-marketing-contact-desync",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 98,
+    "match_phrases": [
+      "email marketing contact desync",
+      "email",
+      "marketing",
+      "contact",
+      "desync"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Email Marketing Contact Desync"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Email Marketing Contact Desync: start at Apps > email / Customers. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > email / Customers. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > email / Customers",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-099-review-app-widget-hiding",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 99,
+    "match_phrases": [
+      "review app widget hiding",
+      "review",
+      "widget",
+      "hiding"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Review App Widget Hiding"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Review App Widget Hiding: start at Customize > App embeds > reviews. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > App embeds > reviews. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Customize > App embeds > reviews",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-100-customer-loyalty-point-math",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 100,
+    "match_phrases": [
+      "customer loyalty point math",
+      "customer",
+      "loyalty",
+      "point",
+      "math"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Customer Loyalty Point Math"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Customer Loyalty Point Math: start at Apps > loyalty. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > loyalty. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > loyalty",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-101-live-chat-widget-blocking",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 101,
+    "match_phrases": [
+      "live chat widget blocking",
+      "live",
+      "chat",
+      "widget",
+      "blocking"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Live Chat Widget Blocking"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Live Chat Widget Blocking: start at Customize > App embeds > chat. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > App embeds > chat. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Customize > App embeds > chat",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-102-affiliate-link-tracking-breaks",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 102,
+    "match_phrases": [
+      "affiliate link tracking breaks",
+      "affiliate",
+      "link",
+      "tracking",
+      "breaks"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Affiliate Link Tracking Breaks"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Affiliate Link Tracking Breaks: start at Apps > affiliate. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > affiliate. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > affiliate",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-103-social-commerce-catalog-rejections",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 103,
+    "match_phrases": [
+      "social commerce catalog rejections",
+      "social",
+      "commerce",
+      "catalog",
+      "rejections"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Social Commerce Catalog Rejections"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Social Commerce Catalog Rejections: start at Sales channels > Instagram / TikTok. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Sales channels > Instagram / TikTok. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Sales channels > Instagram / TikTok",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-104-subscription-app-portal-lockouts",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 104,
+    "match_phrases": [
+      "subscription app portal lockouts",
+      "subscription",
+      "portal",
+      "lockouts"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Subscription App Portal Lockouts"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Subscription App Portal Lockouts: start at Apps > subscriptions. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > subscriptions. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > subscriptions",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-105-page-builder-app-layout-shifts",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 105,
+    "match_phrases": [
+      "page builder app layout shifts",
+      "page",
+      "builder",
+      "layout",
+      "shifts"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Page Builder App Layout Shifts"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Page Builder App Layout Shifts: start at Apps > page builder. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > page builder. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > page builder",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-106-translation-app-api-failures",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 106,
+    "match_phrases": [
+      "translation app api failures",
+      "translation",
+      "failures"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Translation App API Failures"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Translation App API Failures: start at Apps > translate. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > translate. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > translate",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-107-sales-pop-up-spam-blocks",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 107,
+    "match_phrases": [
+      "sales pop-up spam blocks",
+      "sales",
+      "spam",
+      "blocks"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Sales Pop-up Spam Blocks"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Sales Pop-up Spam Blocks: start at App embeds > pop-up. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to App embeds > pop-up. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "App embeds > pop-up",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-108-custom-app-authentication-flaws",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 108,
+    "match_phrases": [
+      "custom app authentication flaws",
+      "custom",
+      "authentication",
+      "flaws"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom App Authentication Flaws"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Custom App Authentication Flaws: start at Settings > Apps > Develop apps. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Apps > Develop apps. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Apps > Develop apps",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-109-zapier-automation-failures",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 109,
+    "match_phrases": [
+      "zapier automation failures",
+      "zapier",
+      "automation",
+      "failures"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Zapier Automation Failures"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Zapier Automation Failures: start at Zapier / Shopify app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Zapier / Shopify app. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Zapier / Shopify app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-110-store-backup-duplication-breaks",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 110,
+    "match_phrases": [
+      "store backup duplication breaks",
+      "store",
+      "backup",
+      "duplication",
+      "breaks"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Store Backup Duplication Breaks"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Store Backup Duplication Breaks: start at Themes > Duplicate / backup app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Themes > Duplicate / backup app. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Themes > Duplicate / backup app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-111-size-chart-widget-popups",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 111,
+    "match_phrases": [
+      "size chart widget popups",
+      "size",
+      "chart",
+      "widget",
+      "popups"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Size Chart Widget Popups"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Size Chart Widget Popups: start at Product > app block. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Product > app block. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Product > app block",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-112-wishlist-button-disconnects",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 112,
+    "match_phrases": [
+      "wishlist button disconnects",
+      "wishlist",
+      "button",
+      "disconnects"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Wishlist Button Disconnects"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Wishlist Button Disconnects: start at App embeds > wishlist. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to App embeds > wishlist. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "App embeds > wishlist",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-113-fraud-score-app-lockouts",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 113,
+    "match_phrases": [
+      "fraud score app lockouts",
+      "fraud",
+      "score",
+      "lockouts"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Fraud Score App Lockouts"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Fraud Score App Lockouts: start at Apps > fraud. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > fraud. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > fraud",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-114-upsell-app-offer-collisions",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 114,
+    "match_phrases": [
+      "upsell app offer collisions",
+      "upsell",
+      "offer",
+      "collisions"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Upsell App Offer Collisions"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Upsell App Offer Collisions: start at Checkout / product apps. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Checkout / product apps. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Checkout / product apps",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-115-analytics-ga4-tracking-gaps",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 115,
+    "match_phrases": [
+      "analytics ga4 tracking gaps",
+      "analytics",
+      "tracking",
+      "gaps"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Analytics GA4 Tracking Gaps"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Analytics GA4 Tracking Gaps: start at Settings > Customer events. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Customer events. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Settings > Customer events",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-116-wholesale-portal-access-locks",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 116,
+    "match_phrases": [
+      "wholesale portal access locks",
+      "wholesale",
+      "portal",
+      "access",
+      "locks"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Wholesale Portal Access Locks"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Wholesale Portal Access Locks: start at B2B / wholesale app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to B2B / wholesale app. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "B2B / wholesale app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-117-erp-inventory-overwrites",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 117,
+    "match_phrases": [
+      "erp inventory overwrites",
+      "inventory",
+      "overwrites"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "ERP Inventory Overwrites"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "ERP Inventory Overwrites: start at Apps > ERP inventory. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > ERP inventory. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > ERP inventory",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-118-klaviyo-form-embedded-breaks",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 118,
+    "match_phrases": [
+      "klaviyo form embedded breaks",
+      "klaviyo",
+      "form",
+      "embedded",
+      "breaks"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Klaviyo Form Embedded Breaks"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Klaviyo Form Embedded Breaks: start at Customize > App embeds > Klaviyo. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > App embeds > Klaviyo. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Customize > App embeds > Klaviyo",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-119-cookie-consent-banner-overlays",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 119,
+    "match_phrases": [
+      "cookie consent banner overlays",
+      "cookie",
+      "consent",
+      "banner",
+      "overlays"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "Cookie Consent Banner Overlays"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "Cookie Consent Banner Overlays: start at Customer privacy / consent app. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customer privacy / consent app. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Customer privacy / consent app",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-120-shipstation-order-push-failures",
+    "hub": "apps",
+    "category": "apps",
+    "rank": 120,
+    "match_phrases": [
+      "shipstation order push failures",
+      "shipstation",
+      "order",
+      "push",
+      "failures"
+    ],
+    "tags": [
+      "apps",
+      "issue"
+    ],
+    "synonyms": [
+      "ShipStation Order Push Failures"
+    ],
+    "cause": "A third-party script or leftover embed is colliding with the theme or another app.",
+    "explanation": "ShipStation Order Push Failures: start at Apps > ShipStation. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Apps > ShipStation. Read any banner or toast before you change anything.",
+      "Settings → Apps and sales channels. Confirm the app is installed and updated.",
+      "Online Store → Themes → Customize → App embeds. Toggle this app off, Save, retest, then on.",
+      "Two apps doing the same job (two pop-ups, two reviews, two upsells) — keep one.",
+      "If you uninstalled it, remove leftover blocks in Customize. Do not paste old script tags into theme.liquid."
+    ],
+    "target_ui_hint": "Apps > ShipStation",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-121-custom-domain-ssl-pending",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 121,
+    "match_phrases": [
+      "custom domain ssl pending",
+      "custom",
+      "domain",
+      "pending"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Custom Domain SSL Pending"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Custom Domain SSL Pending: start at Online Store > Domains. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Domains. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Domains",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-122-dns-record-setup",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 122,
+    "match_phrases": [
+      "dns record setup",
+      "record",
+      "setup"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "DNS Record Setup"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "DNS Record Setup: start at Online Store > Domains > DNS. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Domains > DNS. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Domains > DNS",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-123-staff-account-permission-locks",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 123,
+    "match_phrases": [
+      "staff account permission locks",
+      "staff",
+      "account",
+      "permission",
+      "locks"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Staff Account Permission Locks"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Staff Account Permission Locks: start at Settings > Users and permissions. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Users and permissions. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Users and permissions",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-124-two-factor-authentication-lockouts",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 124,
+    "match_phrases": [
+      "two-factor authentication lockouts",
+      "factor",
+      "authentication",
+      "lockouts"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Two-Factor Authentication Lockouts"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Two-Factor Authentication Lockouts: start at Settings > Users > 2FA. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Users > 2FA. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Users > 2FA",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-125-domain-transfer-failures",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 125,
+    "match_phrases": [
+      "domain transfer failures",
+      "domain",
+      "transfer",
+      "failures"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Domain Transfer Failures"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Domain Transfer Failures: start at Online Store > Domains. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Domains. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Domains",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-126-subdomain-routing-glitches",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 126,
+    "match_phrases": [
+      "subdomain routing glitches",
+      "subdomain",
+      "routing",
+      "glitches"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Subdomain Routing Glitches"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Subdomain Routing Glitches: start at Domains / Markets. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Domains / Markets. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Domains / Markets",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-127-sitemap-xml-missing-pages",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 127,
+    "match_phrases": [
+      "sitemap.xml missing pages",
+      "sitemap",
+      "missing",
+      "pages"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Sitemap.xml Missing Pages"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Sitemap.xml Missing Pages: start at Online Store > Preferences / Search Console. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Preferences / Search Console. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Preferences / Search Console",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-128-robots-txt-customization-breaks",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 128,
+    "match_phrases": [
+      "robots.txt customization breaks",
+      "robots",
+      "customization",
+      "breaks"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Robots.txt Customization Breaks"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Robots.txt Customization Breaks: start at Do not Edit code robots first. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Do not Edit code robots first. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Do not Edit code robots first",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-129-url-redirect-loops",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 129,
+    "match_phrases": [
+      "url redirect loops",
+      "redirect",
+      "loops"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "URL Redirect Loops"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "URL Redirect Loops: start at Content > Menus / URL redirects. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Content > Menus / URL redirects. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Content > Menus / URL redirects",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-130-broken-internal-links-404s",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 130,
+    "match_phrases": [
+      "broken internal links 404s",
+      "broken",
+      "internal",
+      "links"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Broken Internal Links 404s"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Broken Internal Links 404s: start at Online Store > Navigation / Redirects. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Navigation / Redirects. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Navigation / Redirects",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-131-structured-data-rich-snippets",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 131,
+    "match_phrases": [
+      "structured data rich snippets",
+      "structured",
+      "data",
+      "rich",
+      "snippets"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Structured Data Rich Snippets"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Structured Data Rich Snippets: start at Product SEO / apps. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Product SEO / apps. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Product SEO / apps",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-132-shopify-plus-organization-settings",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 132,
+    "match_phrases": [
+      "shopify plus organization settings",
+      "shopify",
+      "plus",
+      "organization",
+      "settings"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Shopify Plus Organization Settings"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Shopify Plus Organization Settings: start at Settings > Organization. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Organization. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Organization",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-133-store-transfer-development-to-live",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 133,
+    "match_phrases": [
+      "store transfer development to live",
+      "store",
+      "transfer",
+      "development",
+      "live"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Store Transfer Development to Live"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Store Transfer Development to Live: start at Settings > Store / transfer. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Store / transfer. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Store / transfer",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-134-billing-credit-card-declines",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 134,
+    "match_phrases": [
+      "billing credit card declines",
+      "billing",
+      "credit",
+      "card",
+      "declines"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Billing Credit Card Declines"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Billing Credit Card Declines: start at Settings > Billing. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Billing. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Billing",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-135-gdpr-ccpa-compliance-toggles",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 135,
+    "match_phrases": [
+      "gdpr ccpa compliance toggles",
+      "gdpr",
+      "ccpa",
+      "compliance",
+      "toggles"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "GDPR CCPA Compliance Toggles"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "GDPR CCPA Compliance Toggles: start at Settings > Customer privacy. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Customer privacy. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Customer privacy",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-136-store-pause-and-build-status",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 136,
+    "match_phrases": [
+      "store pause and build status",
+      "store",
+      "pause",
+      "build",
+      "status"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Store Pause and Build Status"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Store Pause and Build Status: start at Settings > Plan / pause. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Plan / pause. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Plan / pause",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-137-primary-market-configuration",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 137,
+    "match_phrases": [
+      "primary market configuration",
+      "primary",
+      "market",
+      "configuration"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Primary Market Configuration"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Primary Market Configuration: start at Settings > Markets. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Markets. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Markets",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-138-markets-pro-shipping-restrictions",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 138,
+    "match_phrases": [
+      "markets pro shipping restrictions",
+      "markets",
+      "shipping",
+      "restrictions"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Markets Pro Shipping Restrictions"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Markets Pro Shipping Restrictions: start at Settings > Markets > shipping. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Markets > shipping. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Markets > shipping",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-139-customer-account-verification-emails",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 139,
+    "match_phrases": [
+      "customer account verification emails",
+      "customer",
+      "account",
+      "verification",
+      "emails"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Customer Account Verification Emails"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Customer Account Verification Emails: start at Settings > Notifications / Checkout. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Notifications / Checkout. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Notifications / Checkout",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-140-spam-bot-customer-registrations",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 140,
+    "match_phrases": [
+      "spam bot customer registrations",
+      "spam",
+      "customer",
+      "registrations"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Spam Bot Customer Registrations"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Spam Bot Customer Registrations: start at Settings > Checkout > spam. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Checkout > spam. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Checkout > spam",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-141-contact-form-submission-drops",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 141,
+    "match_phrases": [
+      "contact form submission drops",
+      "contact",
+      "form",
+      "submission",
+      "drops"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Contact Form Submission Drops"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Contact Form Submission Drops: start at Online Store > Pages / Notifications. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Online Store > Pages / Notifications. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Online Store > Pages / Notifications",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-142-legal-policy-page-formatting",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 142,
+    "match_phrases": [
+      "legal policy page formatting",
+      "legal",
+      "policy",
+      "page",
+      "formatting"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Legal Policy Page Formatting"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Legal Policy Page Formatting: start at Settings > Policies. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Policies. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Policies",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-143-notification-email-template-visuals",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 143,
+    "match_phrases": [
+      "notification email template visuals",
+      "notification",
+      "email",
+      "template",
+      "visuals"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Notification Email Template Visuals"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Notification Email Template Visuals: start at Settings > Notifications. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Notifications. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Notifications",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-144-sms-notification-gateway-setup",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 144,
+    "match_phrases": [
+      "sms notification gateway setup",
+      "notification",
+      "gateway",
+      "setup"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "SMS Notification Gateway Setup"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "SMS Notification Gateway Setup: start at Settings > Notifications > SMS. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Notifications > SMS. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Notifications > SMS",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-145-store-name-url-rename",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 145,
+    "match_phrases": [
+      "store name url rename",
+      "store",
+      "name",
+      "rename"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Store Name URL Rename"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Store Name URL Rename: start at Settings > Store details. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Store details. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Store details",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-146-google-merchant-center-disapprovals",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 146,
+    "match_phrases": [
+      "google merchant center disapprovals",
+      "google",
+      "merchant",
+      "center",
+      "disapprovals"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Google Merchant Center Disapprovals"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Google Merchant Center Disapprovals: start at Sales channels > Google. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Sales channels > Google. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Sales channels > Google",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-147-favicon-url-route-broken",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 147,
+    "match_phrases": [
+      "favicon url route broken",
+      "favicon",
+      "route",
+      "broken"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Favicon URL Route Broken"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Favicon URL Route Broken: start at Customize > Theme settings > favicon. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Customize > Theme settings > favicon. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Customize > Theme settings > favicon",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-148-hreflang-language-tag-mistakes",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 148,
+    "match_phrases": [
+      "hreflang language tag mistakes",
+      "hreflang",
+      "language",
+      "mistakes"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Hreflang Language Tag Mistakes"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Hreflang Language Tag Mistakes: start at Markets > languages. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Markets > languages. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Markets > languages",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-149-shop-pay-installments-approval",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 149,
+    "match_phrases": [
+      "shop pay installments approval",
+      "shop",
+      "installments",
+      "approval"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Shop Pay Installments Approval"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Shop Pay Installments Approval: start at Settings > Payments > Shop Pay. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > Payments > Shop Pay. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > Payments > Shop Pay",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  },
+  {
+    "id": "issue-150-account-suspension-policy-violations",
+    "hub": "admin",
+    "category": "admin",
+    "rank": 150,
+    "match_phrases": [
+      "account suspension policy violations",
+      "account",
+      "suspension",
+      "policy",
+      "violations"
+    ],
+    "tags": [
+      "admin",
+      "issue"
+    ],
+    "synonyms": [
+      "Account Suspension Policy Violations"
+    ],
+    "cause": "Domain, staff, SEO, or plan settings — not the theme. Use Settings, not Liquid.",
+    "explanation": "Account Suspension Policy Violations: start at Settings > store email / Shopify Policy. Beginner path is admin settings and Customize — not Edit code.",
+    "steps": [
+      "Go to Settings > store email / Shopify Policy. Read any banner or toast before you change anything.",
+      "Copy any error text and search it in Storescope if a banner is showing.",
+      "DNS/SSL: wait up to 48 hours after records change. Do not delete working A/CNAME records.",
+      "Staff: Settings → Users — check permissions instead of sharing the owner login.",
+      "Legal/privacy: Settings → Policies, then link the page in Content → Menus. Do not paste policy HTML into the theme."
+    ],
+    "target_ui_hint": "Settings > store email / Shopify Policy",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
+    "source_category_db": "issues"
+  }
+]

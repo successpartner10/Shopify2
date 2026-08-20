@@ -71,7 +71,8 @@ const state = {
   ranks: {},
   walkOn: false,
   walkPaused: false,
-  stepsExpanded: false
+  stepsExpanded: false,
+  hub: null
 };
 
 function applyTheme(mode) {
@@ -645,6 +646,56 @@ function walkHalt() {
   state.walkOn = false;
   state.walkPaused = false;
   paintWalkHints();
+}
+
+const HUBS = {
+  payments: { label: "Payments", blurb: "Checkout, payouts, discounts, shipping rates, tax." },
+  themes: { label: "Themes", blurb: "Layout, mobile, menus, Customize — not Edit code first." },
+  products: { label: "Products", blurb: "Inventory, variants, CSV, collections." },
+  apps: { label: "Apps", blurb: "Embeds, pixels, leftover code after uninstall." },
+  admin: { label: "Admin", blurb: "Domains, staff, SEO, policies, billing." }
+};
+
+function hubTitle(entry) {
+  return (entry.synonyms && entry.synonyms[0]) || entry.target_ui_hint || entry.id;
+}
+
+function openHub(hub) {
+  if (!HUBS[hub]) return;
+  state.hub = hub;
+  markOnboarded();
+  if ($("catGrid")) $("catGrid").hidden = true;
+  if ($("hubPanel")) $("hubPanel").hidden = false;
+  if ($("hubTitle")) $("hubTitle").textContent = HUBS[hub].label;
+  if ($("hubBlurb")) $("hubBlurb").textContent = HUBS[hub].blurb;
+  if ($("hubSearch")) $("hubSearch").value = "";
+  paintHubList("");
+  $("hubSearch")?.focus();
+}
+
+function closeHub() {
+  state.hub = null;
+  if ($("hubPanel")) $("hubPanel").hidden = true;
+  if ($("catGrid")) $("catGrid").hidden = false;
+}
+
+function paintHubList(q) {
+  const host = $("hubList");
+  if (!host || !state.hub) return;
+  const hay = String(q || "").toLowerCase().trim();
+  let rows = allEntries().filter((e) => e.hub === state.hub);
+  if (hay) {
+    rows = rows.filter((e) => {
+      const blob = [hubTitle(e), e.target_ui_hint, e.cause, ...(e.match_phrases || []), ...(e.synonyms || [])].join(" ").toLowerCase();
+      return blob.includes(hay);
+    });
+  }
+  rows.sort((a, b) => (a.rank || 999) - (b.rank || 999) || String(hubTitle(a)).localeCompare(hubTitle(b)));
+  host.innerHTML = rows.length
+    ? rows.slice(0, 80).map((e) =>
+      `<button class="sample" type="button" data-open="${esc(e.id)}"><b>${esc(hubTitle(e))}</b><span>${esc(e.target_ui_hint || "")}</span></button>`
+    ).join("")
+    : `<p class="empty">Nothing in ${HUBS[state.hub].label} matches. Try another word.</p>`;
 }
 
 async function copyStepsForFriend() {
@@ -1472,6 +1523,11 @@ function wireUi() {
     const q = ($("homeAskInput")?.value || "").trim();
     if (!q) return toast("Type a few words from the problem.");
     if (looksLikeSecret(q)) return toast("That looks like a secret key. Type the Shopify banner instead.");
+    if (state.hub) {
+      if ($("hubSearch")) $("hubSearch").value = q;
+      paintHubList(q);
+      return;
+    }
     markOnboarded();
     state.lastText = q;
     const go = () => {
@@ -1706,6 +1762,15 @@ function restoreIfNeeded() {
   if (!rec?.id) return;
   const entry = allEntries().find((e) => e.id === rec.id);
   if (!entry) return;
+  renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
+  state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
+  if (state.progress) state.progress.index = state.stepIndex;
+  highlightStep();
+  toast("Picked up where you left off.");
+}
+
+boot();
+rn;
   renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
   state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
   if (state.progress) state.progress.index = state.stepIndex;
