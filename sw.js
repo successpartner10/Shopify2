@@ -1,4 +1,4 @@
-const VERSION = "storescope-v2.7.4";
+const VERSION = "storescope-v2.8.0";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -27,8 +27,9 @@ const PRECACHE = [
   "./js/cloud.js",
   "./js/routes.js",
   "./js/polaroids.js",
-  "./js/version.js",
   "./js/pwa.js",
+  "./js/pip.js",
+  "./js/version.js",
   "./js/vendor/fuse.min.js",
   "./js/vendor/tesseract/tesseract.min.js",
   "./js/vendor/tesseract/worker.min.js",
@@ -150,5 +151,5 @@ async function handleSharePost(request) {
   } catch {
     /* still bounce home */
   }
-  return Response.redirect(new URL("./index.html?v=2.7.4&shared=1", request.url), 303);
+  return Response.redirect(new URL("./index.html?v=2.8.0&shared=1", request.url), 303);
 }

@@ -1,14 +1,14 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v2.7.4** · 19 August 2026.
+Privacy-first Shopify admin live scanner. **v2.8.0** · 19 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.7.4 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.7.4 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.7.4 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=2.8.0 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=2.8.0 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=2.8.0 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.4/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.8.0/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -39,15 +39,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=2.7.4 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=2.7.4 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=2.7.4 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=2.7.4&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=2.7.4&q=payouts%20on%20hold` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=2.7.4&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=2.8.0 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=2.8.0 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=2.8.0 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=2.8.0&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=2.8.0&q=payouts%20on%20hold` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=2.8.0&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=2.7.4` cache-busts CSS/JS and the service worker (`storescope-v2.7.4`). Hard-refresh if an old build is stuck.
+`?v=2.8.0` cache-busts CSS/JS and the service worker (`storescope-v2.8.0`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -79,6 +79,7 @@ Upload, samples, typed search, and pasted admin URLs work without tab share.
 | Numbered steps | **Next step** / **This worked** on the same page |
 | Polaroids | Tiny “tap here” crop on common paths (payouts, shipping, Collective, Liquid, Edit code) |
 | Help | Three steps + Privacy. Power tools stay hidden |
+| Play this fix | One button; becomes Pause. Next step continues. |
 | Play step audio | Hear the current step while you click Shopify. Say **pause** or **continue** (or tap the buttons). |
 | Light / dark | ☾ / ☼ · saved as `ss_theme` |
 
@@ -113,7 +114,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=2.7.4 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=2.8.0 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner.
 4. Follow the numbered steps. Re-scan after each change.
@@ -123,7 +124,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.7.4/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v2.8.0/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
@@ -181,7 +182,7 @@ Do **not** commit real merchant screenshots.
 
 ---
 
-## 10. Audit log (2026-08-19, v2.7.4)
+## 10. Audit log (2026-08-19, v2.8.0)
 
 Fixed in this release:
 
@@ -195,10 +196,10 @@ Fixed in this release:
 | Playbook fetch used `force-cache` | Default cache; SW version bump clears old files |
 | Typed “pinterest” opened theme social links, not the channel | Phrase split |
 | Typed “payouts on hold” / “no shipping rates” / “domain not connected” / “theme has errors” missed the exact banner row | Phrases added on error entries |
-| Diagnostic export still said `2.0.0` | `2.7.4` |
+| Diagnostic export still said `2.0.0` | `2.8.0` |
 | History / flow HTML could render raw objects | Escaped + string steps |
-| Shopify app docs still said `?v=2.6.0` | `?v=2.7.4` |
-| Offline zip pointed at the v2.1.0 release | v2.7.4 release |
+| Shopify app docs still said `?v=2.6.0` | `?v=2.8.0` |
+| Offline zip pointed at the v2.1.0 release | v2.8.0 release |
 | Tap targets 44–50px | 54px |
 
 Still needs a real Shopify admin (cannot be fully tested here):
@@ -241,7 +242,7 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `2.7.4` (`js/version.js`) |
-| Service worker | `storescope-v2.7.4` |
-| Public query | `?v=2.7.4` on HTML, CSS, JS, manifest, shortcuts |
+| App | `2.8.0` (`js/version.js`) |
+| Service worker | `storescope-v2.8.0` |
+| Public query | `?v=2.8.0` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |

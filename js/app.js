@@ -23,6 +23,7 @@ import {
   takeSharedInbound, readUsefulClipboard, markClipAsked,
   holdWake, releaseWake, persistResume, loadResume, clearResume, listenLaunchQueue
 } from "./pwa.js";
+import { canPopOut, openPip, updatePip, setPipHandlers } from "./pip.js";
 
 const $ = (id) => document.getElementById(id);
 const on = (id, event, fn) => { const el = $(id); if (el) el.addEventListener(event, fn); };
@@ -69,7 +70,8 @@ const state = {
   lastChatFound: null,
   ranks: {},
   walkOn: false,
-  walkPaused: false
+  walkPaused: false,
+  stepsExpanded: false
 };
 
 function applyTheme(mode) {
@@ -80,6 +82,7 @@ function applyTheme(mode) {
   if (meta) meta.setAttribute("content", next === "dark" ? "#000000" : "#f5f5f7");
   const btn = $("themeBtn");
   if (btn) btn.textContent = next === "dark" ? "☼" : "☾";
+  try { syncPip(); } catch { /* pip not ready */ }
 }
 
 function initTheme() {
@@ -147,48 +150,43 @@ function bindVideo(stream) {
 
 function clearArrow() { $("arrowLayer").innerHTML = ""; }
 
+function shortStepLabel() {
+  const t = currentStepText() || "";
+  const cut = t.split(/[.→]/)[0].trim();
+  return cut.slice(0, 42);
+}
+
 function drawArrow(target, extras = {}) {
   const svg = $("arrowLayer");
   const wrap = $("frameWrap");
   const media = !$("liveVideo").hidden ? $("liveVideo") : $("stillImage");
-  if (!target || !media) { svg.innerHTML = ""; return; }
+  if (!svg || !wrap || !target || !media || media.hidden) { if (svg) svg.innerHTML = ""; return; }
 
   const wr = wrap.getBoundingClientRect();
   const mr = media.getBoundingClientRect();
-  const x = (mr.left - wr.left) + mr.width * target.x;
-  const y = (mr.top - wr.top) + mr.height * target.y;
-  const cardX = Math.min(wr.width - 36, Math.max(36, x + (target.x > 0.55 ? -120 : 120)));
-  const cardY = Math.min(wr.height - 24, Math.max(24, y + (target.y > 0.45 ? -70 : 70)));
-  const label = target.label || extras.label || "";
-  const bands = extras.bands || [];
+  if (!wr.width || !mr.width) { svg.innerHTML = ""; return; }
+  const x = (mr.left - wr.left) + mr.width * (target.x ?? 0.5);
+  const y = (mr.top - wr.top) + mr.height * (target.y ?? 0.16);
+  const n = extras.n || target.n || (state.stepIndex + 1);
+  const label = esc(target.label || extras.label || shortStepLabel());
+  const hole = Math.min(72, Math.max(46, mr.width * 0.09));
+  const tagW = Math.min(mr.width - 16, Math.max(120, 36 + label.length * 7.4));
+  const tagX = Math.min(wr.width - tagW - 8, Math.max(8, x - tagW / 2));
+  const tagY = Math.max(8, y - hole - 36);
 
   svg.setAttribute("viewBox", `0 0 ${wr.width} ${wr.height}`);
-  const bandRects = bands.map((b) => {
-    const by = (mr.top - wr.top) + mr.height * b.y0;
-    const bh = Math.max(10, mr.height * (b.y1 - b.y0));
-    const color = b.tone === "critical" ? "rgba(255,107,107,0.22)" : b.tone === "warning" ? "rgba(240,180,41,0.2)" : "rgba(122,162,255,0.18)";
-    const stroke = b.tone === "critical" ? "#ff6b6b" : b.tone === "warning" ? "#f0b429" : "#7aa2ff";
-    return `<rect x="${mr.left - wr.left + 8}" y="${by}" width="${Math.max(40, mr.width - 16)}" height="${bh}" rx="8" fill="${color}" stroke="${stroke}" stroke-dasharray="5 4" opacity="0.95"/>`;
-  }).join("");
-
   svg.innerHTML = `
     <defs>
-      <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3ee0b0"/>
-      </marker>
-      <filter id="ag" x="-40%" y="-40%" width="180%" height="180%">
-        <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#3ee0b0" flood-opacity="0.55"/>
-      </filter>
+      <mask id="spot">
+        <rect x="0" y="0" width="${wr.width}" height="${wr.height}" fill="white"/>
+        <circle cx="${x}" cy="${y}" r="${hole}" fill="black"/>
+      </mask>
     </defs>
-    ${bandRects}
-    <circle cx="${x}" cy="${y}" r="16" fill="none" stroke="#3ee0b0" stroke-width="3" opacity="0.9"/>
-    <circle cx="${x}" cy="${y}" r="6" fill="#3ee0b0"/>
-    <path d="M ${cardX} ${cardY} Q ${(cardX + x) / 2} ${(cardY + y) / 2 - 20} ${x} ${y}"
-      fill="none" stroke="#3ee0b0" stroke-width="3.2" marker-end="url(#ah)" filter="url(#ag)"/>
-    ${label ? `<g>
-      <rect x="${cardX - 8}" y="${cardY - 22}" rx="8" width="${Math.min(220, 18 + label.length * 7.2)}" height="24" fill="#111820" stroke="#273241"/>
-      <text x="${cardX}" y="${cardY - 6}" fill="#3ee0b0" font-size="11" font-family="ui-sans-serif,system-ui">${label}</text>
-    </g>` : ""}
+    <rect x="0" y="0" width="${wr.width}" height="${wr.height}" fill="rgba(0,0,0,0.46)" mask="url(#spot)"/>
+    <circle cx="${x}" cy="${y}" r="${hole}" fill="none" stroke="#ff453a" stroke-width="3"/>
+    <circle cx="${x}" cy="${y}" r="7" fill="#ff453a"/>
+    <rect x="${tagX}" y="${tagY}" rx="12" width="${tagW}" height="30" fill="#d70015"/>
+    <text x="${tagX + 12}" y="${tagY + 20}" fill="#ffffff" font-size="13" font-weight="700" font-family="Montserrat, ui-sans-serif, system-ui">${n} · ${label}</text>
   `;
 }
 
@@ -197,12 +195,17 @@ function currentArrow() {
   if (!entry) return null;
   const stepArrow = entry.step_arrows?.[state.stepIndex];
   const base = stepArrow || entry.arrow || { x: 0.5, y: 0.16 };
-  return pickArrowFromVision({ ...entry, arrow: base }, {
+  const picked = pickArrowFromVision({ ...entry, arrow: base }, {
     bands: state.lastVision?.bands || [],
     words: state.lastVision?.words || [],
     bannerText: state.lastVision?.bannerText || "",
     toastText: state.lastVision?.toastText || ""
   });
+  return {
+    ...picked,
+    n: state.stepIndex + 1,
+    label: stepArrow?.label || picked.label || shortStepLabel()
+  };
 }
 
 function allEntries() {
@@ -295,9 +298,18 @@ function highlightStep() {
   ["tipSteps", "homeSteps"].forEach((id) => {
     const host = $(id);
     if (!host) return;
-    [...host.children].forEach((li, i) => li.classList.toggle("current", i === state.stepIndex));
+    host.classList.toggle("compact", !state.stepsExpanded);
+    [...host.children].forEach((li, i) => {
+      const wasCurrent = li.classList.contains("current");
+      li.classList.toggle("current", i === state.stepIndex);
+      li.classList.toggle("done", i < state.stepIndex);
+      li.classList.toggle("upcoming", i > state.stepIndex);
+      li.classList.toggle("done-fresh", wasCurrent && i < state.stepIndex);
+    });
   });
-  try { drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); } catch { /* optional */ }
+  try { drawArrow(currentArrow(), { n: state.stepIndex + 1, label: shortStepLabel() }); } catch { /* optional */ }
+  paintPolaroid(state.current);
+  paintWalkHints();
   if (state.current) persistResume({ id: state.current.id, step: state.stepIndex, query: state.lastText });
   maybeSpeak();
 }
@@ -379,12 +391,14 @@ function stepLines(entry) {
 
 function paintPolaroid(entry) {
   const shot = polaroidFor(entry);
+  const tag = `${state.stepIndex + 1} · ${shortStepLabel()}`;
   ["homePolaroid", "tipPolaroid"].forEach((id) => {
     const el = $(id);
     if (!el) return;
     if (!shot) { el.hidden = true; el.innerHTML = ""; return; }
     el.hidden = false;
     el.innerHTML = `<img src="${esc(shot.image)}" alt="">
+      <span class="spot-tag">${esc(tag)}</span>
       <span>${esc(shot.caption)}</span>`;
   });
 }
@@ -393,9 +407,10 @@ function paintStepList(hostId, entry, current) {
   const host = $(hostId);
   if (!host) return;
   const steps = stepLines(entry);
+  host.classList.toggle("compact", !state.stepsExpanded);
   host.innerHTML = steps.length
     ? steps.map((step, i) => `
-    <li class="${i === current ? "current" : ""}" data-i="${i}">
+    <li class="${i === current ? "current" : i < current ? "done" : "upcoming"}" data-i="${i}">
       <span class="n">${i + 1}</span>
       <p>${esc(step)}</p>
     </li>`).join("")
@@ -412,12 +427,13 @@ function renderResult(entry, meta) {
   } catch {
     state.progress = null;
   }
+  state.stepsExpanded = false;
   walkHalt();
   hideDenied();
   if ($("emptyTip")) $("emptyTip").hidden = true;
   if ($("tipBody")) $("tipBody").hidden = false;
   const title = entry.target_ui_hint || "What to do";
-  const expl = entry.cause || entry.explanation || "";
+  const expl = digestLine(entry);
   if ($("tipTitle")) $("tipTitle").textContent = title;
   if ($("tipExpl")) $("tipExpl").textContent = expl;
   paintStepList("tipSteps", entry, 0);
@@ -483,6 +499,12 @@ function applyQuery(query, extras = {}) {
   return entry;
 }
 
+function digestLine(entry) {
+  const raw = String(entry?.cause || entry?.explanation || "").trim();
+  const first = raw.split(/[.!?]/)[0].trim();
+  return (first || raw).slice(0, 160);
+}
+
 function maybeSpeak() {
   if (state.walkOn) return;
   if (!state.voice || !state.current) return;
@@ -505,18 +527,56 @@ function walkSpeakCurrent() {
 }
 
 function paintWalkHints() {
-  const listening = state.walkOn && canListen() && !state.walkPaused;
-  document.querySelectorAll(".audio-bar").forEach((el) => el.classList.toggle("listening", listening));
+  const playing = state.walkOn && !state.walkPaused;
+  document.querySelectorAll("[data-walk='play']").forEach((btn) => {
+    btn.textContent = playing ? "Pause" : "Play this fix";
+    btn.classList.toggle("is-pause", playing);
+  });
   const msg = !state.current
     ? ""
     : !canSpeak()
       ? "This browser cannot read steps aloud. Use Next step."
-      : state.walkOn && state.walkPaused
-        ? "Paused. Say “continue” for the next step, or tap Continue."
+      : playing
+        ? "Playing. Tap Pause, or Next step when you’re done."
         : state.walkOn
-          ? (canListen() ? "Playing. Say “pause” or “continue”." : "Playing. Tap Pause or Continue.")
-          : (canListen() ? "Tap Play step, then say “pause” or “continue” while you click Shopify." : "Tap Play step to hear each step.");
+          ? "Paused. Tap Play this fix, or Next step."
+          : "Tap Play this fix, then do that tap in Shopify.";
   document.querySelectorAll("[data-walk-hint]").forEach((el) => { el.textContent = msg; });
+  syncPip();
+}
+
+function pipPayload() {
+  const steps = state.current?.steps || [];
+  return {
+    digest: digestLine(state.current || {}),
+    n: state.stepIndex + 1,
+    total: Math.max(1, steps.length),
+    step: currentStepText(),
+    playing: !!(state.walkOn && !state.walkPaused)
+  };
+}
+
+function syncPip() {
+  try { updatePip(pipPayload()); } catch { /* no pip */ }
+}
+
+function showPipButtons() {
+  const on = canPopOut() && !isMobile();
+  ["homePip", "tipPip"].forEach((id) => {
+    const el = $(id);
+    if (el) el.hidden = !on;
+  });
+}
+
+async function popOutStep() {
+  if (!state.current) return toast("Search or upload first.");
+  if (!canPopOut()) return toast("Pop out needs Chrome or Edge.");
+  try {
+    await openPip(pipPayload());
+    toast("Drag the corner to resize. Keep Shopify underneath.");
+  } catch (err) {
+    toast(err.message || "Could not pop out.");
+  }
 }
 
 let walkCmdAt = 0;
@@ -529,18 +589,19 @@ function onWalkHeard(cmd) {
   else if (cmd === "repeat") walkPlay({ resume: true });
 }
 
+function walkToggle() {
+  if (state.walkOn && !state.walkPaused) walkPause();
+  else walkPlay();
+}
+
 function walkPlay({ resume = false } = {}) {
   if (!state.current) return toast("Search or upload first.");
   if (!canSpeak()) return toast("This browser cannot read steps aloud.");
   state.walkOn = true;
   state.walkPaused = false;
-  if (canListen()) {
-    const ok = startCommandListen((c) => onWalkHeard(c));
-    if (!ok) toast("Could not start the mic. Use Pause / Continue on screen.");
-  }
   walkSpeakCurrent();
   paintWalkHints();
-  if (!resume) toast("Playing this step. Say pause or continue.");
+  if (!resume) toast("Playing this step.");
 }
 
 function walkPause() {
@@ -1217,10 +1278,21 @@ function wireUi() {
   });
   on("nextBtn", "click", () => {
     if (!state.current) return;
-    state.stepIndex = Math.min(Math.max(0, (state.current.steps || []).length - 1), state.stepIndex + 1);
+    const last = Math.max(0, (state.current.steps || []).length - 1);
+    if (state.stepIndex >= last) {
+      toast("That was the last step.");
+      walkPause();
+      return;
+    }
+    state.stepIndex += 1;
     if (state.progress) state.progress.index = state.stepIndex;
     highlightStep();
     renderFlow();
+    if (state.walkOn) {
+      state.walkPaused = false;
+      walkSpeakCurrent();
+      paintWalkHints();
+    }
   });
   on("dismissBtn", "click", () => {
     $("tipBody").hidden = true;
@@ -1401,11 +1473,42 @@ function wireUi() {
     const btn = e.target.closest("[data-walk]");
     if (!btn) return;
     const act = btn.getAttribute("data-walk");
-    if (act === "play") walkPlay();
-    if (act === "pause") walkPause();
-    if (act === "continue") walkContinue();
+    if (act === "play" || act === "pause") walkToggle();
+    if (act === "continue") $("nextBtn")?.click();
+  });
+  on("catGrid", "click", (e) => {
+    const btn = e.target.closest("[data-cat]");
+    if (!btn) return;
+    const q = btn.getAttribute("data-cat") || "";
+    if (q === "other") {
+      $("homeAskInput")?.focus();
+      toast("Type a few words from the problem.");
+      return;
+    }
+    markOnboarded();
+    if ($("homeAskInput")) $("homeAskInput").value = q;
+    state.lastText = q;
+    applyQuery(q);
+    $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  const expandSteps = () => {
+    state.stepsExpanded = !state.stepsExpanded;
+    highlightStep();
+    ["homeStepsAll", "tipStepsAll"].forEach((id) => {
+      const el = $(id);
+      if (el) el.textContent = state.stepsExpanded ? "Show this step only" : "Show all steps";
+    });
+  };
+  on("homeStepsAll", "click", expandSteps);
+  on("tipStepsAll", "click", expandSteps);
+  on("coachOk", "click", () => {
+    localStorage.setItem("ss_coach", "1");
+    markOnboarded();
+    if ($("coach")) $("coach").hidden = true;
   });
   on("homeNext", "click", () => $("nextBtn")?.click());
+  on("homePip", "click", popOutStep);
+  on("tipPip", "click", popOutStep);
   on("homeWorked", "click", () => $("workedBtn")?.click());
   on("homeSteps", "click", (e) => {
     const li = e.target.closest("li");
@@ -1480,6 +1583,11 @@ function wireUi() {
   window.addEventListener("resize", () => { if (state.current) drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); });
   if (state.voice) $("voiceBtn")?.classList.add("on");
   if ($("voiceBtn")) $("voiceBtn").hidden = true;
+  setPipHandlers({
+    play: () => walkToggle(),
+    next: () => $("nextBtn")?.click()
+  });
+  showPipButtons();
 }
 
 async function boot() {
@@ -1492,6 +1600,7 @@ async function boot() {
   setOnlineUi();
   applyEmbedUi();
   showLanding();
+  if (!localStorage.getItem("ss_coach") && $("coach")) $("coach").hidden = false;
 
   try {
     const { entries, errors, pack } = await loadDictionaries();
