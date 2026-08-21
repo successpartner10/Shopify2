@@ -70,6 +70,12 @@ STOP = {
     "the", "and", "or", "of", "a", "an", "to", "for", "in", "on", "with",
     "from", "into", "at", "by", "is", "are", "be", "as", "&", "vs",
 }
+# Single words that steal unrelated searches (e.g. "refund" vs "refund policy").
+GENERIC_WORD = {
+    "refund", "restock", "glitches", "policy", "errors", "failed", "issue",
+    "product", "products", "order", "orders", "theme", "themes", "app", "apps",
+    "checkout", "payment", "shipping", "inventory", "admin", "store",
+}
 
 PATH = {
     1: "Settings > Payments",
@@ -625,7 +631,7 @@ def phrases(title: str, context: str) -> list[str]:
             add(brand)
     words = re.findall(r"[a-z0-9][a-z0-9+.-]*", title.lower())
     for i, w in enumerate(words):
-        if w not in STOP and len(w) >= 5:
+        if w not in STOP and w not in GENERIC_WORD and len(w) >= 5:
             add(w)
         if i + 1 < len(words):
             pair = f"{w} {words[i + 1]}"

@@ -739,7 +739,6 @@
       "settings policies",
       "add policy to footer",
       "terms of service footer",
-      "refund policy footer",
       "legal pages theme",
       "policies/privacy-policy"
     ],
@@ -1266,6 +1265,105 @@
       "x": 0.25,
       "y": 0.35
     },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-refund-policy-location-035",
+    "category": "general",
+    "hub": "admin",
+    "match_phrases": [
+      "refund policy location",
+      "where is refund policy",
+      "refund policy on website",
+      "refund policy footer",
+      "shipping policy location",
+      "terms of service location",
+      "where are store policies",
+      "policies/refund-policy",
+      "add refund policy to store"
+    ],
+    "tags": [
+      "policy",
+      "refund",
+      "footer",
+      "legal"
+    ],
+    "synonyms": [
+      "find refund policy",
+      "refund policy not on website",
+      "show refund policy on store",
+      "legal pages on storefront"
+    ],
+    "cause": "The refund policy lives in Settings → Policies. The website only shows it if the footer (or a menu) links that Shopify page — not if you paste it into the theme.",
+    "explanation": "Settings → Policies hosts /policies/refund-policy. Checkout already links it. Add the same link in the footer menu so shoppers see it on the site.",
+    "steps": [
+      "Settings → Policies. Open Refund policy (also Shipping policy and Terms of service if you need those).",
+      "Insert template or paste your text. Save. Shopify now hosts https://your-store.com/policies/refund-policy.",
+      "Do not paste the policy into Edit code / theme.liquid.",
+      "Content → Menus → Footer menu → Add menu item. Name: Refund policy. In Link, search Policies and pick Refund policy (or /policies/refund-policy). Save.",
+      "Optional: Online Store → Themes → Customize → Footer → turn on Show policy links if the theme has it.",
+      "Open the live shop, footer, tap Refund policy. You should land on /policies/refund-policy."
+    ],
+    "target_ui_hint": "Settings > Policies, then Content > Menus > Footer",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.28
+    },
+    "docs": [
+      {
+        "label": "Store policies",
+        "url": "https://help.shopify.com/en/manual/checkout-settings/refund-privacy-tos"
+      }
+    ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-text-all-products-036",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "line of text across all products",
+      "add a line of text to all products",
+      "text on all products",
+      "same text every product",
+      "text on every product page",
+      "message on all product pages",
+      "add text to every product",
+      "how do I add a line of text across all products"
+    ],
+    "tags": [
+      "theme",
+      "products",
+      "template",
+      "customize"
+    ],
+    "synonyms": [
+      "one line on every product",
+      "banner on all products",
+      "note on every product page",
+      "sidekick add text all products"
+    ],
+    "cause": "One block on the product template shows on every product. Do not paste the line into hundreds of descriptions, and do not let Sidekick bulk-edit descriptions for this.",
+    "explanation": "Online Store → Themes → Customize → Products template → add a Rich text block. That one block is the line on all products that use that template.",
+    "steps": [
+      "Decide: all product pages only (do this), or a bar on every page of the shop (that is the announcement bar, not this).",
+      "Online Store → Themes → ⋯ → Duplicate the live theme. Do not Edit code on the published theme.",
+      "Customize the copy. Top bar: Products → Default product.",
+      "Add block → Rich text (or Heading). Type the one line. Drag it under the title or price. Save.",
+      "If some products use another template: Products → [product] → Theme template. Add the same block on that template too, or switch them to Default product.",
+      "Preview a few products. Publish the copy only when the line shows. Do not paste this into product descriptions or theme.liquid."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Products > Default product",
+    "arrow": {
+      "x": 0.2,
+      "y": 0.42
+    },
+    "docs": [
+      {
+        "label": "Product pages",
+        "url": "https://help.shopify.com/en/manual/online-store/themes/customizing-themes/edit-theme"
+      }
+    ],
     "source_category_db": "general"
   }
 ]
