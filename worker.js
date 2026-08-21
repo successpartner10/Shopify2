@@ -4,7 +4,7 @@
  * Secrets: SHOPIFY_API_KEY, SHOPIFY_API_SECRET (wrangler secret / dashboard).
  * Never log the secret. Zero Admin API scopes. No screenshot upload.
  */
-const APP_VERSION = "3.6.5";
+const APP_VERSION = "3.6.6";
 const SHOP_RE = /^[a-z0-9][a-z0-9-]*\.myshopify\.com$/i;
 
 export default {
@@ -52,7 +52,7 @@ async function helpSitemap(request) {
   if (request.method !== "GET") return json({ ok: false }, 405);
   try {
     const res = await fetch("https://help.shopify.com/sitemap-en.xml", {
-      headers: { "User-Agent": "Storescope/3.6.5 (official Help sitemap only)" }
+      headers: { "User-Agent": "Storescope/3.6.6 (official Help sitemap only)" }
     });
     if (!res.ok) return json({ ok: false, status: res.status }, 502);
     const body = await res.arrayBuffer();

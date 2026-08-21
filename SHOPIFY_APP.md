@@ -1,5 +1,7 @@
 # Get Storescope on Shopify
 
+Click-by-click for Cloudflare + Partner Dashboard: **[IMPLEMENT.md](./IMPLEMENT.md)**.
+
 The app is **standalone** (new tab). Do **not** embed it — tab share dies in an iframe.
 
 Worker routes are live on:
