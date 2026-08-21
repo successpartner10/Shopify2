@@ -359,24 +359,7 @@ Shopify may charge a one-time listing fee when you go public. Pay that only at s
 
 **Name:** Storescope
 
-**One line:** See the Shopify banner. Get the next click.
-
-**Summary:**  
-Point Storescope at Shopify admin. Share the tab or upload a screenshot. It matches a local playbook and shows numbered next clicks for payouts, shipping, themes, and checkout. Opens in a new tab. Nothing is uploaded. No Admin API scopes.
-
-**Short description:**  
-Point Storescope at your Shopify admin. It reads the banner on your device and shows numbered next clicks — payouts, shipping, themes, checkout. Nothing is uploaded.
-
-**Full description:**  
-Storescope is a live scanner for Shopify admin. Share the admin tab on a computer, or upload a screenshot on a phone. It matches a local playbook and tells you the next tap.
-
-- Opens in a **new tab** so you can share the Shopify tab. It cannot run inside the admin iframe.
-- Screenshots stay in the browser. We do not request Admin API scopes.
-- How-tos for checkout text, refund policy, logo, plus 3,000+ Help and community topics.
-- Save a how-to you found on AI or Google. It stays on this device.
-- Phone: screenshot Shopify → Upload from Photos.
-
-Storescope does not log into your store, click for you, or lift a Payments / Risk hold.
+Use the approved words in [APP_STORE.md](./APP_STORE.md). Do not mention Sidekick, “instant,” “arrows,” or “3,000+” in the listing.
 
 **How it works:**  
 1. Install. Shopify opens Storescope in a new tab.  

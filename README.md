@@ -1,6 +1,6 @@
 # Storescope
 
-Privacy-first **Shopify admin live scanner**. Share the admin tab (or drop a screenshot). Storescope reads the visible banner/toast, matches a local playbook, and shows the next click — with arrows — in your browser.
+Privacy-first **Shopify admin helper**. Share the admin tab (or drop a screenshot). Storescope reads the visible banner, matches a local playbook, and shows numbered next clicks in your browser.
 
 | Host | URL |
 |---|---|
