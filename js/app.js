@@ -1979,6 +1979,8 @@ function wireUi() {
 
 async function boot() {
   initTheme();
+  paintVersion();
+  window.__ssOpenHub = openHub;
   on("themeBtn", "click", () => {
     const now = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
     applyTheme(now);
@@ -1999,7 +2001,7 @@ async function boot() {
     state.entries = entries;
     state.fuse = buildIndex(allEntries());
     state.ready = true;
-    if ($("verPill")) $("verPill").textContent = `v${APP_VERSION}`;
+    paintVersion();
     if ($("siteOrigin") && fillShopBox()) $("siteOrigin").value = fillShopBox();
     if ($("dictPill")) $("dictPill").textContent = "Ready";
     if (errors.length) console.warn("Some playbooks failed to load", errors);
@@ -2083,9 +2085,5 @@ function restoreIfNeeded() {
   toast("Picked up where you left off.");
 }
 
-boot();
-);
-  toast("Picked up where you left off.");
-}
-
+window.__ssOpenHub = openHub;
 boot();

@@ -6,7 +6,7 @@ compatibility_date = "2026-08-21"
 pages_build_output_dir = "."
 
 [vars]
-APP_VERSION = "3.6.6"
+APP_VERSION = "3.6.8"
 
 [assets]
 directory = "."

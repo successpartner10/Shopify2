@@ -4,11 +4,11 @@ Privacy-first **Shopify admin helper**. Share the admin tab (or drop a screensho
 
 | Host | URL |
 |---|---|
-| **GitHub Pages** (source of truth) | https://successpartner10.github.io/Shopify2/?v=3.6.6 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.6 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.6 — still the old 1.x until you reconnect Git; see [DEPLOY.md](./DEPLOY.md) |
+| **GitHub Pages** (source of truth) | https://successpartner10.github.io/Shopify2/?v=3.6.8 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.8 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.8 — still the old 1.x until you reconnect Git; see [DEPLOY.md](./DEPLOY.md) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline zip** | [GitHub Release v3.6.6](https://github.com/successpartner10/Shopify2/releases/tag/v3.6.6) |
+| **Offline zip** | [GitHub Release v3.6.8](https://github.com/successpartner10/Shopify2/releases/tag/v3.6.8) |
 | **Shopify app notes** | [SHOPIFY_APP.md](./SHOPIFY_APP.md) |
 | **Full guide** | [STORESCOPE.md](./STORESCOPE.md) |
 | **Go live (GitHub / Cloudflare / Shopify)** | [IMPLEMENT.md](./IMPLEMENT.md) |

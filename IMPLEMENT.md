@@ -4,7 +4,7 @@ Do this in order. **Do not paste Client secret, API keys, or tokens into chat.**
 
 **Sources:** Official Shopify Help is linked as the last step. Community / AI / Google answers you paste are **rewritten as our numbered steps** — no Stack Overflow or forum citation. We do not scrape Google or Sidekick.
 
-Today’s app version in the repo: **v3.6.6**.
+Today’s app version in the repo: **v3.6.8**.
 
 ---
 
@@ -13,7 +13,7 @@ Today’s app version in the repo: **v3.6.6**.
 | Piece | Status |
 |---|---|
 | App code on GitHub `main` | Done (`successpartner10/Shopify2`) |
-| GitHub Pages site | Done — https://successpartner10.github.io/Shopify2/?v=3.6.6 |
+| GitHub Pages site | Done — https://successpartner10.github.io/Shopify2/?v=3.6.8 |
 | Worker code (`worker.js` OAuth + GDPR) | In `main`. Cloudflare may still be serving the **old static-only** build until you retry |
 | Cloudflare Pages `storescope-cwl.pages.dev` | Still **old 1.x** until you reconnect Git |
 | Partner app + secrets | **You** — cannot be done from this chat |
@@ -28,9 +28,9 @@ Keep this note open while you click.
 | What | Exact URL |
 |---|---|
 | Source | https://github.com/successpartner10/Shopify2 |
-| Use this site (GitHub.io) | https://successpartner10.github.io/Shopify2/?v=3.6.6 |
+| Use this site (GitHub.io) | https://successpartner10.github.io/Shopify2/?v=3.6.8 |
 | Worker (Shopify App URL host) | https://shopify2.panchgani2025.workers.dev/ |
-| Worker app (after install) | https://shopify2.panchgani2025.workers.dev/?v=3.6.6 |
+| Worker app (after install) | https://shopify2.panchgani2025.workers.dev/?v=3.6.8 |
 | **App URL** (paste in Shopify) | https://shopify2.panchgani2025.workers.dev/auth |
 | **Redirect** (paste in Shopify) | https://shopify2.panchgani2025.workers.dev/auth/callback |
 | Privacy | https://shopify2.panchgani2025.workers.dev/privacy.html |
@@ -49,12 +49,12 @@ Keep this note open while you click.
 The app already deploys from `main`.
 
 1. Open https://github.com/successpartner10/Shopify2
-2. Confirm the latest commit on **main** mentions **v3.6.6** (or later).
+2. Confirm the latest commit on **main** mentions **v3.6.8** (or later).
 3. **Settings → Pages**
    - Source: **GitHub Actions** (workflow `.github/workflows/pages.yml`)
    - Not “Deploy from a branch” unless you already know that works
-4. Open https://successpartner10.github.io/Shopify2/?v=3.6.6  
-   Under the logo you should see **v3.6.6**.  
+4. Open https://successpartner10.github.io/Shopify2/?v=3.6.8  
+   Under the logo you should see **v3.6.8**.  
    If you see an older version: hard-refresh (Ctrl+Shift+R / Cmd+Shift+R) or delete the home-screen icon.
 
 You do **not** need to make the repo private.  
@@ -80,7 +80,7 @@ A push to `main` *should* rebuild it. After we added `worker.js`, the first buil
 
 | You see | Meaning | Next |
 |---|---|---|
-| JSON like `{ "ok": true, "app": "storescope", "version": "3.6.6", "shopify_key": false, ... }` | Worker code is live | Go to **3.3** and add secrets |
+| JSON like `{ "ok": true, "app": "storescope", "version": "3.6.8", "shopify_key": false, ... }` | Worker code is live | Go to **3.3** and add secrets |
 | The Storescope homepage (“What’s wrong in Shopify?”) | Old static-only deploy | Do **3.2** Retry build |
 | 404 HTML | Build failed or wrong project | Do **3.2**, then check Workers Builds logs |
 
@@ -144,7 +144,7 @@ You want:
 {
   "ok": true,
   "app": "storescope",
-  "version": "3.6.6",
+  "version": "3.6.8",
   "embedded": false,
   "scopes": "",
   "shopify_key": true,
@@ -161,7 +161,7 @@ You want:
 |---|---|
 | `/healthz` | JSON, not the homepage |
 | `/auth` (no `?shop=`) | “Install Storescope” or “not linked yet” **HTML**, not the home app |
-| `/` or `/?v=3.6.6` | Normal Storescope app, logo **v3.6.6** |
+| `/` or `/?v=3.6.8` | Normal Storescope app, logo **v3.6.8** |
 | `/privacy.html` | Privacy page |
 
 If `/auth` still loads the big home page, the Worker-first routes are not active. Retry §3.2.
@@ -183,8 +183,8 @@ Do this only if you still want that hostname.
    - Build command: **leave empty** (or `npm run build`)
    - Build output directory: `/`
 6. Save → **Retry deployment**
-7. When finished, open https://storescope-cwl.pages.dev/?v=3.6.6  
-   You should see **v3.6.6** and “What’s wrong in Shopify?”
+7. When finished, open https://storescope-cwl.pages.dev/?v=3.6.8  
+   You should see **v3.6.8** and “What’s wrong in Shopify?”
 
 If you cannot find `storescope-cwl`:
 
@@ -287,7 +287,7 @@ Do **not** submit for App Store review until this works.
 
 1. Browser leaves Shopify admin and opens a **full tab**
 2. Address bar starts with `https://shopify2.panchgani2025.workers.dev/`
-3. You see Storescope home, version **v3.6.6**
+3. You see Storescope home, version **v3.6.8**
 4. Query string may include `shop=your-dev-store.myshopify.com` and `installed=1`
 5. A toast: “Installed. This tab is Storescope — share the Shopify tab, not this one.”
 
@@ -390,7 +390,7 @@ Bump `?v=` in your head when the logo version changes so old service workers die
 | Reviewer says share does nothing | Embedded Off. Copy says “new tab”. Phone path is screenshot |
 | GDPR webhook delivery failed | Secret must match **this** app. URL must be HTTPS POST |
 | `storescope-cwl.pages.dev` still 1.x | §4 — Worker deploy never updates Pages |
-| Old 5-topic home | Old PWA cache. Open `?v=3.6.6`, delete home-screen icon, add again |
+| Old 5-topic home | Old PWA cache. Open `?v=3.6.8`, delete home-screen icon, add again |
 | “This is just a website” from review | Install must complete via `/auth` and the app must appear under **Apps** |
 | You pasted a secret in chat | Rotate it in Partner Dashboard + Cloudflare. Treat the old one as leaked |
 
@@ -403,7 +403,7 @@ Bump `?v=` in your head when the logo version changes so old service workers die
 - Do not put Gumroad/Stripe checkout inside a **public** Shopify app
 - Do not commit `.env`, Client secret, or a GitHub PAT
 - Do not paste secrets or tokens into chat
-- Do not point Shopify App URL at `storescope-cwl.pages.dev` until that host shows v3.6.6
+- Do not point Shopify App URL at `storescope-cwl.pages.dev` until that host shows v3.6.8
 - Do not run the 1,500-row fake how-to generator
 - Do not upload merchant screenshots to a server
 
@@ -411,11 +411,11 @@ Bump `?v=` in your head when the logo version changes so old service workers die
 
 ## 13. Done when
 
-- [ ] GitHub.io shows **v3.6.6**
+- [ ] GitHub.io shows **v3.6.8**
 - [ ] `/healthz` is JSON, `shopify_key` and `shopify_secret` are **true**
 - [ ] `/auth` is a short install page, not the big home page
 - [ ] Partner app: App URL `/auth`, redirect `/auth/callback`, Embedded **Off**, scopes empty
 - [ ] Custom install on one development store opens a **new tab**
 - [ ] Share Shopify tab **or** upload screenshot produces numbered steps
-- [ ] (Optional) `storescope-cwl.pages.dev` shows v3.6.6
+- [ ] (Optional) `storescope-cwl.pages.dev` shows v3.6.8
 - [ ] (Later) Public listing + Shopify App Pricing

@@ -1,12 +1,12 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v3.6.6** · 21 August 2026.
+Privacy-first Shopify admin live scanner. **v3.6.8** · 21 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.6 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.6 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.6 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.8 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.8 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.8 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
 | **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.5/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
@@ -40,15 +40,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.6 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.6 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.6 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.6&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.6&q=klarna` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.6&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.8 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.8 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.8 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.8&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.8&q=klarna` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.8&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=3.6.6` cache-busts CSS/JS and the service worker (`storescope-v3.6.6`). Hard-refresh if an old build is stuck.
+`?v=3.6.8` cache-busts CSS/JS and the service worker (`storescope-v3.6.8`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -116,7 +116,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=3.6.6 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=3.6.8 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner / how-to.
 4. Follow the numbered steps. Re-scan after each change.
@@ -232,6 +232,14 @@ Do **not** commit real merchant screenshots.
 
 ## 10. Audit log
 
+### 2026-08-21, v3.6.8
+
+Logo and title now say the real version. Fixed a broken line at the end of `app.js` that stopped the app from starting (so the page stayed on 3.6.6 and topics did not open).
+
+### 2026-08-21, v3.6.7
+
+Topic tiles stay visible and each button is bound. Incomplete pin pass — HTML still said 3.6.6.
+
 ### 2026-08-21, v3.6.6
 
 Listing-safe copy: no instant, arrows, or Sidekick compare. Overlay stays off.
@@ -336,16 +344,16 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `3.6.6` (`js/version.js`) |
-| Service worker | `storescope-v3.6.6` |
-| Public query | `?v=3.6.6` on HTML, CSS, JS, manifest, shortcuts |
+| App | `3.6.8` (`js/version.js`) |
+| Service worker | `storescope-v3.6.8` |
+| Public query | `?v=3.6.8` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |
 | Help how-tos | 2524 (`data/howto.json`) |
 | Hand-written how-tos | general 035–047 |
 
 ---
 
-## 14. Functionality checklist (v3.6.6)
+## 14. Functionality checklist (v3.6.8)
 
 | Area | Status |
 |---|---|
