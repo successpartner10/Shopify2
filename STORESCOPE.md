@@ -1,14 +1,14 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v3.6.3** · 21 August 2026.
+Privacy-first Shopify admin live scanner. **v3.6.4** · 21 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.3 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.3 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.3 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.4 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.4 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.4 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.3/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.4/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -40,15 +40,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.3 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.3 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.3 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.3&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.3&q=klarna` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.3&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.4 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.4 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.4 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.4&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.4&q=klarna` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.4&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=3.6.3` cache-busts CSS/JS and the service worker (`storescope-v3.6.3`). Hard-refresh if an old build is stuck.
+`?v=3.6.4` cache-busts CSS/JS and the service worker (`storescope-v3.6.4`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -116,7 +116,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=3.6.3 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=3.6.4 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner / how-to.
 4. Follow the numbered steps. Re-scan after each change.
@@ -164,7 +164,7 @@ Do **not** Edit code on the published theme.
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.3/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.4/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
@@ -231,6 +231,10 @@ Do **not** commit real merchant screenshots.
 ---
 
 ## 10. Audit log
+
+### 2026-08-21, v3.6.4
+
+Standalone Shopify Partner app on the Worker: `/auth`, `/auth/callback`, GDPR webhook stubs (HMAC). Embedded off. Zero scopes. Icon `icons/app-store-1200.png`. You still add Client ID/secret in Cloudflare — not in chat.
 
 ### 2026-08-21, v3.6.3
 
@@ -327,16 +331,16 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `3.6.3` (`js/version.js`) |
-| Service worker | `storescope-v3.6.3` |
-| Public query | `?v=3.6.3` on HTML, CSS, JS, manifest, shortcuts |
+| App | `3.6.4` (`js/version.js`) |
+| Service worker | `storescope-v3.6.4` |
+| Public query | `?v=3.6.4` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |
 | Help how-tos | 2524 (`data/howto.json`) |
 | Hand-written how-tos | general 035–047 |
 
 ---
 
-## 14. Functionality checklist (v3.6.3)
+## 14. Functionality checklist (v3.6.4)
 
 | Area | Status |
 |---|---|

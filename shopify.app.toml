@@ -1,8 +1,8 @@
-# Partner Dashboard → create the app, then fill client_id.
-# Do not commit client_secret. Use `shopify app config` or Worker secrets.
+# Partner Dashboard → create the app, then set client_id.
+# Do not commit client_secret. Worker secrets only.
 
 name = "Storescope"
-application_url = "https://successpartner10.github.io/Shopify2/?v=3.0.0"
+application_url = "https://shopify2.panchgani2025.workers.dev/auth"
 embedded = false
 
 [access_scopes]
@@ -15,7 +15,7 @@ redirect_urls = [
 ]
 
 [webhooks]
-api_version = "2026-01"
+api_version = "2026-07"
 
   [[webhooks.subscriptions]]
   topics = ["customers/data_request"]

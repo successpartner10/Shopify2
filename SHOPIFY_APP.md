@@ -1,102 +1,70 @@
-# Add Storescope as a Shopify app
+# Get Storescope on Shopify
 
-Storescope today is a **static site**. Shopify will not list a bookmark. It must be a **Partner app** with an App URL, OAuth (even with **zero scopes**), and HTTPS.
+The app is **standalone** (new tab). Do **not** embed it — tab share dies in an iframe.
 
-## The constraint that decides the architecture
+Worker routes are live on:
 
-Shopify **embedded** apps load **inside an iframe** in admin.
+`https://shopify2.panchgani2025.workers.dev/`
 
-Browsers **block tab share** (`getDisplayMedia`) in iframes. That is the same reason Arena preview cannot share a tab.
-
-| Mode | Where it opens | Tab share | Screenshot / type / paste URL | App Store typical |
-|---|---|---|---|---|
-| **Standalone** (recommended) | New tab / full page | Works on desktop | Works | Allowed if UX is clear |
-| **Embedded** | Iframe in admin | **Broken** | Works | Default for most apps |
-
-**Do not embed Storescope** if you want “Share Shopify tab”. Use screenshot + search on phones either way.
-
-We do **not** need Admin API scopes. Diagnosis is local playbook + OCR. That matches the privacy story: no store data leaves Shopify for us.
-
-## Three distribution levels
-
-| Level | Who can install | Review | What you do |
-|---|---|---|---|
-| **1. Custom distribution** | One store (or one Plus org) | No App Store review | Partner Dashboard → Custom distribution → paste `store.myshopify.com` |
-| **2. Public, unlisted** | Any store with the install link | **Yes**, full review | Submit, keep listing hidden |
-| **3. Public, listed** | App Store search | **Yes** + listing assets | After unlisted works |
-
-You cannot skip review and still let *any* production store install. Custom = one store. Many stores = public (listed or unlisted).
-
-## What you must create (only you can)
-
-1. [partners.shopify.com](https://partners.shopify.com) → **Apps → Create app**.
-2. App name: **Storescope**.
-3. **App URL** (standalone):  
-   `https://successpartner10.github.io/Shopify2/?v=3.4.0`  
-   or the Worker once it is on this build:  
-   `https://shopify2.panchgani2025.workers.dev/?v=3.4.0`
-4. **Allowed redirection URL(s)** — required even with zero scopes. You need a tiny HTTPS callback (see Worker below). Example:  
-   `https://shopify2.panchgani2025.workers.dev/auth/callback`
-5. **Embedded app: Off**.
-6. **Scopes:** empty / none. Do not request products, orders, or customers.
-7. Mandatory **compliance webhooks** for a public app (even if you store nothing):
-   - `customers/data_request`
-   - `customers/redact`
-   - `shop/redact`  
-   Respond `200` with `{ "ok": true }`.
-8. Privacy policy page (public URL): https://successpartner10.github.io/Shopify2/privacy.html
-9. For public listing: support email, app icon 1200×1200, screenshots, demo store video.
-
-**Never paste Client secret or tokens into chat.** Put them in Cloudflare Worker secrets.
-
-## Minimal backend (why GitHub Pages alone is not enough)
-
-GitHub Pages cannot do OAuth or webhooks. The existing **Cloudflare Worker** can:
-
-| Route | Job |
+| Path | Job |
 |---|---|
-| `GET /` | Serve the static Storescope site (already possible with `[assets]`) |
-| `GET /auth` | Start Shopify managed install / OAuth |
-| `GET /auth/callback` | Exchange code, then redirect to `/?v=3.4.0&shop=…` |
-| `POST /webhooks/customers-data-request` | 200 |
-| `POST /webhooks/customers-redact` | 200 |
-| `POST /webhooks/shop-redact` | 200 |
+| `/` | The Storescope site (static) |
+| `/auth` | App URL — Shopify opens this |
+| `/auth/callback` | OAuth return |
+| `/webhooks/customers-data-request` | GDPR 200 |
+| `/webhooks/customers-redact` | GDPR 200 |
+| `/webhooks/shop-redact` | GDPR 200 |
+| `/healthz` | `{ ok, version, shopify_key }` |
+| `/privacy.html` | Privacy policy |
 
-Storescope still does not upload screenshots. The Worker only proves install and answers GDPR pings.
+Zero Admin API scopes. No screenshot upload. No token stored.
 
-## Recommended product shape after install
+## What only you can click (5 minutes)
 
-Merchant clicks **Apps → Storescope** → Shopify opens the **standalone** URL.
+**Do not paste Client secret in chat.**
 
-Home stays:
+1. [partners.shopify.com](https://partners.shopify.com) → **Apps → Create app** → name **Storescope**.
+2. **App URL:** `https://shopify2.panchgani2025.workers.dev/auth`
+3. **Allowed redirection URL:** `https://shopify2.panchgani2025.workers.dev/auth/callback`
+4. **Embedded app: Off.**
+5. **Scopes:** none / empty.
+6. Compliance webhooks — same three URLs as in `shopify.app.toml`.
+7. Privacy URL: `https://shopify2.panchgani2025.workers.dev/privacy.html`
+8. Cloudflare → Worker **shopify2** → **Settings → Variables and Secrets**:
+   - `SHOPIFY_API_KEY` = Client ID
+   - `SHOPIFY_API_SECRET` = Client secret
+9. Open `/healthz`. `shopify_key` and `shopify_secret` should be `true`.
+10. **Custom distribution** first: paste one `store.myshopify.com`. Install. Confirm it opens a **new tab**.
+11. Public listing later: listing copy in [APP_STORE.md](./APP_STORE.md), icon `icons/app-store-1200.png`.
 
-1. Upload a screenshot  
-2. Type the problem / paste admin link  
-3. Desktop only: Share Shopify tab  
+## Charge later (not required to install)
 
-No “connect your store” wall. No API keys. Optional later: read-only `read_online_store_pages` if you ever want live admin context — not needed for v1.
+A **public** app must use **Shopify App Pricing** (Partner Dashboard → Pricing). Not Gumroad.
 
-## App Store review risks (fix before submit)
+A **custom** app (one shop) cannot use the Billing API — invoice them yourself.
 
-| Risk | Fix |
+Suggested first public plan: **$9.99/mo** or **$99/yr**, 7-day trial. Set it in the dashboard (managed pricing). No extra code.
+
+## Review risks
+
+| Risk | Fix already in this repo |
 |---|---|
-| Tab share fails in review (they test inside admin) | Embedded **off**; copy says “opens in a new tab” |
+| Tab share fails in admin iframe | Embedded **off**; App URL is `/auth` → full tab |
 | Reviewer on iPhone | Screenshot path is the default on phones |
-| Asking for unused scopes | Request **none** |
-| No GDPR webhooks | Stub 200s on the Worker |
-| “This is just a website” | Install completes, app appears under Apps, branding + privacy page |
-| Tokens in the frontend | Client ID public only; secret only in Worker |
+| Unused scopes | `scopes = ""` |
+| No GDPR webhooks | Worker stubs, HMAC checked |
+| “Just a website” | Install via `/auth`, app appears under Apps |
+| Secret in the frontend | Secret only in Worker |
 
-## What I cannot do from here
+## What I cannot do
 
-- Create your Partner app  
-- Click “Submit for review”  
-- Hold your Client secret  
+- Create the Partner app
+- Put your Client secret in Cloudflare
+- Click Submit for review
 
-What I *can* build next if you say go: Worker OAuth + webhook stubs + a `/privacy` page + App Bridge **not** used (standalone).
+## Files
 
-## Official docs
-
-- [Create apps](https://shopify.dev/docs/apps/launch/app-requirements-checklist)
-- [Authentication](https://shopify.dev/docs/apps/build/authentication-authorization)
-- [shopify.app.toml](https://shopify.dev/docs/apps/tools/cli/configuration)
+- `worker.js` — OAuth + GDPR
+- `wrangler.toml` — `main` + assets; Worker-first only on `/auth` and `/webhooks`
+- `shopify.app.toml` — Partner config (no secret)
+- `icons/app-store-1200.png` — listing icon

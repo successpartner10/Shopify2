@@ -1,10 +1,17 @@
 name = "shopify2"
-compatibility_date = "2026-08-19"
-# Static site: serves this folder. Used by Cloudflare Workers Builds
-# (the check named "Workers Builds: shopify2") and by Pages if connected.
+main = "worker.js"
+compatibility_date = "2026-08-21"
+# Static site + OAuth/GDPR worker. Assets still serve / and the app.
+# Do not set secrets here. Cloudflare → Worker shopify2 → Variables.
 pages_build_output_dir = "."
+
+[vars]
+APP_VERSION = "3.6.4"
 
 [assets]
 directory = "."
+binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
+# Only these paths run Worker first. Everything else stays a static file.
+run_worker_first = ["/auth", "/auth/*", "/install", "/webhooks/*", "/healthz"]

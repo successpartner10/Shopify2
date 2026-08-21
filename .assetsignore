@@ -9,3 +9,9 @@ storescope-offline.zip
 *.pem
 DEPLOY.md
 LICENSE
+worker.js
+wrangler.toml
+shopify.app.toml
+APP_STORE.md
+SHOPIFY_APP.md
+uploads

@@ -1088,6 +1088,14 @@ async function refreshHistory() {
 
 function applyInbound() {
   const inbound = parseInbound();
+  if (inbound.shop) {
+    const host = String(inbound.shop).replace(/^https?:\/\//, "").split("/")[0];
+    if (/^[a-z0-9][a-z0-9-]*\.myshopify\.com$/i.test(host)) {
+      rememberShop(`https://${host}`);
+      try { paintSavedShops(); } catch { /* ui */ }
+    }
+  }
+  if (inbound.installed) toast("Installed. This tab is Storescope — share the Shopify tab, not this one.");
   if (inbound.action === "upload") {
     $("fileInput")?.click();
     return;

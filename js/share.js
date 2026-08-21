@@ -82,7 +82,9 @@ export function parseInbound() {
     q: params.get("q") || params.get("text") || params.get("title") || "",
     sharedUrl: params.get("url") || "",
     action: params.get("action") || "",
-    shared: params.get("shared") === "1"
+    shared: params.get("shared") === "1",
+    shop: params.get("shop") || "",
+    installed: params.get("installed") === "1"
   };
 }
 
