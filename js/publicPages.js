@@ -37,16 +37,43 @@ export function shopOriginFrom(text) {
   return null;
 }
 
+const LIST_KEY = "ss_shop_list";
+
 export function rememberShop(text) {
   const origin = shopOriginFrom(text);
   if (origin) {
-    try { localStorage.setItem(SHOP_KEY, origin); } catch { /* ignore */ }
+    try {
+      localStorage.setItem(SHOP_KEY, origin);
+      let list = [];
+      try { list = JSON.parse(localStorage.getItem(LIST_KEY) || "[]"); } catch { list = []; }
+      if (!Array.isArray(list)) list = [];
+      localStorage.setItem(LIST_KEY, JSON.stringify([origin, ...list.filter((o) => o !== origin)].slice(0, 5)));
+    } catch { /* ignore */ }
   }
   return getShopOrigin();
 }
 
 export function getShopOrigin() {
   try { return localStorage.getItem(SHOP_KEY) || ""; } catch { return ""; }
+}
+
+export function listShops() {
+  let list = [];
+  try { list = JSON.parse(localStorage.getItem(LIST_KEY) || "[]"); } catch { list = []; }
+  if (!Array.isArray(list)) list = [];
+  const cur = getShopOrigin();
+  if (cur && !list.includes(cur)) list.unshift(cur);
+  return [...new Set(list.filter(Boolean))].slice(0, 5);
+}
+
+export function pickShop(origin) {
+  if (!origin) return getShopOrigin();
+  try { localStorage.setItem(SHOP_KEY, origin); } catch { /* ignore */ }
+  return origin;
+}
+
+export function shopLabel(origin) {
+  try { return new URL(origin).host.replace(/^www\./, ""); } catch { return String(origin || "").replace(/^https?:\/\//, ""); }
 }
 
 function slugLabel(url) {

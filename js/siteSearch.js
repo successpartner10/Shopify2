@@ -204,6 +204,29 @@ const PLAY = {
       "Product titles/tags control what matches — edit those under Products."
     ]
   },
+  liquid: {
+    hint: "Customize > Custom Liquid (on a duplicate theme)",
+    cause: "Storescope will not paste Liquid for you. Duplicate the theme first — Edit code on the live shop can take the storefront down.",
+    steps: (q, origin) => [
+      "Stop. Do not tap Edit code on the published theme. We never change the shop — you do the clicks.",
+      "Online Store → Themes → ⋯ → Duplicate the live theme.",
+      "Customize the copy. Open the page (Home, Product, or Footer) → Add section / Add block → Custom Liquid.",
+      "Paste only on the copy. Save. Preview. Publish the copy when it looks right.",
+      "Pixels / purchase tags do not go here — Settings → Customer events.",
+      "Needs Shopify Plus only if the app said checkout.liquid / Additional scripts. On Basic: Custom Liquid in the theme, or a checkout app."
+    ]
+  },
+  duplicate: {
+    hint: "One source of truth — Policies, not the theme",
+    cause: "The same legal text in two places (theme + Settings → Policies) is duplicate content. Keep it in Policies. Link it. Do not paste it into Liquid.",
+    steps: (q, origin) => [
+      origin ? `Open ${origin}/policies/refund-policy and ${origin}/policies/privacy-policy (public pages).` : "Paste your shop URL, then open /policies/refund-policy.",
+      "Settings → Policies. Edit the real refund / privacy / TOS there. Save. That is the only copy.",
+      "Do not paste the policy into Edit code, product descriptions, or a Custom Liquid block.",
+      "Footer: Content → Menus → Add menu item → search Policies. Theme footer: Customize → Footer → Show policy links if the theme has it.",
+      "If the same line is on every product, that is a product-template Rich text — different from the full policy page."
+    ]
+  },
   unknown: {
     hint: "Find it, then edit in admin",
     cause: "Browsers often block reading another website. Open the shop page, then use these clicks.",

@@ -311,7 +311,20 @@ h1 em { font-style: normal; color: var(--mint); }
   max-width: 100%; max-height: 52vh; width: 100%; height: auto;
   object-fit: contain;
 }
-#arrowLayer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#arrowLayer { display: none !important; }
+.shop-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; max-width: 560px; }
+.shop-chip {
+  border: var(--hair) solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 10px 14px;
+  min-height: 44px;
+  font-family: var(--display);
+  font-weight: 650;
+  font-size: 1rem;
+}
+.shop-chip.on { background: var(--mint-dim); border-color: transparent; color: var(--mint); }
+.shop-chip.add { color: var(--muted); }
 .stage-actions {
   display: flex; flex-wrap: wrap; gap: 8px;
   padding: 12px; border-top: var(--hair) solid var(--line);
@@ -348,6 +361,7 @@ h1 em { font-style: normal; color: var(--mint); }
   color: var(--ink); font-size: 1.05rem; font-weight: 650;
 }
 .polaroid .spot-tag {
+  display: none !important;
   position: absolute; left: 12px; bottom: 48px;
   max-width: calc(100% - 24px);
   background: var(--coral); color: #fff;

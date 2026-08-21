@@ -19,7 +19,7 @@ import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.j
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
 import { looksHowTo, fillHowTo } from "./howto.js";
 import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
-import { rememberShop, getShopOrigin, matchKnownPublic, fetchSitemapUrls, matchSitemap } from "./publicPages.js";
+import { rememberShop, getShopOrigin, matchKnownPublic, fetchSitemapUrls, matchSitemap, listShops, pickShop, shopLabel } from "./publicPages.js";
 import { searchShopContent, fillShopBox } from "./siteSearch.js";
 import { polaroidFor } from "./polaroids.js";
 import {
@@ -160,38 +160,9 @@ function shortStepLabel() {
   return cut.slice(0, 42);
 }
 
-function drawArrow(target, extras = {}) {
+function drawArrow() {
   const svg = $("arrowLayer");
-  const wrap = $("frameWrap");
-  const media = !$("liveVideo").hidden ? $("liveVideo") : $("stillImage");
-  if (!svg || !wrap || !target || !media || media.hidden) { if (svg) svg.innerHTML = ""; return; }
-
-  const wr = wrap.getBoundingClientRect();
-  const mr = media.getBoundingClientRect();
-  if (!wr.width || !mr.width) { svg.innerHTML = ""; return; }
-  const x = (mr.left - wr.left) + mr.width * (target.x ?? 0.5);
-  const y = (mr.top - wr.top) + mr.height * (target.y ?? 0.16);
-  const n = extras.n || target.n || (state.stepIndex + 1);
-  const label = esc(target.label || extras.label || shortStepLabel());
-  const hole = Math.min(72, Math.max(46, mr.width * 0.09));
-  const tagW = Math.min(mr.width - 16, Math.max(120, 36 + label.length * 7.4));
-  const tagX = Math.min(wr.width - tagW - 8, Math.max(8, x - tagW / 2));
-  const tagY = Math.max(8, y - hole - 36);
-
-  svg.setAttribute("viewBox", `0 0 ${wr.width} ${wr.height}`);
-  svg.innerHTML = `
-    <defs>
-      <mask id="spot">
-        <rect x="0" y="0" width="${wr.width}" height="${wr.height}" fill="white"/>
-        <circle cx="${x}" cy="${y}" r="${hole}" fill="black"/>
-      </mask>
-    </defs>
-    <rect x="0" y="0" width="${wr.width}" height="${wr.height}" fill="rgba(0,0,0,0.46)" mask="url(#spot)"/>
-    <circle cx="${x}" cy="${y}" r="${hole}" fill="none" stroke="#ff453a" stroke-width="3"/>
-    <circle cx="${x}" cy="${y}" r="7" fill="#ff453a"/>
-    <rect x="${tagX}" y="${tagY}" rx="12" width="${tagW}" height="30" fill="#d70015"/>
-    <text x="${tagX + 12}" y="${tagY + 20}" fill="#ffffff" font-size="13" font-weight="700" font-family="Montserrat, ui-sans-serif, system-ui">${n} · ${label}</text>
-  `;
+  if (svg) svg.innerHTML = "";
 }
 
 function currentArrow() {
@@ -501,8 +472,9 @@ function applyQuery(query, extras = {}) {
   const routed = queryFromAdminUrl(q);
   if (routed) q = routed;
   const onlyUrl = origin && /^https?:\/\//i.test(raw) && raw.split(/\s+/).length === 1;
-  if (onlyUrl) {
+    if (onlyUrl) {
     toast(`Shop saved: ${origin}. Type refund policy — no need to paste the URL every time.`);
+    try { paintSavedShops(); } catch { /* ui */ }
     q = extras.keepUrlQuery ? q : "refund policy";
   }
   const screen = detectScreen(q);
@@ -740,7 +712,8 @@ const HUBS = {
   apps: { label: "Apps", blurb: "Embeds, pixels, Klaviyo, Printful, leftovers." },
   seo: { label: "SEO", blurb: "Redirects, sitemap, schema, Search Console." },
   domains: { label: "Domains", blurb: "SSL, DNS, Markets domains." },
-  admin: { label: "Admin", blurb: "Staff, billing, policies, 2FA." }
+  admin: { label: "Admin", blurb: "Staff, billing, policies, 2FA." },
+  howto: { label: "How to", blurb: "Add text, logo, pages, checkout line. You tap — we never change the shop." }
 };
 
 function hubTitle(entry) {
@@ -766,11 +739,30 @@ function closeHub() {
   if ($("catGrid")) $("catGrid").hidden = false;
 }
 
+function paintSavedShops() {
+  const host = $("savedShops");
+  const originInput = $("siteOrigin");
+  if (!host) return;
+  const shops = listShops();
+  const cur = getShopOrigin();
+  host.hidden = !shops.length;
+  host.innerHTML = shops.map((o) =>
+    `<button type="button" class="shop-chip${o === cur ? " on" : ""}" data-shop="${esc(o)}">${esc(shopLabel(o))}</button>`
+  ).join("") + `<button type="button" class="shop-chip add" id="shopAdd" data-shop="">+ add</button>`;
+  if (originInput) {
+    originInput.hidden = !!shops.length && originInput.dataset.force !== "1";
+    if (cur) originInput.value = cur;
+  }
+}
+
 function paintHubList(q) {
   const host = $("hubList");
   if (!host || !state.hub) return;
   const hay = String(q || "").toLowerCase().trim();
-  let rows = allEntries().filter((e) => e.hub === state.hub);
+  const isHowTo = (e) => (e.tags || []).includes("howto") || e.source_category_db === "howto" || /howto/i.test(e.id || "");
+  let rows = state.hub === "howto"
+    ? allEntries().filter(isHowTo)
+    : allEntries().filter((e) => e.hub === state.hub);
   if (hay) {
     rows = rows.filter((e) => {
       const blob = [hubTitle(e), e.target_ui_hint, e.cause, ...(e.match_phrases || []), ...(e.synonyms || [])].join(" ").toLowerCase();
@@ -1631,6 +1623,26 @@ function wireUi() {
       }
     }, 80);
   });
+  on("savedShops", "click", (e) => {
+    const btn = e.target.closest("[data-shop]");
+    if (!btn) return;
+    const o = btn.getAttribute("data-shop") || "";
+    if (!o) {
+      if ($("siteOrigin")) {
+        $("siteOrigin").hidden = false;
+        $("siteOrigin").dataset.force = "1";
+        $("siteOrigin").focus();
+      }
+      return;
+    }
+    pickShop(o);
+    if ($("siteOrigin")) {
+      $("siteOrigin").value = o;
+      $("siteOrigin").dataset.force = "";
+    }
+    paintSavedShops();
+    $("siteFind")?.focus();
+  });
   on("siteAsk", "submit", async (e) => {
     e.preventDefault();
     const originVal = ($("siteOrigin")?.value || "").trim();
@@ -1640,6 +1652,7 @@ function wireUi() {
     if (looksLikeSecret(q) || looksLikeSecret(originVal)) return toast("That looks like a secret key. Type the shop text instead.");
     markOnboarded();
     rememberShop(originVal);
+    try { paintSavedShops(); } catch { /* ui */ }
     if ($("siteOrigin") && fillShopBox()) $("siteOrigin").value = fillShopBox();
     toast("Looking on the shop…");
     try {
@@ -1855,6 +1868,59 @@ async function boot() {
   if ("serviceWorker" in navigator) {
     try {
       const reg = await navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" });
+      reg.update().catch(() => {});
+    } catch { /* optional */ }
+  }
+}
+
+async function consumeSharedLaunch() {
+  const inbound = parseInbound();
+  const shared = await takeSharedInbound();
+  if (shared.file) {
+    toast("Got the shared screenshot.");
+    await onFile(shared.file);
+    return;
+  }
+  if (shared.text) {
+    if (looksLikeSecret(shared.text)) {
+      toast("That looked like a secret key. It was not used.");
+      return;
+    }
+    markOnboarded();
+    if ($("homeAskInput")) $("homeAskInput").value = shared.text;
+    applyQuery(shared.text);
+    return;
+  }
+  if (inbound.shared && !shared.file && !shared.text) {
+    toast("Share arrived with no picture. Upload a screenshot instead.");
+  }
+}
+
+async function maybeShowClip() {
+  const chip = $("clipChip");
+  if (!chip || !chip.hidden) return;
+  const t = await readUsefulClipboard();
+  if (!t) return;
+  chip.hidden = false;
+  chip.dataset.query = t;
+  if ($("clipPreview")) $("clipPreview").textContent = t.length > 72 ? `${t.slice(0, 72)}…` : t;
+}
+
+function restoreIfNeeded() {
+  if (state.current) return;
+  const rec = loadResume();
+  if (!rec?.id) return;
+  const entry = allEntries().find((e) => e.id === rec.id);
+  if (!entry) return;
+  renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
+  state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
+  if (state.progress) state.progress.index = state.stepIndex;
+  highlightStep();
+  toast("Picked up where you left off.");
+}
+
+boot();
+reg = await navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" });
       reg.update().catch(() => {});
     } catch { /* optional */ }
   }
