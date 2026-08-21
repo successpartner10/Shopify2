@@ -11,6 +11,7 @@ Privacy-first **Shopify admin live scanner**. Share the admin tab (or drop a scr
 | **Offline zip** | [GitHub Release v3.6.4](https://github.com/successpartner10/Shopify2/releases/tag/v3.6.4) |
 | **Shopify app notes** | [SHOPIFY_APP.md](./SHOPIFY_APP.md) |
 | **Full guide** | [STORESCOPE.md](./STORESCOPE.md) |
+| **Go live (GitHub / Cloudflare / Shopify)** | [IMPLEMENT.md](./IMPLEMENT.md) |
 | **Privacy** | [privacy.html](./privacy.html) |
 
 Pixels stay in the browser. History stores tip text only.
