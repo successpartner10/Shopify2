@@ -3,7 +3,7 @@
   "name": "Storescope — Shopify Live Scanner",
   "short_name": "Storescope",
   "description": "Point Storescope at your Shopify admin. Get instant, step-by-step fixes with arrows on the exact control to click next.",
-  "start_url": "./index.html?v=3.4.0",
+  "start_url": "./index.html?v=3.5.0",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
@@ -35,25 +35,25 @@
       "name": "Upload screenshot",
       "short_name": "Upload",
       "description": "Pick a Shopify screenshot from Photos",
-      "url": "./index.html?v=3.4.0&action=upload",
+      "url": "./index.html?v=3.5.0&action=upload",
       "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Payouts on hold",
       "short_name": "Payouts",
-      "url": "./index.html?v=3.4.0&q=payouts%20on%20hold",
+      "url": "./index.html?v=3.5.0&q=payouts%20on%20hold",
       "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "No shipping rates",
       "short_name": "Shipping",
-      "url": "./index.html?v=3.4.0&q=no%20shipping%20rates",
+      "url": "./index.html?v=3.5.0&q=no%20shipping%20rates",
       "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Shopify Collective",
       "short_name": "Collective",
-      "url": "./index.html?v=3.4.0&q=shopify%20collective",
+      "url": "./index.html?v=3.5.0&q=shopify%20collective",
       "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
     }
   ],

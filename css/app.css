@@ -320,6 +320,8 @@ h1 em { font-style: normal; color: var(--mint); }
 
 .ask-box { display: flex; gap: 8px; flex: 1; min-width: 200px; }
 .home-ask { margin-top: 18px; max-width: 560px; }
+.site-ask { margin-top: 10px; flex-wrap: wrap; }
+.site-ask input { min-width: 140px; flex: 1; }
 .clip-chip {
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
   margin-top: 16px; padding: 12px 14px;
@@ -674,6 +676,7 @@ a.ghost, a.solid {
   .cta-row { flex-direction: column; align-items: stretch; }
   .cta-row .solid, .cta-row .ghost { width: 100%; min-height: 54px; font-size: 1.15rem; }
   .home-ask { flex-direction: column; max-width: none; }
+  .site-ask { flex-direction: column; }
   .home-ask input, .ask-box input {
     font-size: 1.15rem;
     min-height: 56px;

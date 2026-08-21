@@ -17,8 +17,10 @@ import { speak, hush, canSpeak, canListen, startCommandListen, stopCommandListen
 import { scrubText, thumbnailDataUrl, looksLikeSecret } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
+import { looksHowTo, fillHowTo } from "./howto.js";
 import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
 import { rememberShop, getShopOrigin, matchKnownPublic, fetchSitemapUrls, matchSitemap } from "./publicPages.js";
+import { searchShopContent, fillShopBox } from "./siteSearch.js";
 import { polaroidFor } from "./polaroids.js";
 import {
   takeSharedInbound, readUsefulClipboard, markClipAsked,
@@ -479,15 +481,17 @@ function findPlaybook(id) {
 }
 
 function paintRelated(alts) {
-  const host = $("related");
-  if (!host) return;
-  host.innerHTML = (alts || []).map((a) => {
+  const html = (alts || []).map((a) => {
     const href = a.public_url || a.live_url || "";
     const extra = href && /^https?:/i.test(href)
       ? `<a class="linkish" href="${esc(href)}" target="_blank" rel="noopener">Open page</a>`
       : "";
     return `<button class="sample" type="button" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint || hubTitle(a))}</b><span>${esc(a.cause || a.explanation || "")}</span>${extra}</button>`;
   }).join("");
+  ["related", "homeRelated"].forEach((id) => {
+    const host = $(id);
+    if (host) host.innerHTML = html;
+  });
 }
 
 function applyQuery(query, extras = {}) {
@@ -518,7 +522,8 @@ function applyQuery(query, extras = {}) {
   const alts = [...publicHits, ...(found.alternatives || [])]
     .filter((a, i, arr) => a.id !== found.match?.id && arr.findIndex((x) => x.id === a.id) === i)
     .slice(0, 8);
-  const entry = found.match || publicHits[0] || fallbackAnswer(q, alts, screen);
+  const localHit = found.match || publicHits[0];
+  const entry = localHit || fallbackAnswer(q, alts, screen);
   renderResult(entry, {
     ...found,
     alternatives: alts.filter((a) => a.id !== entry.id).slice(0, 6),
@@ -527,6 +532,20 @@ function applyQuery(query, extras = {}) {
     query: q
   });
   paintRelated(state.lastMeta?.alternatives || []);
+  if (!localHit && looksHowTo(q)) {
+    toast("Not in the local playbook — turning that into steps.");
+    fillHowTo(q).then((howto) => {
+      if (!howto || state.lastMeta?.query !== q) return;
+      renderResult(howto, {
+        match: howto,
+        alternatives: alts.filter((a) => a.id !== howto.id).slice(0, 6),
+        source: howto.source_category_db || "howto",
+        confidence: 0.72,
+        query: q
+      });
+      paintRelated(state.lastMeta?.alternatives || []);
+    }).catch(() => {});
+  }
   if (origin) {
     fetchSitemapUrls(origin).then((urls) => {
       const extra = matchSitemap(q, origin, urls);
@@ -1453,12 +1472,14 @@ function wireUi() {
     highlightStep();
     renderFlow();
   });
-  on("related", "click", (e) => {
+  const openRelated = (e) => {
     const btn = e.target.closest("[data-alt]");
     if (!btn) return;
     const entry = findPlaybook(btn.dataset.alt);
     if (entry) renderResult(entry, { source: "related", confidence: 0.7, alternatives: (state.lastMeta?.alternatives || []).filter((a) => a.id !== entry.id), query: entry.match_phrases?.[0] || "" });
-  });
+  };
+  on("related", "click", openRelated);
+  on("homeRelated", "click", openRelated);
   on("flowBox", "click", (e) => {
     const btn = e.target.closest("[data-alt]");
     if (!btn) return;
@@ -1591,11 +1612,6 @@ function wireUi() {
     const q = ($("homeAskInput")?.value || "").trim();
     if (!q) return toast("Type a few words from the problem.");
     if (looksLikeSecret(q)) return toast("That looks like a secret key. Type the Shopify banner instead.");
-    if (state.hub) {
-      if ($("hubSearch")) $("hubSearch").value = q;
-      paintHubList(q);
-      return;
-    }
     markOnboarded();
     state.lastText = q;
     const go = () => {
@@ -1613,6 +1629,33 @@ function wireUi() {
         go();
       }
     }, 80);
+  });
+  on("siteAsk", "submit", async (e) => {
+    e.preventDefault();
+    const originVal = ($("siteOrigin")?.value || "").trim();
+    const q = ($("siteFind")?.value || "").trim();
+    if (!originVal && !getShopOrigin()) return toast("Paste your shop URL first (https://yourstore.com).");
+    if (!q) return toast("Type the words you want to find on the shop.");
+    if (looksLikeSecret(q) || looksLikeSecret(originVal)) return toast("That looks like a secret key. Type the shop text instead.");
+    markOnboarded();
+    rememberShop(originVal);
+    if ($("siteOrigin") && fillShopBox()) $("siteOrigin").value = fillShopBox();
+    toast("Looking on the shop…");
+    try {
+      const out = await searchShopContent(originVal || fillShopBox(), q);
+      state.lastText = q;
+      renderResult(out.entry, {
+        source: out.foundOn ? "shop-page" : "shop-map",
+        confidence: out.foundOn ? 0.9 : 0.7,
+        alternatives: out.alternatives,
+        query: q
+      });
+      paintRelated(out.alternatives);
+      $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      toast(out.foundOn ? "Found that text. Follow the steps to change it." : "Follow the steps to change that kind of text.");
+    } catch (err) {
+      toast(err.message || "Could not search the shop.");
+    }
   });
   document.addEventListener("click", (e) => {
     const btn = e.target.closest("[data-walk]");
@@ -1779,6 +1822,7 @@ async function boot() {
     state.fuse = buildIndex(allEntries());
     state.ready = true;
     if ($("verPill")) $("verPill").textContent = `v${APP_VERSION}`;
+    if ($("siteOrigin") && fillShopBox()) $("siteOrigin").value = fillShopBox();
     if ($("dictPill")) $("dictPill").textContent = "Ready";
     if (errors.length) console.warn("Some playbooks failed to load", errors);
     applyInbound();

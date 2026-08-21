@@ -1330,7 +1330,11 @@
       "text on every product page",
       "message on all product pages",
       "add text to every product",
-      "how do I add a line of text across all products"
+      "how do I add a line of text across all products",
+      "across all products pages at once",
+      "text line across all products",
+      "same line on every product page",
+      "add text to all product pages at once"
     ],
     "tags": [
       "theme",
@@ -1365,6 +1369,402 @@
         "url": "https://help.shopify.com/en/manual/online-store/themes/customizing-themes/edit-theme"
       }
     ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-product-images-037",
+    "category": "general",
+    "hub": "products",
+    "match_phrases": [
+      "how do I modify images",
+      "change product images",
+      "replace product photo",
+      "modify images",
+      "upload product image",
+      "how to change images",
+      "edit product pictures"
+    ],
+    "tags": [
+      "howto",
+      "images",
+      "products"
+    ],
+    "synonyms": [
+      "how do I change product photos",
+      "replace image on product",
+      "add photos to product"
+    ],
+    "cause": "Product photos live on the product, not in the theme. Replace them under Products → Media.",
+    "explanation": "Open the product → Media. Click an image to replace, or Add media. The theme only crops/shows them.",
+    "steps": [
+      "Products → open the product whose pictures are wrong.",
+      "Media: Add media to upload. Click an existing image → Replace, or drag to reorder. The first image is the listing thumbnail.",
+      "To match a variant (red shirt): click the variant → choose that image.",
+      "Use JPG/PNG at least 2048px on the long side. Don’t screenshot a photo.",
+      "Save. View the product on the storefront in incognito. Do not Edit code to swap images."
+    ],
+    "target_ui_hint": "Products > [product] > Media",
+    "arrow": {
+      "x": 0.7,
+      "y": 0.35
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-logo-038",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "how do I add a logo",
+      "change logo",
+      "upload logo",
+      "store logo",
+      "header logo"
+    ],
+    "tags": [
+      "howto",
+      "logo",
+      "theme"
+    ],
+    "synonyms": [
+      "how to change my logo",
+      "replace header logo"
+    ],
+    "cause": "The logo is a theme setting. Duplicate first, then Customize — not Edit code.",
+    "explanation": "Online Store → Themes → Customize → Theme settings → Logo.",
+    "steps": [
+      "Online Store → Themes → ⋯ → Duplicate the live theme. Do not Edit code on the published theme.",
+      "Customize the copy. Theme settings (paintbrush / gear) → Logo.",
+      "Upload a PNG with a transparent background. Save.",
+      "Check header on mobile preview. Publish the copy only when it looks right."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Logo",
+    "arrow": {
+      "x": 0.18,
+      "y": 0.86
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-announcement-039",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "announcement bar",
+      "banner text on all pages",
+      "sitewide message",
+      "how to add a bar of text",
+      "text across the whole shop",
+      "text on every page of the shop"
+    ],
+    "tags": [
+      "howto",
+      "text",
+      "theme"
+    ],
+    "synonyms": [
+      "text across the whole shop",
+      "top bar message"
+    ],
+    "cause": "A line on every page is the announcement bar. A line on every product only is the product template (different how-to).",
+    "explanation": "Customize → header / announcement bar. Duplicate the theme first.",
+    "steps": [
+      "Decide: every page of the shop (this) vs every product page only (search: text on all products).",
+      "Online Store → Themes → ⋯ → Duplicate. Do not Edit code on live.",
+      "Customize the copy → Announcement bar (or Header). Type the line. Save.",
+      "Preview home and a product. Publish the copy."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Announcement bar",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.08
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-add-page-040",
+    "category": "general",
+    "hub": "admin",
+    "match_phrases": [
+      "how do I add a page",
+      "create a page",
+      "about us page",
+      "new store page"
+    ],
+    "tags": [
+      "howto",
+      "pages"
+    ],
+    "synonyms": [
+      "add about page",
+      "online store pages"
+    ],
+    "cause": "Pages are Online Store → Pages, then add them to a menu. Not Edit code.",
+    "steps": [
+      "Online Store → Pages → Add page. Title + body. Save.",
+      "Content → Menus → Footer (or Main menu) → Add menu item → search the page. Save.",
+      "Open the live shop and tap that menu link."
+    ],
+    "target_ui_hint": "Online Store > Pages",
+    "arrow": {
+      "x": 0.2,
+      "y": 0.3
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-menu-041",
+    "category": "general",
+    "hub": "admin",
+    "match_phrases": [
+      "how do I add a menu item",
+      "edit navigation",
+      "add to footer menu",
+      "change menu"
+    ],
+    "tags": [
+      "howto",
+      "menu"
+    ],
+    "synonyms": [
+      "navigation links",
+      "footer link"
+    ],
+    "cause": "Menus are Content → Menus (or Online Store → Navigation). The theme only displays the menu you pick.",
+    "steps": [
+      "Content → Menus (older admin: Online Store → Navigation).",
+      "Open Main menu or Footer. Add menu item. Link a page, collection, or policy. Save.",
+      "Online Store → Themes → Customize → header/footer: confirm that menu is selected. Duplicate first if you change the theme."
+    ],
+    "target_ui_hint": "Content > Menus",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.28
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-colors-042",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "how do I change colors",
+      "change theme colors",
+      "brand color",
+      "background color"
+    ],
+    "tags": [
+      "howto",
+      "theme",
+      "colors"
+    ],
+    "synonyms": [
+      "recolor the store",
+      "change button color"
+    ],
+    "cause": "Colors are Theme settings, not CSS files.",
+    "steps": [
+      "Online Store → Themes → ⋯ → Duplicate. Do not Edit code.",
+      "Customize the copy → Theme settings → Colors.",
+      "Set buttons, text, and background. Save. Preview mobile. Publish the copy."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Colors",
+    "arrow": {
+      "x": 0.18,
+      "y": 0.86
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-homepage-043",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "how do I change the homepage",
+      "edit homepage",
+      "add homepage section",
+      "hero banner"
+    ],
+    "tags": [
+      "howto",
+      "theme",
+      "home"
+    ],
+    "synonyms": [
+      "modify home page",
+      "add section to home"
+    ],
+    "cause": "The homepage is Customize on the Home template. Add sections there.",
+    "steps": [
+      "Online Store → Themes → ⋯ → Duplicate. Do not Edit code on live.",
+      "Customize the copy. Top: Home.",
+      "Add section (image banner, featured collection, rich text). Drag to reorder. Save.",
+      "Preview. Publish the copy."
+    ],
+    "target_ui_hint": "Online Store > Themes > Customize > Home",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.2
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-refund-line-products-044",
+    "category": "general",
+    "hub": "themes",
+    "match_phrases": [
+      "refund related text line across all products",
+      "add a refund related text line across all products pages at once",
+      "refund text on all product pages",
+      "return policy on every product",
+      "refund line across all products",
+      "returns accepted on all products"
+    ],
+    "tags": [
+      "howto",
+      "refund",
+      "products",
+      "theme"
+    ],
+    "synonyms": [
+      "refund note on every product",
+      "return line on all product pages"
+    ],
+    "cause": "A refund line on every product is one Rich text block on the product template — not Settings → Policies, and not hundreds of descriptions.",
+    "explanation": "Settings → Policies is the full refund page. A short line on every product is Customize → Products → Default product → Rich text.",
+    "steps": [
+      "This is not Settings → Policies (that is the full refund page). This is a short line on every product.",
+      "Online Store → Themes → ⋯ → Duplicate the live theme. Do not Edit code on the published theme.",
+      "Customize the copy. Top bar: Products → Default product.",
+      "Add block → Rich text. Type the refund/return line (example: Returns accepted within 30 days). Optional: link the words Refund policy to /policies/refund-policy. Drag it under the title or price. Save.",
+      "If some products use another template: Products → [product] → Theme template. Add the same block there, or switch them to Default product.",
+      "Preview a few products. Publish the copy only when the line shows. Do not bulk-edit descriptions."
+    ],
+    "target_ui_hint": "Customize > Products > Default product · refund line",
+    "arrow": {
+      "x": 0.2,
+      "y": 0.42
+    },
+    "docs": [
+      {
+        "label": "Store policies",
+        "url": "https://help.shopify.com/en/manual/checkout-settings/refund-privacy-tos"
+      }
+    ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-checkout-text-045",
+    "category": "general",
+    "hub": "checkout",
+    "match_phrases": [
+      "add text to checkout",
+      "add text to checkout page",
+      "add text to check out page",
+      "text on checkout page",
+      "message at checkout",
+      "line of text on checkout",
+      "how do I add text to checkout",
+      "checkout page text"
+    ],
+    "tags": [
+      "howto",
+      "checkout",
+      "text"
+    ],
+    "synonyms": [
+      "put a line on checkout",
+      "checkout banner message"
+    ],
+    "cause": "Checkout is Settings → Checkout, not the theme. Theme Customize will not change the pay page.",
+    "explanation": "Legal lines belong in Settings → Policies (already linked at checkout). Extra marketing text is Checkout → Customize, or the Cart template on every plan.",
+    "steps": [
+      "Decide: legal refund/privacy line (Settings → Policies — checkout already shows those links) vs an extra message shoppers see while paying.",
+      "Extra message: Settings → Checkout → Customize. Look for Banner or Add app. Many plans need a checkout-banner app here.",
+      "If you do not see a text block: put the line on Cart instead — shoppers see it before they pay. Online Store → Themes → ⋯ → Duplicate → Customize → Cart → Add block → Rich text.",
+      "Save. Test checkout in an incognito window.",
+      "Do not paste into Additional scripts or checkout.liquid on the live shop."
+    ],
+    "target_ui_hint": "Settings > Checkout > Customize",
+    "arrow": {
+      "x": 0.22,
+      "y": 0.28
+    },
+    "docs": [
+      {
+        "label": "Checkout",
+        "url": "https://help.shopify.com/en/manual/checkout-settings"
+      }
+    ],
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-cart-text-046",
+    "category": "general",
+    "hub": "checkout",
+    "match_phrases": [
+      "add text to cart",
+      "text on cart page",
+      "message on cart",
+      "line on the cart",
+      "note above checkout button"
+    ],
+    "tags": [
+      "howto",
+      "cart",
+      "text"
+    ],
+    "synonyms": [
+      "cart page message",
+      "text above checkout button"
+    ],
+    "cause": "Cart text is a block on the Cart template. Duplicate the theme first.",
+    "steps": [
+      "Online Store → Themes → ⋯ → Duplicate. Do not Edit code on live.",
+      "Customize the copy. Top: Cart.",
+      "Add block → Rich text. Type the line. Drag it above the checkout button. Save.",
+      "Preview the cart. Publish the copy."
+    ],
+    "target_ui_hint": "Customize > Cart",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.5
+    },
+    "source_category_db": "general"
+  },
+  {
+    "id": "general-howto-find-shop-text-047",
+    "category": "general",
+    "hub": "admin",
+    "match_phrases": [
+      "find text on my shop",
+      "search my website for text",
+      "where is this text on my store",
+      "how do I change text on my website",
+      "modify text on storefront",
+      "find content on my domain"
+    ],
+    "tags": [
+      "howto",
+      "site-search",
+      "text"
+    ],
+    "synonyms": [
+      "search the shop for a sentence",
+      "change words on the live site"
+    ],
+    "cause": "Paste your shop URL once, then the words. Storescope maps that to the admin screen that owns the text.",
+    "steps": [
+      "In the Find on shop box, paste https://yourstore.com (once) and the words you want to change.",
+      "Policies → Settings → Policies. One product → Products. Every product → Customize → Products → Default product.",
+      "Top bar → Announcement bar. Homepage → Customize → Home. Cart → Customize → Cart. Checkout → Settings → Checkout.",
+      "Duplicate the theme before any Customize change. Do not Edit code on the published theme."
+    ],
+    "target_ui_hint": "Find on shop, then edit in admin",
+    "arrow": {
+      "x": 0.5,
+      "y": 0.16
+    },
     "source_category_db": "general"
   }
 ]

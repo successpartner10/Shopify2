@@ -32,7 +32,7 @@ export function detectScreen(text) {
 }
 
 export async function loadDictionaries() {
-  const files = ["errors", "payments", "shipping", "general", "issues"];
+  const files = ["errors", "payments", "shipping", "general", "issues", "howto"];
   const extras = ["systems", "flows", "conflicts", "sources"];
   const entries = [];
   const errors = [];

@@ -30,9 +30,10 @@ export function cloudPrompt(query) {
   ].join("\n");
 }
 
-export async function askGemini(query) {
+export async function askGemini(query, { raw = false } = {}) {
   const key = getGeminiKey();
   if (!key) throw new Error("Add a Gemini API key in Cloud settings (aistudio.google.com/apikey).");
+  const prompt = raw ? String(query) : cloudPrompt(query);
   const models = ["gemini-2.0-flash", "gemini-2.5-flash", "gemini-1.5-flash"];
   let last = "Gemini failed";
   for (const model of models) {
@@ -41,7 +42,7 @@ export async function askGemini(query) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        contents: [{ parts: [{ text: cloudPrompt(query) }] }],
+        contents: [{ parts: [{ text: prompt }] }],
         generationConfig: { maxOutputTokens: 400, temperature: 0.2 }
       })
     });
@@ -57,9 +58,10 @@ export async function askGemini(query) {
   throw new Error(last);
 }
 
-export async function askGrok(query) {
+export async function askGrok(query, { raw = false } = {}) {
   const key = getGrokKey();
   if (!key) throw new Error("Add a Grok (xAI) API key in Cloud settings (console.x.ai).");
+  const prompt = raw ? String(query) : cloudPrompt(query);
   const models = ["grok-3-mini", "grok-2-latest", "grok-2", "grok-3"];
   let last = "Grok failed";
   for (const model of models) {
@@ -75,7 +77,7 @@ export async function askGrok(query) {
         max_tokens: 400,
         messages: [
           { role: "system", content: "Shopify admin fixer. Next clicks only. No invented menus. No hold-lifting toggles." },
-          { role: "user", content: cloudPrompt(query) }
+          { role: "user", content: prompt }
         ]
       })
     });
