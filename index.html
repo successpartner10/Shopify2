@@ -72,8 +72,14 @@
           <p hidden><span id="stepTwoTitle"></span><span id="stepTwoCopy"></span></p>
 
           <div class="cta-row">
-            <button class="solid" id="startBtn" type="button">Share Shopify tab</button>
-            <button class="ghost" id="uploadBtn" type="button">Upload a screenshot</button>
+            <div class="tool">
+              <button class="solid" id="startBtn" type="button">Share Shopify tab</button>
+              <p class="tool-hint">Pick the <i>Shopify</i> tab, not this one.</p>
+            </div>
+            <div class="tool">
+              <button class="ghost" id="uploadBtn" type="button">Upload a screenshot</button>
+              <p class="tool-hint">On a phone: screenshot Shopify, then pick it from Photos.</p>
+            </div>
             <a class="ghost" id="openTabBtn" href="./index.html" target="_blank" rel="noopener" hidden>Open in new tab</a>
           </div>
           <div class="shot-drop" id="shotDrop" role="button" tabindex="0">
@@ -116,7 +122,11 @@
               <button class="solid" type="submit">Search</button>
             </form>
             <form class="mine-box" id="mineHowTo" hidden>
-              <p class="fine">Found a fix on AI or Google? Paste it here. Saved on this device only.</p>
+              <p class="fine">Found a fix on AI or Google? Paste it here. Saved on this device only. We rewrite it as steps — no forum citation.</p>
+              <div class="card-actions">
+                <button class="ghost" id="helpRefresh" type="button">Check for new Help</button>
+              </div>
+              <p class="tool-hint">Adds new official Shopify Help as numbered steps. Does not scrape Google or Sidekick.</p>
               <label class="share-label" for="mineAsk">What you asked</label>
               <input id="mineAsk" type="text" placeholder="how do I add a size chart" autocomplete="off" />
               <label class="share-label" for="mineSteps">Steps (one per line)</label>
@@ -136,16 +146,42 @@
             <ol class="steps-ol compact" id="homeSteps"></ol>
             <p class="then-next" id="homeThenNext" hidden></p>
             <button class="ghost steps-all" id="homeStepsAll" type="button">Show all steps</button>
-            <div class="audio-bar">
-              <button class="solid" data-walk="play" type="button">Play this fix</button>
+            <div class="audio-bar tool-grid">
+              <div class="tool">
+                <button class="solid" data-walk="play" type="button">Play this fix</button>
+                <p class="tool-hint">Hears this step. Tap again to pause.</p>
+              </div>
+              <div class="tool">
+                <button class="ghost" data-sound type="button">Sound on</button>
+                <p class="tool-hint">Off = no voice. Words stay on screen.</p>
+              </div>
             </div>
             <p class="fine walk-hint" data-walk-hint></p>
-            <div class="card-actions">
-              <button class="solid" id="homeNext" type="button">Next step</button>
-              <button class="solid" id="homeCopySteps" type="button">Copy steps</button>
-              <button class="ghost" id="homePip" type="button" hidden>Pop out</button>
-              <button class="ghost" id="homeSaveHowTo" type="button">Save this how-to</button>
-              <button class="ghost" id="homeWorked" type="button">This worked</button>
+            <div class="card-actions tool-grid">
+              <div class="tool">
+                <button class="solid" id="homeNext" type="button">Next step</button>
+                <p class="tool-hint">After you tap that in Shopify.</p>
+              </div>
+              <div class="tool">
+                <button class="solid" id="homeCopySteps" type="button">Copy steps</button>
+                <p class="tool-hint">Paste in a message to a friend.</p>
+              </div>
+              <div class="tool" id="homePipWrap" hidden>
+                <button class="ghost" id="homePip" type="button">Pop out</button>
+                <p class="tool-hint">Go to your Shopify tab. This step floats on top.</p>
+              </div>
+              <div class="tool">
+                <button class="ghost" id="homePrint" type="button">Print steps</button>
+                <p class="tool-hint">Letter page. In the box choose Save as PDF.</p>
+              </div>
+              <div class="tool">
+                <button class="ghost" id="homeSaveHowTo" type="button">Save this how-to</button>
+                <p class="tool-hint">Keeps these steps on this device.</p>
+              </div>
+              <div class="tool">
+                <button class="ghost" id="homeWorked" type="button">This worked</button>
+                <p class="tool-hint">We’ll show this one first next time.</p>
+              </div>
             </div>
             <div id="homeRelated" class="samples" style="margin-top:12px"></div>
           </div>
@@ -276,7 +312,11 @@
         <li><b>Still see 5 topics?</b> You’re on an old copy. Open GitHub.io with <i>?v=3.6.4</i>, or delete the home-screen icon and add it again. storescope-cwl.pages.dev is still the old 1.x site.</li>
         <li><b>Find on shop</b> — shop URL is saved on this device. Tap a saved link, then the words. We never change the shop.</li>
         <li><b>How to</b> — topic under Admin, or type it in Search. Tab / screenshot also search.</li>
+        <li><b>Check for new Help</b> — How to → official Shopify Help only. We rewrite community/AI answers as our steps (no forum citation). We do not scrape Google or Sidekick.</li>
         <li><b>Save a how-to</b> — How to → paste what you asked AI/Google and the steps. Stays on this device. Download mine if you want it in GitHub later.</li>
+        <li><b>Pop out</b> — Chrome. Go to the Shopify tab; the step floats on top.</li>
+        <li><b>Sound</b> — off = no voice. Play this fix still shows the words.</li>
+        <li><b>Print steps</b> — letter page. In the print box choose Save as PDF.</li>
         <li><b>Shopify app</b> — opens in a <i>new tab</i>, not inside admin. Share the Shopify tab. On a phone: screenshot.</li>
         <li><b>Paste</b> — banner text or an admin.shopify.com link in the search box.</li>
       </ul>

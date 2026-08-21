@@ -2,6 +2,8 @@
 
 Do this in order. **Do not paste Client secret, API keys, or tokens into chat.**
 
+**Sources:** Official Shopify Help is linked as the last step. Community / AI / Google answers you paste are **rewritten as our numbered steps** — no Stack Overflow or forum citation. We do not scrape Google or Sidekick.
+
 Today’s app version in the repo: **v3.6.4**.
 
 ---

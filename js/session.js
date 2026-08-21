@@ -1,7 +1,7 @@
 import { scrubText, scrubObject } from "./privacy.js";
 
 const DB_NAME = "storescope";
-const VERSION = 3;
+const VERSION = 4;
 
 function openDb() {
   return new Promise((resolve, reject) => {
@@ -292,6 +292,31 @@ export function rankBoost(entry, ranks) {
   const r = ranks?.[entry?.id];
   if (!r) return 0;
   return Math.max(-0.2, Math.min(0.22, (r.up || 0) * 0.07 - (r.down || 0) * 0.09));
+}
+
+export async function listHelpExtra() {
+  const db = await openDb();
+  if (!db.objectStoreNames.contains("helpExtra")) return [];
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction("helpExtra", "readonly");
+    const req = tx.objectStore("helpExtra").getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => reject(req.error);
+  });
+}
+
+export async function saveHelpExtra(rows) {
+  if (!rows?.length) return 0;
+  const db = await openDb();
+  if (!db.objectStoreNames.contains("helpExtra")) return 0;
+  const tx = db.transaction("helpExtra", "readwrite");
+  const store = tx.objectStore("helpExtra");
+  for (const row of rows) store.put(row);
+  await new Promise((resolve, reject) => {
+    tx.oncomplete = () => resolve();
+    tx.onerror = () => reject(tx.error);
+  });
+  return rows.length;
 }
 
 export async function importCommunity(json) {

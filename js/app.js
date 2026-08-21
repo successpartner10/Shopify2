@@ -1,5 +1,6 @@
 import { loadDictionaries, buildIndex, searchDictionary, fallbackAnswer, detectScreen, findById } from "./dictionary.js";
-import { saveSession, listSessions, clearSessions, newRecording, recordEvent, saveRecording, diagnosticPackage, downloadJson, listCommunity, upsertCommunity, communityAsEntries, importCommunity, bumpCommunity, getRanks, bumpRank, rankBoost } from "./session.js";
+import { saveSession, listSessions, clearSessions, newRecording, recordEvent, saveRecording, diagnosticPackage, downloadJson, listCommunity, upsertCommunity, communityAsEntries, importCommunity, bumpCommunity, getRanks, bumpRank, rankBoost, listHelpExtra, saveHelpExtra } from "./session.js";
+import { fetchHelpSitemap, newHelpEntries } from "./helpUpdate.js";
 import { canCapture, startTabCapture, stopStream, isEmbedded, captureBlockReason, captureHelp, isMobile } from "./capture.js";
 import { ocrAvailable, recognize, frameToCanvas } from "./ocr.js";
 import { SAMPLES } from "./samples.js";
@@ -63,6 +64,7 @@ const state = {
   historyRows: [],
   progress: null,
   voice: localStorage.getItem("ss_voice") === "1",
+  soundOn: localStorage.getItem("ss_sound") !== "0",
   recordingOn: false,
   recording: null,
   before: null,
@@ -70,6 +72,7 @@ const state = {
   lastDiff: null,
   lastSessionId: null,
   community: [],
+  helpExtra: [],
   lastChatFound: null,
   ranks: {},
   walkOn: false,
@@ -539,8 +542,67 @@ function digestLine(entry) {
   return (first || raw).slice(0, 160);
 }
 
+function soundEnabled() {
+  return state.soundOn !== false;
+}
+
+function paintSoundButtons() {
+  const on = soundEnabled();
+  document.querySelectorAll("[data-sound]").forEach((btn) => {
+    btn.textContent = on ? "Sound on" : "Sound off";
+    btn.classList.toggle("on", on);
+  });
+}
+
+function toggleSound() {
+  state.soundOn = !soundEnabled();
+  try { localStorage.setItem("ss_sound", state.soundOn ? "1" : "0"); } catch { /* */ }
+  paintSoundButtons();
+  if (!state.soundOn) {
+    hush();
+    if (state.walkOn) walkPause();
+    toast("Sound off. Words stay on the screen.");
+  } else {
+    toast("Sound on. Play this fix will read the step.");
+  }
+}
+
+function printCurrentSteps() {
+  if (!state.current) return toast("Find a fix first.");
+  const steps = stepLines(state.current);
+  const title = state.current.target_ui_hint || "What to do";
+  const cause = digestLine(state.current);
+  const shop = (() => { try { return getShopOrigin(); } catch { return ""; } })();
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)}</title>
+<style>
+@page { size: letter; margin: 16mm; }
+html, body { margin: 0; background: #fff; color: #1c1c1e; }
+body { font-family: "Raleway", "Segoe UI", sans-serif; font-weight: 200; font-size: 13pt; line-height: 1.45; padding: 0; }
+h1 { font-weight: 200; font-size: 20pt; margin: 0 0 8pt; }
+.k { color: #48484a; font-size: 10pt; margin: 0 0 10pt; }
+.cause { margin: 0 0 14pt; }
+ol { margin: 0; padding-left: 1.4em; }
+li { margin: 0 0 8pt; page-break-inside: avoid; }
+.foot { margin-top: 18pt; color: #48484a; font-size: 10pt; }
+</style></head><body>
+<p class="k">Storescope · letter · ${esc(new Date().toLocaleDateString())}${shop ? " · " + esc(shop.replace(/^https?:\\/\\//, "")) : ""}</p>
+<h1>${esc(title)}</h1>
+<p class="cause">${esc(cause)}</p>
+<ol>${steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
+<p class="foot">You tap in Shopify. Storescope never changes the shop. In the print box choose Save as PDF, or print.</p>
+</body></html>`;
+  const w = window.open("", "_blank");
+  if (!w) return toast("Allow pop-ups once, then Print steps again.");
+  w.document.open();
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  setTimeout(() => { try { w.print(); } catch { /* user can print from the tab */ } }, 250);
+}
+
 function maybeSpeak() {
   if (state.walkOn) return;
+  if (!soundEnabled()) return;
   if (!state.voice || !state.current) return;
   walkSpeakCurrent();
 }
@@ -553,6 +615,7 @@ function currentStepText() {
 
 function walkSpeakCurrent() {
   if (!state.current) return;
+  if (!soundEnabled()) return;
   const steps = state.current.steps || [];
   const n = Math.max(1, steps.length);
   const i = state.stepIndex + 1;
@@ -591,13 +654,15 @@ function paintWalkHints() {
   });
   const msg = !state.current
     ? ""
-    : !canSpeak()
-      ? "This browser cannot read steps aloud. Use Next step."
-      : playing
-        ? "Playing. Tap Pause, or Next step when you’re done."
-        : state.walkOn
-          ? "Paused. Tap Play this fix, or Next step."
-          : "Tap Play this fix, then do that tap in Shopify.";
+    : !soundEnabled()
+      ? "Sound is off. Use Next step, or tap Sound on."
+      : !canSpeak()
+        ? "This browser cannot read steps aloud. Use Next step."
+        : playing
+          ? "Playing. Tap Pause, or Next step when you’re done."
+          : state.walkOn
+            ? "Paused. Tap Play this fix, or Next step."
+            : "Tap Play this fix, then do that tap in Shopify.";
   document.querySelectorAll("[data-walk-hint]").forEach((el) => { el.textContent = msg; });
   syncPip();
 }
@@ -619,7 +684,7 @@ function syncPip() {
 
 function showPipButtons() {
   const on = canPopOut() && !isMobile();
-  ["homePip", "tipPip"].forEach((id) => {
+  ["homePip", "tipPip", "homePipWrap", "tipPipWrap"].forEach((id) => {
     const el = $(id);
     if (el) el.hidden = !on;
   });
@@ -802,6 +867,29 @@ async function saveMineHowTo({ question, steps, hint }) {
   if (state.hub === "howto") paintHubList($("hubSearch")?.value || "");
   toast("Saved on this device. Search will find it.");
   return rec;
+}
+
+async function checkNewHelp() {
+  const btn = $("helpRefresh");
+  if (btn) { btn.disabled = true; btn.textContent = "Checking Help…"; }
+  toast("Looking for new official Shopify Help…");
+  try {
+    const xml = await fetchHelpSitemap();
+    const { added, scanned } = newHelpEntries(xml, allEntries());
+    if (!added.length) {
+      toast(`Help is current (${scanned} articles checked).`);
+      return;
+    }
+    await saveHelpExtra(added);
+    state.helpExtra = await listHelpExtra();
+    try { state.fuse = buildIndex(allEntries()); } catch { /* phrase match still works */ }
+    if (state.hub === "howto") paintHubList($("hubSearch")?.value || "");
+    toast(`Added ${added.length} new Help how-tos on this device.`);
+  } catch (err) {
+    toast(err.message || "Could not reach Shopify Help.");
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = "Check for new Help"; }
+  }
 }
 
 async function saveCurrentHowTo() {
@@ -1774,9 +1862,32 @@ function wireUi() {
     markOnboarded();
     if ($("coach")) $("coach").hidden = true;
   });
+  on("mineHowTo", "submit", async (e) => {
+    e.preventDefault();
+    const q = ($("mineAsk")?.value || "").trim();
+    const steps = ($("mineSteps")?.value || "").split("\n").map((s) => s.replace(/^\s*\d+[.)]\s*/, "").trim()).filter(Boolean);
+    const rec = await saveMineHowTo({ question: q, steps, hint: q });
+    if (rec) {
+      if ($("mineSteps")) $("mineSteps").value = "";
+      renderResult(communityAsEntries([rec])[0], { source: "community", confidence: 1, alternatives: [], query: q });
+      $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+  on("mineExport", "click", () => {
+    downloadJson("storescope-my-howtos.json", { version: 1, entries: state.community });
+    toast("Downloaded. Nothing was uploaded.");
+  });
+  on("helpRefresh", "click", () => { checkNewHelp(); });
+  on("homeSaveHowTo", "click", saveCurrentHowTo);
+  on("saveHowToBtn", "click", saveCurrentHowTo);
   on("homeNext", "click", () => $("nextBtn")?.click());
   on("homeCopySteps", "click", copyStepsForFriend);
   on("copyStepsBtn", "click", copyStepsForFriend);
+  on("homePrint", "click", printCurrentSteps);
+  on("tipPrint", "click", printCurrentSteps);
+  document.addEventListener("click", (e) => {
+    if (e.target.closest("[data-sound]")) toggleSound();
+  });
   on("homePip", "click", popOutStep);
   on("tipPip", "click", popOutStep);
   on("homeWorked", "click", () => $("workedBtn")?.click());
@@ -1853,6 +1964,7 @@ function wireUi() {
   window.addEventListener("resize", () => { if (state.current) drawArrow(currentArrow(), { bands: state.lastVision?.bands || [] }); });
   if (state.voice) $("voiceBtn")?.classList.add("on");
   if ($("voiceBtn")) $("voiceBtn").hidden = true;
+  paintSoundButtons();
   setPipHandlers({
     play: () => walkToggle(),
     next: () => $("nextBtn")?.click()
@@ -1876,6 +1988,7 @@ async function boot() {
     const { entries, errors, pack } = await loadDictionaries();
     state.pack = pack;
     state.community = await listCommunity().catch(() => []);
+    state.helpExtra = await listHelpExtra().catch(() => []);
     state.ranks = await getRanks().catch(() => ({}));
     state.entries = entries;
     state.fuse = buildIndex(allEntries());
@@ -1965,60 +2078,7 @@ function restoreIfNeeded() {
 }
 
 boot();
-reg = await navigator.serviceWorker.register("./sw.js", { updateViaCache: "none" });
-      reg.update().catch(() => {});
-    } catch { /* optional */ }
-  }
-}
-
-async function consumeSharedLaunch() {
-  const inbound = parseInbound();
-  const shared = await takeSharedInbound();
-  if (shared.file) {
-    toast("Got the shared screenshot.");
-    await onFile(shared.file);
-    return;
-  }
-  if (shared.text) {
-    if (looksLikeSecret(shared.text)) {
-      toast("That looked like a secret key. It was not used.");
-      return;
-    }
-    markOnboarded();
-    if ($("homeAskInput")) $("homeAskInput").value = shared.text;
-    applyQuery(shared.text);
-    return;
-  }
-  if (inbound.shared && !shared.file && !shared.text) {
-    toast("Share arrived with no picture. Upload a screenshot instead.");
-  }
-}
-
-async function maybeShowClip() {
-  const chip = $("clipChip");
-  if (!chip || !chip.hidden) return;
-  const t = await readUsefulClipboard();
-  if (!t) return;
-  chip.hidden = false;
-  chip.dataset.query = t;
-  if ($("clipPreview")) $("clipPreview").textContent = t.length > 72 ? `${t.slice(0, 72)}…` : t;
-}
-
-function restoreIfNeeded() {
-  if (state.current) return;
-  const rec = loadResume();
-  if (!rec?.id) return;
-  const entry = allEntries().find((e) => e.id === rec.id);
-  if (!entry) return;
-  renderResult(entry, { source: "resume", confidence: 1, alternatives: [], query: rec.query || rec.id });
-  state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
-  if (state.progress) state.progress.index = state.stepIndex;
-  highlightStep();
-  toast("Picked up where you left off.");
-}
-
-boot();
-lightStep();
+);
   toast("Picked up where you left off.");
 }
 

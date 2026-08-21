@@ -6,7 +6,7 @@ compatibility_date = "2026-08-21"
 pages_build_output_dir = "."
 
 [vars]
-APP_VERSION = "3.6.4"
+APP_VERSION = "3.6.5"
 
 [assets]
 directory = "."
@@ -14,4 +14,4 @@ binding = "ASSETS"
 html_handling = "auto-trailing-slash"
 not_found_handling = "404-page"
 # Only these paths run Worker first. Everything else stays a static file.
-run_worker_first = ["/auth", "/auth/*", "/install", "/webhooks/*", "/healthz"]
+run_worker_first = ["/auth", "/auth/*", "/install", "/webhooks/*", "/healthz", "/help-sitemap"]

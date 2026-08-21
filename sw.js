@@ -1,4 +1,4 @@
-const VERSION = "storescope-v3.6.4";
+const VERSION = "storescope-v3.6.5";
 const PRECACHE = [
   "./",
   "./index.html",
@@ -155,5 +155,5 @@ async function handleSharePost(request) {
   } catch {
     /* still bounce home */
   }
-  return Response.redirect(new URL("./index.html?v=3.6.4&shared=1", request.url), 303);
+  return Response.redirect(new URL("./index.html?v=3.6.5&shared=1", request.url), 303);
 }

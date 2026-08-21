@@ -4,7 +4,7 @@
  * Secrets: SHOPIFY_API_KEY, SHOPIFY_API_SECRET (wrangler secret / dashboard).
  * Never log the secret. Zero Admin API scopes. No screenshot upload.
  */
-const APP_VERSION = "3.6.4";
+const APP_VERSION = "3.6.5";
 const SHOP_RE = /^[a-z0-9][a-z0-9-]*\.myshopify\.com$/i;
 
 export default {
@@ -13,6 +13,7 @@ export default {
     const path = url.pathname.replace(/\/+$/, "") || "/";
 
     if (path === "/healthz") return health(env);
+    if (path === "/help-sitemap") return helpSitemap(request);
     if (path === "/install" || path === "/auth") return handleAuth(request, env, url);
     if (path === "/auth/callback") return handleCallback(request, env, url);
     if (path.startsWith("/webhooks/")) return handleWebhook(request, env, path);
@@ -42,6 +43,38 @@ function homeUrl(env, shop) {
   u.searchParams.set("v", ver);
   if (shop) u.searchParams.set("shop", shop);
   return u.pathname + u.search;
+}
+
+async function helpSitemap(request) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: corsHeaders() });
+  }
+  if (request.method !== "GET") return json({ ok: false }, 405);
+  try {
+    const res = await fetch("https://help.shopify.com/sitemap-en.xml", {
+      headers: { "User-Agent": "Storescope/3.6.5 (official Help sitemap only)" }
+    });
+    if (!res.ok) return json({ ok: false, status: res.status }, 502);
+    const body = await res.arrayBuffer();
+    return new Response(body, {
+      status: 200,
+      headers: {
+        ...corsHeaders(),
+        "content-type": "application/xml; charset=utf-8",
+        "cache-control": "public, max-age=3600"
+      }
+    });
+  } catch {
+    return json({ ok: false, error: "help sitemap failed" }, 502);
+  }
+}
+
+function corsHeaders() {
+  return {
+    "access-control-allow-origin": "*",
+    "access-control-allow-methods": "GET, OPTIONS",
+    "access-control-allow-headers": "Content-Type"
+  };
 }
 
 function health(env) {
