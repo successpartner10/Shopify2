@@ -161,10 +161,14 @@ function phraseHits(entry, hay) {
   let matched = "";
   for (const phrase of fields) {
     const p = String(phrase).toLowerCase();
-    if (p.length >= 4 && hay.includes(p)) {
-      hits += p.length >= 18 ? 1.6 : 1;
-      if (p.length > longest) {
-        longest = p.length;
+    if (p.length < 4) continue;
+    const insideQuery = hay.includes(p);
+    const queryInside = hay.length >= 8 && p.includes(hay);
+    if (insideQuery || queryInside) {
+      hits += p.length >= 18 ? 1.6 : (queryInside ? 1.25 : 1);
+      const len = insideQuery ? p.length : hay.length;
+      if (len > longest) {
+        longest = len;
         matched = p;
       }
     }

@@ -1,14 +1,14 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v3.3.2** · 20 August 2026.
+Privacy-first Shopify admin live scanner. **v3.4.0** · 20 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.3.2 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.3.2 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.3.2 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.4.0 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.4.0 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.4.0 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.3.2/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.4.0/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -39,15 +39,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=3.3.2 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.3.2 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=3.3.2 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.3.2&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.3.2&q=klarna` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.3.2&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=3.4.0 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.4.0 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=3.4.0 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.4.0&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.4.0&q=klarna` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.4.0&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=3.3.2` cache-busts CSS/JS and the service worker (`storescope-v3.3.2`). Hard-refresh if an old build is stuck.
+`?v=3.4.0` cache-busts CSS/JS and the service worker (`storescope-v3.4.0`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -114,7 +114,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=3.3.2 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=3.4.0 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner.
 4. Follow the numbered steps. Re-scan after each change.
@@ -124,7 +124,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.3.2/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.4.0/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
@@ -185,7 +185,7 @@ Do **not** commit real merchant screenshots.
 
 ## 10. Audit log
 
-### 2026-08-20, v3.3.2
+### 2026-08-20, v3.4.0
 
 65 Medium issues now have unique admin click-paths (abandoned cart, discounts, Printful, Algolia, Loop, gift cards, mega-menu, etc.). Theme Medium rows still duplicate the theme first. `paintStepProgress` restored so **Step X of N** and **Next:** no longer crash. Offline zip includes `data/issues.json`. Not a 1,500-row modulo grid.
 
@@ -253,7 +253,7 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `3.3.2` (`js/version.js`) |
-| Service worker | `storescope-v3.3.2` |
-| Public query | `?v=3.3.2` on HTML, CSS, JS, manifest, shortcuts |
+| App | `3.4.0` (`js/version.js`) |
+| Service worker | `storescope-v3.4.0` |
+| Public query | `?v=3.4.0` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |

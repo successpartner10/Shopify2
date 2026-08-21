@@ -143,7 +143,7 @@ export async function listRecordings(limit = 20) {
 export function diagnosticPackage({ sessions, recording, current, query, community }) {
   return {
     app: "storescope",
-    version: "3.3.2",
+    version: "3.4.0",
     exportedAt: new Date().toISOString(),
     privacy: "Images omitted. Text scrubbed for emails, keys, phones, cards, order numbers.",
     current: current ? scrubObject({

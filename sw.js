@@ -10,6 +10,7 @@ const PRECACHE = [
   "./fonts/raleway-latin-ext.woff2",
   "./js/app.js",
   "./js/dictionary.js",
+  "./js/publicPages.js",
   "./js/banners.js",
   "./js/ocr.js",
   "./js/capture.js",

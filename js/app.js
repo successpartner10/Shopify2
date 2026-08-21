@@ -18,6 +18,7 @@ import { scrubText, thumbnailDataUrl, looksLikeSecret } from "./privacy.js";
 import { normalizeStep, handoffPrompt, handoffLinks, localReply } from "./chat.js";
 import { getGeminiKey, getGrokKey, cloudOptIn, saveCloudSettings, askGemini, askGrok } from "./cloud.js";
 import { looksLikeAdminUrl, queryFromAdminUrl } from "./routes.js";
+import { rememberShop, getShopOrigin, matchKnownPublic, fetchSitemapUrls, matchSitemap } from "./publicPages.js";
 import { polaroidFor } from "./polaroids.js";
 import {
   takeSharedInbound, readUsefulClipboard, markClipAsked,
@@ -439,11 +440,7 @@ function renderResult(entry, meta) {
   if ($("tipTitle")) $("tipTitle").textContent = title;
   if ($("tipExpl")) $("tipExpl").textContent = expl;
   paintStepList("tipSteps", entry, 0);
-  if ($("related")) {
-    $("related").innerHTML = (meta.alternatives || []).map((a) =>
-      `<button class="sample" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint)}</b><span>${esc(a.cause || a.explanation)}</span></button>`
-    ).join("");
-  }
+  paintRelated(meta.alternatives || []);
   if ($("ocrText")) $("ocrText").textContent = state.lastText || "";
   if ($("homeResult")) $("homeResult").hidden = false;
   if ($("homeTitle")) $("homeTitle").textContent = title;
@@ -475,10 +472,35 @@ function renderResult(entry, meta) {
   }).then((id) => { state.lastSessionId = id; }).catch(() => {});
 }
 
+function findPlaybook(id) {
+  return allEntries().find((x) => x.id === id)
+    || (state.lastMeta?.alternatives || []).find((x) => x.id === id)
+    || null;
+}
+
+function paintRelated(alts) {
+  const host = $("related");
+  if (!host) return;
+  host.innerHTML = (alts || []).map((a) => {
+    const href = a.public_url || a.live_url || "";
+    const extra = href && /^https?:/i.test(href)
+      ? `<a class="linkish" href="${esc(href)}" target="_blank" rel="noopener">Open page</a>`
+      : "";
+    return `<button class="sample" type="button" data-alt="${esc(a.id)}"><b>${esc(a.target_ui_hint || hubTitle(a))}</b><span>${esc(a.cause || a.explanation || "")}</span>${extra}</button>`;
+  }).join("");
+}
+
 function applyQuery(query, extras = {}) {
-  let q = String(query || "").trim();
+  const raw = String(query || "").trim();
+  const origin = rememberShop(raw);
+  let q = raw;
   const routed = queryFromAdminUrl(q);
   if (routed) q = routed;
+  const onlyUrl = origin && /^https?:\/\//i.test(raw) && raw.split(/\s+/).length === 1;
+  if (onlyUrl) {
+    toast(`Shop saved: ${origin}. Type refund policy — no need to paste the URL every time.`);
+    q = extras.keepUrlQuery ? q : "refund policy";
+  }
   const screen = detectScreen(q);
   let found = { match: null, alternatives: [], source: "empty", confidence: 0 };
   try {
@@ -492,13 +514,31 @@ function applyQuery(query, extras = {}) {
   } catch {
     found = { match: null, alternatives: [], source: "error", confidence: 0 };
   }
-  const entry = found.match || fallbackAnswer(q, found.alternatives, screen);
+  const publicHits = matchKnownPublic(q, origin);
+  const alts = [...publicHits, ...(found.alternatives || [])]
+    .filter((a, i, arr) => a.id !== found.match?.id && arr.findIndex((x) => x.id === a.id) === i)
+    .slice(0, 8);
+  const entry = found.match || publicHits[0] || fallbackAnswer(q, alts, screen);
   renderResult(entry, {
     ...found,
-    source: found.match ? found.source : "local-fallback",
-    confidence: found.match ? found.confidence : Math.max(found.confidence, 0.3),
+    alternatives: alts.filter((a) => a.id !== entry.id).slice(0, 6),
+    source: found.match ? found.source : (publicHits[0] ? "public-page" : "local-fallback"),
+    confidence: found.match ? found.confidence : (publicHits[0] ? 0.86 : Math.max(found.confidence, 0.3)),
     query: q
   });
+  paintRelated(state.lastMeta?.alternatives || []);
+  if (origin) {
+    fetchSitemapUrls(origin).then((urls) => {
+      const extra = matchSitemap(q, origin, urls);
+      if (!extra.length || !state.current) return;
+      const more = extra.filter((e) => e.id !== state.current.id);
+      const merged = [...more, ...(state.lastMeta.alternatives || [])]
+        .filter((a, i, arr) => arr.findIndex((x) => x.id === a.id) === i)
+        .slice(0, 8);
+      state.lastMeta.alternatives = merged;
+      paintRelated(merged);
+    }).catch(() => {});
+  }
   return entry;
 }
 
@@ -1416,8 +1456,8 @@ function wireUi() {
   on("related", "click", (e) => {
     const btn = e.target.closest("[data-alt]");
     if (!btn) return;
-    const entry = allEntries().find((x) => x.id === btn.dataset.alt);
-    if (entry) renderResult(entry, { source: "related", confidence: 0.7, alternatives: [], query: entry.match_phrases?.[0] || "" });
+    const entry = findPlaybook(btn.dataset.alt);
+    if (entry) renderResult(entry, { source: "related", confidence: 0.7, alternatives: (state.lastMeta?.alternatives || []).filter((a) => a.id !== entry.id), query: entry.match_phrases?.[0] || "" });
   });
   on("flowBox", "click", (e) => {
     const btn = e.target.closest("[data-alt]");
