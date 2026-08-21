@@ -786,10 +786,11 @@ function hubTitle(entry) {
 }
 
 function openHub(hub) {
+  window.__ssOpenHub = openHub;
   if (!HUBS[hub]) return;
   state.hub = hub;
   markOnboarded();
-  if ($("catGrid")) $("catGrid").hidden = true;
+  if ($("catGrid")) $("catGrid").hidden = false;
   if ($("hubPanel")) $("hubPanel").hidden = false;
   if ($("hubTitle")) $("hubTitle").textContent = HUBS[hub].label;
   if ($("hubBlurb")) $("hubBlurb").textContent = HUBS[hub].blurb;
@@ -798,14 +799,37 @@ function openHub(hub) {
   if (hub === "howto" && $("mineAsk") && !$("mineAsk").value && state.lastText) {
     $("mineAsk").value = state.lastText;
   }
-  paintHubList("");
-  $("hubSearch")?.focus();
+  document.querySelectorAll("#catGrid [data-hub]").forEach((b) => {
+    b.classList.toggle("on", b.getAttribute("data-hub") === hub);
+  });
+  try { paintHubList(""); } catch (err) { console.warn(err); }
+  $("hubPanel")?.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 function closeHub() {
   state.hub = null;
   if ($("hubPanel")) $("hubPanel").hidden = true;
   if ($("catGrid")) $("catGrid").hidden = false;
+  document.querySelectorAll("#catGrid [data-hub]").forEach((b) => b.classList.remove("on"));
+}
+
+function bindHubTiles() {
+  const grid = $("catGrid");
+  if (!grid || grid.dataset.bound === "1") return;
+  grid.dataset.bound = "1";
+  grid.addEventListener("click", (e) => {
+    const hubBtn = e.target.closest("[data-hub]");
+    if (hubBtn) {
+      e.preventDefault();
+      openHub(hubBtn.getAttribute("data-hub"));
+    }
+  });
+  grid.querySelectorAll("[data-hub]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openHub(btn.getAttribute("data-hub"));
+    });
+  });
 }
 
 function paintSavedShops() {
@@ -1811,26 +1835,7 @@ function wireUi() {
     if (act === "play" || act === "pause") walkToggle();
     if (act === "continue") $("nextBtn")?.click();
   });
-  on("catGrid", "click", (e) => {
-    const hubBtn = e.target.closest("[data-hub]");
-    if (hubBtn) {
-      openHub(hubBtn.getAttribute("data-hub"));
-      return;
-    }
-    const btn = e.target.closest("[data-cat]");
-    if (!btn) return;
-    const q = btn.getAttribute("data-cat") || "";
-    if (q === "other") {
-      $("homeAskInput")?.focus();
-      toast("Type a few words from the problem.");
-      return;
-    }
-    markOnboarded();
-    if ($("homeAskInput")) $("homeAskInput").value = q;
-    state.lastText = q;
-    applyQuery(q);
-    $("homeResult")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
+  bindHubTiles();
   on("hubBack", "click", closeHub);
   on("hubAsk", "submit", (e) => {
     e.preventDefault();
@@ -1979,6 +1984,7 @@ async function boot() {
     applyTheme(now);
   });
   wireUi();
+  bindHubTiles();
   setOnlineUi();
   applyEmbedUi();
   showLanding();

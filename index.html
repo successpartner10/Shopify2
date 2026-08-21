@@ -550,8 +550,14 @@
 
   <div class="toast" id="toast" hidden></div>
 
-  <script src="./js/vendor/fuse.min.js?v=3.6.6"></script>
-  <script src="./js/vendor/tesseract/tesseract.min.js?v=3.6.6"></script>
-  <script type="module" src="./js/app.js?v=3.6.6"></script>
+  <script src="./js/vendor/fuse.min.js?v=3.6.7"></script>
+  <script src="./js/vendor/tesseract/tesseract.min.js?v=3.6.7"></script>
+  <script type="module" src="./js/app.js?v=3.6.7"></script>
+  <script>
+    document.getElementById("catGrid")?.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest && e.target.closest("[data-hub]");
+      if (b && typeof window.__ssOpenHub === "function") window.__ssOpenHub(b.getAttribute("data-hub"));
+    });
+  </script>
 </body>
 </html>
