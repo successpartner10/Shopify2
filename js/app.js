@@ -713,7 +713,7 @@ const HUBS = {
   seo: { label: "SEO", blurb: "Redirects, sitemap, schema, Search Console." },
   domains: { label: "Domains", blurb: "SSL, DNS, Markets domains." },
   admin: { label: "Admin", blurb: "Staff, billing, policies, 2FA." },
-  howto: { label: "How to", blurb: "Add text, logo, pages, checkout line. You tap — we never change the shop." }
+  howto: { label: "How to", blurb: "Add text, logo, pages, checkout line. Save a how-to you found. You tap — we never change the shop." }
 };
 
 function hubTitle(entry) {
@@ -729,6 +729,10 @@ function openHub(hub) {
   if ($("hubTitle")) $("hubTitle").textContent = HUBS[hub].label;
   if ($("hubBlurb")) $("hubBlurb").textContent = HUBS[hub].blurb;
   if ($("hubSearch")) $("hubSearch").value = "";
+  if ($("mineHowTo")) $("mineHowTo").hidden = hub !== "howto";
+  if (hub === "howto" && $("mineAsk") && !$("mineAsk").value && state.lastText) {
+    $("mineAsk").value = state.lastText;
+  }
   paintHubList("");
   $("hubSearch")?.focus();
 }
@@ -775,6 +779,39 @@ function paintHubList(q) {
       `<button class="sample" type="button" data-open="${esc(e.id)}"><b>${esc(hubTitle(e))}</b><span>${esc(e.target_ui_hint || "")}</span></button>`
     ).join("")
     : `<p class="empty">Nothing in ${HUBS[state.hub].label} matches. Try another word.</p>`;
+}
+
+async function saveMineHowTo({ question, steps, hint }) {
+  const q = String(question || "").trim();
+  const lines = (steps || []).map((s) => String(s || "").trim()).filter(Boolean);
+  if (looksLikeSecret(q) || lines.some((s) => looksLikeSecret(s))) {
+    return toast("That looks like a secret key. Paste the steps only.");
+  }
+  if (q.length < 4) return toast("Type the question you asked.");
+  if (lines.length < 2) return toast("Need at least two steps.");
+  const rec = await upsertCommunity({
+    banner: q,
+    steps: lines.slice(0, 8),
+    category: "general",
+    target_ui_hint: hint || q.slice(0, 80),
+    explanation: "Saved on this device from a how-to you found.",
+    cause: "Your saved how-to."
+  });
+  state.community = await listCommunity();
+  try { state.fuse = buildIndex(allEntries()); } catch { /* still searchable by phrase */ }
+  if (state.hub === "howto") paintHubList($("hubSearch")?.value || "");
+  toast("Saved on this device. Search will find it.");
+  return rec;
+}
+
+async function saveCurrentHowTo() {
+  if (!state.current) return toast("Find or paste a how-to first.");
+  const q = state.lastMeta?.query || state.lastText || state.current.match_phrases?.[0] || hubTitle(state.current);
+  await saveMineHowTo({
+    question: q,
+    steps: stepLines(state.current),
+    hint: state.current.target_ui_hint || q
+  });
 }
 
 async function copyStepsForFriend() {
@@ -1969,6 +2006,11 @@ function restoreIfNeeded() {
   state.stepIndex = Math.min(rec.step || 0, (entry.steps || []).length - 1);
   if (state.progress) state.progress.index = state.stepIndex;
   highlightStep();
+  toast("Picked up where you left off.");
+}
+
+boot();
+lightStep();
   toast("Picked up where you left off.");
 }
 

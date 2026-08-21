@@ -1,14 +1,14 @@
 # Storescope — complete product guide
 
-Privacy-first Shopify admin live scanner. **v3.6.2** · 21 August 2026.
+Privacy-first Shopify admin live scanner. **v3.6.3** · 21 August 2026.
 
 | | |
 |---|---|
-| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.2 |
-| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.2 |
-| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.2 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
+| **GitHub Pages** | https://successpartner10.github.io/Shopify2/?v=3.6.3 |
+| **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.6.3 |
+| **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.6.3 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.2/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.3/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -21,7 +21,7 @@ Pixels stay in the browser. History stores tip text only. No Storescope server r
 Share a Shopify admin tab (or drop a screenshot). Storescope:
 
 1. Reads banners, toasts, and validation text (band-first OCR + optional DOM-lite).
-2. Matches a local playbook (banner rows + **150 hub issues** + **2,524 Help how-tos** + hand-written how-tos).
+2. Matches a local playbook (banner rows + **150 hub issues** + **2,524 Help how-tos** + **500 community how-tos** + your saved how-tos).
 3. Shows the **cause**, **next clicks**, **Step X of N**.
 4. Walks numbered steps. **This worked** ranks that playbook higher next time on this device.
 
@@ -40,15 +40,15 @@ Merchant path (nothing to set up):
 
 | Purpose | URL |
 |---|---|
-| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.2 |
-| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.2 |
-| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.2 |
-| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.2&fix=error-payout-hold-banner` |
-| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.2&q=klarna` |
-| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.2&action=upload` |
+| Open the app | https://successpartner10.github.io/Shopify2/?v=3.6.3 |
+| Worker mirror | https://shopify2.panchgani2025.workers.dev/?v=3.6.3 |
+| Original Pages host | https://storescope-cwl.pages.dev/?v=3.6.3 |
+| Shared playbook | `https://successpartner10.github.io/Shopify2/?v=3.6.3&fix=error-payout-hold-banner` |
+| Typed search | `https://successpartner10.github.io/Shopify2/?v=3.6.3&q=klarna` |
+| Home-screen shortcut (upload) | `https://successpartner10.github.io/Shopify2/?v=3.6.3&action=upload` |
 | Privacy | https://successpartner10.github.io/Shopify2/privacy.html |
 
-`?v=3.6.2` cache-busts CSS/JS and the service worker (`storescope-v3.6.2`). Hard-refresh if an old build is stuck.
+`?v=3.6.3` cache-busts CSS/JS and the service worker (`storescope-v3.6.3`). Hard-refresh if an old build is stuck.
 
 ---
 
@@ -79,7 +79,7 @@ Upload, samples, typed search, Find on shop, and pasted admin URLs work without 
 | Upload / drop / paste | Screenshot from Photos or clipboard image |
 | Share Shopify tab | Desktop only; phones open Photos instead |
 | Numbered steps | **Step X of N**, **Next step**, **Copy steps**, **This worked** |
-| 11 topics | Payments … Admin, plus **How to** |
+| 11 topics | Payments … Admin, plus **How to** (save your own) |
 | Polaroids | Tiny “tap here” crop on common paths |
 | Help | Stuck-cases + Privacy. Power tools stay hidden |
 | Play this fix | One button; becomes Pause. **Next step** continues |
@@ -116,7 +116,7 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 ## 5. How to use
 
-1. Open https://successpartner10.github.io/Shopify2/?v=3.6.2 as a **top-level tab**.
+1. Open https://successpartner10.github.io/Shopify2/?v=3.6.3 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
 3. Share the Shopify tab, upload the screenshot, or type the banner / how-to.
 4. Follow the numbered steps. Re-scan after each change.
@@ -143,6 +143,14 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 Do **not** Edit code on the published theme.
 
+### Save a how-to you found (AI / Google)
+
+1. Open **How to**.
+2. Paste the question you asked, then the steps (one per line).
+3. Tap **Save how-to**. Search will find it on this device.
+4. Or open any playbook → **Save this how-to**.
+5. **Download mine** if you want those rows in the GitHub playbook later. Nothing is uploaded.
+
 ### Example searches
 
 | Type this | Playbook |
@@ -156,7 +164,7 @@ Do **not** Edit code on the published theme.
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.2/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.6.3/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
@@ -182,12 +190,13 @@ No build step. Static files only.
 
 ## 8. Playbook data
 
-Searchable playbooks: banner rows, **150 hub issues**, **2,524 Shopify Help how-tos**, plus hand-written how-tos. No duplicate ids. Not a 1,500-row generated grid.
+Searchable playbooks: banner rows, **150 hub issues**, **2,524 Shopify Help how-tos**, **500 community/SO how-tos**, plus hand-written and your saved how-tos. No duplicate ids. Not a 1,500-row generated grid.
 
 | File | Role | Count |
 |---|---|---|
 | `data/issues.json` | 150 ranked issues in **10 topics** (not 5) | 150 |
 | `data/howto.json` | Shopify Help `/en/manual/` → unique admin paths + Help URL | 2524 |
+| `data/forum.json` | Community/SO questions → unique admin clicks + Help URL | 500 |
 | `data/errors.json` | Exact banners / toasts / validation | 16 |
 | `data/payments.json` | Payments & payouts | 18 |
 | `data/shipping.json` | Rates, zones, carriers | 18 |
@@ -223,9 +232,13 @@ Do **not** commit real merchant screenshots.
 
 ## 10. Audit log
 
+### 2026-08-21, v3.6.3
+
+How to: paste an AI/Google fix (question + steps) — saved on this device. Search finds it. **Save this how-to** on any playbook. **Download mine** to put it in GitHub later. Plus **500** unique community/SO how-tos (`data/forum.json`) with real Help URLs. Not a modulo grid.
+
 ### 2026-08-21, v3.6.2
 
-Shipped the real ExtraLight Raleway file (not the Medium variable cut). Headline, buttons, topics, and steps are all ExtraLight 200. Montserrat Bold is no longer used. Open with `?v=3.6.2`.
+Shipped the real ExtraLight Raleway file (not the Medium variable cut). Headline, buttons, topics, and steps are all ExtraLight 200. Montserrat Bold is no longer used.
 
 ### 2026-08-21, v3.6.1
 
@@ -314,16 +327,16 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 
 | Piece | Value |
 |---|---|
-| App | `3.6.2` (`js/version.js`) |
-| Service worker | `storescope-v3.6.2` |
-| Public query | `?v=3.6.2` on HTML, CSS, JS, manifest, shortcuts |
+| App | `3.6.3` (`js/version.js`) |
+| Service worker | `storescope-v3.6.3` |
+| Public query | `?v=3.6.3` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |
 | Help how-tos | 2524 (`data/howto.json`) |
 | Hand-written how-tos | general 035–047 |
 
 ---
 
-## 14. Functionality checklist (v3.6.2)
+## 14. Functionality checklist (v3.6.3)
 
 | Area | Status |
 |---|---|
@@ -337,6 +350,8 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 | Refund policy + public `/policies/*` | Yes |
 | Checkout text / all-products refund line / cart text | Yes |
 | 2524 Help how-tos | Phrase match; not Fuse |
+| 500 community how-tos | Phrase match (`data/forum.json`) |
+| Save a how-to on this device | How to topic + **Save this how-to** |
 | Miss → numbered Help/Google steps | Yes; AI only if opt-in + key |
 | Raleway ExtraLight body / steps | Yes (`--fw-body: 200`, 20px) |
 | Coach overlay | CSS `display: none !important` |

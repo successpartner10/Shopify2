@@ -185,24 +185,29 @@ export async function listCommunity() {
 }
 
 export async function upsertCommunity(entry) {
+  const banner = scrubText(entry.banner || "");
+  const phrases = [banner, `how to ${banner}`, `how do i ${banner}`]
+    .map((s) => s.trim().toLowerCase())
+    .filter((s, i, a) => s.length >= 4 && a.indexOf(s) === i);
   const rec = {
     id: entry.id || `comm-${Date.now()}`,
     createdAt: entry.createdAt || Date.now(),
     updatedAt: Date.now(),
-    banner: scrubText(entry.banner || ""),
+    banner,
     steps: (entry.steps || []).map((s) => scrubText(s)).filter(Boolean),
     category: entry.category || "general",
     target_ui_hint: entry.target_ui_hint || "Community fix",
     explanation: scrubText(entry.explanation || ""),
     cause: scrubText(entry.cause || entry.explanation || ""),
-    match_phrases: [scrubText(entry.banner || "")].filter(Boolean),
-    synonyms: [],
-    tags: ["community", entry.category || "general"],
+    match_phrases: phrases,
+    synonyms: phrases.slice(0, 3),
+    tags: ["community", "howto", entry.category || "general"],
     success: entry.success || 1,
     attempts: entry.attempts || 1,
     source_category_db: "community",
-    error_kind: "banner",
-    severity: "warning",
+    error_kind: "howto",
+    severity: "info",
+    hub: "howto",
     local: true
   };
   const db = await openDb();
@@ -234,8 +239,12 @@ export function communityAsEntries(rows) {
   return (rows || [])
     .map((r) => ({
       ...r,
+      hub: r.hub || "howto",
+      tags: Array.from(new Set([...(r.tags || []), "howto", "community"])),
+      match_phrases: r.match_phrases?.length ? r.match_phrases : [r.banner].filter(Boolean),
+      synonyms: r.synonyms?.length ? r.synonyms : [r.banner].filter(Boolean),
       arrow: { x: 0.55, y: 0.16 },
-      docs: [],
+      docs: r.docs || [],
       rate: r.attempts ? r.success / r.attempts : 0
     }))
     .sort((a, b) => (b.rate - a.rate) || (b.success - a.success));

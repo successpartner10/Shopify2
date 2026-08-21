@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Storescope 3.6.2 — Shopify Live Scanner</title>
+  <title>Storescope 3.6.3 — Shopify Live Scanner</title>
   <meta name="description" content="Point Storescope at your Shopify admin. Instant playbooks and arrows for payouts, shipping, themes, and checkout errors." />
   <meta name="theme-color" content="#f5f5f7" id="themeColor" />
   <meta name="color-scheme" content="light dark" />
-  <link rel="canonical" href="https://successpartner10.github.io/Shopify2/?v=3.6.2" />
-  <link rel="manifest" href="./manifest.json?v=3.6.2" />
+  <link rel="canonical" href="https://successpartner10.github.io/Shopify2/?v=3.6.3" />
+  <link rel="manifest" href="./manifest.json?v=3.6.3" />
   <link rel="icon" href="./icons/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./icons/apple-touch.png" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-title" content="Storescope" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Storescope 3.6.2 — Shopify Live Scanner" />
+  <meta property="og:title" content="Storescope 3.6.3 — Shopify Live Scanner" />
   <meta property="og:description" content="Screen-capture troubleshooting for Shopify admin. Dictionary-first fixes, offline playbooks, no camera." />
   <meta property="og:image" content="./og.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="stylesheet" href="./css/app.css?v=3.6.2" />
+  <link rel="stylesheet" href="./css/app.css?v=3.6.3" />
 </head>
 <body>
   <div class="app">
@@ -34,7 +34,7 @@
         </span>
         <span>
           <div class="brand-name">Store<span>scope</span></div>
-          <div class="brand-sub">v3.6.2</div>
+          <div class="brand-sub">v3.6.3</div>
         </span>
       </a>
       <nav class="nav">
@@ -115,6 +115,17 @@
               <input id="hubSearch" type="search" enterkeyhint="search" placeholder="Search in this topic" autocomplete="off" />
               <button class="solid" type="submit">Search</button>
             </form>
+            <form class="mine-box" id="mineHowTo" hidden>
+              <p class="fine">Found a fix on AI or Google? Paste it here. Saved on this device only.</p>
+              <label class="share-label" for="mineAsk">What you asked</label>
+              <input id="mineAsk" type="text" placeholder="how do I add a size chart" autocomplete="off" />
+              <label class="share-label" for="mineSteps">Steps (one per line)</label>
+              <textarea id="mineSteps" rows="4" placeholder="Online Store → Themes → Duplicate&#10;Customize → Products → Default product&#10;Add block → Custom liquid / Rich text. Save."></textarea>
+              <div class="card-actions">
+                <button class="solid" type="submit">Save how-to</button>
+                <button class="ghost" id="mineExport" type="button">Download mine</button>
+              </div>
+            </form>
             <div class="samples hub-list" id="hubList"></div>
           </div>
           <div class="card result-card" id="homeResult" hidden>
@@ -133,6 +144,7 @@
               <button class="solid" id="homeNext" type="button">Next step</button>
               <button class="solid" id="homeCopySteps" type="button">Copy steps</button>
               <button class="ghost" id="homePip" type="button" hidden>Pop out</button>
+              <button class="ghost" id="homeSaveHowTo" type="button">Save this how-to</button>
               <button class="ghost" id="homeWorked" type="button">This worked</button>
             </div>
             <div id="homeRelated" class="samples" style="margin-top:12px"></div>
@@ -224,6 +236,7 @@
                 <button class="solid" id="nextBtn" type="button">Next step</button>
                 <button class="solid" id="copyStepsBtn" type="button">Copy steps</button>
                 <button class="ghost" id="tipPip" type="button" hidden>Pop out</button>
+                <button class="ghost" id="saveHowToBtn" type="button">Save this how-to</button>
                 <button class="ghost" id="workedBtn" type="button">This worked</button>
                 <button class="ghost" id="nopeBtn" type="button">Not this</button>
                 <button class="ghost pro" id="shareFixBtn" type="button" hidden>Share this fix</button>
@@ -260,9 +273,10 @@
         <li><b>Phone</b> — screenshot Shopify, then Upload from Photos (not the camera).</li>
         <li><b>After a match</b> — Play this fix, do that tap in Shopify, then <b>Next step</b>.</li>
         <li><b>Chrome</b> — Pop out floats the step over admin. Drag the corner to resize.</li>
-        <li><b>Still see 5 topics?</b> You’re on an old copy. Open GitHub.io with <i>?v=3.6.2</i>, or delete the home-screen icon and add it again. storescope-cwl.pages.dev is still the old 1.x site.</li>
+        <li><b>Still see 5 topics?</b> You’re on an old copy. Open GitHub.io with <i>?v=3.6.3</i>, or delete the home-screen icon and add it again. storescope-cwl.pages.dev is still the old 1.x site.</li>
         <li><b>Find on shop</b> — shop URL is saved on this device. Tap a saved link, then the words. We never change the shop.</li>
         <li><b>How to</b> — topic under Admin, or type it in Search. Tab / screenshot also search.</li>
+        <li><b>Save a how-to</b> — How to → paste what you asked AI/Google and the steps. Stays on this device. Download mine if you want it in GitHub later.</li>
         <li><b>Paste</b> — banner text or an admin.shopify.com link in the search box.</li>
       </ul>
       <p class="empty">Your picture stays on this device. <button class="linkish" id="privBtn" type="button">Privacy</button></p>
@@ -277,7 +291,7 @@
         <button id="keysBtn" type="button">Keys</button>
         <button id="srcBtn" type="button">Sources</button>
       </p>
-      <p class="note" id="verPill">v3.6.2</p>
+      <p class="note" id="verPill">v3.6.3</p>
       <p class="note pro" id="dictPill" hidden>Ready</p>
     </div>
   </div>
@@ -335,7 +349,7 @@
       <p class="empty" id="shareIntro">Send the app, or hand a teammate the exact fix you are looking at. Links open the same playbook.</p>
       <label class="share-label" for="shareLink">Link</label>
       <div class="share-copy-row">
-        <input id="shareLink" type="text" readonly value="https://successpartner10.github.io/Shopify2/?v=3.6.2" />
+        <input id="shareLink" type="text" readonly value="https://successpartner10.github.io/Shopify2/?v=3.6.3" />
         <button class="solid" id="copyLinkBtn" type="button">Copy</button>
       </div>
       <div class="share-grid">
@@ -495,8 +509,8 @@
 
   <div class="toast" id="toast" hidden></div>
 
-  <script src="./js/vendor/fuse.min.js?v=3.6.2"></script>
-  <script src="./js/vendor/tesseract/tesseract.min.js?v=3.6.2"></script>
-  <script type="module" src="./js/app.js?v=3.6.2"></script>
+  <script src="./js/vendor/fuse.min.js?v=3.6.3"></script>
+  <script src="./js/vendor/tesseract/tesseract.min.js?v=3.6.3"></script>
+  <script type="module" src="./js/app.js?v=3.6.3"></script>
 </body>
 </html>

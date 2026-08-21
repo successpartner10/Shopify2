@@ -32,7 +32,7 @@ export function detectScreen(text) {
 }
 
 export async function loadDictionaries() {
-  const files = ["errors", "payments", "shipping", "general", "issues", "howto"];
+  const files = ["errors", "payments", "shipping", "general", "issues", "howto", "forum"];
   const extras = ["systems", "flows", "conflicts", "sources"];
   const entries = [];
   const errors = [];
@@ -138,11 +138,13 @@ function enrich(row, file) {
 
 function sourcePri(entry) {
   const src = entry.source_category_db || "";
+  if (src === "community") return 0.14;
   if (src === "errors") return 0.10;
   if (src === "general") return 0.06;
   if (src === "payments" || src === "shipping") return 0.05;
   if (src === "public") return 0.04;
   if (src === "issues") return 0.01;
+  if (src === "forum" || src === "howto") return 0;
   return 0;
 }
 
