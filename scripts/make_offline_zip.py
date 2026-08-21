@@ -51,8 +51,13 @@ def main() -> None:
         if keep(p):
             files.append(p)
     files.sort()
-    if not any(p.name == "issues.json" for p in files):
+    names = {p.name for p in files}
+    if "issues.json" not in names:
         raise SystemExit("issues.json missing from zip set")
+    if "howto.json" not in names:
+        raise SystemExit("howto.json missing from zip set")
+    if "howto.js" not in names or "siteSearch.js" not in names:
+        raise SystemExit("howto.js / siteSearch.js missing from zip set")
     if OUT.exists():
         OUT.unlink()
     with zipfile.ZipFile(OUT, "w", zipfile.ZIP_DEFLATED) as z:

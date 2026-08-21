@@ -136,9 +136,20 @@ function enrich(row, file) {
   };
 }
 
+function sourcePri(entry) {
+  const src = entry.source_category_db || "";
+  if (src === "errors") return 0.10;
+  if (src === "general") return 0.06;
+  if (src === "payments" || src === "shipping") return 0.05;
+  if (src === "public") return 0.04;
+  if (src === "issues") return 0.01;
+  return 0;
+}
+
 export function buildIndex(entries) {
   if (!window.Fuse) throw new Error("Fuse.js failed to load");
-  return new window.Fuse(entries, {
+  const forFuse = (entries || []).filter((e) => e.source_category_db !== "howto");
+  return new window.Fuse(forFuse.length ? forFuse : entries, {
     includeScore: true,
     threshold: 0.52,
     ignoreLocation: true,
@@ -199,7 +210,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
     const { hits, longest, matched } = phraseHits(entry, hay);
     if (hits > 0) {
       const catBoost = entry.category === preferred || entry.system === preferred ? 0.12 : 0;
-      const priBoost = (4 - Math.max(0, CATEGORY_ORDER.indexOf(entry.source_category_db || "general"))) * 0.02;
+      const priBoost = sourcePri(entry);
       const rank = typeof opts.rankBoost === "function" ? opts.rankBoost(entry) : 0;
       exact.push({
         entry,
@@ -214,7 +225,7 @@ export function searchDictionary(entries, fuse, query, opts = {}) {
   try {
     fuzzy = fuse.search(q, { limit: 10 }).map((r) => ({
       entry: r.item,
-      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5 + (typeof opts.rankBoost === "function" ? opts.rankBoost(r.item) : 0) + severityBoost(r.item)
+      score: 1 - (r.score || 0.5) + zoneBoostFor(r.item) * 0.5 + (typeof opts.rankBoost === "function" ? opts.rankBoost(r.item) : 0) + severityBoost(r.item) + sourcePri(r.item)
     }));
   } catch {
     fuzzy = [];

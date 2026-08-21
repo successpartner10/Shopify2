@@ -8,7 +8,7 @@ DATA = ROOT / "data"
 
 def load():
     entries = []
-    for name in ("errors", "payments", "shipping", "general"):
+    for name in ("errors", "payments", "shipping", "general", "issues"):
         for row in json.loads((DATA / f"{name}.json").read_text()):
             row["_file"] = name
             entries.append(row)
@@ -29,7 +29,13 @@ def hits(entry, hay):
     for tag in entry.get("tags") or []:
         if str(tag).lower() in hay:
             n += 0.35
-    pri = (4 - max(0, ["errors", "payments", "shipping", "general"].index(entry["_file"]))) * 0.02
+    pri = {
+        "errors": 0.10,
+        "general": 0.06,
+        "payments": 0.05,
+        "shipping": 0.05,
+        "issues": 0.01,
+    }.get(entry["_file"], 0)
     err = 0.08 if entry["_file"] == "errors" else 0
     return n, 0.34 + n * 0.11 + longest / 90 + pri + err, matched
 
@@ -61,6 +67,12 @@ EXPECT = {
     "checkout broken": "general-checkout-css-029",
     "product variants": "general-variants-media-032",
     "prices not switching": "general-markets-currency-033",
+    "refund policy": "general-refund-policy-location-035",
+    "add text to checkout page": "general-howto-checkout-text-045",
+    "add a refund related text line across all products pages at once": "general-howto-refund-line-products-044",
+    "text on all products": "general-text-all-products-036",
+    "add text to cart": "general-howto-cart-text-046",
+    "how to change my logo": "general-howto-logo-038",
 }
 
 def main():

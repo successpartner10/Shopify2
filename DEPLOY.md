@@ -1,9 +1,9 @@
 # Put this build on the original live URLs
 
-| Host | Status at v3.4.0 |
+| Host | Status at v3.5.0 |
 |---|---|
-| **GitHub Pages** | Live: https://successpartner10.github.io/Shopify2/?v=3.4.0 |
-| **Cloudflare Worker** `shopify2` | Should follow `main` via Workers Builds: https://shopify2.panchgani2025.workers.dev/?v=3.4.0 |
+| **GitHub Pages** | Live: https://successpartner10.github.io/Shopify2/?v=3.5.0 |
+| **Cloudflare Worker** `shopify2` | Should follow `main` via Workers Builds: https://shopify2.panchgani2025.workers.dev/?v=3.5.0 |
 | **Cloudflare Pages** `storescope-cwl` | Still the **old 1.x** site until you reconnect Git. Hard-refresh will not fix it. |
 
 A push to `successpartner10/Shopify2` `main` updates GitHub Pages (workflow) and, if connected, the Worker. It does **not** update `storescope-cwl.pages.dev` until that Pages project points at this repo.
@@ -22,7 +22,7 @@ Do this once in the dashboard. No token in chat.
    - Build output directory: `/`
 6. Save. Trigger **Retry deployment** / **Deploy**.
 
-When it finishes, https://storescope-cwl.pages.dev/?v=3.4.0 should show **v3.4.0** under the logo and the home line “What’s wrong in Shopify?”.
+When it finishes, https://storescope-cwl.pages.dev/?v=3.5.0 should show **v3.5.0** under the logo and the home line “What’s wrong in Shopify?”.
 
 ## Worker vs Pages
 
@@ -57,10 +57,10 @@ Do not paste Cloudflare tokens into chat.
 
 Partner Dashboard → App URL (standalone, **not** embedded):
 
-`https://successpartner10.github.io/Shopify2/?v=3.4.0`
+`https://successpartner10.github.io/Shopify2/?v=3.5.0`
 
 or, once the Worker is on this build:
 
-`https://shopify2.panchgani2025.workers.dev/?v=3.4.0`
+`https://shopify2.panchgani2025.workers.dev/?v=3.5.0`
 
 See [SHOPIFY_APP.md](./SHOPIFY_APP.md).

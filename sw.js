@@ -47,7 +47,6 @@ const PRECACHE = [
   "./data/conflicts.json",
   "./data/sources.json",
   "./data/issues.json",
-  "./data/howto.json",
   "./manifest.json",
   "./icons/favicon.svg",
   "./icons/icon-192.png",

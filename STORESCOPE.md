@@ -8,7 +8,7 @@ Privacy-first Shopify admin live scanner. **v3.5.0** · 20 August 2026.
 | **Cloudflare Worker** | https://shopify2.panchgani2025.workers.dev/?v=3.5.0 |
 | **Cloudflare Pages** | https://storescope-cwl.pages.dev/?v=3.5.0 (still old 1.x until Git reconnect — [DEPLOY.md](./DEPLOY.md)) |
 | **Source** | https://github.com/successpartner10/Shopify2 |
-| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.4.0/storescope-offline.zip) |
+| **Offline package** | [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.5.0/storescope-offline.zip) |
 | **Privacy page** | https://successpartner10.github.io/Shopify2/privacy.html |
 | **License** | MIT |
 
@@ -21,8 +21,8 @@ Pixels stay in the browser. History stores tip text only. No Storescope server r
 Share a Shopify admin tab (or drop a screenshot). Storescope:
 
 1. Reads banners, toasts, and validation text (band-first OCR + optional DOM-lite).
-2. Matches a local playbook (banner rows + **150 hub issues**) from Shopify admin paths. Critical/High/Medium have unique click-paths.
-3. Shows the **cause**, **next clicks**, **Step X of N**, and an **arrow** on the capture.
+2. Matches a local playbook (banner rows + **150 hub issues** + **2,524 Help how-tos** + hand-written how-tos).
+3. Shows the **cause**, **next clicks**, **Step X of N**.
 4. Walks numbered steps. **This worked** ranks that playbook higher next time on this device.
 
 It does **not** log into Shopify, click for you, or lift a Risk/Payments hold.
@@ -31,7 +31,8 @@ Merchant path (nothing to set up):
 
 1. Upload a screenshot, type the problem, or paste an `admin.shopify.com` link.
 2. On a computer you can also **Share Shopify tab**.
-3. Follow the numbered steps.
+3. To change words on the live shop: paste `https://yourstore.com` + the text → **Find**.
+4. Follow the numbered steps.
 
 ---
 
@@ -63,7 +64,7 @@ Browsers block **tab share** (`getDisplayMedia`) when the app is inside an **ifr
 | `http://` (not localhost) | Use https or localhost |
 | Just want to try the UI | Tap **See a demo first** |
 
-Upload, samples, typed search, and pasted admin URLs work without tab share.
+Upload, samples, typed search, Find on shop, and pasted admin URLs work without tab share.
 
 ---
 
@@ -73,14 +74,15 @@ Upload, samples, typed search, and pasted admin URLs work without tab share.
 
 | Feature | What you see |
 |---|---|
-| Home search | “What’s wrong in Shopify?” — type words or paste `admin.shopify.com/…` |
+| Home search | Type a problem or how-to (`add text to checkout`, `refund policy`) |
+| Find on shop | Shop URL + words on the live site → admin clicks to change that text |
 | Upload / drop / paste | Screenshot from Photos or clipboard image |
 | Share Shopify tab | Desktop only; phones open Photos instead |
 | Numbered steps | **Step X of N**, **Next step**, **Copy steps**, **This worked** |
 | 10 topics | Payments, Checkout, Shipping, Themes, Products, Inventory, Apps, SEO, Domains, Admin |
-| Polaroids | Tiny “tap here” crop on common paths (payouts, shipping, Collective, Liquid, Edit code) |
+| Polaroids | Tiny “tap here” crop on common paths |
 | Help | Stuck-cases + Privacy. Power tools stay hidden |
-| Play this fix | One button; becomes Pause. **Next step** continues. |
+| Play this fix | One button; becomes Pause. **Next step** continues |
 | Light / dark | ☾ / ☼ · saved as `ss_theme` |
 
 ### Built-in, not on the home screen
@@ -116,20 +118,52 @@ Parked (not built): screenshot inbox, badge, open-with, Shopify-is-down chip, de
 
 1. Open https://successpartner10.github.io/Shopify2/?v=3.5.0 as a **top-level tab**.
 2. Open Shopify admin in another tab (computer) or take a screenshot (phone).
-3. Share the Shopify tab, upload the screenshot, or type the banner.
+3. Share the Shopify tab, upload the screenshot, or type the banner / how-to.
 4. Follow the numbered steps. Re-scan after each change.
 5. Pause before customer lists or API keys.
+
+### Find text on the live shop
+
+1. First box: `https://yourstore.com` (saved once).
+2. Second box: the words you see on the site.
+3. Tap **Find**. Storescope names the admin screen (Policies, product template, Cart, Checkout, announcement bar, Home, Pages).
+4. Browsers usually **block reading** another origin (CORS). You still get the right clicks plus **Open page** links. If a page is readable, it says Found on …
+
+| Kind of text | Where you edit |
+|---|---|
+| Refund / privacy / terms / shipping policy | Settings → Policies |
+| Same line on every product | Duplicate theme → Customize → Products → Default product → Rich text |
+| One product title/description | Products → that product |
+| Checkout pay page | Settings → Checkout → Customize (or Cart, if no banner) |
+| Cart | Customize → Cart |
+| Top bar | Customize → Announcement bar |
+| Homepage | Customize → Home |
+| Menu / footer link | Content → Menus |
+| Logo | Theme settings → Logo |
+
+Do **not** Edit code on the published theme.
+
+### Example searches
+
+| Type this | Playbook |
+|---|---|
+| `add text to checkout` | Settings → Checkout → Customize, or Cart Rich text |
+| `refund related text line across all products pages at once` | Product template Rich text — not Settings → Policies |
+| `refund policy` | Settings → Policies, then footer menu |
+| `how to change my logo` | Theme settings → Logo |
 
 ---
 
 ## 6. Offline zip
 
-1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.4.0/storescope-offline.zip).
+1. Download [storescope-offline.zip](https://github.com/successpartner10/Shopify2/releases/download/v3.5.0/storescope-offline.zip).
 2. Unzip.
 3. Run `python3 server.py` and open http://localhost:4173  
    (Opening `index.html` as `file://` breaks ES modules and OCR workers in most browsers.)
 
-The zip includes playbooks, samples, icons, **local Montserrat + Raleway**, and vendored Tesseract (English). No network is required after unzip **if** you use samples, typed search, or a screenshot. Tab share still needs a modern desktop browser.
+The zip includes playbooks (**including `data/howto.json`**), samples, icons, **local Montserrat + Raleway**, and vendored Tesseract (English). No network is required after unzip **if** you use samples, typed search, or a screenshot. Tab share still needs a modern desktop browser. Find-on-shop needs the network to try the public shop (CORS often blocks the read; steps still show).
+
+Rebuild: `python3 scripts/make_offline_zip.py` (zip is gitignored; attach to the GitHub Release).
 
 ---
 
@@ -148,16 +182,16 @@ No build step. Static files only.
 
 ## 8. Playbook data
 
-Searchable playbooks: banner rows plus **150 hub issues**. No duplicate ids. Not a 1,500-row generated grid.
+Searchable playbooks: banner rows, **150 hub issues**, **2,524 Shopify Help how-tos**, plus hand-written how-tos. No duplicate ids. Not a 1,500-row generated grid.
 
 | File | Role | Count |
 |---|---|---|
 | `data/issues.json` | 150 ranked issues in **10 topics** (not 5) | 150 |
+| `data/howto.json` | Shopify Help `/en/manual/` → unique admin paths + Help URL | 2524 |
 | `data/errors.json` | Exact banners / toasts / validation | 16 |
 | `data/payments.json` | Payments & payouts | 18 |
 | `data/shipping.json` | Rates, zones, carriers | 18 |
 | `data/general.json` | Themes, domains, Collective, Liquid, social, policies, how-tos | 47 |
-| `data/howto.json` | Shopify Help how-tos (unique admin paths, not clones) | 2524 |
 | `data/flows.json` | Guided checklists | 6 |
 | `data/systems.json` | “Why am I seeing this?” | 10 systems |
 | `data/conflicts.json` | App / theme patterns | 7 |
@@ -165,7 +199,9 @@ Searchable playbooks: banner rows plus **150 hub issues**. No duplicate ids. Not
 
 Each playbook entry: `id`, `match_phrases`, `cause`, `steps`, `arrow`, optional `flow_id`, `docs`, `severity`, `error_kind`.
 
-Extra coverage: Pinterest channel vs profile link, Google & YouTube, Shop Collective, Customize vs Edit code, Custom Liquid, `theme.liquid` head.
+Hand-written how-tos (035–047) include: refund policy location, text on all products, product images, logo, announcement bar, pages, menus, colors, homepage, **refund line on all products**, **checkout text**, **cart text**, find-on-shop.
+
+Rebuild Help how-tos: `python3 scripts/build_howto.py` (reads https://help.shopify.com/sitemap-en.xml).
 
 Do **not** commit real merchant screenshots.
 
@@ -177,7 +213,8 @@ Do **not** commit real merchant screenshots.
 - OCR runs in-page (vendored Tesseract).
 - IndexedDB on this device only (`storescope` DB, version 3: sessions, community, recordings, ranks).
 - Export scrubs emails, keys, phones, cards, order numbers.
-- Optional cloud: `ss_gemini_key` / `ss_grok_key` / `ss_cloud_optin` in `localStorage`. Never committed.
+- Optional cloud: `ss_gemini_key` / `ss_grok_key` / `ss_cloud_optin` in `localStorage`. Never committed. Used only on a local miss, text only.
+- Find-on-shop fetches **public** shop URLs from the browser (CORS usually blocks). Shop origin is stored as `ss_shop_origin`.
 - Treat the tool like someone looking over your shoulder.
 
 **Revoke any GitHub token you paste into chat.** Rotate at https://github.com/settings/tokens
@@ -188,15 +225,31 @@ Do **not** commit real merchant screenshots.
 
 ### 2026-08-20, v3.5.0
 
-How-tos from Shopify Help `/en/manual/` (2,524 unique articles — real admin paths, not a modulo grid). Find-on-shop box: paste `https://yourstore.com` + the words, get numbered clicks to change that text. Hand-written: checkout text, refund line on all products, cart text. Main Search stays global (topic filter is only inside a hub). Miss → Help-style steps (cloud opt-in only if a key is saved).
+How-tos from Shopify Help `/en/manual/` (2,524 unique articles — real admin paths, not a modulo grid). Find-on-shop box: paste `https://yourstore.com` + the words, get numbered clicks to change that text. Hand-written: checkout text, refund line on all products, cart text. Main Search stays global (topic filter is only inside a hub). Miss → Help-style steps (cloud opt-in only if a key is saved). Help how-tos are phrase-matched, not fuzzy-indexed, so they do not steal banner searches. `howto.json` is not service-worker precached (fetched on demand).
 
 ### 2026-08-20, v3.4.0
 
-65 Medium issues now have unique admin click-paths (abandoned cart, discounts, Printful, Algolia, Loop, gift cards, mega-menu, etc.). Theme Medium rows still duplicate the theme first. `paintStepProgress` restored so **Step X of N** and **Next:** no longer crash. Offline zip includes `data/issues.json`. Not a 1,500-row modulo grid.
+Search finds refund policy; shop URL optional once. Public page overlay + sitemap try. Bidirectional phraseHits.
+
+### 2026-08-20, v3.3.2
+
+Refund policy location + text on all products. GENERIC_WORD rebuild.
+
+### 2026-08-20, v3.3.1
+
+SW `updateViaCache: "none"` so 10 topics replace cached 5.
+
+### 2026-08-20, v3.3.0
+
+10 home topics, not 5.
+
+### 2026-08-20, v3.2.0
+
+65 Medium issues now have unique admin click-paths. `paintStepProgress` restored so **Step X of N** and **Next:** no longer crash. Offline zip includes `data/issues.json`. Not a 1,500-row modulo grid.
 
 ### 2026-08-20, v3.1.0
 
-CSV titles, severity, and context folded into `data/issues.json`. 52 Critical/High rows have unique click-paths (Klarna, SSL, 100 variants, Risk lock, duplicate-theme first). Hub tiles (`data-hub`) open the topic list. Trailing `app.js` parse junk removed.
+CSV titles, severity, and context folded into `data/issues.json`. 52 Critical/High rows have unique click-paths. Hub tiles (`data-hub`) open the topic list.
 
 ### 2026-08-19, v3.0.0
 
@@ -206,23 +259,14 @@ Fixed in this release:
 |---|---|
 | **Use this** chip / search could accept a pasted `ghp_` key | Secrets are blocked; never shown or searched |
 | Screenshot / tab OCR crashed (`detectColorBands` was never imported in `ocr.js`) | Import from `banners.js` |
-| Montserrat / Raleway loaded from Google but never applied (`--display` undefined; `--font` was system) | Local `@font-face` + CSS variables |
-| Corrupt CSS rule `#si0%` | Removed |
+| Montserrat / Raleway loaded from Google but never applied | Local `@font-face` + CSS variables |
 | Offline navigate to `?v=…` missed the SW cache | HTML fallback to `./index.html` / `./` |
-| Playbook fetch used `force-cache` | Default cache; SW version bump clears old files |
 | Typed “pinterest” opened theme social links, not the channel | Phrase split |
-| Typed “payouts on hold” / “no shipping rates” / “domain not connected” / “theme has errors” missed the exact banner row | Phrases added on error entries |
-| Diagnostic export still said `2.0.0` | `3.0.0` |
-| History / flow HTML could render raw objects | Escaped + string steps |
-| Shopify app docs still said `?v=2.6.0` | `?v=3.0.0` |
-| Offline zip pointed at the v2.1.0 release | v3.0.0 release |
-| Tap targets 44–50px | 54px |
 
 Still needs a real Shopify admin (cannot be fully tested here):
 
 - OCR on 12px Polaris validation and vanishing toasts
 - Arrow calibration on new vs old admin nav / zoom
-- Bookmarklet selectors vs current Polaris class names
 - `getDisplayMedia` picker labels per browser
 
 ---
@@ -262,3 +306,27 @@ See [SHOPIFY_APP.md](./SHOPIFY_APP.md). Do not paste Client secret into chat.
 | Service worker | `storescope-v3.5.0` |
 | Public query | `?v=3.5.0` on HTML, CSS, JS, manifest, shortcuts |
 | IndexedDB | `storescope` v3 |
+| Help how-tos | 2524 (`data/howto.json`) |
+| Hand-written how-tos | general 035–047 |
+
+---
+
+## 14. Functionality checklist (v3.5.0)
+
+| Area | Status |
+|---|---|
+| 10 topic tiles (`data-hub`) | Wired |
+| Main Search global (not trapped in a topic) | Fixed |
+| Hub box search stays in-topic | Yes (`#hubSearch`) |
+| Screenshot / upload / paste / tab share | Yes |
+| Play this fix / Pause / Next step | Yes |
+| Copy steps for a friend | Yes |
+| Find on shop | Yes |
+| Refund policy + public `/policies/*` | Yes |
+| Checkout text / all-products refund line / cart text | Yes |
+| 2524 Help how-tos | Phrase match; not Fuse |
+| Miss → numbered Help/Google steps | Yes; AI only if opt-in + key |
+| Coach overlay | CSS `display: none !important` |
+| Secrets in search | Blocked |
+| GitHub Pages deploy on `main` | `.github/workflows/pages.yml` |
+| Offline zip includes issues + howto | `scripts/make_offline_zip.py` |

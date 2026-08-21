@@ -1473,6 +1473,7 @@ function wireUi() {
     renderFlow();
   });
   const openRelated = (e) => {
+    if (e.target.closest("a")) return;
     const btn = e.target.closest("[data-alt]");
     if (!btn) return;
     const entry = findPlaybook(btn.dataset.alt);
